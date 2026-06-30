@@ -1,0 +1,652 @@
+/* ===== 配队分析器 ===== */
+
+.team-builder-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.team-builder-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.team-builder-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1a1a2e;
+}
+
+.team-builder-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.team-count {
+  font-size: 0.9rem;
+  color: #666;
+  margin-right: 8px;
+}
+
+.tb-btn {
+  padding: 6px 14px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  background: linear-gradient(to bottom, #ffffff, #f6f8fa);
+  color: #24292f;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tb-btn:hover:not(:disabled) {
+  background: linear-gradient(to bottom, #f3f4f6, #e5e7eb);
+  border-color: #bbb;
+}
+
+.tb-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tb-btn.secondary {
+  background: transparent;
+  border-color: #d0d7de;
+  color: #666;
+}
+
+.tb-btn.small {
+  padding: 4px 10px;
+  font-size: 0.8rem;
+}
+
+/* 队伍槽位 */
+.team-slots {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.team-slot {
+  width: 120px;
+  min-height: 140px;
+  border-radius: 10px;
+  border: 2px dashed #d0d7de;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  padding: 8px;
+  background: #fff;
+}
+
+.team-slot.empty:hover {
+  border-color: #0969da;
+  background: #f0f7ff;
+}
+
+.team-slot.filled {
+  border-style: solid;
+  border-color: #d0d7de;
+  cursor: default;
+}
+
+.team-slot.filled:hover {
+  border-color: #bbb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.slot-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #8c959f;
+}
+
+.slot-plus {
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.slot-label {
+  font-size: 0.8rem;
+}
+
+.slot-remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  background: #ff4444;
+  color: white;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.team-slot.filled:hover .slot-remove {
+  opacity: 1;
+}
+
+.slot-remove:hover {
+  background: #cc0000;
+}
+
+.slot-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 6px;
+}
+
+.slot-icon-placeholder {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.slot-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 4px;
+  color: #1a1a2e;
+}
+
+.slot-types {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.slot-forms {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.slot-form-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: 1px solid #d0d7de;
+  background: #fff;
+  font-size: 0.7rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.slot-form-btn.active {
+  background: #0969da;
+  color: white;
+  border-color: #0969da;
+}
+
+/* 精灵选择弹窗 */
+.picker-modal {
+  max-width: 800px;
+  width: 90vw;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.picker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.picker-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.picker-filters {
+  display: flex;
+  gap: 10px;
+  padding: 12px 20px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.picker-search {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.picker-type-select {
+  padding: 8px 12px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  min-width: 120px;
+}
+
+.picker-results {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 20px;
+  min-height: 0;
+}
+
+.picker-count {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.picker-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  cursor: pointer;
+  transition: all 0.15s;
+  background: #fff;
+}
+
+.picker-card:hover {
+  border-color: #0969da;
+  background: #f0f7ff;
+}
+
+.picker-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.picker-icon-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #666;
+}
+
+.picker-info {
+  min-width: 0;
+}
+
+.picker-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.picker-types {
+  display: flex;
+  gap: 3px;
+  margin-top: 2px;
+}
+
+/* 分析结果区 */
+.team-analysis {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1100px) {
+  .analysis-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .analysis-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.analysis-card {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.analysis-card h4 {
+  margin: 0 0 12px 0;
+  font-size: 1rem;
+  color: #1a1a2e;
+}
+
+.analysis-section {
+  margin-bottom: 12px;
+}
+
+.analysis-section:last-child {
+  margin-bottom: 0;
+}
+
+.analysis-label {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.analysis-label.warning {
+  color: #cf222e;
+  font-weight: 500;
+}
+
+.analysis-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.analysis-empty {
+  color: #8c959f;
+  font-size: 0.85rem;
+}
+
+.coverage-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  background: #e9ecef;
+  color: #333;
+}
+
+.coverage-badge.stab {
+  background: #ddf4ff;
+  color: #0969da;
+  font-weight: 500;
+}
+
+.coverage-badge.uncovered {
+  background: #ffebe9;
+  color: #cf222e;
+}
+
+.coverage-badge.repeated {
+  background: #fff8c5;
+  color: #7d4e00;
+}
+
+/* 抗性表格 */
+.defense-table-wrapper {
+  overflow-x: auto;
+}
+
+.defense-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.defense-table th,
+.defense-table td {
+  padding: 6px 8px;
+  text-align: center;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.defense-table th {
+  background: #f6f8fa;
+  font-weight: 500;
+  color: #666;
+}
+
+.defense-table .weak {
+  color: #cf222e;
+  font-weight: 600;
+}
+
+.defense-table .resist {
+  color: #1a7f37;
+  font-weight: 600;
+}
+
+.defense-table .immune {
+  color: #0969da;
+  font-weight: 600;
+}
+
+.defense-table .danger-row td {
+  background: #fff5f5;
+}
+
+.type-badge-mini {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: white;
+  background: #888;
+}
+
+/* 职能分布 */
+.role-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.role-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.role-bar-label {
+  width: 70px;
+  font-size: 0.8rem;
+  color: #333;
+  flex-shrink: 0;
+}
+
+.role-bar-track {
+  flex: 1;
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.role-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, #0969da, #54aeff);
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
+.role-bar-count {
+  width: 20px;
+  text-align: right;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* 队伍数据表 */
+.team-table-wrapper {
+  overflow-x: auto;
+}
+
+.team-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.team-data-table th,
+.team-data-table td {
+  padding: 8px 10px;
+  text-align: center;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.team-data-table th {
+  background: #f6f8fa;
+  font-weight: 500;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.team-table-name {
+  text-align: left !important;
+}
+
+.team-table-form {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.team-table-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+}
+
+.role-tag {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  background: #ddf4ff;
+  color: #0969da;
+}
+
+/* 缺口建议 */
+.gap-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.gap-list li {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.gap-list li:last-child {
+  margin-bottom: 0;
+}
+
+.gap-danger {
+  color: #cf222e;
+  font-weight: 500;
+}
+
+.gap-normal {
+  color: #333;
+}
+
+.gap-ok {
+  color: #1a7f37;
+  font-size: 0.9rem;
+}
+
+/* 空状态 */
+.team-empty-hint {
+  text-align: center;
+  padding: 60px 20px;
+  color: #8c959f;
+  font-size: 1rem;
+}
+
+/* 保存/加载弹窗 */
+.small-modal {
+  max-width: 400px;
+  width: 90vw;
+}
+
+.modal-body {
+  padding: 16px 20px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 12px 20px;
+  border-top: 1px solid #e9ecef;
+}
+
+.saved-team-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.saved-team-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  background: #fff;
+}
+
+.saved-team-name {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.saved-team-time {
+  font-size: 0.75rem;
+  color: #8c959f;
+  margin-top: 2px;
+}
+
+.saved-team-actions {
+  display: flex;
+  gap: 6px;
+}

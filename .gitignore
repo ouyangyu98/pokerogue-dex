@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Vercel
+.vercel
+
+# OS files
+.DS_Store
+
+# IDE / local
+.workbuddy/
+
+# Large data sources (optional, uncomment if needed)
+# source/
+# data/move-effect-supplement.json

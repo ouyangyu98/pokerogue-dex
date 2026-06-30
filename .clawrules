@@ -1,0 +1,21 @@
+# PokeRogue Dex 编码铁律
+
+## 数据流
+1. 多步脚本必须**读取→修改→写回同一文件**，禁止覆盖写新对象导致字段丢失
+2. 原始字符串进展示层前必须经过清洗（换行符/全角/注释）
+3. 中文字段缺失时自动回退英文，禁止裸传原始 ID
+
+## UI 组件
+4. 可点击元素用 `<button>`，配 `cursor:pointer` + hover 样式
+5. 展示回退链：`nameMaps.x?.[id] || *Zh || '-'`，禁止直接回退到原始 ID
+6. 多形态页面必须有 `selectedFormIndex`，种族值/特性等绑定当前形态
+7. openModal/closeModal 必须重置所有子状态（formIndex、setIndex 等）
+
+## 数据查找
+8. Key 查找尝试多种格式（枚举/camelCase/原始），JSON 嵌套对象先展平
+
+## 外部依赖
+9. Atlas/sprite 加载必须有跨世代回退 + 缺失兜底，渲染必须用 `spriteSourceSize` 偏移
+
+## 重构
+10. 每步重构后运行 `npm run build` 或 `node scripts/rebuild-all.mjs` 验证
