@@ -2454,35 +2454,6 @@
     }
   },
   "Vileplume": {
-    "ru": {
-      "Physically Defensive": {
-        "moves": [
-          "Sludge Wave",
-          "Giga Drain",
-          "Strength Sap",
-          "Leech Seed"
-        ],
-        "ability": "Effect Spore",
-        "item": [
-          "Leftovers",
-          "Heavy-Duty Boots",
-          "Rocky Helmet"
-        ],
-        "nature": "Bold",
-        "ivs": {
-          "atk": 0
-        },
-        "evs": {
-          "hp": 252,
-          "def": 252,
-          "spd": 4
-        },
-        "teratypes": [
-          "Fairy",
-          "Water"
-        ]
-      }
-    },
     "pu": {
       "Physically Defensive": {
         "moves": [
@@ -4816,6 +4787,30 @@
           "spd": 248
         }
       }
+    },
+    "anythinggoes": {
+      "Specially Defensive": {
+        "moves": [
+          "Knock Off",
+          [
+            "Poison Jab",
+            "Clear Smog"
+          ],
+          "Rest",
+          [
+            "Pain Split",
+            "Sleep Talk"
+          ]
+        ],
+        "item": "Heavy-Duty Boots",
+        "nature": "Careful",
+        "evs": {
+          "hp": 252,
+          "atk": 4,
+          "spd": 252
+        },
+        "teratypes": "Poison"
+      }
     }
   },
   "Cloyster": {
@@ -6215,33 +6210,6 @@
     }
   },
   "Chansey": {
-    "ru": {
-      "Defensive": {
-        "moves": [
-          "Seismic Toss",
-          "Soft-Boiled",
-          [
-            "Stealth Rock",
-            "Heal Bell"
-          ],
-          "Thunder Wave"
-        ],
-        "item": "Eviolite",
-        "nature": "Bold",
-        "ivs": {
-          "atk": 0
-        },
-        "evs": {
-          "hp": 56,
-          "def": 252,
-          "spd": 200
-        },
-        "teratypes": [
-          "Dark",
-          "Ghost"
-        ]
-      }
-    },
     "ou": {
       "Defensive": {
         "moves": [
@@ -6303,6 +6271,46 @@
         ]
       }
     },
+    "monotype": {
+      "Defensive": {
+        "moves": [
+          "Seismic Toss",
+          "Soft-Boiled",
+          "Stealth Rock",
+          [
+            "Thunder Wave",
+            "Healing Wish"
+          ]
+        ],
+        "item": "Eviolite",
+        "nature": "Bold",
+        "evs": {
+          "hp": 252,
+          "def": 252,
+          "spd": 4
+        }
+      }
+    },
+    "stabmons": {
+      "Transform": {
+        "moves": [
+          "Seismic Toss",
+          "Glare",
+          "Soft-Boiled",
+          "Transform"
+        ],
+        "item": "Eviolite",
+        "nature": "Bold",
+        "ivs": {
+          "atk": 0
+        },
+        "evs": {
+          "hp": 4,
+          "def": 252,
+          "spd": 252
+        }
+      }
+    },
     "nationaldexuu": {
       "Pink Blob:2": {
         "moves": [
@@ -6358,30 +6366,6 @@
         "teratypes": "Grass"
       }
     },
-    "nationaldexmonotype": {
-      "smol blob (Mixed Wall)": {
-        "moves": [
-          "Seismic Toss",
-          "Soft-Boiled",
-          "Stealth Rock",
-          [
-            "Thunder Wave",
-            "Toxic",
-            "Teleport"
-          ]
-        ],
-        "item": "Eviolite",
-        "nature": "Bold",
-        "ivs": {
-          "atk": 0
-        },
-        "evs": {
-          "hp": 248,
-          "def": 252,
-          "spd": 8
-        }
-      }
-    },
     "nationaldex": {
       "Little Pink Blob": {
         "moves": [
@@ -6402,46 +6386,6 @@
           "hp": 248,
           "def": 252,
           "spd": 8
-        }
-      }
-    },
-    "monotype": {
-      "Defensive": {
-        "moves": [
-          "Seismic Toss",
-          "Soft-Boiled",
-          "Stealth Rock",
-          [
-            "Thunder Wave",
-            "Healing Wish"
-          ]
-        ],
-        "item": "Eviolite",
-        "nature": "Bold",
-        "evs": {
-          "hp": 252,
-          "def": 252,
-          "spd": 4
-        }
-      }
-    },
-    "stabmons": {
-      "Transform": {
-        "moves": [
-          "Seismic Toss",
-          "Glare",
-          "Soft-Boiled",
-          "Transform"
-        ],
-        "item": "Eviolite",
-        "nature": "Bold",
-        "ivs": {
-          "atk": 0
-        },
-        "evs": {
-          "hp": 4,
-          "def": 252,
-          "spd": 252
         }
       }
     },
@@ -6510,6 +6454,30 @@
           "spa": 252,
           "spd": 252,
           "spe": 252
+        }
+      }
+    },
+    "nationaldexmonotype": {
+      "smol blob (Mixed Wall)": {
+        "moves": [
+          "Seismic Toss",
+          "Soft-Boiled",
+          "Stealth Rock",
+          [
+            "Thunder Wave",
+            "Toxic",
+            "Teleport"
+          ]
+        ],
+        "item": "Eviolite",
+        "nature": "Bold",
+        "ivs": {
+          "atk": 0
+        },
+        "evs": {
+          "hp": 248,
+          "def": 252,
+          "spd": 8
         }
       }
     }
@@ -10954,102 +10922,6 @@
         "teratypes": "Ghost"
       }
     },
-    "ru": {
-      "Spikes Setter": {
-        "moves": [
-          "Spikes",
-          "Body Press",
-          [
-            "Psychic Noise",
-            "Knock Off",
-            "Toxic",
-            "Will-O-Wisp"
-          ],
-          [
-            "Volt Switch",
-            "Taunt"
-          ]
-        ],
-        "item": "Rocky Helmet",
-        "nature": [
-          "Bold",
-          "Impish"
-        ],
-        "evs": {
-          "hp": 240,
-          "def": 252,
-          "spe": 16
-        },
-        "teratypes": [
-          "Fighting",
-          "Ghost"
-        ]
-      },
-      "Nasty Plot": {
-        "moves": [
-          "Nasty Plot",
-          "Draining Kiss",
-          "Psyshock",
-          "Earth Power"
-        ],
-        "item": [
-          "Leftovers",
-          "Life Orb"
-        ],
-        "nature": "Timid",
-        "evs": {
-          "hp": 4,
-          "spa": 252,
-          "spe": 252
-        },
-        "teratypes": "Fairy"
-      }
-    },
-    "nationaldexuu": {
-      "Utility": {
-        "moves": [
-          "Will-O-Wisp",
-          [
-            "Spikes",
-            "Defog"
-          ],
-          [
-            "Knock Off",
-            "Psychic",
-            "Night Shade"
-          ],
-          "Soft-Boiled"
-        ],
-        "item": "Heavy-Duty Boots",
-        "nature": "Bold",
-        "ivs": {
-          "atk": 0
-        },
-        "evs": {
-          "hp": 252,
-          "def": 168,
-          "spe": 88
-        }
-      },
-      "Suicide Lead": {
-        "moves": [
-          "Stealth Rock",
-          "Spikes",
-          "Taunt",
-          [
-            "Explosion",
-            "Flare Blitz"
-          ]
-        ],
-        "item": "Red Card",
-        "nature": "Jolly",
-        "evs": {
-          "hp": 252,
-          "atk": 4,
-          "spe": 252
-        }
-      }
-    },
     "monotype": {
       "Nasty Plot": {
         "moves": [
@@ -11103,6 +10975,51 @@
           "Dark",
           "Ghost"
         ]
+      }
+    },
+    "nationaldexuu": {
+      "Utility": {
+        "moves": [
+          "Will-O-Wisp",
+          [
+            "Spikes",
+            "Defog"
+          ],
+          [
+            "Knock Off",
+            "Psychic",
+            "Night Shade"
+          ],
+          "Soft-Boiled"
+        ],
+        "item": "Heavy-Duty Boots",
+        "nature": "Bold",
+        "ivs": {
+          "atk": 0
+        },
+        "evs": {
+          "hp": 252,
+          "def": 168,
+          "spe": 88
+        }
+      },
+      "Suicide Lead": {
+        "moves": [
+          "Stealth Rock",
+          "Spikes",
+          "Taunt",
+          [
+            "Explosion",
+            "Flare Blitz"
+          ]
+        ],
+        "item": "Red Card",
+        "nature": "Jolly",
+        "evs": {
+          "hp": 252,
+          "atk": 4,
+          "spe": 252
+        }
       }
     },
     "almostanyability": {
@@ -12248,7 +12165,10 @@
           "atk": 4,
           "def": 252
         },
-        "teratypes": "Poison"
+        "teratypes": [
+          "Poison",
+          "Fairy"
+        ]
       }
     },
     "ou": {
@@ -13450,7 +13370,10 @@
           "Volt Switch",
           "Gyro Ball"
         ],
-        "item": "Leftovers",
+        "item": [
+          "Rocky Helmet",
+          "Leftovers"
+        ],
         "nature": "Relaxed",
         "evs": {
           "hp": 252,
@@ -15151,7 +15074,38 @@
   },
   "Skarmory": {
     "uu": {
-      "Wall": {
+      "Physically Defensive": {
+        "moves": [
+          [
+            "Spikes",
+            "Stealth Rock"
+          ],
+          [
+            "Body Press",
+            "Brave Bird"
+          ],
+          [
+            "Brave Bird",
+            "Iron Defense",
+            "Whirlwind"
+          ],
+          "Roost"
+        ],
+        "ability": "Sturdy",
+        "item": [
+          "Rocky Helmet",
+          "Heavy-Duty Boots",
+          "Leftovers"
+        ],
+        "nature": "Impish",
+        "evs": {
+          "hp": 248,
+          "def": 252,
+          "spd": 8
+        },
+        "teratypes": "Ghost"
+      },
+      "Mixed Defense": {
         "moves": [
           [
             "Spikes",
@@ -15169,7 +15123,10 @@
           "Roost"
         ],
         "ability": "Sturdy",
-        "item": "Rocky Helmet",
+        "item": [
+          "Rocky Helmet",
+          "Covert Cloak"
+        ],
         "nature": "Impish",
         "ivs": {
           "atk": 0
@@ -16270,23 +16227,6 @@
         "teratypes": "Ghost"
       }
     },
-    "monotype": {
-      "Entry Hazard Setter": {
-        "moves": [
-          "Ceaseless Edge",
-          "Stone Axe",
-          "Sticky Web",
-          "Spore"
-        ],
-        "item": "Focus Sash",
-        "nature": "Jolly",
-        "evs": {
-          "atk": 252,
-          "spd": 4,
-          "spe": 252
-        }
-      }
-    },
     "vgc2025": {
       "Disruptive Support": {
         "moves": [
@@ -16372,51 +16312,6 @@
         ]
       }
     },
-    "almostanyability": {
-      "Lead": {
-        "moves": [
-          "Sticky Web",
-          "Rapid Spin",
-          "Imprison",
-          [
-            "Stealth Rock",
-            "Burning Bulwark"
-          ]
-        ],
-        "ability": "Prankster",
-        "item": "Focus Sash",
-        "nature": "Timid",
-        "ivs": {
-          "atk": 0
-        },
-        "evs": {
-          "hp": 252,
-          "spd": 4,
-          "spe": 252
-        }
-      }
-    },
-    "zu": {
-      "Hazard Lead": {
-        "moves": [
-          "Sticky Web",
-          "Stone Axe",
-          "Ceaseless Edge",
-          [
-            "Mortal Spin",
-            "Nuzzle"
-          ]
-        ],
-        "item": "Focus Sash",
-        "nature": "Jolly",
-        "evs": {
-          "hp": 252,
-          "def": 4,
-          "spe": 252
-        },
-        "teratypes": "Ghost"
-      }
-    },
     "nu": {
       "Lead": {
         "moves": [
@@ -16471,6 +16366,47 @@
           "Steel",
           "Ghost"
         ]
+      }
+    },
+    "monotype": {
+      "Entry Hazard Setter": {
+        "moves": [
+          "Ceaseless Edge",
+          "Stone Axe",
+          "Sticky Web",
+          "Spore"
+        ],
+        "item": "Focus Sash",
+        "nature": "Jolly",
+        "evs": {
+          "atk": 252,
+          "spd": 4,
+          "spe": 252
+        }
+      }
+    },
+    "almostanyability": {
+      "Lead": {
+        "moves": [
+          "Sticky Web",
+          "Rapid Spin",
+          "Imprison",
+          [
+            "Stealth Rock",
+            "Burning Bulwark"
+          ]
+        ],
+        "ability": "Prankster",
+        "item": "Focus Sash",
+        "nature": "Timid",
+        "ivs": {
+          "atk": 0
+        },
+        "evs": {
+          "hp": 252,
+          "spd": 4,
+          "spe": 252
+        }
       }
     }
   },
@@ -17044,6 +16980,7 @@
           "Aura Sphere",
           "Volt Switch"
         ],
+        "ability": "Inner Focus",
         "item": [
           "Heavy-Duty Boots",
           "Choice Specs"
@@ -17201,14 +17138,15 @@
           "Sacred Fire",
           "Stone Edge",
           [
+            "Trailblaze",
             "Crunch",
             "Double-Edge"
           ]
         ],
         "ability": "Inner Focus",
         "item": [
-          "Choice Band",
-          "Heavy-Duty Boots"
+          "Heavy-Duty Boots",
+          "Choice Band"
         ],
         "nature": "Jolly",
         "evs": {
@@ -17218,6 +17156,7 @@
         },
         "teratypes": [
           "Normal",
+          "Grass",
           "Dark"
         ]
       }
@@ -21163,83 +21102,43 @@
     }
   },
   "Torkoal": {
-    "vgc2025": {
-      "Supportive Sun Setter": {
-        "moves": [
-          "Overheat",
-          "Eruption",
-          [
-            "Helping Hand",
-            "Clear Smog"
-          ],
-          "Protect"
-        ],
-        "ability": "Drought",
-        "item": "Eject Pack",
-        "nature": "Quiet",
-        "ivs": {
-          "atk": 0,
-          "spe": 0
-        },
-        "evs": {
-          "hp": 252,
-          "def": 4,
-          "spa": 252
-        },
-        "teratypes": "Fire"
-      },
-      "Trick Room Sweeper": {
-        "moves": [
-          "Eruption",
-          [
-            "Heat Wave",
-            "Weather Ball",
-            "Overheat"
-          ],
-          "Earth Power",
-          [
-            "Protect",
-            "Clear Smog"
-          ]
-        ],
-        "ability": "Drought",
-        "item": [
-          "Charcoal",
-          "Choice Specs"
-        ],
-        "nature": "Quiet",
-        "ivs": {
-          "atk": 0,
-          "spe": 0
-        },
-        "evs": {
-          "hp": 252,
-          "def": 4,
-          "spa": 252
-        },
-        "teratypes": "Fire"
-      }
-    },
-    "ubersuu": {
+    "uu": {
       "Sun Setter": {
         "moves": [
-          "Lava Plume",
+          [
+            "Lava Plume",
+            "Body Press"
+          ],
           "Rapid Spin",
           "Stealth Rock",
           [
-            "Yawn",
-            "Will-O-Wisp"
+            "Will-O-Wisp",
+            "Clear Smog",
+            "Rest"
           ]
         ],
         "ability": "Drought",
         "item": "Heat Rock",
-        "nature": "Bold",
-        "evs": {
-          "hp": 248,
-          "def": 252,
-          "spd": 8
-        },
-        "teratypes": "Ghost"
+        "nature": [
+          "Bold",
+          "Calm"
+        ],
+        "evs": [
+          {
+            "hp": 248,
+            "def": 252,
+            "spd": 8
+          },
+          {
+            "hp": 248,
+            "def": 8,
+            "spd": 252
+          }
+        ],
+        "teratypes": [
+          "Flying",
+          "Grass"
+        ]
       }
     },
     "ru": {
@@ -21314,6 +21213,63 @@
         }
       }
     },
+    "vgc2025": {
+      "Supportive Sun Setter": {
+        "moves": [
+          "Overheat",
+          "Eruption",
+          [
+            "Helping Hand",
+            "Clear Smog"
+          ],
+          "Protect"
+        ],
+        "ability": "Drought",
+        "item": "Eject Pack",
+        "nature": "Quiet",
+        "ivs": {
+          "atk": 0,
+          "spe": 0
+        },
+        "evs": {
+          "hp": 252,
+          "def": 4,
+          "spa": 252
+        },
+        "teratypes": "Fire"
+      },
+      "Trick Room Sweeper": {
+        "moves": [
+          "Eruption",
+          [
+            "Heat Wave",
+            "Weather Ball",
+            "Overheat"
+          ],
+          "Earth Power",
+          [
+            "Protect",
+            "Clear Smog"
+          ]
+        ],
+        "ability": "Drought",
+        "item": [
+          "Charcoal",
+          "Choice Specs"
+        ],
+        "nature": "Quiet",
+        "ivs": {
+          "atk": 0,
+          "spe": 0
+        },
+        "evs": {
+          "hp": 252,
+          "def": 4,
+          "spa": 252
+        },
+        "teratypes": "Fire"
+      }
+    },
     "vgc2024": {
       "Trick Room Sweeper": {
         "moves": [
@@ -21337,37 +21293,16 @@
         "teratypes": "Fire"
       }
     },
-    "nationaldexmonotype": {
+    "ubersuu": {
       "Sun Setter": {
         "moves": [
-          "Stealth Rock",
           "Lava Plume",
           "Rapid Spin",
-          "Body Press"
-        ],
-        "ability": "Drought",
-        "item": [
-          "Heat Rock",
-          "Heavy-Duty Boots"
-        ],
-        "nature": "Bold",
-        "evs": {
-          "hp": 252,
-          "def": 252,
-          "spd": 4
-        }
-      }
-    },
-    "nationaldex": {
-      "Sun Setter": {
-        "moves": [
-          "Lava Plume",
-          "Body Press",
+          "Stealth Rock",
           [
-            "Stealth Rock",
-            "Toxic"
-          ],
-          "Rapid Spin"
+            "Yawn",
+            "Will-O-Wisp"
+          ]
         ],
         "ability": "Drought",
         "item": "Heat Rock",
@@ -21376,7 +21311,8 @@
           "hp": 248,
           "def": 252,
           "spd": 8
-        }
+        },
+        "teratypes": "Ghost"
       }
     },
     "battlestadiumsingles": {
@@ -21457,6 +21393,48 @@
         "ivs": {
           "atk": 0
         },
+        "evs": {
+          "hp": 248,
+          "def": 252,
+          "spd": 8
+        }
+      }
+    },
+    "nationaldexmonotype": {
+      "Sun Setter": {
+        "moves": [
+          "Stealth Rock",
+          "Lava Plume",
+          "Rapid Spin",
+          "Body Press"
+        ],
+        "ability": "Drought",
+        "item": [
+          "Heat Rock",
+          "Heavy-Duty Boots"
+        ],
+        "nature": "Bold",
+        "evs": {
+          "hp": 252,
+          "def": 252,
+          "spd": 4
+        }
+      }
+    },
+    "nationaldex": {
+      "Sun Setter": {
+        "moves": [
+          "Lava Plume",
+          "Body Press",
+          [
+            "Stealth Rock",
+            "Toxic"
+          ],
+          "Rapid Spin"
+        ],
+        "ability": "Drought",
+        "item": "Heat Rock",
+        "nature": "Bold",
         "evs": {
           "hp": 248,
           "def": 252,
@@ -22154,27 +22132,6 @@
     }
   },
   "Milotic": {
-    "ru": {
-      "Defensive Utility": {
-        "moves": [
-          "Scald",
-          [
-            "Dragon Tail",
-            "Haze"
-          ],
-          "Flip Turn",
-          "Recover"
-        ],
-        "item": "Heavy-Duty Boots",
-        "nature": "Calm",
-        "evs": {
-          "hp": 252,
-          "def": 252,
-          "spd": 4
-        },
-        "teratypes": "Poison"
-      }
-    },
     "pu": {
       "Physically Defensive": {
         "moves": [
@@ -26744,7 +26701,8 @@
           "atk": 0
         },
         "evs": {
-          "hp": 144,
+          "hp": 72,
+          "def": 72,
           "spa": 148,
           "spe": 216
         },
@@ -27699,19 +27657,15 @@
         "moves": [
           "Fake Out",
           "U-turn",
+          "Knock Off",
           [
-            "Knock Off",
-            "Taunt"
-          ],
-          [
-            "Double Hit",
-            "Low Kick",
-            "Taunt"
+            "Double-Edge",
+            "Triple Axel",
+            "Low Kick"
           ]
         ],
         "item": [
           "Heavy-Duty Boots",
-          "Silk Scarf",
           "Protective Pads"
         ],
         "nature": "Jolly",
@@ -27722,6 +27676,7 @@
         },
         "teratypes": [
           "Normal",
+          "Ice",
           "Ghost"
         ]
       }
@@ -30808,6 +30763,48 @@
     }
   },
   "Yanmega": {
+    "ru": {
+      "Speed Boost Sweeper": {
+        "moves": [
+          "Bug Buzz",
+          [
+            "Air Slash",
+            "Psychic Noise",
+            "Giga Drain"
+          ],
+          "Shadow Ball",
+          "Protect"
+        ],
+        "item": "Throat Spray",
+        "nature": "Modest",
+        "evs": {
+          "def": 4,
+          "spa": 252,
+          "spe": 252
+        },
+        "teratypes": "Ghost"
+      },
+      "Tinted Lens Wallbreaker": {
+        "moves": [
+          "Bug Buzz",
+          "Air Slash",
+          "U-turn",
+          [
+            "Giga Drain",
+            "Psychic Noise"
+          ]
+        ],
+        "ability": "Tinted Lens",
+        "item": "Choice Specs",
+        "nature": "Timid",
+        "evs": {
+          "def": 4,
+          "spa": 252,
+          "spe": 252
+        },
+        "teratypes": "Bug"
+      }
+    },
     "monotype": {
       "Choice Specs (Bug)": {
         "moves": [
@@ -31752,18 +31749,23 @@
           "Ice Shard",
           [
             "Stealth Rock",
+            "Knock Off",
             "Trailblaze"
           ]
         ],
         "ability": [
-          "Sword of Ruin",
-          "Technician"
+          "Adaptability",
+          "Technician",
+          "Sword of Ruin"
         ],
         "item": [
-          "Loaded Dice",
-          "Leftovers"
+          "Life Orb",
+          "Loaded Dice"
         ],
-        "nature": "Adamant",
+        "nature": [
+          "Jolly",
+          "Adamant"
+        ],
         "evs": {
           "atk": 252,
           "spd": 4,
@@ -38355,26 +38357,30 @@
     "ubers": {
       "Dragon Dance": {
         "moves": [
-          "Dragon Dance",
           "Earthquake",
-          "Stone Edge",
+          "Dragon Dance",
           [
             "Recover",
             "Ice Beam",
             "Taunt"
+          ],
+          [
+            "Stone Edge",
+            "Ice Beam",
+            "Flare Blitz"
           ]
         ],
         "item": "Earth Plate",
         "nature": "Adamant",
         "evs": {
-          "hp": 120,
           "atk": 252,
-          "spe": 136
+          "def": 4,
+          "spe": 252
         },
         "teratypes": [
           "Ground",
-          "Fire",
-          "Water"
+          "Fairy",
+          "Fire"
         ]
       },
       "Calm Mind": {
@@ -44572,6 +44578,34 @@
           "Grass",
           "Fairy"
         ]
+      },
+      "Pain Split": {
+        "moves": [
+          "Pain Split",
+          "Calm Mind",
+          [
+            "Fire Blast",
+            "Flamethrower"
+          ],
+          "Shadow Ball"
+        ],
+        "ability": "Flame Body",
+        "item": "Heavy-Duty Boots",
+        "nature": "Modest",
+        "ivs": {
+          "atk": 0
+        },
+        "evs": {
+          "hp": 80,
+          "def": 152,
+          "spa": 96,
+          "spe": 180
+        },
+        "teratypes": [
+          "Water",
+          "Fairy",
+          "Dark"
+        ]
       }
     },
     "godlygift": {
@@ -45094,54 +45128,6 @@
         "teratypes": "Fighting"
       }
     },
-    "ru": {
-      "Choice Scarf": {
-        "moves": [
-          "Close Combat",
-          "Knock Off",
-          [
-            "Ice Spinner",
-            "Stone Edge"
-          ],
-          "U-turn"
-        ],
-        "ability": "Regenerator",
-        "item": "Choice Scarf",
-        "nature": "Jolly",
-        "evs": {
-          "atk": 252,
-          "spd": 4,
-          "spe": 252
-        },
-        "teratypes": [
-          "Fighting",
-          "Dark"
-        ]
-      },
-      "Life Orb": {
-        "moves": [
-          "Close Combat",
-          "Knock Off",
-          "U-turn",
-          [
-            "Triple Axel",
-            "Ice Spinner"
-          ]
-        ],
-        "ability": "Regenerator",
-        "item": "Life Orb",
-        "nature": "Jolly",
-        "evs": {
-          "atk": 252,
-          "spd": 4,
-          "spe": 252
-        },
-        "teratypes": [
-          "Steel",
-          "Dark"
-        ]
-      }
-    },
     "nationaldexuu": {
       "Life Orb": {
         "moves": [
@@ -45623,6 +45609,36 @@
     }
   },
   "Braviary": {
+    "nu": {
+      "Bulk Up": {
+        "moves": [
+          "Bulk Up",
+          [
+            "Facade",
+            "Body Slam",
+            "Brave Bird"
+          ],
+          [
+            "Shadow Claw",
+            "Close Combat"
+          ],
+          "Roost"
+        ],
+        "ability": "Defiant",
+        "item": "Heavy-Duty Boots",
+        "nature": "Careful",
+        "evs": {
+          "hp": 248,
+          "spd": 164,
+          "spe": 96
+        },
+        "teratypes": [
+          "Ground",
+          "Steel",
+          "Fighting"
+        ]
+      }
+    },
     "monotype": {
       "Physically Defensive (Normal)": {
         "moves": [
@@ -49105,7 +49121,7 @@
           "Nasty Plot",
           "Agility",
           [
-            "Tera Blast",
+            "Dark Pulse",
             "Focus Blast"
           ]
         ],
@@ -51198,8 +51214,8 @@
           "Earth Power"
         ],
         "item": [
-          "Never-Melt Ice",
-          "Heavy-Duty Boots"
+          "Loaded Dice",
+          "Never-Melt Ice"
         ],
         "nature": "Hasty",
         "evs": {
@@ -52550,31 +52566,6 @@
           "spd": 4
         }
       }
-    },
-    "zu": {
-      "Hazard Setter": {
-        "moves": [
-          "Spikes",
-          "Synthesis",
-          "Wood Hammer",
-          [
-            "Super Fang",
-            "Roar"
-          ]
-        ],
-        "ability": "Bulletproof",
-        "item": "Eviolite",
-        "nature": "Impish",
-        "evs": {
-          "hp": 252,
-          "atk": 4,
-          "def": 252
-        },
-        "teratypes": [
-          "Poison",
-          "Water"
-        ]
-      }
     }
   },
   "Chesnaught": {
@@ -53358,42 +53349,6 @@
     }
   },
   "Talonflame": {
-    "vgc2025": {
-      "Offensive Tailwind Support": {
-        "moves": [
-          "Brave Bird",
-          "Tailwind",
-          [
-            "Flare Blitz",
-            "Will-O-Wisp"
-          ],
-          [
-            "Taunt",
-            "Protect"
-          ]
-        ],
-        "ability": "Gale Wings",
-        "item": [
-          "Covert Cloak",
-          "Life Orb",
-          "Sharp Beak"
-        ],
-        "nature": [
-          "Jolly",
-          "Adamant"
-        ],
-        "evs": {
-          "atk": 252,
-          "spd": 4,
-          "spe": 252
-        },
-        "teratypes": [
-          "Ghost",
-          "Flying",
-          "Grass"
-        ]
-      }
-    },
     "uu": {
       "Fast Pivot": {
         "moves": [
@@ -53422,61 +53377,6 @@
         "teratypes": [
           "Grass",
           "Ground"
-        ]
-      }
-    },
-    "stabmons": {
-      "Choice Band Sweeper": {
-        "moves": [
-          "Dragon Ascent",
-          [
-            "Bitter Blade",
-            "Pyro Ball"
-          ],
-          "U-turn",
-          [
-            "Will-O-Wisp",
-            "Roost"
-          ]
-        ],
-        "ability": "Gale Wings",
-        "item": "Choice Band",
-        "nature": [
-          "Jolly",
-          "Adamant"
-        ],
-        "evs": {
-          "atk": 252,
-          "spd": 4,
-          "spe": 252
-        }
-      }
-    },
-    "ru": {
-      "Utility": {
-        "moves": [
-          "Brave Bird",
-          [
-            "Will-O-Wisp",
-            "Taunt"
-          ],
-          [
-            "U-turn",
-            "Defog"
-          ],
-          "Roost"
-        ],
-        "item": "Heavy-Duty Boots",
-        "nature": "Jolly",
-        "evs": {
-          "hp": 248,
-          "atk": 8,
-          "spe": 252
-        },
-        "teratypes": [
-          "Ground",
-          "Water",
-          "Fairy"
         ]
       }
     },
@@ -53518,6 +53418,69 @@
           "spe": 128
         },
         "teratypes": "Fire"
+      }
+    },
+    "vgc2025": {
+      "Offensive Tailwind Support": {
+        "moves": [
+          "Brave Bird",
+          "Tailwind",
+          [
+            "Flare Blitz",
+            "Will-O-Wisp"
+          ],
+          [
+            "Taunt",
+            "Protect"
+          ]
+        ],
+        "ability": "Gale Wings",
+        "item": [
+          "Covert Cloak",
+          "Life Orb",
+          "Sharp Beak"
+        ],
+        "nature": [
+          "Jolly",
+          "Adamant"
+        ],
+        "evs": {
+          "atk": 252,
+          "spd": 4,
+          "spe": 252
+        },
+        "teratypes": [
+          "Ghost",
+          "Flying",
+          "Grass"
+        ]
+      }
+    },
+    "stabmons": {
+      "Choice Band Sweeper": {
+        "moves": [
+          "Dragon Ascent",
+          [
+            "Bitter Blade",
+            "Pyro Ball"
+          ],
+          "U-turn",
+          [
+            "Will-O-Wisp",
+            "Roost"
+          ]
+        ],
+        "ability": "Gale Wings",
+        "item": "Choice Band",
+        "nature": [
+          "Jolly",
+          "Adamant"
+        ],
+        "evs": {
+          "atk": 252,
+          "spd": 4,
+          "spe": 252
+        }
       }
     },
     "godlygift": {
@@ -55933,25 +55896,6 @@
   },
   "Diancie": {
     "ru": {
-      "Stealth Rock": {
-        "moves": [
-          "Stealth Rock",
-          "Encore",
-          "Diamond Storm",
-          "Body Press"
-        ],
-        "item": "Leftovers",
-        "nature": "Careful",
-        "evs": {
-          "hp": 252,
-          "atk": 4,
-          "spd": 252
-        },
-        "teratypes": [
-          "Ghost",
-          "Water"
-        ]
-      },
       "Trick Room Sweeper": {
         "moves": [
           "Trick Room",
@@ -59130,6 +59074,67 @@
       }
     }
   },
+  "Oricorio-Sensu": {
+    "ru": {
+      "Bulky Quiver Dance Sweeper": {
+        "moves": [
+          [
+            "Revelation Dance",
+            "Air Slash",
+            "Hurricane"
+          ],
+          "Quiver Dance",
+          "Roost",
+          "Taunt"
+        ],
+        "item": [
+          "Heavy-Duty Boots",
+          "Kee Berry"
+        ],
+        "nature": "Timid",
+        "ivs": {
+          "atk": 0
+        },
+        "evs": {
+          "hp": 248,
+          "def": 216,
+          "spe": 44
+        },
+        "teratypes": [
+          "Fairy",
+          "Steel"
+        ]
+      },
+      "Offensive Quiver Dance": {
+        "moves": [
+          [
+            "Revelation Dance",
+            "Air Slash"
+          ],
+          "Quiver Dance",
+          [
+            "Taunt",
+            "Air Slash"
+          ],
+          "Roost"
+        ],
+        "item": "Heavy-Duty Boots",
+        "nature": "Timid",
+        "ivs": {
+          "atk": 0
+        },
+        "evs": {
+          "spa": 252,
+          "spd": 4,
+          "spe": 252
+        },
+        "teratypes": [
+          "Fighting",
+          "Fairy"
+        ]
+      }
+    }
+  },
   "Cutiefly": {
     "nfe": {
       "Sticky Web Lead": {
@@ -60989,6 +60994,58 @@
     }
   },
   "Tsareena": {
+    "ru": {
+      "Offensive Spinner": {
+        "moves": [
+          "Power Whip",
+          "Rapid Spin",
+          [
+            "Knock Off",
+            "High Jump Kick",
+            "Low Kick",
+            "U-turn"
+          ],
+          [
+            "Triple Axel",
+            "High Jump Kick",
+            "Low Kick",
+            "U-turn"
+          ]
+        ],
+        "ability": "Queenly Majesty",
+        "item": "Heavy-Duty Boots",
+        "nature": "Jolly",
+        "evs": {
+          "atk": 252,
+          "spd": 4,
+          "spe": 252
+        },
+        "teratypes": [
+          "Steel",
+          "Dragon"
+        ]
+      },
+      "Defensive Spinner": {
+        "moves": [
+          "Power Whip",
+          "Rapid Spin",
+          "Synthesis",
+          "Knock Off"
+        ],
+        "ability": "Queenly Majesty",
+        "item": "Heavy-Duty Boots",
+        "nature": "Impish",
+        "evs": {
+          "hp": 252,
+          "def": 136,
+          "spe": 120
+        },
+        "teratypes": [
+          "Steel",
+          "Dragon"
+        ]
+      }
+    },
     "nu": {
       "Offensive": {
         "moves": [
@@ -66117,6 +66174,60 @@
         ]
       }
     },
+    "nationaldex": {
+      "Pivot": {
+        "moves": [
+          "Pyro Ball",
+          "U-turn",
+          "Court Change",
+          [
+            "Will-O-Wisp",
+            "Sucker Punch",
+            "Gunk Shot"
+          ]
+        ],
+        "ability": [
+          "Blaze",
+          "Libero"
+        ],
+        "item": "Heavy-Duty Boots",
+        "nature": "Jolly",
+        "evs": [
+          {
+            "atk": 252,
+            "spd": 4,
+            "spe": 252
+          },
+          {
+            "hp": 148,
+            "atk": 128,
+            "spe": 232
+          }
+        ]
+      },
+      "Swords Dance": {
+        "moves": [
+          "Swords Dance",
+          "Pyro Ball",
+          [
+            "Double-Edge",
+            "High Jump Kick"
+          ],
+          "Sucker Punch"
+        ],
+        "ability": "Libero",
+        "item": [
+          "Normalium Z",
+          "Fightinium Z"
+        ],
+        "nature": "Jolly",
+        "evs": {
+          "atk": 252,
+          "spd": 4,
+          "spe": 252
+        }
+      }
+    },
     "monotype": {
       "Choice Scarf": {
         "moves": [
@@ -66219,60 +66330,6 @@
         ]
       }
     },
-    "nationaldex": {
-      "Pivot": {
-        "moves": [
-          "Pyro Ball",
-          "U-turn",
-          "Court Change",
-          [
-            "Will-O-Wisp",
-            "Sucker Punch",
-            "Gunk Shot"
-          ]
-        ],
-        "ability": [
-          "Blaze",
-          "Libero"
-        ],
-        "item": "Heavy-Duty Boots",
-        "nature": "Jolly",
-        "evs": [
-          {
-            "atk": 252,
-            "spd": 4,
-            "spe": 252
-          },
-          {
-            "hp": 148,
-            "atk": 128,
-            "spe": 232
-          }
-        ]
-      },
-      "Swords Dance": {
-        "moves": [
-          "Swords Dance",
-          "Pyro Ball",
-          [
-            "Double-Edge",
-            "High Jump Kick"
-          ],
-          "Sucker Punch"
-        ],
-        "ability": "Libero",
-        "item": [
-          "Normalium Z",
-          "Fightinium Z"
-        ],
-        "nature": "Jolly",
-        "evs": {
-          "atk": 252,
-          "spd": 4,
-          "spe": 252
-        }
-      }
-    },
     "almostanyability": {
       "Court Change": {
         "moves": [
@@ -66284,13 +66341,11 @@
             "U-turn",
             "Swords Dance"
           ],
-          [
-            "Court Change",
-            "High Jump Kick"
-          ],
+          "Court Change",
           [
             "Will-O-Wisp",
-            "Taunt"
+            "Taunt",
+            "High Jump Kick"
           ]
         ],
         "ability": [
@@ -66305,58 +66360,6 @@
         "evs": {
           "atk": 252,
           "spd": 4,
-          "spe": 252
-        }
-      },
-      "Choice Band": {
-        "moves": [
-          "Pyro Ball",
-          "High Jump Kick",
-          "U-turn",
-          [
-            "Gunk Shot",
-            "Sucker Punch"
-          ]
-        ],
-        "ability": [
-          "Desolate Land",
-          "Sword of Ruin"
-        ],
-        "item": "Choice Band",
-        "nature": "Jolly",
-        "evs": {
-          "atk": 252,
-          "spd": 4,
-          "spe": 252
-        }
-      },
-      "Magic Guard": {
-        "moves": [
-          "Flare Blitz",
-          [
-            "High Jump Kick",
-            "Gunk Shot"
-          ],
-          [
-            "Will-O-Wisp",
-            "U-turn",
-            "Gunk Shot"
-          ],
-          [
-            "Swords Dance",
-            "Taunt",
-            "Court Change"
-          ]
-        ],
-        "ability": "Magic Guard",
-        "item": [
-          "Life Orb",
-          "Focus Sash"
-        ],
-        "nature": "Jolly",
-        "evs": {
-          "atk": 252,
-          "def": 4,
           "spe": 252
         }
       }
@@ -67248,25 +67251,17 @@
       "Shell Smash": {
         "moves": [
           "Shell Smash",
-          "Liquidation",
           [
-            "Stone Edge",
-            "Rock Blast",
+            "Liquidation",
             "Ice Fang"
           ],
           [
-            "Crunch",
+            "Stone Edge",
             "Earthquake"
-          ]
+          ],
+          "Crunch"
         ],
-        "ability": [
-          "Strong Jaw",
-          "Shell Armor"
-        ],
-        "item": [
-          "White Herb",
-          "Loaded Dice"
-        ],
+        "item": "White Herb",
         "nature": "Jolly",
         "evs": {
           "atk": 252,
@@ -70906,10 +70901,10 @@
       },
       "Trailblaze": {
         "moves": [
-          "Swords Dance",
+          "Trailblaze",
           "Behemoth Blade",
           "Wild Charge",
-          "Trailblaze"
+          "Swords Dance"
         ],
         "item": "Rusted Sword",
         "nature": "Jolly",
@@ -70918,10 +70913,7 @@
           "spd": 4,
           "spe": 252
         },
-        "teratypes": [
-          "Electric",
-          "Steel"
-        ]
+        "teratypes": "Electric"
       }
     },
     "anythinggoes": {
@@ -79146,9 +79138,9 @@
           "Flip Turn",
           "Roost",
           [
-            "Encore",
+            "Triple Axel",
             "Surf",
-            "Triple Axel"
+            "Encore"
           ]
         ],
         "item": "Eviolite",
@@ -80995,62 +80987,6 @@
     }
   },
   "Armarouge": {
-    "ru": {
-      "Calm Mind + 3 Attacks": {
-        "moves": [
-          "Armor Cannon",
-          "Psyshock",
-          "Energy Ball",
-          "Calm Mind"
-        ],
-        "ability": "Weak Armor",
-        "item": "Heavy-Duty Boots",
-        "nature": "Timid",
-        "ivs": {
-          "atk": 0
-        },
-        "evs": {
-          "def": 4,
-          "spa": 252,
-          "spe": 252
-        },
-        "teratypes": [
-          "Fairy",
-          "Grass"
-        ]
-      },
-      "Endure + Weakness Policy": {
-        "moves": [
-          "Armor Cannon",
-          [
-            "Psyshock",
-            "Stored Power",
-            "Expanding Force"
-          ],
-          [
-            "Energy Ball",
-            "Calm Mind"
-          ],
-          "Endure"
-        ],
-        "ability": "Weak Armor",
-        "item": "Weakness Policy",
-        "nature": "Timid",
-        "ivs": {
-          "atk": 0
-        },
-        "evs": {
-          "def": 4,
-          "spa": 252,
-          "spe": 252
-        },
-        "teratypes": [
-          "Normal",
-          "Psychic",
-          "Ground"
-        ]
-      }
-    },
     "monotype": {
       "Endure + Weakness Policy (Psychic)": {
         "moves": [
@@ -82289,7 +82225,7 @@
       }
     },
     "almostanyability": {
-      "Wallbreaker": {
+      "Choice Band": {
         "moves": [
           "Poltergeist",
           "Power Whip",
@@ -82440,6 +82376,102 @@
     }
   },
   "Scovillain": {
+    "uu": {
+      "Sun Sweeper": {
+        "moves": [
+          [
+            "Flamethrower",
+            "Fire Blast"
+          ],
+          "Overheat",
+          [
+            "Giga Drain",
+            "Flamethrower",
+            "Leaf Storm"
+          ],
+          [
+            "Solar Beam",
+            "Giga Drain",
+            "Leaf Storm"
+          ]
+        ],
+        "item": "Choice Specs",
+        "nature": [
+          "Modest",
+          "Timid"
+        ],
+        "ivs": {
+          "atk": 0
+        },
+        "evs": {
+          "spa": 252,
+          "spd": 4,
+          "spe": 252
+        },
+        "teratypes": "Fire"
+      }
+    },
+    "ru": {
+      "Choice Specs Sun Sweeper": {
+        "moves": [
+          "Overheat",
+          [
+            "Fire Blast",
+            "Solar Beam"
+          ],
+          [
+            "Flamethrower",
+            "Solar Beam"
+          ],
+          [
+            "Giga Drain",
+            "Solar Beam"
+          ]
+        ],
+        "item": "Choice Specs",
+        "nature": "Timid",
+        "ivs": {
+          "atk": 0
+        },
+        "evs": {
+          "spa": 252,
+          "spd": 4,
+          "spe": 252
+        },
+        "teratypes": "Fire"
+      },
+      "Growth Sun Sweeper": {
+        "moves": [
+          "Growth",
+          [
+            "Flamethrower",
+            "Solar Beam"
+          ],
+          [
+            "Fire Blast",
+            "Solar Beam"
+          ],
+          [
+            "Giga Drain",
+            "Solar Beam"
+          ]
+        ],
+        "item": [
+          "Charcoal",
+          "Heavy-Duty Boots"
+        ],
+        "nature": "Timid",
+        "ivs": {
+          "atk": 0
+        },
+        "evs": {
+          "spa": 252,
+          "spd": 4,
+          "spe": 252
+        },
+        "teratypes": "Fire"
+      }
+    },
     "nu": {
       "Sun Sweeper": {
         "moves": [
@@ -83885,6 +83917,35 @@
         },
         "teratypes": [
           "Water",
+          "Ghost"
+        ]
+      }
+    },
+    "nu": {
+      "Hazard Setter": {
+        "moves": [
+          [
+            "Spikes",
+            "Stealth Rock"
+          ],
+          "Heavy Slam",
+          "Body Press",
+          [
+            "Coil",
+            "Iron Defense",
+            "Stealth Rock"
+          ]
+        ],
+        "item": "Leftovers",
+        "nature": "Careful",
+        "evs": {
+          "hp": 252,
+          "def": 4,
+          "spd": 252
+        },
+        "teratypes": [
+          "Water",
+          "Poison",
           "Ghost"
         ]
       }
@@ -86822,20 +86883,24 @@
           "Ghost"
         ]
       },
-      "Stealth Rock Lead": {
+      "Glare": {
         "moves": [
-          "Stealth Rock",
+          "Glare",
           "Boomburst",
           [
             "Hex",
             "Earth Power"
           ],
-          "Glare"
+          [
+            "Stealth Rock",
+            "Roost"
+          ]
         ],
         "ability": "Rattled",
         "item": [
           "Chople Berry",
-          "Throat Spray"
+          "Throat Spray",
+          "Heavy-Duty Boots"
         ],
         "nature": "Modest",
         "ivs": {
@@ -89703,6 +89768,22 @@
           "spe": 252
         },
         "teratypes": "Fire"
+      },
+      "Sun Support": {
+        "moves": [
+          "Close Combat",
+          "First Impression",
+          "Earthquake",
+          "U-turn"
+        ],
+        "item": "Assault Vest",
+        "nature": "Adamant",
+        "evs": {
+          "atk": 136,
+          "spd": 192,
+          "spe": 180
+        },
+        "teratypes": "Water"
       }
     },
     "ou": {

@@ -1,9 +1,11 @@
 {
   "sourceVersion": "pokerogue-beta-2026-06-15",
-  "generationTime": "2026-06-20T08:46:45.152Z",
+  "generationTime": "2026-07-01T02:29:18.375Z",
   "pokemonCount": 1082,
   "biomeCount": 35,
   "encounterCount": 1742,
+  "normalEncounterCount": 1041,
+  "bossEncounterCount": 701,
   "levelMoveCount": 16676,
   "eggMovePokemonCount": 1082,
   "eggMoveCount": 4328,
@@ -12,15 +14,22 @@
   "passiveCount": 1082,
   "formCount": 533,
   "itemCount": 102,
+  "moveCount": 801,
+  "abilityCount": 310,
   "nameMapCoverage": {
     "pokemon": {
       "total": 1082,
       "mapped": 1082,
       "coverage": 100
     },
-    "ability": {
-      "total": 315,
-      "mapped": 315,
+    "form": {
+      "total": 533,
+      "mapped": 532,
+      "coverage": 99.81
+    },
+    "type": {
+      "total": 20,
+      "mapped": 20,
       "coverage": 100
     },
     "move": {
@@ -28,9 +37,24 @@
       "mapped": 954,
       "coverage": 100
     },
+    "ability": {
+      "total": 315,
+      "mapped": 315,
+      "coverage": 100
+    },
     "biome": {
       "total": 35,
       "mapped": 35,
+      "coverage": 100
+    },
+    "rarity": {
+      "total": 9,
+      "mapped": 9,
+      "coverage": 100
+    },
+    "skillSourceType": {
+      "total": 2,
+      "mapped": 2,
       "coverage": 100
     }
   }

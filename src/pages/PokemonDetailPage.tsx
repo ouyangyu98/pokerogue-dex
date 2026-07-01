@@ -4,7 +4,7 @@ import SEOMeta from '../seo/SEOMeta'
 import JsonLd from '../seo/JsonLd'
 import { getPokemonMeta } from '../seo/generateMeta'
 import { buildPokemonSchema, buildBreadcrumbList } from '../seo/schemaBuilders'
-import { renderTypeBadge, renderStatBar } from '../utils/render'
+import { renderTypeBadge, renderStatBar, formatLevel, renderMoveCategoryBadge } from '../utils/render'
 import { normalizeChainMap, buildEvolutionPaths } from '../utils/pokemon'
 import { getCombinedDefenseMatchups } from '../typeMatchups'
 import type { Pokemon } from '../types'
@@ -110,6 +110,138 @@ export default function PokemonDetailPage() {
           )}
         </ul>
       </section>
+
+      <section className="detail-section">
+        <h2>等级技能</h2>
+        {pokemon.levelMoves && pokemon.levelMoves.length > 0 ? (
+          <div className="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>等级</th>
+                  <th>招式</th>
+                  <th>属性</th>
+                  <th>分类</th>
+                  <th>威力</th>
+                  <th>命中</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pokemon.levelMoves.map((move, idx) => (
+                  <tr key={idx}>
+                    <td>{formatLevel(move.level)}</td>
+                    <td>{move.moveZh}</td>
+                    <td>{move.type ? renderTypeBadge(move.type) : '-'}</td>
+                    <td>{renderMoveCategoryBadge(move.category)}</td>
+                    <td>{move.power ?? '-'}</td>
+                    <td>{move.accuracy ?? '-'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <p>暂无等级技能数据。</p>
+        )}
+      </section>
+
+      <section className="detail-section">
+        <h2>蛋招</h2>
+        {pokemon.eggMoves && pokemon.eggMoves.length > 0 ? (
+          <div className="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>招式</th>
+                  <th>属性</th>
+                  <th>分类</th>
+                  <th>威力</th>
+                  <th>命中</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pokemon.eggMoves.map((move, idx) => (
+                  <tr key={idx}>
+                    <td>{move.moveZh}</td>
+                    <td>{move.type ? renderTypeBadge(move.type) : '-'}</td>
+                    <td>{renderMoveCategoryBadge(move.category)}</td>
+                    <td>{move.power ?? '-'}</td>
+                    <td>{move.accuracy ?? '-'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <p>无蛋招。</p>
+        )}
+      </section>
+
+      {pokemon.forms && pokemon.forms.length > 0 && (
+        <section className="detail-section">
+          <h2>形态（{pokemon.forms.length} 种）</h2>
+          <div className="form-grid">
+            {pokemon.forms.map((form, idx) => (
+              <div key={idx} className="form-card">
+                <div className="form-card-header">
+                  <span className="form-name">{form.formNameZh}</span>
+                  <span className="form-key">{form.formKey}</span>
+                </div>
+                <div className="form-types">
+                  {renderTypeBadge(form.type1)}
+                  {form.type2 && renderTypeBadge(form.type2)}
+                </div>
+                <div className="form-stats">
+                  <span>HP {form.baseHp}</span>
+                  <span>攻击 {form.baseAtk}</span>
+                  <span>防御 {form.baseDef}</span>
+                  <span>特攻 {form.baseSpatk}</span>
+                  <span>特防 {form.baseSpdef}</span>
+                  <span>速度 {form.baseSpd}</span>
+                  <span>总和 {form.baseTotal}</span>
+                </div>
+                <div className="form-abilities">
+                  {form.ability1 && form.ability1 !== 'NONE' && <span>特性1: {form.ability1}</span>}
+                  {form.ability2 && form.ability2 !== 'NONE' && <span>特性2: {form.ability2}</span>}
+                  {form.abilityHidden && form.abilityHidden !== 'NONE' && <span>隐藏: {form.abilityHidden}</span>}
+                  {form.passive && form.passive !== 'NONE' && <span>被动: {form.passive}</span>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {pokemon.evolutions && pokemon.evolutions.length > 0 && (
+        <section className="detail-section">
+          <h2>进化条件</h2>
+          <div className="evolution-list">
+            {pokemon.evolutions.map((evo, idx) => (
+              <div key={idx} className="evolution-item">
+                <div className="evolution-target">
+                  <Link to={`/pokemon/${evo.toSpeciesId}`}>{evo.toSpeciesZh}</Link>
+                  <span className="sub">（{evo.toSpeciesId}）</span>
+                </div>
+                <div className="evolution-desc">
+                  {evo.descriptionZh}
+                  {evo.conditions.length > 0 && (
+                    <span> · 条件：{evo.conditions.join('，')}</span>
+                  )}
+                  {evo.itemZh && (
+                    <span> · 道具：{evo.itemZh}</span>
+                  )}
+                  {evo.preFormKey && (
+                    <span> · 前置形态：{evo.preFormKey}</span>
+                  )}
+                  {evo.evoFormKey && (
+                    <span> · 进化后形态：{evo.evoFormKey}</span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="detail-section">
         <h2>出现地区</h2>

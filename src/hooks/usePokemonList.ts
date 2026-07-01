@@ -20,6 +20,18 @@ export interface PokemonListFilters {
   costMax: string
   totalMin: string
   totalMax: string
+  hpMin: string
+  hpMax: string
+  atkMin: string
+  atkMax: string
+  defMin: string
+  defMax: string
+  spatkMin: string
+  spatkMax: string
+  spdefMin: string
+  spdefMax: string
+  spdMin: string
+  spdMax: string
 }
 
 export interface UsePokemonListResult {
@@ -41,6 +53,18 @@ export interface UsePokemonListResult {
     setCostMax: (v: string) => void
     setTotalMin: (v: string) => void
     setTotalMax: (v: string) => void
+    setHpMin: (v: string) => void
+    setHpMax: (v: string) => void
+    setAtkMin: (v: string) => void
+    setAtkMax: (v: string) => void
+    setDefMin: (v: string) => void
+    setDefMax: (v: string) => void
+    setSpatkMin: (v: string) => void
+    setSpatkMax: (v: string) => void
+    setSpdefMin: (v: string) => void
+    setSpdefMax: (v: string) => void
+    setSpdMin: (v: string) => void
+    setSpdMax: (v: string) => void
   }
   sortBy: string
   sortDesc: boolean
@@ -81,6 +105,18 @@ export function usePokemonList(): UsePokemonListResult {
   const [costMax, setCostMax] = useState('')
   const [totalMin, setTotalMin] = useState('')
   const [totalMax, setTotalMax] = useState('')
+  const [hpMin, setHpMin] = useState('')
+  const [hpMax, setHpMax] = useState('')
+  const [atkMin, setAtkMin] = useState('')
+  const [atkMax, setAtkMax] = useState('')
+  const [defMin, setDefMin] = useState('')
+  const [defMax, setDefMax] = useState('')
+  const [spatkMin, setSpatkMin] = useState('')
+  const [spatkMax, setSpatkMax] = useState('')
+  const [spdefMin, setSpdefMin] = useState('')
+  const [spdefMax, setSpdefMax] = useState('')
+  const [spdMin, setSpdMin] = useState('')
+  const [spdMax, setSpdMax] = useState('')
   const [sortBy, setSortBy] = useState('numericId')
   const [sortDesc, setSortDesc] = useState(false)
 
@@ -103,6 +139,18 @@ export function usePokemonList(): UsePokemonListResult {
         if (parsed.costMax !== undefined) setCostMax(parsed.costMax)
         if (parsed.totalMin !== undefined) setTotalMin(parsed.totalMin)
         if (parsed.totalMax !== undefined) setTotalMax(parsed.totalMax)
+        if (parsed.hpMin !== undefined) setHpMin(parsed.hpMin)
+        if (parsed.hpMax !== undefined) setHpMax(parsed.hpMax)
+        if (parsed.atkMin !== undefined) setAtkMin(parsed.atkMin)
+        if (parsed.atkMax !== undefined) setAtkMax(parsed.atkMax)
+        if (parsed.defMin !== undefined) setDefMin(parsed.defMin)
+        if (parsed.defMax !== undefined) setDefMax(parsed.defMax)
+        if (parsed.spatkMin !== undefined) setSpatkMin(parsed.spatkMin)
+        if (parsed.spatkMax !== undefined) setSpatkMax(parsed.spatkMax)
+        if (parsed.spdefMin !== undefined) setSpdefMin(parsed.spdefMin)
+        if (parsed.spdefMax !== undefined) setSpdefMax(parsed.spdefMax)
+        if (parsed.spdMin !== undefined) setSpdMin(parsed.spdMin)
+        if (parsed.spdMax !== undefined) setSpdMax(parsed.spdMax)
         if (parsed.sortBy !== undefined) setSortBy(parsed.sortBy)
         if (parsed.sortDesc !== undefined) setSortDesc(parsed.sortDesc)
       }
@@ -115,10 +163,13 @@ export function usePokemonList(): UsePokemonListResult {
     const state = {
       search, typeFilter, genFilter, biomeFilter, rarityFilter,
       hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter,
-      costMin, costMax, totalMin, totalMax, sortBy, sortDesc,
+      costMin, costMax, totalMin, totalMax,
+      hpMin, hpMax, atkMin, atkMax, defMin, defMax,
+      spatkMin, spatkMax, spdefMin, spdefMax, spdMin, spdMax,
+      sortBy, sortDesc,
     }
     localStorage.setItem(FILTER_STORAGE_KEY, JSON.stringify(state))
-  }, [search, typeFilter, genFilter, biomeFilter, rarityFilter, hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter, costMin, costMax, totalMin, totalMax, sortBy, sortDesc])
+  }, [search, typeFilter, genFilter, biomeFilter, rarityFilter, hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter, costMin, costMax, totalMin, totalMax, hpMin, hpMax, atkMin, atkMax, defMin, defMax, spatkMin, spatkMax, spdefMin, spdefMax, spdMin, spdMax, sortBy, sortDesc])
 
   // 数据加载
   useEffect(() => {
@@ -165,6 +216,7 @@ export function usePokemonList(): UsePokemonListResult {
         || p.nameEn.toLowerCase().includes(keyword)
         || p.id.toLowerCase().includes(keyword)
         || String(p.numericId).includes(keyword)
+        || (p.forms || []).some(f => f.formNameZh.toLowerCase().includes(keyword))
       const matchType = !typeFilter || p.type1 === typeFilter || p.type2 === typeFilter
       const matchGen = !genFilter || p.generation === Number(genFilter)
       const matchBiome = !biomeFilter || (p.biomes || []).some(b => b.id === biomeFilter)
@@ -181,9 +233,16 @@ export function usePokemonList(): UsePokemonListResult {
         || (finalEvolutionFilter === 'yes' ? isFinalEvolution : !isFinalEvolution)
       const matchCost = inRange(p.starterCost ?? -1, costMin, costMax)
       const matchTotal = inRange(p.baseTotal, totalMin, totalMax)
+      const matchHp = inRange(p.baseHp, hpMin, hpMax)
+      const matchAtk = inRange(p.baseAtk, atkMin, atkMax)
+      const matchDef = inRange(p.baseDef, defMin, defMax)
+      const matchSpatk = inRange(p.baseSpatk, spatkMin, spatkMax)
+      const matchSpdef = inRange(p.baseSpdef, spdefMin, spdefMax)
+      const matchSpd = inRange(p.baseSpd, spdMin, spdMax)
       return matchSearch && matchType && matchGen && matchBiome && matchRarity
         && matchPassive && matchEggMoves && matchHiddenAbility && matchFinalEvolution
-        && matchCost && matchTotal
+        && matchCost && matchTotal && matchHp && matchAtk && matchDef
+        && matchSpatk && matchSpdef && matchSpd
     })
 
     result.sort((a, b) => {
@@ -278,6 +337,18 @@ export function usePokemonList(): UsePokemonListResult {
     setCostMax('')
     setTotalMin('')
     setTotalMax('')
+    setHpMin('')
+    setHpMax('')
+    setAtkMin('')
+    setAtkMax('')
+    setDefMin('')
+    setDefMax('')
+    setSpatkMin('')
+    setSpatkMax('')
+    setSpdefMin('')
+    setSpdefMax('')
+    setSpdMin('')
+    setSpdMax('')
   }
 
   return {
@@ -288,11 +359,15 @@ export function usePokemonList(): UsePokemonListResult {
       search, typeFilter, genFilter, biomeFilter, rarityFilter,
       hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter,
       costMin, costMax, totalMin, totalMax,
+      hpMin, hpMax, atkMin, atkMax, defMin, defMax,
+      spatkMin, spatkMax, spdefMin, spdefMax, spdMin, spdMax,
     },
     setters: {
       setSearch, setTypeFilter, setGenFilter, setBiomeFilter, setRarityFilter,
       setHasPassiveFilter, setHasEggMoveFilter, setHasHiddenAbilityFilter, setFinalEvolutionFilter,
       setCostMin, setCostMax, setTotalMin, setTotalMax,
+      setHpMin, setHpMax, setAtkMin, setAtkMax, setDefMin, setDefMax,
+      setSpatkMin, setSpatkMax, setSpdefMin, setSpdefMax, setSpdMin, setSpdMax,
     },
     sortBy,
     sortDesc,

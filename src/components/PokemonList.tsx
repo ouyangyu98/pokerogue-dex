@@ -158,7 +158,7 @@ export default function PokemonList() {
       <div className="filters advanced-filters">
         <input
           type="text"
-          placeholder="搜索中文名、英文名、枚举ID或数字ID..."
+          placeholder="搜索中文名、英文名、形态名、枚举ID或数字ID..."
           value={filters.search}
           onChange={e => setters.setSearch(e.target.value)}
           className="search-input"
@@ -175,6 +175,20 @@ export default function PokemonList() {
         <input className="range-input" type="number" min="0" placeholder="费用≤" value={filters.costMax} onChange={e => setters.setCostMax(e.target.value)} />
         <input className="range-input" type="number" min="0" placeholder="总和≥" value={filters.totalMin} onChange={e => setters.setTotalMin(e.target.value)} />
         <input className="range-input" type="number" min="0" placeholder="总和≤" value={filters.totalMax} onChange={e => setters.setTotalMax(e.target.value)} />
+        <div className="stat-filters-row">
+          <input className="range-input" type="number" min="0" placeholder="HP≥" value={filters.hpMin} onChange={e => setters.setHpMin(e.target.value)} />
+          <input className="range-input" type="number" min="0" placeholder="HP≤" value={filters.hpMax} onChange={e => setters.setHpMax(e.target.value)} />
+          <input className="range-input" type="number" min="0" placeholder="攻击≥" value={filters.atkMin} onChange={e => setters.setAtkMin(e.target.value)} />
+          <input className="range-input" type="number" min="0" placeholder="攻击≤" value={filters.atkMax} onChange={e => setters.setAtkMax(e.target.value)} />
+          <input className="range-input" type="number" min="0" placeholder="防御≥" value={filters.defMin} onChange={e => setters.setDefMin(e.target.value)} />
+          <input className="range-input" type="number" min="0" placeholder="防御≤" value={filters.defMax} onChange={e => setters.setDefMax(e.target.value)} />
+          <input className="range-input" type="number" min="0" placeholder="特攻≥" value={filters.spatkMin} onChange={e => setters.setSpatkMin(e.target.value)} />
+          <input className="range-input" type="number" min="0" placeholder="特攻≤" value={filters.spatkMax} onChange={e => setters.setSpatkMax(e.target.value)} />
+          <input className="range-input" type="number" min="0" placeholder="特防≥" value={filters.spdefMin} onChange={e => setters.setSpdefMin(e.target.value)} />
+          <input className="range-input" type="number" min="0" placeholder="特防≤" value={filters.spdefMax} onChange={e => setters.setSpdefMax(e.target.value)} />
+          <input className="range-input" type="number" min="0" placeholder="速度≥" value={filters.spdMin} onChange={e => setters.setSpdMin(e.target.value)} />
+          <input className="range-input" type="number" min="0" placeholder="速度≤" value={filters.spdMax} onChange={e => setters.setSpdMax(e.target.value)} />
+        </div>
         <button className="reset-btn" onClick={resetFilters}>重置筛选</button>
         <ActiveFilterTags
           filters={[
@@ -188,6 +202,12 @@ export default function PokemonList() {
             { key: 'final', label: '最终形态', value: filters.finalEvolutionFilter, display: filters.finalEvolutionFilter === 'yes' ? '仅最终形态' : filters.finalEvolutionFilter === 'no' ? '排除最终形态' : '', onClear: () => setters.setFinalEvolutionFilter('') },
             { key: 'cost', label: '费用', value: filters.costMin || filters.costMax, display: (filters.costMin || filters.costMax) ? `费用 ${filters.costMin || '0'}~${filters.costMax || '∞'}` : '', onClear: () => { setters.setCostMin(''); setters.setCostMax('') } },
             { key: 'total', label: '总和', value: filters.totalMin || filters.totalMax, display: (filters.totalMin || filters.totalMax) ? `总和 ${filters.totalMin || '0'}~${filters.totalMax || '∞'}` : '', onClear: () => { setters.setTotalMin(''); setters.setTotalMax('') } },
+            { key: 'hp', label: 'HP', value: filters.hpMin || filters.hpMax, display: (filters.hpMin || filters.hpMax) ? `HP ${filters.hpMin || '0'}~${filters.hpMax || '∞'}` : '', onClear: () => { setters.setHpMin(''); setters.setHpMax('') } },
+            { key: 'atk', label: '攻击', value: filters.atkMin || filters.atkMax, display: (filters.atkMin || filters.atkMax) ? `攻击 ${filters.atkMin || '0'}~${filters.atkMax || '∞'}` : '', onClear: () => { setters.setAtkMin(''); setters.setAtkMax('') } },
+            { key: 'def', label: '防御', value: filters.defMin || filters.defMax, display: (filters.defMin || filters.defMax) ? `防御 ${filters.defMin || '0'}~${filters.defMax || '∞'}` : '', onClear: () => { setters.setDefMin(''); setters.setDefMax('') } },
+            { key: 'spatk', label: '特攻', value: filters.spatkMin || filters.spatkMax, display: (filters.spatkMin || filters.spatkMax) ? `特攻 ${filters.spatkMin || '0'}~${filters.spatkMax || '∞'}` : '', onClear: () => { setters.setSpatkMin(''); setters.setSpatkMax('') } },
+            { key: 'spdef', label: '特防', value: filters.spdefMin || filters.spdefMax, display: (filters.spdefMin || filters.spdefMax) ? `特防 ${filters.spdefMin || '0'}~${filters.spdefMax || '∞'}` : '', onClear: () => { setters.setSpdefMin(''); setters.setSpdefMax('') } },
+            { key: 'spd', label: '速度', value: filters.spdMin || filters.spdMax, display: (filters.spdMin || filters.spdMax) ? `速度 ${filters.spdMin || '0'}~${filters.spdMax || '∞'}` : '', onClear: () => { setters.setSpdMin(''); setters.setSpdMax('') } },
           ]}
         />
         <span className="result-count">共 {filtered.length} 只</span>

@@ -202,6 +202,8 @@ export interface DataReport {
   pokemonCount: number
   biomeCount: number
   encounterCount: number
+  normalEncounterCount: number
+  bossEncounterCount: number
   levelMoveCount: number
   eggMovePokemonCount: number
   eggMoveCount: number
@@ -210,5 +212,7 @@ export interface DataReport {
   passiveCount: number
   formCount: number
   itemCount?: number
+  moveCount: number
+  abilityCount: number
   nameMapCoverage: Record<string, CoverageItem>
 }

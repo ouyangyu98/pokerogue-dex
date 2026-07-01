@@ -518,9 +518,9 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
-          "GIGA_DRAIN",
           "STRENGTH_SAP",
           "SLUDGE_BOMB",
+          "GIGA_DRAIN",
           "STUN_SPORE"
         ]
       },
@@ -530,26 +530,26 @@
         "moves": [
           "STRENGTH_SAP",
           "STUN_SPORE",
-          "GIGA_DRAIN",
-          "SLUDGE_BOMB"
+          "SLUDGE_BOMB",
+          "GIGA_DRAIN"
         ]
       }
     ],
     "allMoves": [
       {
-        "moveId": "GIGA_DRAIN",
-        "count": 2,
-        "formatCount": 2,
-        "setCount": 1
-      },
-      {
         "moveId": "STRENGTH_SAP",
-        "count": 2,
-        "formatCount": 2,
+        "count": 1,
+        "formatCount": 1,
         "setCount": 1
       },
       {
         "moveId": "SLUDGE_BOMB",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "GIGA_DRAIN",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -562,8 +562,8 @@
       }
     ],
     "stats": {
-      "totalSets": 2,
-      "totalFormats": 2
+      "totalSets": 1,
+      "totalFormats": 1
     }
   },
   "VENOMOTH": {
@@ -1119,14 +1119,14 @@
     "allMoves": [
       {
         "moveId": "SEISMIC_TOSS",
-        "count": 10,
-        "formatCount": 10,
+        "count": 9,
+        "formatCount": 9,
         "setCount": 7
       },
       {
         "moveId": "SOFT_BOILED",
-        "count": 10,
-        "formatCount": 10,
+        "count": 9,
+        "formatCount": 9,
         "setCount": 7
       },
       {
@@ -1137,8 +1137,8 @@
       }
     ],
     "stats": {
-      "totalSets": 11,
-      "totalFormats": 11
+      "totalSets": 10,
+      "totalFormats": 10
     }
   },
   "KANGASKHAN": {
@@ -2211,27 +2211,27 @@
     "allMoves": [
       {
         "moveId": "SPIKES",
-        "count": 12,
+        "count": 13,
         "formatCount": 11,
         "setCount": 8
       },
       {
         "moveId": "ROOST",
-        "count": 12,
+        "count": 13,
         "formatCount": 11,
         "setCount": 8
       },
       {
         "moveId": "IRON_DEFENSE",
-        "count": 11,
-        "formatCount": 10,
+        "count": 12,
+        "formatCount": 11,
         "setCount": 7
       },
       {
         "moveId": "BRAVE_BIRD",
-        "count": 6,
+        "count": 8,
         "formatCount": 5,
-        "setCount": 4
+        "setCount": 5
       },
       {
         "moveId": "BEAK_BLAST",
@@ -2241,7 +2241,7 @@
       }
     ],
     "stats": {
-      "totalSets": 12,
+      "totalSets": 13,
       "totalFormats": 11
     }
   },
@@ -3461,20 +3461,20 @@
     "allMoves": [
       {
         "moveId": "LAVA_PLUME",
+        "count": 10,
+        "formatCount": 10,
+        "setCount": 3
+      },
+      {
+        "moveId": "RAPID_SPIN",
         "count": 9,
         "formatCount": 9,
         "setCount": 3
       },
       {
-        "moveId": "RAPID_SPIN",
+        "moveId": "BODY_PRESS",
         "count": 8,
         "formatCount": 8,
-        "setCount": 3
-      },
-      {
-        "moveId": "BODY_PRESS",
-        "count": 7,
-        "formatCount": 7,
         "setCount": 4
       },
       {
@@ -3497,9 +3497,9 @@
       },
       {
         "moveId": "CLEAR_SMOG",
-        "count": 2,
-        "formatCount": 1,
-        "setCount": 2
+        "count": 3,
+        "formatCount": 2,
+        "setCount": 3
       },
       {
         "moveId": "BURNING_BULWARK",
@@ -3509,8 +3509,8 @@
       }
     ],
     "stats": {
-      "totalSets": 14,
-      "totalFormats": 13
+      "totalSets": 15,
+      "totalFormats": 14
     }
   },
   "FLYGON": {
@@ -5382,26 +5382,26 @@
     "allMoves": [
       {
         "moveId": "BUG_BUZZ",
-        "count": 2,
-        "formatCount": 2,
-        "setCount": 2
+        "count": 4,
+        "formatCount": 3,
+        "setCount": 4
       },
       {
         "moveId": "AIR_SLASH",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
+        "count": 3,
+        "formatCount": 2,
+        "setCount": 3
       },
       {
         "moveId": "U_TURN",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
       }
     ],
     "stats": {
-      "totalSets": 2,
-      "totalFormats": 2
+      "totalSets": 4,
+      "totalFormats": 3
     }
   },
   "GLISCOR": {
@@ -7114,8 +7114,8 @@
         "moves": [
           "SHADOW_BALL",
           "OVERHEAT",
-          "HEX",
-          "WILL_O_WISP"
+          "PAIN_SPLIT",
+          "HEX"
         ]
       },
       {
@@ -7126,20 +7126,36 @@
           "OVERHEAT",
           "HEX"
         ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "PAIN_SPLIT",
+          "WILL_O_WISP",
+          "SHADOW_BALL",
+          "OVERHEAT"
+        ]
       }
     ],
     "allMoves": [
       {
         "moveId": "SHADOW_BALL",
-        "count": 6,
+        "count": 7,
         "formatCount": 3,
-        "setCount": 4
+        "setCount": 5
       },
       {
         "moveId": "OVERHEAT",
         "count": 4,
         "formatCount": 3,
         "setCount": 2
+      },
+      {
+        "moveId": "PAIN_SPLIT",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       },
       {
         "moveId": "HEX",
@@ -7155,7 +7171,7 @@
       }
     ],
     "stats": {
-      "totalSets": 7,
+      "totalSets": 8,
       "totalFormats": 3
     }
   },
@@ -7377,23 +7393,23 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
-          "U_TURN",
           "FAKE_OUT",
+          "U_TURN",
           "WIDE_GUARD"
         ]
       }
     ],
     "allMoves": [
       {
-        "moveId": "U_TURN",
-        "count": 4,
+        "moveId": "FAKE_OUT",
+        "count": 2,
         "formatCount": 2,
         "setCount": 2
       },
       {
-        "moveId": "FAKE_OUT",
+        "moveId": "U_TURN",
         "count": 2,
-        "formatCount": 2,
+        "formatCount": 1,
         "setCount": 2
       },
       {
@@ -7404,8 +7420,8 @@
       }
     ],
     "stats": {
-      "totalSets": 5,
-      "totalFormats": 3
+      "totalSets": 3,
+      "totalFormats": 2
     }
   },
   "PAWNIARD": {
@@ -8556,8 +8572,8 @@
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
           "ROOST",
-          "BRAVE_BIRD",
           "FLARE_BLITZ",
+          "BRAVE_BIRD",
           "TAILWIND"
         ]
       }
@@ -8565,18 +8581,18 @@
     "allMoves": [
       {
         "moveId": "ROOST",
-        "count": 7,
-        "formatCount": 7,
+        "count": 6,
+        "formatCount": 6,
         "setCount": 6
       },
       {
-        "moveId": "BRAVE_BIRD",
-        "count": 6,
-        "formatCount": 5,
-        "setCount": 5
+        "moveId": "FLARE_BLITZ",
+        "count": 5,
+        "formatCount": 4,
+        "setCount": 4
       },
       {
-        "moveId": "FLARE_BLITZ",
+        "moveId": "BRAVE_BIRD",
         "count": 5,
         "formatCount": 4,
         "setCount": 4
@@ -8589,8 +8605,8 @@
       }
     ],
     "stats": {
-      "totalSets": 9,
-      "totalFormats": 9
+      "totalSets": 8,
+      "totalFormats": 8
     }
   },
   "VIVILLON": {
@@ -9179,8 +9195,8 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
-          "DIAMOND_STORM",
           "MOONBLAST",
+          "DIAMOND_STORM",
           "STEALTH_ROCK",
           "POWER_GEM"
         ]
@@ -9189,19 +9205,13 @@
         "name": "输出向",
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
-          "DIAMOND_STORM",
           "MOONBLAST",
+          "DIAMOND_STORM",
           "POWER_GEM"
         ]
       }
     ],
     "allMoves": [
-      {
-        "moveId": "DIAMOND_STORM",
-        "count": 10,
-        "formatCount": 8,
-        "setCount": 8
-      },
       {
         "moveId": "MOONBLAST",
         "count": 10,
@@ -9209,10 +9219,16 @@
         "setCount": 8
       },
       {
+        "moveId": "DIAMOND_STORM",
+        "count": 9,
+        "formatCount": 7,
+        "setCount": 7
+      },
+      {
         "moveId": "STEALTH_ROCK",
-        "count": 6,
-        "formatCount": 3,
-        "setCount": 3
+        "count": 5,
+        "formatCount": 2,
+        "setCount": 2
       },
       {
         "moveId": "POWER_GEM",
@@ -9222,7 +9238,7 @@
       }
     ],
     "stats": {
-      "totalSets": 14,
+      "totalSets": 13,
       "totalFormats": 9
     }
   },
@@ -9868,8 +9884,8 @@
         "moves": [
           "POWER_WHIP",
           "RAPID_SPIN",
-          "TRIPLE_AXEL",
-          "TROP_KICK"
+          "HIGH_JUMP_KICK",
+          "TRIPLE_AXEL"
         ]
       },
       {
@@ -9877,6 +9893,7 @@
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
           "POWER_WHIP",
+          "HIGH_JUMP_KICK",
           "TRIPLE_AXEL",
           "TROP_KICK"
         ]
@@ -9885,21 +9902,27 @@
     "allMoves": [
       {
         "moveId": "POWER_WHIP",
-        "count": 2,
-        "formatCount": 1,
-        "setCount": 2
+        "count": 4,
+        "formatCount": 2,
+        "setCount": 4
       },
       {
         "moveId": "RAPID_SPIN",
+        "count": 4,
+        "formatCount": 2,
+        "setCount": 4
+      },
+      {
+        "moveId": "HIGH_JUMP_KICK",
         "count": 2,
         "formatCount": 1,
-        "setCount": 2
+        "setCount": 1
       },
       {
         "moveId": "TRIPLE_AXEL",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
       },
       {
         "moveId": "TROP_KICK",
@@ -9909,8 +9932,8 @@
       }
     ],
     "stats": {
-      "totalSets": 2,
-      "totalFormats": 1
+      "totalSets": 4,
+      "totalFormats": 2
     }
   },
   "COMFEY": {
@@ -10972,21 +10995,21 @@
     "allMoves": [
       {
         "moveId": "PYRO_BALL",
-        "count": 13,
+        "count": 12,
         "formatCount": 6,
-        "setCount": 9
+        "setCount": 8
       },
       {
         "moveId": "HIGH_JUMP_KICK",
-        "count": 11,
+        "count": 9,
         "formatCount": 6,
-        "setCount": 9
+        "setCount": 7
       },
       {
         "moveId": "COURT_CHANGE",
-        "count": 8,
+        "count": 7,
         "formatCount": 6,
-        "setCount": 6
+        "setCount": 5
       },
       {
         "moveId": "DOUBLE_EDGE",
@@ -10996,7 +11019,7 @@
       }
     ],
     "stats": {
-      "totalSets": 14,
+      "totalSets": 12,
       "totalFormats": 6
     }
   },
@@ -13299,7 +13322,7 @@
         "moves": [
           "ARMOR_CANNON",
           "EXPANDING_FORCE",
-          "PSYSHOCK",
+          "FLAMETHROWER",
           "CALM_MIND"
         ]
       },
@@ -13309,8 +13332,8 @@
         "moves": [
           "ARMOR_CANNON",
           "EXPANDING_FORCE",
-          "PSYSHOCK",
-          "FLAMETHROWER"
+          "FLAMETHROWER",
+          "PSYSHOCK"
         ]
       },
       {
@@ -13320,34 +13343,22 @@
           "CALM_MIND",
           "ARMOR_CANNON",
           "EXPANDING_FORCE",
-          "PSYSHOCK"
+          "FLAMETHROWER"
         ]
       }
     ],
     "allMoves": [
       {
         "moveId": "ARMOR_CANNON",
-        "count": 8,
-        "formatCount": 6,
-        "setCount": 8
+        "count": 6,
+        "formatCount": 5,
+        "setCount": 6
       },
       {
         "moveId": "EXPANDING_FORCE",
-        "count": 5,
-        "formatCount": 5,
-        "setCount": 5
-      },
-      {
-        "moveId": "PSYSHOCK",
-        "count": 3,
-        "formatCount": 2,
-        "setCount": 3
-      },
-      {
-        "moveId": "CALM_MIND",
-        "count": 3,
-        "formatCount": 2,
-        "setCount": 3
+        "count": 4,
+        "formatCount": 4,
+        "setCount": 4
       },
       {
         "moveId": "FLAMETHROWER",
@@ -13356,15 +13367,27 @@
         "setCount": 2
       },
       {
+        "moveId": "CALM_MIND",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
         "moveId": "WIDE_GUARD",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "PSYSHOCK",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
       }
     ],
     "stats": {
-      "totalSets": 9,
-      "totalFormats": 6
+      "totalSets": 7,
+      "totalFormats": 5
     }
   },
   "CERULEDGE": {
@@ -13730,13 +13753,13 @@
         "moveId": "RAPID_SPIN",
         "count": 7,
         "formatCount": 4,
-        "setCount": 7
+        "setCount": 6
       },
       {
         "moveId": "POWER_WHIP",
         "count": 5,
         "formatCount": 4,
-        "setCount": 5
+        "setCount": 4
       },
       {
         "moveId": "STRENGTH_SAP",
@@ -13793,8 +13816,8 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
-          "FLAMETHROWER",
           "SOLAR_BEAM",
+          "FLAMETHROWER",
           "OVERHEAT",
           "GROWTH"
         ]
@@ -13803,8 +13826,8 @@
         "name": "输出向",
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
-          "FLAMETHROWER",
           "SOLAR_BEAM",
+          "FLAMETHROWER",
           "OVERHEAT"
         ]
       },
@@ -13813,41 +13836,41 @@
         "description": "以强化招式为核心，配合攻击招式滚雪球",
         "moves": [
           "GROWTH",
-          "FLAMETHROWER",
           "SOLAR_BEAM",
+          "FLAMETHROWER",
           "OVERHEAT"
         ]
       }
     ],
     "allMoves": [
       {
-        "moveId": "FLAMETHROWER",
-        "count": 5,
-        "formatCount": 3,
-        "setCount": 5
+        "moveId": "SOLAR_BEAM",
+        "count": 11,
+        "formatCount": 5,
+        "setCount": 6
       },
       {
-        "moveId": "SOLAR_BEAM",
-        "count": 4,
-        "formatCount": 3,
-        "setCount": 4
+        "moveId": "FLAMETHROWER",
+        "count": 9,
+        "formatCount": 5,
+        "setCount": 7
       },
       {
         "moveId": "OVERHEAT",
-        "count": 3,
-        "formatCount": 3,
-        "setCount": 3
+        "count": 5,
+        "formatCount": 5,
+        "setCount": 4
       },
       {
         "moveId": "GROWTH",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
       }
     ],
     "stats": {
-      "totalSets": 5,
-      "totalFormats": 3
+      "totalSets": 8,
+      "totalFormats": 5
     }
   },
   "ESPATHRA": {
@@ -14147,21 +14170,21 @@
     "allMoves": [
       {
         "moveId": "BODY_PRESS",
-        "count": 7,
-        "formatCount": 4,
+        "count": 8,
+        "formatCount": 5,
         "setCount": 7
       },
       {
         "moveId": "COIL",
-        "count": 4,
-        "formatCount": 2,
+        "count": 5,
+        "formatCount": 3,
         "setCount": 3
       },
       {
         "moveId": "IRON_DEFENSE",
-        "count": 3,
-        "formatCount": 3,
-        "setCount": 3
+        "count": 4,
+        "formatCount": 4,
+        "setCount": 4
       },
       {
         "moveId": "IRON_HEAD",
@@ -14183,8 +14206,8 @@
       }
     ],
     "stats": {
-      "totalSets": 7,
-      "totalFormats": 4
+      "totalSets": 8,
+      "totalFormats": 5
     }
   },
   "GLIMMET": {
@@ -14812,9 +14835,9 @@
       },
       {
         "moveId": "ROOST",
-        "count": 1,
+        "count": 2,
         "formatCount": 1,
-        "setCount": 1
+        "setCount": 2
       },
       {
         "moveId": "GLARE",
@@ -15266,9 +15289,9 @@
     "allMoves": [
       {
         "moveId": "FIRST_IMPRESSION",
-        "count": 9,
+        "count": 10,
         "formatCount": 7,
-        "setCount": 8
+        "setCount": 9
       },
       {
         "moveId": "MORNING_SUN",
@@ -15302,7 +15325,7 @@
       }
     ],
     "stats": {
-      "totalSets": 12,
+      "totalSets": 13,
       "totalFormats": 7
     }
   },

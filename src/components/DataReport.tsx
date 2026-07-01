@@ -12,6 +12,8 @@ interface ReportData {
   pokemonCount: number
   biomeCount: number
   encounterCount: number
+  normalEncounterCount?: number
+  bossEncounterCount?: number
   levelMoveCount: number
   eggMovePokemonCount: number
   eggMoveCount: number
@@ -20,14 +22,20 @@ interface ReportData {
   passiveCount: number
   formCount: number
   itemCount?: number
+  moveCount?: number
+  abilityCount?: number
   nameMapCoverage?: Record<string, CoverageItem>
 }
 
 const coverageLabels: Record<string, string> = {
   pokemon: '精灵',
-  ability: '特性',
+  form: '形态',
+  type: '属性',
   move: '技能',
+  ability: '特性',
   biome: '生态区',
+  rarity: '稀有度',
+  skillSourceType: '技能来源',
 }
 
 export default function DataReport() {
@@ -69,6 +77,16 @@ export default function DataReport() {
           <div className="card-icon">⚔️</div>
           <div className="card-value">{report.encounterCount}</div>
           <div className="card-label">遭遇记录总数</div>
+        </div>
+        <div className="report-card">
+          <div className="card-icon">🌿</div>
+          <div className="card-value">{report.normalEncounterCount ?? '-'}</div>
+          <div className="card-label">普通遭遇记录</div>
+        </div>
+        <div className="report-card">
+          <div className="card-icon">👹</div>
+          <div className="card-value">{report.bossEncounterCount ?? '-'}</div>
+          <div className="card-label">Boss 遭遇记录</div>
         </div>
         <div className="report-card">
           <div className="card-icon">📚</div>
@@ -124,8 +142,20 @@ export default function DataReport() {
               <td>{report.itemCount ?? '-'}</td>
             </tr>
             <tr>
-              <td>形态总数</td>
-              <td>{report.formCount}</td>
+              <td>普通遭遇记录</td>
+              <td>{report.normalEncounterCount ?? '-'}</td>
+            </tr>
+            <tr>
+              <td>Boss 遭遇记录</td>
+              <td>{report.bossEncounterCount ?? '-'}</td>
+            </tr>
+            <tr>
+              <td>不重复技能数</td>
+              <td>{report.moveCount ?? '-'}</td>
+            </tr>
+            <tr>
+              <td>不重复特性数</td>
+              <td>{report.abilityCount ?? '-'}</td>
             </tr>
           </tbody>
         </table>
