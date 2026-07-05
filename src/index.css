@@ -67,8 +67,20 @@ nav a.active {
 }
 
 .header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   color: white;
   text-decoration: none;
+}
+
+.header-logo {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  background: white;
 }
 
 main {

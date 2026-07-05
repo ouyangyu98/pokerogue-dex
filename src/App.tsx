@@ -35,6 +35,7 @@ export default function App() {
     <div className="app">
       <header>
         <NavLink to="/" className="header-brand">
+          <img src="/logo.svg" alt="PokeRogue 中文图鉴" className="header-logo" />
           <h1>PokeRogue 中文图鉴</h1>
         </NavLink>
         <div className="data-version">{dataVersion}</div>
