@@ -2473,3 +2473,256 @@ tr.clickable {
     height: 56px;
   }
 }
+
+/* ===== 反馈留言页 ===== */
+.feedback-page {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.feedback-header {
+  margin-bottom: 24px;
+}
+
+.feedback-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 6px;
+}
+
+.feedback-header p {
+  font-size: 14px;
+  color: #666;
+}
+
+.feedback-form {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #e8e8e8;
+  margin-bottom: 28px;
+}
+
+.feedback-form-row {
+  margin-bottom: 12px;
+}
+
+.feedback-nickname {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+  background: #fafafa;
+}
+
+.feedback-nickname:focus {
+  outline: none;
+  border-color: #667eea;
+  background: #fff;
+}
+
+.feedback-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  background: #fafafa;
+}
+
+.feedback-textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  background: #fff;
+}
+
+.feedback-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.feedback-counter {
+  font-size: 12px;
+  color: #999;
+}
+
+.feedback-counter.warning {
+  color: #e67e22;
+}
+
+.feedback-form-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.feedback-success {
+  font-size: 13px;
+  color: #27ae60;
+  font-weight: 500;
+}
+
+.feedback-error {
+  font-size: 13px;
+  color: #e74c3c;
+}
+
+.feedback-submit-btn {
+  padding: 8px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.feedback-submit-btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.feedback-submit-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.feedback-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.feedback-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.feedback-refresh {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.feedback-refresh:hover:not(:disabled) {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.feedback-refresh:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.feedback-empty {
+  text-align: center;
+  padding: 48px 20px;
+  color: #999;
+  font-size: 14px;
+}
+
+.feedback-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feedback-item {
+  display: flex;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 16px;
+  transition: box-shadow 0.2s;
+}
+
+.feedback-item:hover {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.feedback-item-avatar {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.feedback-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.feedback-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.feedback-item-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.feedback-item-page {
+  font-size: 11px;
+  padding: 1px 8px;
+  border-radius: 10px;
+  background: #f0f0f5;
+  color: #667eea;
+  font-weight: 500;
+}
+
+.feedback-item-time {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.feedback-item-content {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 600px) {
+  .feedback-form-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .feedback-form-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

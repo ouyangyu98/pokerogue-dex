@@ -16,6 +16,7 @@ const navItems = [
   { to: '/types', label: '属性克制' },
   { to: '/items', label: '道具清单' },
   { to: '/team', label: '配队分析' },
+  { to: '/feedback', label: '反馈' },
 ]
 
 export default function App() {

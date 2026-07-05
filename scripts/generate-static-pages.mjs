@@ -99,6 +99,7 @@ async function main() {
     { path: '/map', title: `地区导航 - PokeRogue 中文图鉴`, description: 'PokeRogue 生态区地图导航，查看地区连接关系与推荐路线。', keywords: 'PokeRogue,宝可梦肉鸽,地图,地区导航,生态区' },
     { path: '/report', title: `数据报告 - PokeRogue 中文图鉴`, description: 'PokeRogue 数据报告：覆盖率、数据版本与生成时间。', keywords: 'PokeRogue,宝可梦肉鸽,数据报告,覆盖率' },
     { path: '/team', title: `配队分析 - PokeRogue 中文图鉴`, description: 'PokeRogue 队伍构建工具：分析属性覆盖、防守抗性、职责分配与队伍缺口。', keywords: 'PokeRogue,宝可梦肉鸽,配队,队伍分析,队伍构建' },
+    { path: '/feedback', title: `反馈留言 - PokeRogue 中文图鉴`, description: '提交你对 PokeRogue 中文图鉴的反馈和建议，所有人都可以查看。', keywords: 'PokeRogue,反馈,留言,建议' },
     { path: '/en', title: 'PokeRogue Helper - Dex, Endless Guide, Fusion and Team Tools', description: 'A fan-made PokeRogue helper with a full Pokédex, base stats, abilities, egg moves, passive abilities, biome encounter tables, fusion ideas and team-building tools for endless mode.', keywords: 'PokeRogue,helper,dex,pokedex,endless,fusion,team builder' },
   ]
 

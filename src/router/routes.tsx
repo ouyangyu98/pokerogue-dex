@@ -18,6 +18,7 @@ import TypeDetailPage from '../pages/TypeDetailPage'
 import BiomeMapPage from '../pages/BiomeMapPage'
 import DataReportPage from '../pages/DataReportPage'
 import TeamBuilderPage from '../pages/TeamBuilderPage'
+import FeedbackPage from '../pages/FeedbackPage'
 import NotFoundPage from '../pages/NotFoundPage'
 import EnLandingPage from '../pages/EnLandingPage'
 
@@ -44,6 +45,7 @@ export const routes = [
       { path: 'map', element: <BiomeMapPage /> },
       { path: 'report', element: <DataReportPage /> },
       { path: 'team', element: <TeamBuilderPage /> },
+      { path: 'feedback', element: <FeedbackPage /> },
       { path: 'en', element: <EnLandingPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
