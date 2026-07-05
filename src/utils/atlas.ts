@@ -52,16 +52,16 @@ export function getAtlasSpriteStyle(
   pixelSize: number,
 ) {
   const scale = pixelSize / Math.max(sourceSize.w, sourceSize.h)
-  // Compensate for spriteSourceSize offset so trimmed sprites render
-  // at the correct position within their logical source canvas.
-  const offsetX = frame.spriteSourceSize?.x || 0
-  const offsetY = frame.spriteSourceSize?.y || 0
+  // Use the actual trimmed frame as the viewport. Source-size canvas may be
+  // larger than the trimmed frame, so using it as the container would reveal
+  // neighbouring atlas sprites around the trimmed icon.
+  const { x, y, w, h } = frame.frame
   return {
-    width: `${Math.round(sourceSize.w * scale)}px`,
-    height: `${Math.round(sourceSize.h * scale)}px`,
+    width: `${Math.round(w * scale)}px`,
+    height: `${Math.round(h * scale)}px`,
     backgroundImage: `url(${atlas.imageUrl})`,
     backgroundRepeat: 'no-repeat' as const,
-    backgroundPosition: `${Math.round(-(frame.frame.x + offsetX) * scale)}px ${Math.round(-(frame.frame.y + offsetY) * scale)}px`,
+    backgroundPosition: `${Math.round(-x * scale)}px ${Math.round(-y * scale)}px`,
     backgroundSize: `${Math.round(atlas.width * scale)}px ${Math.round(atlas.height * scale)}px`,
     imageRendering: 'pixelated' as const,
     flex: '0 0 auto' as const,
