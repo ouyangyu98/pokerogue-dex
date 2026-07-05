@@ -1,6 +1,4 @@
-import { kv } from '@vercel/kv'
-
-export interface FeedbackItem {
+interface FeedbackItem {
   id: string
   nickname: string
   content: string
@@ -8,70 +6,167 @@ export interface FeedbackItem {
   createdAt: string
 }
 
+const REPO = process.env.GITHUB_REPO || 'ouyangyu98/pokerogue-dex'
+const TOKEN = process.env.GITHUB_TOKEN || ''
+const LABEL = 'feedback'
 const MAX_CONTENT_LENGTH = 500
 const MAX_NICKNAME_LENGTH = 20
-const LIST_KEY = 'feedback:list'
-const MAX_ITEMS = 200
 
-export default async function handler(req: Request): Promise<Response> {
-  // CORS
-  const headers = {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
+const GITHUB_API = 'https://api.github.com'
+
+function parseIssueToFeedback(issue: any): FeedbackItem {
+  // Metadata is stored in an HTML comment at the end of the issue body
+  const metaMatch = issue.body?.match(/<!--feedback-meta:(.*?)-->/)
+  let meta: { nickname?: string; page?: string; createdAt?: string } = {}
+  if (metaMatch) {
+    try {
+      meta = JSON.parse(metaMatch[1])
+    } catch {
+      // ignore parse errors
+    }
   }
+
+  // Content is everything before the metadata comment
+  let content = issue.body || ''
+  if (metaMatch && metaMatch.index !== undefined) {
+    content = content.slice(0, metaMatch.index).trim()
+  }
+
+  return {
+    id: String(issue.number),
+    nickname: meta.nickname || '匿名训练师',
+    content,
+    page: meta.page,
+    createdAt: meta.createdAt || issue.created_at,
+  }
+}
+
+async function ensureLabelExists(): Promise<void> {
+  // Check if label exists
+  const checkResp = await fetch(`${GITHUB_API}/repos/${REPO}/labels/${LABEL}`, {
+    headers: {
+      Accept: 'application/vnd.github.v3+json',
+      ...(TOKEN ? { Authorization: `token ${TOKEN}` } : {}),
+    },
+  })
+  if (checkResp.ok) return
+
+  // Label doesn't exist, create it
+  await fetch(`${GITHUB_API}/repos/${REPO}/labels`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/vnd.github.v3+json',
+      Authorization: `token ${TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: LABEL,
+      color: '667eea',
+      description: '用户页面反馈',
+    }),
+  })
+}
+
+export default async function handler(req: any, res: any) {
+  // CORS
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
 
   if (req.method === 'OPTIONS') {
-    return new Response(null, { status: 204, headers })
+    return res.status(204).end()
   }
 
+  // GET — list feedback issues
   if (req.method === 'GET') {
     try {
-      const rawItems = await kv.lrange(LIST_KEY, 0, MAX_ITEMS - 1)
-      const items: FeedbackItem[] = rawItems.map((raw: string) => JSON.parse(raw))
-      return Response.json({ items }, { headers })
+      const resp = await fetch(
+        `${GITHUB_API}/repos/${REPO}/issues?labels=${LABEL}&state=open&per_page=100&sort=created&direction=desc`,
+        {
+          headers: {
+            Accept: 'application/vnd.github.v3+json',
+            ...(TOKEN ? { Authorization: `token ${TOKEN}` } : {}),
+          },
+        },
+      )
+
+      if (!resp.ok) {
+        console.error('GitHub API error:', resp.status)
+        return res.status(200).json({ items: [], error: 'Failed to load feedback' })
+      }
+
+      const issues = await resp.json()
+      const items: FeedbackItem[] = (issues as any[])
+        .filter(issue => !issue.pull_request)
+        .map(parseIssueToFeedback)
+
+      return res.status(200).json({ items })
     } catch (err) {
       console.error('Failed to fetch feedback:', err)
-      return Response.json({ items: [], error: 'Failed to load feedback' }, { status: 500, headers })
+      return res.status(200).json({ items: [], error: 'Failed to load feedback' })
     }
   }
 
+  // POST — create a feedback issue
   if (req.method === 'POST') {
+    if (!TOKEN) {
+      return res.status(500).json({ error: '服务未配置 GITHUB_TOKEN' })
+    }
+
     try {
-      const body = await req.json()
-      const content = (body.content || '').toString().trim()
-      const nickname = (body.nickname || '').toString().trim() || '匿名训练师'
-      const page = (body.page || '').toString().trim() || undefined
+      const content = (req.body?.content || '').toString().trim()
+      const nickname = (req.body?.nickname || '').toString().trim() || '匿名训练师'
+      const page = (req.body?.page || '').toString().trim() || undefined
 
       if (!content) {
-        return Response.json({ error: '反馈内容不能为空' }, { status: 400, headers })
+        return res.status(400).json({ error: '反馈内容不能为空' })
       }
       if (content.length > MAX_CONTENT_LENGTH) {
-        return Response.json({ error: `反馈内容不能超过${MAX_CONTENT_LENGTH}字` }, { status: 400, headers })
+        return res.status(400).json({ error: `反馈内容不能超过${MAX_CONTENT_LENGTH}字` })
       }
       if (nickname.length > MAX_NICKNAME_LENGTH) {
-        return Response.json({ error: `昵称不能超过${MAX_NICKNAME_LENGTH}字` }, { status: 400, headers })
+        return res.status(400).json({ error: `昵称不能超过${MAX_NICKNAME_LENGTH}字` })
       }
 
-      const item: FeedbackItem = {
-        id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-        nickname,
-        content,
-        page,
-        createdAt: new Date().toISOString(),
+      const createdAt = new Date().toISOString()
+      const meta = JSON.stringify({ nickname, page, createdAt })
+
+      const titleContent = content.length > 50 ? content.slice(0, 50) + '...' : content
+      const title = `反馈 · ${nickname}: ${titleContent}`
+      const body = `${content}\n\n<!--feedback-meta:${meta}-->`
+
+      // Ensure the feedback label exists
+      await ensureLabelExists()
+
+      const resp = await fetch(`${GITHUB_API}/repos/${REPO}/issues`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/vnd.github.v3+json',
+          Authorization: `token ${TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title,
+          body,
+          labels: [LABEL],
+        }),
+      })
+
+      if (!resp.ok) {
+        const errorData = await resp.json().catch(() => ({}))
+        console.error('GitHub API error:', resp.status, errorData)
+        return res.status(500).json({ error: '提交失败，请稍后重试' })
       }
 
-      await kv.lpush(LIST_KEY, JSON.stringify(item))
-      // Trim old items to prevent unbounded growth
-      await kv.ltrim(LIST_KEY, 0, MAX_ITEMS - 1)
+      const issue = await resp.json()
+      const item = parseIssueToFeedback(issue)
 
-      return Response.json({ success: true, item }, { headers })
+      return res.status(200).json({ success: true, item })
     } catch (err) {
       console.error('Failed to submit feedback:', err)
-      return Response.json({ error: '提交失败，请稍后重试' }, { status: 500, headers })
+      return res.status(500).json({ error: '提交失败，请稍后重试' })
     }
   }
 
-  return Response.json({ error: 'Method not allowed' }, { status: 405, headers })
+  return res.status(405).json({ error: 'Method not allowed' })
 }

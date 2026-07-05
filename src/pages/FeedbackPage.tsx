@@ -35,6 +35,7 @@ const PAGE_LABELS: Record<string, string> = {
   '/map': '地区导航',
   '/team': '配队分析',
   '/report': '数据报告',
+  '/feedback': '反馈页',
 }
 
 export default function FeedbackPage() {
