@@ -6,19 +6,29 @@ import { getPokemonMeta } from '../seo/generateMeta'
 import { buildPokemonSchema, buildBreadcrumbList } from '../seo/schemaBuilders'
 import { renderTypeBadge, renderStatBar, formatLevel, renderMoveCategoryBadge } from '../utils/render'
 import { normalizeChainMap, buildEvolutionPaths } from '../utils/pokemon'
-import { getCombinedDefenseMatchups } from '../typeMatchups'
+import { getCombinedDefenseBuckets } from '../typeMatchups'
 import type { Pokemon } from '../types'
+
+interface NameMaps {
+  moveEffect: Record<string, string>
+  abilityDescription: Record<string, string>
+}
 
 export default function PokemonDetailPage() {
   const { id } = useParams()
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
+  const [nameMaps, setNameMaps] = useState<NameMaps | null>(null)
   const [loading, setLoading] = useState(true)
+  const [moveTab, setMoveTab] = useState<'level' | 'egg'>('level')
 
   useEffect(() => {
-    fetch('/data/pokemon.json')
-      .then(r => r.json())
-      .then((data: Pokemon[]) => {
-        setPokemons(data)
+    Promise.all([
+      fetch('/data/pokemon.json').then(r => r.json()),
+      fetch('/data/name-maps.json').then(r => r.json()),
+    ])
+      .then(([pData, nmData]: [Pokemon[], NameMaps]) => {
+        setPokemons(pData)
+        setNameMaps(nmData)
         setLoading(false)
       })
       .catch(err => {
@@ -35,15 +45,21 @@ export default function PokemonDetailPage() {
   if (!pokemon) return <div className="loading">未找到该宝可梦</div>
 
   const meta = getPokemonMeta(pokemon)
-  const matchups = getCombinedDefenseMatchups(pokemon.type1, pokemon.type2)
+  const buckets = getCombinedDefenseBuckets(pokemon.type1, pokemon.type2)
   const evoPaths = buildEvolutionPaths(pokemon.id, pokemonMap, evolutionGraph.evolvesTo, evolutionGraph.evolvesFrom)
-  const typeZh = [pokemon.type1, pokemon.type2]
-    .filter(Boolean)
-    .map(t => t)
-    .join('/')
+
+  const moveEffectMap = nameMaps?.moveEffect || {}
+  const abilityDescMap = nameMaps?.abilityDescription || {}
+
+  const hasLevelMoves = pokemon.levelMoves && pokemon.levelMoves.length > 0
+  const hasEggMoves = pokemon.eggMoves && pokemon.eggMoves.length > 0
+  const activeTab = moveTab === 'level' && hasLevelMoves ? 'level'
+    : moveTab === 'egg' && hasEggMoves ? 'egg'
+    : hasLevelMoves ? 'level'
+    : 'egg'
 
   return (
-    <div className="pokemon-detail-page detail-page">
+    <div className="pokemon-detail-page">
       <SEOMeta
         title={meta.title}
         description={meta.description}
@@ -61,254 +77,315 @@ export default function PokemonDetailPage() {
         ]}
       />
 
-      <Link to="/pokemon" className="back-link">← 返回精灵图鉴</Link>
-
-      <div className="detail-hero">
-        <div className="detail-hero-copy">
-          <h1>
-            {pokemon.nameZh} <span className="sub">{pokemon.nameEn}</span>
-          </h1>
-          <p className="lead">
-            {pokemon.nameZh}（{pokemon.nameEn}）是{typeZh}属性宝可梦，全国图鉴编号 #{pokemon.numericId}，第 {pokemon.generation} 世代登场，种族值总和 {pokemon.baseTotal}。
-            {pokemon.isFinalEvolution ? '已是最终形态。' : '还可以进化。'}
-          </p>
-          <div className="detail-hero-meta">
-            <span>#{pokemon.numericId}</span>
-            <span>{pokemon.id}</span>
-            <span>第 {pokemon.generation} 世代</span>
-          </div>
-          <div className="detail-hero-types">
-            {renderTypeBadge(pokemon.type1)}
-            {pokemon.type2 && renderTypeBadge(pokemon.type2)}
-          </div>
-        </div>
+      <div className="detail-breadcrumb">
+        <Link to="/pokemon" className="back-link">← 返回精灵图鉴</Link>
       </div>
 
-      <section className="detail-section">
-        <h2>种族值</h2>
-        {renderStatBar('HP', pokemon.baseHp, '#FF5959')}
-        {renderStatBar('攻击', pokemon.baseAtk, '#F5AC78')}
-        {renderStatBar('防御', pokemon.baseDef, '#FAE078')}
-        {renderStatBar('特攻', pokemon.baseSpatk, '#9DB7F5')}
-        {renderStatBar('特防', pokemon.baseSpdef, '#A7DB8D')}
-        {renderStatBar('速度', pokemon.baseSpd, '#FA92B2')}
-        {renderStatBar('总计', pokemon.baseTotal, '#888', 720)}
-      </section>
-
-      <section className="detail-section">
-        <h2>特性与被动</h2>
-        <ul>
-          <li><strong>特性 1：</strong> {pokemon.ability1Zh}（{pokemon.ability1}）</li>
-          {pokemon.ability2 && pokemon.ability2 !== 'NONE' && (
-            <li><strong>特性 2：</strong> {pokemon.ability2Zh}（{pokemon.ability2}）</li>
-          )}
-          {pokemon.abilityHidden && pokemon.abilityHidden !== 'NONE' && (
-            <li><strong>隐藏特性：</strong> {pokemon.abilityHiddenZh}（{pokemon.abilityHidden}）</li>
-          )}
-          {pokemon.passive && pokemon.passive !== 'NONE' && (
-            <li><strong>被动：</strong> {pokemon.passiveZh}（{pokemon.passive}）</li>
-          )}
-        </ul>
-      </section>
-
-      <section className="detail-section">
-        <h2>等级技能</h2>
-        {pokemon.levelMoves && pokemon.levelMoves.length > 0 ? (
-          <div className="table-container">
-            <table>
-              <thead>
-                <tr>
-                  <th>等级</th>
-                  <th>招式</th>
-                  <th>属性</th>
-                  <th>分类</th>
-                  <th>威力</th>
-                  <th>命中</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pokemon.levelMoves.map((move, idx) => (
-                  <tr key={idx}>
-                    <td>{formatLevel(move.level)}</td>
-                    <td>{move.moveZh}</td>
-                    <td>{move.type ? renderTypeBadge(move.type) : '-'}</td>
-                    <td>{renderMoveCategoryBadge(move.category)}</td>
-                    <td>{move.power ?? '-'}</td>
-                    <td>{move.accuracy ?? '-'}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      {/* === Hero === */}
+      <section className="dp-hero">
+        <div className="dp-hero-sprite">
+          <span className="dp-hero-sprite-num">#{pokemon.numericId}</span>
+        </div>
+        <div className="dp-hero-main">
+          <div className="dp-hero-title">
+            <span className="dp-hero-name">{pokemon.nameZh}</span>
+            <span className="dp-hero-en">{pokemon.nameEn}</span>
+            <span className="dp-hero-num">#{pokemon.numericId}</span>
           </div>
-        ) : (
-          <p>暂无等级技能数据。</p>
-        )}
-      </section>
-
-      <section className="detail-section">
-        <h2>蛋招</h2>
-        {pokemon.eggMoves && pokemon.eggMoves.length > 0 ? (
-          <div className="table-container">
-            <table>
-              <thead>
-                <tr>
-                  <th>招式</th>
-                  <th>属性</th>
-                  <th>分类</th>
-                  <th>威力</th>
-                  <th>命中</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pokemon.eggMoves.map((move, idx) => (
-                  <tr key={idx}>
-                    <td>{move.moveZh}</td>
-                    <td>{move.type ? renderTypeBadge(move.type) : '-'}</td>
-                    <td>{renderMoveCategoryBadge(move.category)}</td>
-                    <td>{move.power ?? '-'}</td>
-                    <td>{move.accuracy ?? '-'}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="dp-hero-tags">
+            {renderTypeBadge(pokemon.type1)}
+            {pokemon.type2 && renderTypeBadge(pokemon.type2)}
+            <span className="dp-tag-gen">第 {pokemon.generation} 世代</span>
+            {pokemon.starterCost != null && <span className="dp-tag-cost">费用 {pokemon.starterCost}</span>}
+            {pokemon.isFinalEvolution && <span className="dp-tag-final">最终形态</span>}
           </div>
-        ) : (
-          <p>无蛋招。</p>
-        )}
-      </section>
-
-      {pokemon.forms && pokemon.forms.length > 0 && (
-        <section className="detail-section">
-          <h2>形态（{pokemon.forms.length} 种）</h2>
-          <div className="form-grid">
-            {pokemon.forms.map((form, idx) => (
-              <div key={idx} className="form-card">
-                <div className="form-card-header">
-                  <span className="form-name">{form.formNameZh}</span>
-                  <span className="form-key">{form.formKey}</span>
-                </div>
-                <div className="form-types">
-                  {renderTypeBadge(form.type1)}
-                  {form.type2 && renderTypeBadge(form.type2)}
-                </div>
-                <div className="form-stats">
-                  <span>HP {form.baseHp}</span>
-                  <span>攻击 {form.baseAtk}</span>
-                  <span>防御 {form.baseDef}</span>
-                  <span>特攻 {form.baseSpatk}</span>
-                  <span>特防 {form.baseSpdef}</span>
-                  <span>速度 {form.baseSpd}</span>
-                  <span>总和 {form.baseTotal}</span>
-                </div>
-                <div className="form-abilities">
-                  {form.ability1 && form.ability1 !== 'NONE' && <span>特性1: {form.ability1}</span>}
-                  {form.ability2 && form.ability2 !== 'NONE' && <span>特性2: {form.ability2}</span>}
-                  {form.abilityHidden && form.abilityHidden !== 'NONE' && <span>隐藏: {form.abilityHidden}</span>}
-                  {form.passive && form.passive !== 'NONE' && <span>被动: {form.passive}</span>}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {pokemon.evolutions && pokemon.evolutions.length > 0 && (
-        <section className="detail-section">
-          <h2>进化条件</h2>
-          <div className="evolution-list">
-            {pokemon.evolutions.map((evo, idx) => (
-              <div key={idx} className="evolution-item">
-                <div className="evolution-target">
-                  <Link to={`/pokemon/${evo.toSpeciesId}`}>{evo.toSpeciesZh}</Link>
-                  <span className="sub">（{evo.toSpeciesId}）</span>
-                </div>
-                <div className="evolution-desc">
-                  {evo.descriptionZh}
-                  {evo.conditions.length > 0 && (
-                    <span> · 条件：{evo.conditions.join('，')}</span>
-                  )}
-                  {evo.itemZh && (
-                    <span> · 道具：{evo.itemZh}</span>
-                  )}
-                  {evo.preFormKey && (
-                    <span> · 前置形态：{evo.preFormKey}</span>
-                  )}
-                  {evo.evoFormKey && (
-                    <span> · 进化后形态：{evo.evoFormKey}</span>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      <section className="detail-section">
-        <h2>出现地区</h2>
-        {(pokemon.biomes || []).length > 0 ? (
-          <ul className="tag-list">
-            {pokemon.biomes.map(b => (
-              <li key={b.id}>
-                <Link to={`/biome/${b.id}`}>{b.nameZh}</Link>
-                {b.rarities && b.rarities.length > 0 && <span className="tag">{b.rarities.join('、')}</span>}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>暂无出现地区数据。</p>
-        )}
-      </section>
-
-      {evoPaths.length > 0 && (
-        <section className="detail-section">
-          <h2>进化链</h2>
-          {evoPaths.map((path, idx) => (
-            <div key={idx} className="evo-path-row">
-              {path.map((node, nidx) => (
-                <span key={node.id}>
-                  {nidx > 0 && <span className="evo-arrow"> → </span>}
-                  <Link to={`/pokemon/${node.id}`}>{node.nameZh}</Link>
-                </span>
-              ))}
-            </div>
-          ))}
-        </section>
-      )}
-
-      <section className="detail-section">
-        <h2>克制 / 被克制</h2>
-        <div className="type-matchup-grid">
-          <div>
-            <h3>抗性</h3>
-            {matchups.effective.length > 0 ? matchups.effective.map(item => (
-              <div key={item.type}>{renderTypeBadge(item.type)} ×{item.multiplier}</div>
-            )) : <p>无明显抗性</p>}
-          </div>
-          <div>
-            <h3>弱点</h3>
-            {matchups.weak.length > 0 ? matchups.weak.map(item => (
-              <div key={item.type}>{renderTypeBadge(item.type)} ×{item.multiplier}</div>
-            )) : <p>无明显弱点</p>}
-          </div>
+        </div>
+        <div className="dp-hero-info">
+          <div className="dp-info-item"><span className="dp-info-label">捕捉率</span><span className="dp-info-value">{(pokemon.catchProbability * 100).toFixed(1)}%</span></div>
+          <div className="dp-info-item"><span className="dp-info-label">捕获率</span><span className="dp-info-value">{pokemon.catchRate}</span></div>
+          {pokemon.eggTier && <div className="dp-info-item"><span className="dp-info-label">蛋招层级</span><span className="dp-info-value">{pokemon.eggTier}</span></div>}
+          <div className="dp-info-item"><span className="dp-info-label">最终形态</span><span className="dp-info-value">{pokemon.isFinalEvolution ? '是' : '否'}</span></div>
         </div>
       </section>
 
-      {pokemon.smogonSets && pokemon.smogonSets.length > 0 && (
-        <section className="detail-section">
-          <h2>推荐配招（Smogon）</h2>
-          {pokemon.smogonSets.map(set => (
-            <div key={set.name} className="smogon-set">
-              <h3>{set.name}</h3>
-              <p>{set.description}</p>
-              <ul>
-                {set.moves.map(moveId => (
-                  <li key={moveId}>{moveId}</li>
-                ))}
-              </ul>
+      {/* === 3-column grid === */}
+      <div className="dp-layout">
+        {/* Row 1: Stats | Abilities | Evo + Biomes */}
+        <div className="dp-card">
+          <h3 className="dp-card-title">种族值</h3>
+          <div className="dp-stat-grid">
+            {renderStatBar('HP', pokemon.baseHp, '#FF5959')}
+            {renderStatBar('攻击', pokemon.baseAtk, '#F5AC78')}
+            {renderStatBar('防御', pokemon.baseDef, '#FAE078')}
+            {renderStatBar('特攻', pokemon.baseSpatk, '#9DB7F5')}
+            {renderStatBar('特防', pokemon.baseSpdef, '#A7DB8D')}
+            {renderStatBar('速度', pokemon.baseSpd, '#FA92B2')}
+          </div>
+          <div className="dp-stat-total">
+            <span>总和</span>
+            <span className="dp-stat-total-value">{pokemon.baseTotal}</span>
+          </div>
+        </div>
+
+        <div className="dp-card">
+          <h3 className="dp-card-title">特性与被动</h3>
+          <div className="dp-ability-list">
+            {pokemon.ability1 && pokemon.ability1 !== 'NONE' && (
+              <div className="dp-ability-item">
+                <span className="dp-ability-label">特性</span>
+                <span className="dp-ability-name-wrap">
+                  <span className="dp-ability-name" data-desc={abilityDescMap[pokemon.ability1] || ''}>
+                    {pokemon.ability1Zh}
+                    <span className="dp-ability-en">{pokemon.ability1}</span>
+                  </span>
+                </span>
+              </div>
+            )}
+            {pokemon.ability2 && pokemon.ability2 !== 'NONE' && (
+              <div className="dp-ability-item">
+                <span className="dp-ability-label">特性</span>
+                <span className="dp-ability-name-wrap">
+                  <span className="dp-ability-name" data-desc={abilityDescMap[pokemon.ability2] || ''}>
+                    {pokemon.ability2Zh}
+                    <span className="dp-ability-en">{pokemon.ability2}</span>
+                  </span>
+                </span>
+              </div>
+            )}
+            {pokemon.abilityHidden && pokemon.abilityHidden !== 'NONE' && (
+              <div className="dp-ability-item">
+                <span className="dp-ability-label">隐藏</span>
+                <span className="dp-ability-name-wrap">
+                  <span className="dp-ability-name" data-desc={abilityDescMap[pokemon.abilityHidden] || ''}>
+                    {pokemon.abilityHiddenZh}
+                    <span className="dp-ability-en">{pokemon.abilityHidden}</span>
+                  </span>
+                </span>
+              </div>
+            )}
+            {pokemon.passive && pokemon.passive !== 'NONE' && (
+              <div className="dp-ability-item">
+                <span className="dp-ability-label">被动</span>
+                <span className="dp-ability-name-wrap">
+                  <span className="dp-ability-name" data-desc={abilityDescMap[pokemon.passive] || ''}>
+                    {pokemon.passiveZh}
+                    <span className="dp-ability-en">{pokemon.passive}</span>
+                  </span>
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="dp-card">
+          <h3 className="dp-card-title">进化链</h3>
+          {evoPaths.length > 0 ? (
+            <div className="dp-evo-chain">
+              {evoPaths.map((path, pidx) => (
+                <div key={pidx} className="dp-evo-path">
+                  {path.map((node, nidx) => (
+                    <span key={node.id} className="dp-evo-step">
+                      {nidx > 0 && <span className="dp-evo-arrow">→</span>}
+                      <Link
+                        to={`/pokemon/${node.id}`}
+                        className={`dp-evo-node ${node.id === pokemon.id ? 'dp-evo-current' : ''}`}
+                      >
+                        {node.nameZh}
+                      </Link>
+                    </span>
+                  ))}
+                </div>
+              ))}
             </div>
-          ))}
-        </section>
-      )}
+          ) : (
+            <p className="dp-empty">无进化链</p>
+          )}
+          <h3 className="dp-card-title dp-mt">出现地区 <span className="dp-badge">{pokemon.biomes?.length || 0}处</span></h3>
+          {pokemon.biomes && pokemon.biomes.length > 0 ? (
+            <div className="dp-biome-list">
+              {pokemon.biomes.map(b => (
+                <Link key={b.id} to={`/biome/${b.id}`} className="dp-biome-tag">
+                  {b.nameZh}
+                  {b.rarities && b.rarities.length > 0 && <span className="dp-biome-rarity">{b.rarities.join('、')}</span>}
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <p className="dp-empty">暂无出现地区</p>
+          )}
+        </div>
+
+        {/* Row 2: Moves (full width) */}
+        <div className="dp-card dp-card-full">
+          <div className="dp-card-title-row">
+            <h3 className="dp-card-title" style={{ margin: 0, border: 'none', paddingBottom: 0 }}>招式</h3>
+            <div className="dp-tab-bar">
+              <button
+                className={activeTab === 'level' ? 'active' : ''}
+                onClick={() => setMoveTab('level')}
+                disabled={!hasLevelMoves}
+              >等级技能</button>
+              <button
+                className={activeTab === 'egg' ? 'active' : ''}
+                onClick={() => setMoveTab('egg')}
+                disabled={!hasEggMoves}
+              >蛋招</button>
+            </div>
+          </div>
+          {activeTab === 'level' && hasLevelMoves ? (
+            <div className="table-container">
+              <table className="dp-moves-table">
+                <thead>
+                  <tr>
+                    <th>等级</th><th>招式</th><th>属性</th><th>分类</th>
+                    <th>威力</th><th>命中</th><th>详情</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pokemon.levelMoves.map((move, idx) => (
+                    <tr key={idx}>
+                      <td>{formatLevel(move.level)}</td>
+                      <td>{move.moveZh}</td>
+                      <td>{move.type ? renderTypeBadge(move.type) : '-'}</td>
+                      <td>{renderMoveCategoryBadge(move.category)}</td>
+                      <td>{move.power ?? '-'}</td>
+                      <td>{move.accuracy ?? '-'}</td>
+                      <td className="dp-move-desc" title={moveEffectMap[move.moveId] || ''}>
+                        {moveEffectMap[move.moveId] || '-'}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : activeTab === 'egg' && hasEggMoves ? (
+            <div className="table-container">
+              <table className="dp-moves-table">
+                <thead>
+                  <tr>
+                    <th>招式</th><th>属性</th><th>分类</th>
+                    <th>威力</th><th>命中</th><th>详情</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pokemon.eggMoves.map((move, idx) => (
+                    <tr key={idx}>
+                      <td>{move.moveZh}</td>
+                      <td>{move.type ? renderTypeBadge(move.type) : '-'}</td>
+                      <td>{renderMoveCategoryBadge(move.category)}</td>
+                      <td>{move.power ?? '-'}</td>
+                      <td>{move.accuracy ?? '-'}</td>
+                      <td className="dp-move-desc" title={moveEffectMap[move.moveId] || ''}>
+                        {moveEffectMap[move.moveId] || '-'}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p className="dp-empty">暂无招式数据</p>
+          )}
+        </div>
+
+        {/* Row 3: Type Effectiveness (full width) */}
+        <div className="dp-card dp-card-full">
+          <h3 className="dp-card-title">属性克制关系</h3>
+          <div className="dp-effect-grid">
+            {buckets.immune.length > 0 && (
+              <div className="dp-effect-group dp-effect-immune">
+                <div className="dp-effect-head"><span>免疫</span><span>×0</span></div>
+                <div className="dp-effect-badges">
+                  {buckets.immune.map(item => renderTypeBadge(item.type))}
+                </div>
+              </div>
+            )}
+            {buckets.doubleResist.length > 0 && (
+              <div className="dp-effect-group dp-effect-resist">
+                <div className="dp-effect-head"><span>1/4 抗性</span><span>×0.25</span></div>
+                <div className="dp-effect-badges">
+                  {buckets.doubleResist.map(item => renderTypeBadge(item.type))}
+                </div>
+              </div>
+            )}
+            {buckets.resist.length > 0 && (
+              <div className="dp-effect-group dp-effect-resist">
+                <div className="dp-effect-head"><span>1/2 抗性</span><span>×0.5</span></div>
+                <div className="dp-effect-badges">
+                  {buckets.resist.map(item => renderTypeBadge(item.type))}
+                </div>
+              </div>
+            )}
+            {buckets.weak.length > 0 && (
+              <div className="dp-effect-group dp-effect-weak">
+                <div className="dp-effect-head"><span>2倍弱点</span><span>×2</span></div>
+                <div className="dp-effect-badges">
+                  {buckets.weak.map(item => renderTypeBadge(item.type))}
+                </div>
+              </div>
+            )}
+            {buckets.quadWeak.length > 0 && (
+              <div className="dp-effect-group dp-effect-weak">
+                <div className="dp-effect-head"><span>4倍弱点</span><span>×4</span></div>
+                <div className="dp-effect-badges">
+                  {buckets.quadWeak.map(item => renderTypeBadge(item.type))}
+                </div>
+              </div>
+            )}
+            {buckets.immune.length === 0 && buckets.doubleResist.length === 0 && buckets.resist.length === 0 && buckets.weak.length === 0 && buckets.quadWeak.length === 0 && (
+              <p className="dp-empty">无明显克制关系</p>
+            )}
+          </div>
+        </div>
+
+        {/* Forms */}
+        {pokemon.forms && pokemon.forms.length > 0 && (
+          <div className="dp-card dp-card-full">
+            <h3 className="dp-card-title">形态（{pokemon.forms.length} 种）</h3>
+            <div className="form-grid">
+              {pokemon.forms.map((form, idx) => (
+                <div key={idx} className="form-card">
+                  <div className="form-card-header">
+                    <span className="form-name">{form.formNameZh}</span>
+                    <span className="form-key">{form.formKey}</span>
+                  </div>
+                  <div className="form-types">
+                    {renderTypeBadge(form.type1)}
+                    {form.type2 && renderTypeBadge(form.type2)}
+                  </div>
+                  <div className="form-stats">
+                    <span>HP {form.baseHp}</span>
+                    <span>攻击 {form.baseAtk}</span>
+                    <span>防御 {form.baseDef}</span>
+                    <span>特攻 {form.baseSpatk}</span>
+                    <span>特防 {form.baseSpdef}</span>
+                    <span>速度 {form.baseSpd}</span>
+                    <span>总和 {form.baseTotal}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Smogon Sets */}
+        {pokemon.smogonSets && pokemon.smogonSets.length > 0 && (
+          <div className="dp-card dp-card-full">
+            <h3 className="dp-card-title">推荐配招（Smogon）</h3>
+            {pokemon.smogonSets.map(set => (
+              <div key={set.name} className="smogon-set">
+                <h3>{set.name}</h3>
+                <p>{set.description}</p>
+                <ul>
+                  {set.moves.map(moveId => (
+                    <li key={moveId}>{moveId}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   )
 }
