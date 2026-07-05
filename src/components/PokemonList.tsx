@@ -66,7 +66,7 @@ export default function PokemonList() {
     Promise.all(
       generations.map(async generation => {
         const atlasKey = `pokemon_icons_${generation}`
-        const response = await fetch(`${REMOTE_ASSET_BASE}/images/${atlasKey}.json`)
+        const response = await fetch(`${REMOTE_ASSET_BASE}/images/${atlasKey}.json`, { cache: 'no-cache' })
         if (!response.ok) return null
         const raw = await response.json() as RawTextureAtlas
         const atlas = buildTextureAtlas(raw, `${REMOTE_ASSET_BASE}/images`)
@@ -97,7 +97,7 @@ export default function PokemonList() {
     Promise.all(
       missing.map(async p => {
         try {
-          const response = await fetch(`${REMOTE_ASSET_BASE}/images/pokemon/${p.numericId}.json`)
+          const response = await fetch(`${REMOTE_ASSET_BASE}/images/pokemon/${p.numericId}.json`, { cache: 'no-cache' })
           if (!response.ok) return null
           const raw = await response.json() as RawTextureAtlas
           const atlas = buildTextureAtlas(raw, `${REMOTE_ASSET_BASE}/images/pokemon`)

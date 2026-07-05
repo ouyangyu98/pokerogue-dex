@@ -48,7 +48,7 @@ export default function PokemonDetailPage() {
   useEffect(() => {
     if (!pokemon) return
     let cancelled = false
-    fetch(`${REMOTE_ASSET_BASE}/images/pokemon/${pokemon.numericId}.json`)
+    fetch(`${REMOTE_ASSET_BASE}/images/pokemon/${pokemon.numericId}.json`, { cache: 'no-cache' })
       .then(r => (r.ok ? r.json() : null))
       .then(raw => {
         if (cancelled || !raw) return
