@@ -2474,6 +2474,46 @@ tr.clickable {
   }
 }
 
+/* ===== 右侧悬浮反馈按钮 ===== */
+.feedback-fab {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-radius: 12px 0 0 12px;
+  box-shadow: -2px 4px 16px rgba(102, 126, 234, 0.3);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 999;
+  transition: padding-right 0.2s, box-shadow 0.2s;
+  writing-mode: vertical-rl;
+  letter-spacing: 2px;
+}
+
+.feedback-fab:hover {
+  padding-right: 14px;
+  box-shadow: -4px 6px 24px rgba(102, 126, 234, 0.45);
+}
+
+.feedback-fab svg {
+  transform: rotate(90deg);
+}
+
+@media (max-width: 600px) {
+  .feedback-fab {
+    padding: 10px 8px;
+    font-size: 11px;
+  }
+}
+
 /* ===== 反馈留言页 ===== */
 .feedback-page {
   max-width: 760px;
