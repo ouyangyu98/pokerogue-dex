@@ -7,6 +7,7 @@ import { buildPokemonSchema, buildBreadcrumbList } from '../seo/schemaBuilders'
 import { renderTypeBadge, renderStatBar, formatLevel, renderMoveCategoryBadge } from '../utils/render'
 import { normalizeChainMap, buildEvolutionPaths } from '../utils/pokemon'
 import { getCombinedDefenseBuckets } from '../typeMatchups'
+import { buildTextureAtlas, getAtlasSpriteStyle, getPokemonSpriteFrame, DEFAULT_SPRITE_SOURCE_SIZE, type TextureAtlas } from '../utils/atlas'
 import type { Pokemon } from '../types'
 
 interface NameMaps {
@@ -14,10 +15,13 @@ interface NameMaps {
   abilityDescription: Record<string, string>
 }
 
+const REMOTE_ASSET_BASE = 'https://raw.githubusercontent.com/pagefaultgames/pokerogue-assets/beta'
+
 export default function PokemonDetailPage() {
   const { id } = useParams()
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
   const [nameMaps, setNameMaps] = useState<NameMaps | null>(null)
+  const [spriteAtlas, setSpriteAtlas] = useState<TextureAtlas | null>(null)
   const [loading, setLoading] = useState(true)
   const [moveTab, setMoveTab] = useState<'level' | 'egg'>('level')
 
@@ -41,6 +45,19 @@ export default function PokemonDetailPage() {
   const pokemonMap = useMemo(() => new Map(pokemons.map(p => [p.id, p])), [pokemons])
   const evolutionGraph = useMemo(() => normalizeChainMap(pokemons), [pokemons])
 
+  useEffect(() => {
+    if (!pokemon) return
+    let cancelled = false
+    fetch(`${REMOTE_ASSET_BASE}/images/pokemon/${pokemon.numericId}.json`)
+      .then(r => (r.ok ? r.json() : null))
+      .then(raw => {
+        if (cancelled || !raw) return
+        setSpriteAtlas(buildTextureAtlas(raw, `${REMOTE_ASSET_BASE}/images/pokemon`))
+      })
+      .catch(err => console.error('Failed to load sprite atlas:', err))
+    return () => { cancelled = true }
+  }, [pokemon?.numericId])
+
   if (loading) return <div className="loading">加载中...</div>
   if (!pokemon) return <div className="loading">未找到该宝可梦</div>
 
@@ -50,6 +67,11 @@ export default function PokemonDetailPage() {
 
   const moveEffectMap = nameMaps?.moveEffect || {}
   const abilityDescMap = nameMaps?.abilityDescription || {}
+
+  const spriteFrame = spriteAtlas ? getPokemonSpriteFrame(spriteAtlas) : null
+  const spriteStyle = spriteAtlas && spriteFrame
+    ? getAtlasSpriteStyle(spriteAtlas, spriteFrame, spriteFrame.sourceSize || DEFAULT_SPRITE_SOURCE_SIZE, 80)
+    : null
 
   const hasLevelMoves = pokemon.levelMoves && pokemon.levelMoves.length > 0
   const hasEggMoves = pokemon.eggMoves && pokemon.eggMoves.length > 0
@@ -84,7 +106,11 @@ export default function PokemonDetailPage() {
       {/* === Hero === */}
       <section className="dp-hero">
         <div className="dp-hero-sprite">
-          <span className="dp-hero-sprite-num">#{pokemon.numericId}</span>
+          {spriteStyle ? (
+            <span className="dp-hero-sprite-img" style={spriteStyle} />
+          ) : (
+            <span className="dp-hero-sprite-num">#{pokemon.numericId}</span>
+          )}
         </div>
         <div className="dp-hero-main">
           <div className="dp-hero-title">

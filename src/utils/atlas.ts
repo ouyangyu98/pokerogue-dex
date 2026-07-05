@@ -21,12 +21,24 @@ export function normalizeFrameName(filename: string) {
   return filename.replace(/\.png$/i, '')
 }
 
+function getCacheBuster(raw: any): string {
+  // Use the TexturePacker smartupdate hash so the image URL changes whenever
+  // the atlas is repacked. This prevents stale cached PNGs from being paired
+  // with fresh JSON frame coordinates, which causes sprite corruption.
+  const smartupdate = raw.meta?.smartupdate || ''
+  const match = smartupdate.match(/:([a-f0-9]{32}):/)
+  return match ? match[1].slice(0, 12) : ''
+}
+
 export function buildTextureAtlas(raw: any, imageBaseUrl: string): TextureAtlas | null {
   const texture = raw.textures?.[0]
   if (!texture || !Array.isArray(texture.frames)) return null
 
+  const cacheBuster = getCacheBuster(raw)
+  const query = cacheBuster ? `?v=${cacheBuster}` : ''
+
   return {
-    imageUrl: `${imageBaseUrl}/${texture.image}`,
+    imageUrl: `${imageBaseUrl}/${texture.image}${query}`,
     width: texture.size.w,
     height: texture.size.h,
     frames: Object.fromEntries(texture.frames.map((frame: any) => [normalizeFrameName(frame.filename), frame])),

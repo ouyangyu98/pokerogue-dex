@@ -2037,6 +2037,12 @@ tr.clickable {
   font-weight: 700;
   color: #9ca3af;
 }
+.dp-hero-sprite-img {
+  display: inline-block;
+  max-width: 100%;
+  max-height: 100%;
+  image-rendering: pixelated;
+}
 .dp-hero-main {
   display: flex;
   flex-direction: column;
