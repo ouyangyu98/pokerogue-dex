@@ -9,6 +9,7 @@ interface FeedbackItem {
 const REPO = process.env.GITHUB_REPO || 'ouyangyu98/pokerogue-dex'
 const TOKEN = process.env.GITHUB_TOKEN || ''
 const LABEL = 'feedback'
+const TITLE_PREFIX = '反馈 · '
 const MAX_CONTENT_LENGTH = 500
 const MAX_NICKNAME_LENGTH = 20
 
@@ -42,29 +43,33 @@ function parseIssueToFeedback(issue: any): FeedbackItem {
 }
 
 async function ensureLabelExists(): Promise<void> {
-  // Check if label exists
-  const checkResp = await fetch(`${GITHUB_API}/repos/${REPO}/labels/${LABEL}`, {
-    headers: {
-      Accept: 'application/vnd.github.v3+json',
-      ...(TOKEN ? { Authorization: `token ${TOKEN}` } : {}),
-    },
-  })
-  if (checkResp.ok) return
+  try {
+    const checkResp = await fetch(`${GITHUB_API}/repos/${REPO}/labels/${LABEL}`, {
+      headers: {
+        Accept: 'application/vnd.github.v3+json',
+        ...(TOKEN ? { Authorization: `token ${TOKEN}` } : {}),
+      },
+    })
+    if (checkResp.ok) return
 
-  // Label doesn't exist, create it
-  await fetch(`${GITHUB_API}/repos/${REPO}/labels`, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/vnd.github.v3+json',
-      Authorization: `token ${TOKEN}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      name: LABEL,
-      color: '667eea',
-      description: '用户页面反馈',
-    }),
-  })
+    // Label doesn't exist, try to create it
+    await fetch(`${GITHUB_API}/repos/${REPO}/labels`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/vnd.github.v3+json',
+        Authorization: `token ${TOKEN}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: LABEL,
+        color: '667eea',
+        description: '用户页面反馈',
+      }),
+    })
+  } catch (err) {
+    // Non-fatal: continue without the label
+    console.error('Label setup skipped:', err)
+  }
 }
 
 export default async function handler(req: any, res: any) {
@@ -80,8 +85,10 @@ export default async function handler(req: any, res: any) {
   // GET — list feedback issues
   if (req.method === 'GET') {
     try {
+      // Fetch all open issues (no label filter); feedback items are identified
+      // by the title prefix because some fine-grained tokens cannot apply labels.
       const resp = await fetch(
-        `${GITHUB_API}/repos/${REPO}/issues?labels=${LABEL}&state=open&per_page=100&sort=created&direction=desc`,
+        `${GITHUB_API}/repos/${REPO}/issues?state=open&per_page=100&sort=created&direction=desc`,
         {
           headers: {
             Accept: 'application/vnd.github.v3+json',
@@ -97,7 +104,7 @@ export default async function handler(req: any, res: any) {
 
       const issues = await resp.json()
       const items: FeedbackItem[] = (issues as any[])
-        .filter(issue => !issue.pull_request)
+        .filter(issue => !issue.pull_request && issue.title?.startsWith(TITLE_PREFIX))
         .map(parseIssueToFeedback)
 
       return res.status(200).json({ items })
@@ -132,10 +139,10 @@ export default async function handler(req: any, res: any) {
       const meta = JSON.stringify({ nickname, page, createdAt })
 
       const titleContent = content.length > 50 ? content.slice(0, 50) + '...' : content
-      const title = `反馈 · ${nickname}: ${titleContent}`
+      const title = `${TITLE_PREFIX}${nickname}: ${titleContent}`
       const body = `${content}\n\n<!--feedback-meta:${meta}-->`
 
-      // Ensure the feedback label exists
+      // Best-effort label setup; some fine-grained tokens cannot manage labels
       await ensureLabelExists()
 
       const resp = await fetch(`${GITHUB_API}/repos/${REPO}/issues`, {
