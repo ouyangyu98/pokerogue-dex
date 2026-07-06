@@ -23,6 +23,16 @@ export interface AbilityFilterProps {
   emptyLabel?: string
 }
 
+export interface MoveFilterProps {
+  value: string
+  options: SelectOption[]
+  onChange: (value: string) => void
+  label?: string
+  emptyLabel?: string
+  placeholder?: string
+  kindLabel?: string
+}
+
 export interface BiomeGroup {
   step: number
   label: string
@@ -168,6 +178,68 @@ export function BiomeFilter({ value, groups, allBiomes, onChange, label = '地�
 }
 
 export function AbilityFilter({ value, options, onChange, label = '特性/被动筛选', emptyLabel = '全部特性/被动' }: AbilityFilterProps) {
+  return (
+    <SearchableFilter
+      value={value}
+      options={options}
+      onChange={onChange}
+      label={label}
+      emptyLabel={emptyLabel}
+      placeholder="输入特性或被动名称..."
+      emptyText="未找到匹配的特性/被动"
+      dropdownClassName="ability-filter-dropdown"
+      triggerClassName="ability-filter-trigger"
+      menuClassName="ability-filter-menu"
+      inputClassName="ability-filter-input"
+    />
+  )
+}
+
+export function MoveFilter({ value, options, onChange, label = '技能筛选', emptyLabel = '全部技能', placeholder = '输入技能名称...', kindLabel = '技能' }: MoveFilterProps) {
+  return (
+    <SearchableFilter
+      value={value}
+      options={options}
+      onChange={onChange}
+      label={label}
+      emptyLabel={emptyLabel}
+      placeholder={placeholder}
+      emptyText={`未找到匹配的${kindLabel}`}
+      dropdownClassName="move-filter-dropdown"
+      triggerClassName="move-filter-trigger"
+      menuClassName="move-filter-menu"
+      inputClassName="move-filter-input"
+    />
+  )
+}
+
+interface SearchableFilterProps {
+  value: string
+  options: SelectOption[]
+  onChange: (value: string) => void
+  label: string
+  emptyLabel: string
+  placeholder: string
+  emptyText: string
+  dropdownClassName: string
+  triggerClassName: string
+  menuClassName: string
+  inputClassName: string
+}
+
+function SearchableFilter({
+  value,
+  options,
+  onChange,
+  label,
+  emptyLabel,
+  placeholder,
+  emptyText,
+  dropdownClassName,
+  triggerClassName,
+  menuClassName,
+  inputClassName,
+}: SearchableFilterProps) {
   const { open, setOpen, rootRef } = useDropdownOpenState()
   const [query, setQuery] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
@@ -201,21 +273,21 @@ export function AbilityFilter({ value, options, onChange, label = '特性/被动
   }
 
   return (
-    <div className="ability-filter-dropdown filter-dropdown" ref={rootRef}>
+    <div className={`${dropdownClassName} filter-dropdown`} ref={rootRef}>
       <button
         type="button"
-        className={`filter-trigger ability-filter-trigger ${open ? 'is-open' : ''} ${value ? 'has-value' : ''}`}
+        className={`filter-trigger ${triggerClassName} ${open ? 'is-open' : ''} ${value ? 'has-value' : ''}`}
         onClick={() => setOpen(current => !current)}
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label={label}
       >
-        <span className="ability-filter-trigger-text">
+        <span className="searchable-filter-trigger-text">
           {selectedLabel || emptyLabel}
         </span>
         {value ? (
           <span
-            className="ability-filter-trigger-clear"
+            className="searchable-filter-trigger-clear"
             onClick={e => {
               e.stopPropagation()
               handleClear()
@@ -230,15 +302,15 @@ export function AbilityFilter({ value, options, onChange, label = '特性/被动
         )}
       </button>
       {open && (
-        <div className="ability-filter-menu" role="listbox" aria-label={label}>
-          <div className="ability-filter-search">
+        <div className={`${menuClassName} searchable-filter-menu`} role="listbox" aria-label={label}>
+          <div className="searchable-filter-search">
             <input
               ref={inputRef}
               type="text"
               value={query}
               onChange={e => setQuery(e.target.value)}
-              placeholder="输入特性或被动名称..."
-              className="ability-filter-input"
+              placeholder={placeholder}
+              className={`${inputClassName} searchable-filter-input`}
               onKeyDown={e => {
                 if (e.key === 'Escape') {
                   setOpen(false)
@@ -248,7 +320,7 @@ export function AbilityFilter({ value, options, onChange, label = '特性/被动
               }}
             />
           </div>
-          <div className="ability-filter-options">
+          <div className="searchable-filter-options">
             <button
               type="button"
               className={`filter-option ${!value ? 'is-selected' : ''}`}
@@ -268,7 +340,7 @@ export function AbilityFilter({ value, options, onChange, label = '特性/被动
               </button>
             ))}
             {filteredOptions.length === 0 && query && (
-              <div className="ability-filter-empty">未找到匹配的特性/被动</div>
+              <div className="searchable-filter-empty">{emptyText}</div>
             )}
           </div>
         </div>
