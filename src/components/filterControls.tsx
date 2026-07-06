@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 
 export interface SelectOption {
   value: string
@@ -13,6 +13,14 @@ export interface SelectFilterProps {
   label: string
   emptyLabel?: string
   minWidth?: number
+}
+
+export interface AbilityFilterProps {
+  value: string
+  options: SelectOption[]
+  onChange: (value: string) => void
+  label?: string
+  emptyLabel?: string
 }
 
 export interface BiomeGroup {
@@ -153,6 +161,116 @@ export function BiomeFilter({ value, groups, allBiomes, onChange, label = '地�
               </div>
             </div>
           ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export function AbilityFilter({ value, options, onChange, label = '特性/被动筛选', emptyLabel = '全部特性/被动' }: AbilityFilterProps) {
+  const { open, setOpen, rootRef } = useDropdownOpenState()
+  const [query, setQuery] = useState('')
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const selectedLabel = useMemo(() => {
+    if (!value) return ''
+    return options.find(o => o.value === value)?.label || value
+  }, [value, options])
+
+  const filteredOptions = useMemo(() => {
+    const keyword = query.trim().toLowerCase()
+    if (!keyword) return options
+    return options.filter(o => o.label.toLowerCase().includes(keyword) || o.value.toLowerCase().includes(keyword))
+  }, [options, query])
+
+  useEffect(() => {
+    if (open && inputRef.current) {
+      inputRef.current.focus()
+    }
+  }, [open])
+
+  function handleSelect(nextValue: string) {
+    onChange(nextValue)
+    setQuery('')
+    setOpen(false)
+  }
+
+  function handleClear() {
+    onChange('')
+    setQuery('')
+  }
+
+  return (
+    <div className="ability-filter-dropdown filter-dropdown" ref={rootRef}>
+      <button
+        type="button"
+        className={`filter-trigger ability-filter-trigger ${open ? 'is-open' : ''} ${value ? 'has-value' : ''}`}
+        onClick={() => setOpen(current => !current)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label={label}
+      >
+        <span className="ability-filter-trigger-text">
+          {selectedLabel || emptyLabel}
+        </span>
+        {value ? (
+          <span
+            className="ability-filter-trigger-clear"
+            onClick={e => {
+              e.stopPropagation()
+              handleClear()
+            }}
+            role="button"
+            aria-label="清除"
+          >
+            ×
+          </span>
+        ) : (
+          <span className="filter-trigger-arrow">▾</span>
+        )}
+      </button>
+      {open && (
+        <div className="ability-filter-menu" role="listbox" aria-label={label}>
+          <div className="ability-filter-search">
+            <input
+              ref={inputRef}
+              type="text"
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+              placeholder="输入特性或被动名称..."
+              className="ability-filter-input"
+              onKeyDown={e => {
+                if (e.key === 'Escape') {
+                  setOpen(false)
+                } else if (e.key === 'Enter' && filteredOptions.length > 0) {
+                  handleSelect(filteredOptions[0].value)
+                }
+              }}
+            />
+          </div>
+          <div className="ability-filter-options">
+            <button
+              type="button"
+              className={`filter-option ${!value ? 'is-selected' : ''}`}
+              onClick={() => handleSelect('')}
+            >
+              <span>{emptyLabel}</span>
+            </button>
+            {filteredOptions.map(option => (
+              <button
+                key={option.value}
+                type="button"
+                className={`filter-option ${value === option.value ? 'is-selected' : ''}`}
+                onClick={() => handleSelect(option.value)}
+              >
+                <span>{option.label}</span>
+                {option.meta ? <span className="filter-option-meta">{option.meta}</span> : null}
+              </button>
+            ))}
+            {filteredOptions.length === 0 && query && (
+              <div className="ability-filter-empty">未找到匹配的特性/被动</div>
+            )}
+          </div>
         </div>
       )}
     </div>

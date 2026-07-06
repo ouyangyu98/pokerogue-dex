@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { BiomeFilter, SelectFilter, type SelectOption } from './filterControls'
+import { BiomeFilter, SelectFilter, AbilityFilter, type SelectOption } from './filterControls'
 import { ActiveFilterTags } from './ActiveFilterTags'
 import { typeNames } from '../typeMatchups'
 import { buildTextureAtlas, getPokemonIconFrame, type TextureAtlas } from '../utils/atlas'
@@ -42,6 +42,7 @@ export default function PokemonList() {
     allBiomes,
     groupedBiomes,
     allRarities,
+    allAbilities,
   } = usePokemonList()
 
   const [iconAtlases, setIconAtlases] = useState<Record<string, TextureAtlas>>({})
@@ -167,6 +168,7 @@ export default function PokemonList() {
         <SelectFilter value={filters.genFilter} options={genFilterOptions} onChange={setters.setGenFilter} label="世代筛选" emptyLabel="全部世代" />
         <BiomeFilter value={filters.biomeFilter} groups={groupedBiomes} allBiomes={allBiomes} onChange={setters.setBiomeFilter} label="地区筛选" emptyLabel="全部地区" />
         <SelectFilter value={filters.rarityFilter} options={rarityFilterOptions} onChange={setters.setRarityFilter} label="地区稀有度筛选" emptyLabel="全部稀有度" />
+        <AbilityFilter value={filters.abilityFilter} options={allAbilities} onChange={setters.setAbilityFilter} label="特性/被动筛选" emptyLabel="全部特性/被动" />
         <SelectFilter value={filters.hasPassiveFilter} options={passiveFilterOptions} onChange={setters.setHasPassiveFilter} label="被动筛选" emptyLabel="被动不限" />
         <SelectFilter value={filters.hasEggMoveFilter} options={eggMoveFilterOptions} onChange={setters.setHasEggMoveFilter} label="蛋招筛选" emptyLabel="蛋招不限" />
         <SelectFilter value={filters.hasHiddenAbilityFilter} options={hiddenAbilityFilterOptions} onChange={setters.setHasHiddenAbilityFilter} label="隐藏特性筛选" emptyLabel="隐藏特性不限" />
@@ -196,6 +198,7 @@ export default function PokemonList() {
             { key: 'gen', label: '世代', value: filters.genFilter, display: filters.genFilter ? `第 ${filters.genFilter} 世代` : '', onClear: () => setters.setGenFilter('') },
             { key: 'biome', label: '地区', value: filters.biomeFilter, display: filters.biomeFilter ? (allBiomes.find(b => b[0] === filters.biomeFilter)?.[1] || filters.biomeFilter) : '', onClear: () => setters.setBiomeFilter('') },
             { key: 'rarity', label: '稀有度', value: filters.rarityFilter, display: filters.rarityFilter || '', onClear: () => setters.setRarityFilter('') },
+            { key: 'ability', label: '特性/被动', value: filters.abilityFilter, display: filters.abilityFilter ? (allAbilities.find(a => a.value === filters.abilityFilter)?.label || filters.abilityFilter) : '', onClear: () => setters.setAbilityFilter('') },
             { key: 'passive', label: '被动', value: filters.hasPassiveFilter, display: filters.hasPassiveFilter === 'yes' ? '有被动' : filters.hasPassiveFilter === 'no' ? '无被动' : '', onClear: () => setters.setHasPassiveFilter('') },
             { key: 'egg', label: '蛋招', value: filters.hasEggMoveFilter, display: filters.hasEggMoveFilter === 'yes' ? '有蛋招' : filters.hasEggMoveFilter === 'no' ? '无蛋招' : '', onClear: () => setters.setHasEggMoveFilter('') },
             { key: 'hidden', label: '隐藏特性', value: filters.hasHiddenAbilityFilter, display: filters.hasHiddenAbilityFilter === 'yes' ? '有隐藏特性' : filters.hasHiddenAbilityFilter === 'no' ? '无隐藏特性' : '', onClear: () => setters.setHasHiddenAbilityFilter('') },

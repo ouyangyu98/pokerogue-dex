@@ -12,6 +12,7 @@ export interface PokemonListFilters {
   genFilter: string
   biomeFilter: string
   rarityFilter: string
+  abilityFilter: string
   hasPassiveFilter: string
   hasEggMoveFilter: string
   hasHiddenAbilityFilter: string
@@ -45,6 +46,7 @@ export interface UsePokemonListResult {
     setGenFilter: (v: string) => void
     setBiomeFilter: (v: string) => void
     setRarityFilter: (v: string) => void
+    setAbilityFilter: (v: string) => void
     setHasPassiveFilter: (v: string) => void
     setHasEggMoveFilter: (v: string) => void
     setHasHiddenAbilityFilter: (v: string) => void
@@ -75,6 +77,7 @@ export interface UsePokemonListResult {
   allBiomes: Array<[string, string]>
   groupedBiomes: Array<{ step: number; label: string; items: Array<[string, string]> }>
   allRarities: string[]
+  allAbilities: Array<{ value: string; label: string; meta?: string }>
 }
 
 const biomeStepOrder: Record<string, number> = {
@@ -97,6 +100,7 @@ export function usePokemonList(): UsePokemonListResult {
   const [genFilter, setGenFilter] = useState('')
   const [biomeFilter, setBiomeFilter] = useState('')
   const [rarityFilter, setRarityFilter] = useState('')
+  const [abilityFilter, setAbilityFilter] = useState('')
   const [hasPassiveFilter, setHasPassiveFilter] = useState('')
   const [hasEggMoveFilter, setHasEggMoveFilter] = useState('')
   const [hasHiddenAbilityFilter, setHasHiddenAbilityFilter] = useState('')
@@ -131,6 +135,7 @@ export function usePokemonList(): UsePokemonListResult {
         if (parsed.genFilter !== undefined) setGenFilter(parsed.genFilter)
         if (parsed.biomeFilter !== undefined) setBiomeFilter(parsed.biomeFilter)
         if (parsed.rarityFilter !== undefined) setRarityFilter(parsed.rarityFilter)
+        if (parsed.abilityFilter !== undefined) setAbilityFilter(parsed.abilityFilter)
         if (parsed.hasPassiveFilter !== undefined) setHasPassiveFilter(parsed.hasPassiveFilter)
         if (parsed.hasEggMoveFilter !== undefined) setHasEggMoveFilter(parsed.hasEggMoveFilter)
         if (parsed.hasHiddenAbilityFilter !== undefined) setHasHiddenAbilityFilter(parsed.hasHiddenAbilityFilter)
@@ -161,7 +166,7 @@ export function usePokemonList(): UsePokemonListResult {
 
   useEffect(() => {
     const state = {
-      search, typeFilter, genFilter, biomeFilter, rarityFilter,
+      search, typeFilter, genFilter, biomeFilter, rarityFilter, abilityFilter,
       hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter,
       costMin, costMax, totalMin, totalMax,
       hpMin, hpMax, atkMin, atkMax, defMin, defMax,
@@ -169,7 +174,7 @@ export function usePokemonList(): UsePokemonListResult {
       sortBy, sortDesc,
     }
     localStorage.setItem(FILTER_STORAGE_KEY, JSON.stringify(state))
-  }, [search, typeFilter, genFilter, biomeFilter, rarityFilter, hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter, costMin, costMax, totalMin, totalMax, hpMin, hpMax, atkMin, atkMax, defMin, defMax, spatkMin, spatkMax, spdefMin, spdefMax, spdMin, spdMax, sortBy, sortDesc])
+  }, [search, typeFilter, genFilter, biomeFilter, rarityFilter, abilityFilter, hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter, costMin, costMax, totalMin, totalMax, hpMin, hpMax, atkMin, atkMax, defMin, defMax, spatkMin, spatkMax, spdefMin, spdefMax, spdMin, spdMax, sortBy, sortDesc])
 
   // 数据加载
   useEffect(() => {
@@ -221,6 +226,13 @@ export function usePokemonList(): UsePokemonListResult {
       const matchGen = !genFilter || p.generation === Number(genFilter)
       const matchBiome = !biomeFilter || (p.biomes || []).some(b => b.id === biomeFilter)
       const matchRarity = !rarityFilter || (p.biomeRarities || []).includes(rarityFilter)
+      const matchAbility = !abilityFilter || [
+        p.ability1,
+        p.ability2,
+        p.abilityHidden,
+        p.passive,
+        ...(p.forms || []).flatMap(f => [f.ability1, f.ability2, f.abilityHidden, f.passive]),
+      ].some(id => id && id === abilityFilter)
       const matchPassive = !hasPassiveFilter
         || (hasPassiveFilter === 'yes' ? Boolean(p.passive && p.passive !== 'NONE') : !(p.passive && p.passive !== 'NONE'))
       const matchEggMoves = !hasEggMoveFilter
@@ -240,7 +252,7 @@ export function usePokemonList(): UsePokemonListResult {
       const matchSpdef = inRange(p.baseSpdef, spdefMin, spdefMax)
       const matchSpd = inRange(p.baseSpd, spdMin, spdMax)
       return matchSearch && matchType && matchGen && matchBiome && matchRarity
-        && matchPassive && matchEggMoves && matchHiddenAbility && matchFinalEvolution
+        && matchAbility && matchPassive && matchEggMoves && matchHiddenAbility && matchFinalEvolution
         && matchCost && matchTotal && matchHp && matchAtk && matchDef
         && matchSpatk && matchSpdef && matchSpd
     })
@@ -261,7 +273,7 @@ export function usePokemonList(): UsePokemonListResult {
     })
 
     return result
-  }, [pokemons, search, typeFilter, genFilter, biomeFilter, rarityFilter, hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter, costMin, costMax, totalMin, totalMax, sortBy, sortDesc])
+  }, [pokemons, search, typeFilter, genFilter, biomeFilter, rarityFilter, abilityFilter, hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter, costMin, costMax, totalMin, totalMax, sortBy, sortDesc])
 
   const allTypes = useMemo(() => {
     const types = new Set<string>()
@@ -314,6 +326,24 @@ export function usePokemonList(): UsePokemonListResult {
     return Array.from(rarities).sort((a, b) => (rarityOrder[a] || 0) - (rarityOrder[b] || 0))
   }, [pokemons])
 
+  const allAbilities = useMemo(() => {
+    const map = new Map<string, { value: string; label: string; meta?: string }>()
+    pokemons.forEach(p => {
+      const entries: Array<[string | null, string, string?]> = [
+        [p.ability1, p.ability1Zh, '特性'],
+        [p.ability2, p.ability2Zh, '特性'],
+        [p.abilityHidden, p.abilityHiddenZh, '隐藏'],
+        [p.passive, p.passiveZh, '被动'],
+      ]
+      entries.forEach(([id, zh, kind]) => {
+        if (id && id !== 'NONE' && !map.has(id)) {
+          map.set(id, { value: id, label: zh || id, meta: kind })
+        }
+      })
+    })
+    return Array.from(map.values()).sort((a, b) => a.label.localeCompare(b.label, 'zh-CN'))
+  }, [pokemons])
+
   function handleSort(field: string) {
     if (sortBy === field) {
       setSortDesc(!sortDesc)
@@ -329,6 +359,7 @@ export function usePokemonList(): UsePokemonListResult {
     setGenFilter('')
     setBiomeFilter('')
     setRarityFilter('')
+    setAbilityFilter('')
     setHasPassiveFilter('')
     setHasEggMoveFilter('')
     setHasHiddenAbilityFilter('')
@@ -356,14 +387,14 @@ export function usePokemonList(): UsePokemonListResult {
     loading,
     filtered,
     filters: {
-      search, typeFilter, genFilter, biomeFilter, rarityFilter,
+      search, typeFilter, genFilter, biomeFilter, rarityFilter, abilityFilter,
       hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter,
       costMin, costMax, totalMin, totalMax,
       hpMin, hpMax, atkMin, atkMax, defMin, defMax,
       spatkMin, spatkMax, spdefMin, spdefMax, spdMin, spdMax,
     },
     setters: {
-      setSearch, setTypeFilter, setGenFilter, setBiomeFilter, setRarityFilter,
+      setSearch, setTypeFilter, setGenFilter, setBiomeFilter, setRarityFilter, setAbilityFilter,
       setHasPassiveFilter, setHasEggMoveFilter, setHasHiddenAbilityFilter, setFinalEvolutionFilter,
       setCostMin, setCostMax, setTotalMin, setTotalMax,
       setHpMin, setHpMax, setAtkMin, setAtkMax, setDefMin, setDefMax,
@@ -378,5 +409,6 @@ export function usePokemonList(): UsePokemonListResult {
     allBiomes,
     groupedBiomes,
     allRarities,
+    allAbilities,
   }
 }
