@@ -7,7 +7,7 @@ import { buildPokemonSchema, buildBreadcrumbList } from '../seo/schemaBuilders'
 import { renderTypeBadge, renderStatBar, formatLevel, renderMoveCategoryBadge } from '../utils/render'
 import { normalizeChainMap, buildEvolutionPaths } from '../utils/pokemon'
 import { getCombinedDefenseBuckets } from '../typeMatchups'
-import { buildTextureAtlas, getAtlasSpriteStyle, getPokemonSpriteFrame, DEFAULT_SPRITE_SOURCE_SIZE, type TextureAtlas } from '../utils/atlas'
+import { buildTextureAtlas, getAtlasSpriteStyle, getPokemonIconFrame, DEFAULT_ICON_SOURCE_SIZE, type TextureAtlas } from '../utils/atlas'
 import type { Pokemon } from '../types'
 
 interface NameMaps {
@@ -48,11 +48,11 @@ export default function PokemonDetailPage() {
   useEffect(() => {
     if (!pokemon) return
     let cancelled = false
-    fetch(`${REMOTE_ASSET_BASE}/images/pokemon/${pokemon.numericId}.json`, { cache: 'no-cache' })
+    fetch(`${REMOTE_ASSET_BASE}/images/pokemon_icons_${pokemon.generation}.json`, { cache: 'no-cache' })
       .then(r => (r.ok ? r.json() : null))
       .then(raw => {
         if (cancelled || !raw) return
-        setSpriteAtlas(buildTextureAtlas(raw, `${REMOTE_ASSET_BASE}/images/pokemon`))
+        setSpriteAtlas(buildTextureAtlas(raw, `${REMOTE_ASSET_BASE}/images`))
       })
       .catch(err => console.error('Failed to load sprite atlas:', err))
     return () => { cancelled = true }
@@ -68,9 +68,11 @@ export default function PokemonDetailPage() {
   const moveEffectMap = nameMaps?.moveEffect || {}
   const abilityDescMap = nameMaps?.abilityDescription || {}
 
-  const spriteFrame = spriteAtlas ? getPokemonSpriteFrame(spriteAtlas) : null
+  const spriteFrame = spriteAtlas
+    ? getPokemonIconFrame(pokemon.numericId, pokemon.generation, { [`pokemon_icons_${pokemon.generation}`]: spriteAtlas }).frame
+    : null
   const spriteStyle = spriteAtlas && spriteFrame
-    ? getAtlasSpriteStyle(spriteAtlas, spriteFrame, spriteFrame.sourceSize || DEFAULT_SPRITE_SOURCE_SIZE, 80)
+    ? getAtlasSpriteStyle(spriteAtlas, spriteFrame, spriteFrame.sourceSize || DEFAULT_ICON_SOURCE_SIZE, 80)
     : null
 
   const hasLevelMoves = pokemon.levelMoves && pokemon.levelMoves.length > 0
@@ -127,8 +129,8 @@ export default function PokemonDetailPage() {
           </div>
         </div>
         <div className="dp-hero-info">
-          <div className="dp-info-item"><span className="dp-info-label">捕捉率</span><span className="dp-info-value">{(pokemon.catchProbability * 100).toFixed(1)}%</span></div>
-          <div className="dp-info-item"><span className="dp-info-label">捕获率</span><span className="dp-info-value">{pokemon.catchRate}</span></div>
+          <div className="dp-info-item"><span className="dp-info-label">遭遇概率</span><span className="dp-info-value">{(pokemon.catchProbability * 100).toFixed(1)}%</span></div>
+          <div className="dp-info-item"><span className="dp-info-label">捕获基础值</span><span className="dp-info-value">{pokemon.catchRate}</span></div>
           {pokemon.eggTier && <div className="dp-info-item"><span className="dp-info-label">蛋招层级</span><span className="dp-info-value">{pokemon.eggTier}</span></div>}
           <div className="dp-info-item"><span className="dp-info-label">最终形态</span><span className="dp-info-value">{pokemon.isFinalEvolution ? '是' : '否'}</span></div>
         </div>
@@ -163,6 +165,7 @@ export default function PokemonDetailPage() {
                   <span className="dp-ability-name" data-desc={abilityDescMap[pokemon.ability1] || ''}>
                     {pokemon.ability1Zh}
                     <span className="dp-ability-en">{pokemon.ability1}</span>
+                    {abilityDescMap[pokemon.ability1] && <span className="dp-ability-desc">{abilityDescMap[pokemon.ability1]}</span>}
                   </span>
                 </span>
               </div>
@@ -174,6 +177,7 @@ export default function PokemonDetailPage() {
                   <span className="dp-ability-name" data-desc={abilityDescMap[pokemon.ability2] || ''}>
                     {pokemon.ability2Zh}
                     <span className="dp-ability-en">{pokemon.ability2}</span>
+                    {abilityDescMap[pokemon.ability2] && <span className="dp-ability-desc">{abilityDescMap[pokemon.ability2]}</span>}
                   </span>
                 </span>
               </div>
@@ -185,6 +189,7 @@ export default function PokemonDetailPage() {
                   <span className="dp-ability-name" data-desc={abilityDescMap[pokemon.abilityHidden] || ''}>
                     {pokemon.abilityHiddenZh}
                     <span className="dp-ability-en">{pokemon.abilityHidden}</span>
+                    {abilityDescMap[pokemon.abilityHidden] && <span className="dp-ability-desc">{abilityDescMap[pokemon.abilityHidden]}</span>}
                   </span>
                 </span>
               </div>
@@ -196,6 +201,7 @@ export default function PokemonDetailPage() {
                   <span className="dp-ability-name" data-desc={abilityDescMap[pokemon.passive] || ''}>
                     {pokemon.passiveZh}
                     <span className="dp-ability-en">{pokemon.passive}</span>
+                    {abilityDescMap[pokemon.passive] && <span className="dp-ability-desc">{abilityDescMap[pokemon.passive]}</span>}
                   </span>
                 </span>
               </div>
@@ -366,8 +372,8 @@ export default function PokemonDetailPage() {
 
         {/* Forms */}
         {pokemon.forms && pokemon.forms.length > 0 && (
-          <div className="dp-card dp-card-full">
-            <h3 className="dp-card-title">形态（{pokemon.forms.length} 种）</h3>
+          <details className="dp-card dp-card-full dp-collapsible">
+            <summary className="dp-card-title">形态（{pokemon.forms.length} 种）<span className="collapse-hint">点击展开</span></summary>
             <div className="form-grid">
               {pokemon.forms.map((form, idx) => (
                 <div key={idx} className="form-card">
@@ -391,7 +397,7 @@ export default function PokemonDetailPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </details>
         )}
 
         {/* Smogon Sets */}

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import type { Pokemon } from '../types'
 import { rarityOrder, inRange } from '../utils/pokemon'
 
@@ -95,10 +96,11 @@ const biomeStepOrder: Record<string, number> = {
 }
 
 export function usePokemonList(): UsePokemonListResult {
+  const [searchParams] = useSearchParams()
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
   const [loading, setLoading] = useState(true)
 
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState(() => searchParams.get('search') || '')
   const [typeFilter, setTypeFilter] = useState('')
   const [genFilter, setGenFilter] = useState('')
   const [biomeFilter, setBiomeFilter] = useState('')
@@ -134,7 +136,7 @@ export function usePokemonList(): UsePokemonListResult {
       const saved = localStorage.getItem(FILTER_STORAGE_KEY)
       if (saved) {
         const parsed = JSON.parse(saved)
-        if (parsed.search !== undefined) setSearch(parsed.search)
+        if (!searchParams.get('search') && parsed.search !== undefined) setSearch(parsed.search)
         if (parsed.typeFilter !== undefined) setTypeFilter(parsed.typeFilter)
         if (parsed.genFilter !== undefined) setGenFilter(parsed.genFilter)
         if (parsed.biomeFilter !== undefined) setBiomeFilter(parsed.biomeFilter)
@@ -282,7 +284,7 @@ export function usePokemonList(): UsePokemonListResult {
     })
 
     return result
-  }, [pokemons, search, typeFilter, genFilter, biomeFilter, rarityFilter, abilityFilter, moveFilter, hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter, costMin, costMax, totalMin, totalMax, sortBy, sortDesc])
+  }, [pokemons, search, typeFilter, genFilter, biomeFilter, rarityFilter, abilityFilter, moveFilter, hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter, costMin, costMax, totalMin, totalMax, hpMin, hpMax, atkMin, atkMax, defMin, defMax, spatkMin, spatkMax, spdefMin, spdefMax, spdMin, spdMax, sortBy, sortDesc])
 
   const allTypes = useMemo(() => {
     const types = new Set<string>()

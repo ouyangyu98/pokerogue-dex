@@ -87,6 +87,7 @@ export function getPokemonIconFrame(
   const primaryAtlas = iconAtlases[getPokemonIconAtlasKey(generation)]
   if (primaryAtlas) {
     const frame = primaryAtlas.frames[String(numericId)]
+      || Object.entries(primaryAtlas.frames).find(([key]) => key.startsWith(`${numericId}-`))?.[1]
     if (frame) return { atlas: primaryAtlas, frame }
   }
 
@@ -96,6 +97,7 @@ export function getPokemonIconFrame(
   for (const [key, atlas] of Object.entries(iconAtlases)) {
     if (key === getPokemonIconAtlasKey(generation)) continue
     const frame = atlas.frames[String(numericId)]
+      || Object.entries(atlas.frames).find(([frameKey]) => frameKey.startsWith(`${numericId}-`))?.[1]
     if (frame) return { atlas, frame }
   }
 

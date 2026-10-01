@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { BiomeFilter, SelectFilter, AbilityFilter, MoveFilter, type SelectOption } from './filterControls'
 import { ActiveFilterTags } from './ActiveFilterTags'
 import { typeNames } from '../typeMatchups'
-import { buildTextureAtlas, getPokemonIconFrame, type TextureAtlas } from '../utils/atlas'
+import { buildTextureAtlas, type TextureAtlas } from '../utils/atlas'
 import { useLazyImage } from '../hooks/useLazyImage'
 import { usePokemonList } from '../hooks/usePokemonList'
 import PokemonTable from './PokemonTable'
@@ -47,7 +47,7 @@ export default function PokemonList() {
   } = usePokemonList()
 
   const [iconAtlases, setIconAtlases] = useState<Record<string, TextureAtlas>>({})
-  const [fallbackIconAtlases, setFallbackIconAtlases] = useState<Record<string, TextureAtlas>>({})
+  const [advancedOpen, setAdvancedOpen] = useState(false)
 
   function handleRowClick(pokemon: Pokemon) {
     navigate(`/pokemon/${pokemon.id}`)
@@ -84,41 +84,6 @@ export default function PokemonList() {
 
     return () => { cancelled = true }
   }, [pokemons])
-
-  useEffect(() => {
-    if (Object.keys(iconAtlases).length === 0 || pokemons.length === 0) return
-
-    const missing = pokemons.filter(p => {
-      const result = getPokemonIconFrame(p.numericId, p.generation, iconAtlases)
-      return !result.frame
-    })
-
-    if (missing.length === 0) return
-
-    let cancelled = false
-    Promise.all(
-      missing.map(async p => {
-        try {
-          const response = await fetch(`${REMOTE_ASSET_BASE}/images/pokemon/${p.numericId}.json`, { cache: 'no-cache' })
-          if (!response.ok) return null
-          const raw = await response.json() as RawTextureAtlas
-          const atlas = buildTextureAtlas(raw, `${REMOTE_ASSET_BASE}/images/pokemon`)
-          return atlas ? [String(p.numericId), atlas] as const : null
-        } catch {
-          return null
-        }
-      })
-    )
-      .then(entries => {
-        if (cancelled) return
-        const fb = Object.fromEntries(entries.filter(Boolean) as Array<readonly [string, TextureAtlas]>)
-        if (Object.keys(fb).length > 0) {
-          setFallbackIconAtlases(prev => ({ ...prev, ...fb }))
-        }
-      })
-
-    return () => { cancelled = true }
-  }, [iconAtlases, pokemons])
 
   const { containerRef, register } = useLazyImage()
 
@@ -169,6 +134,10 @@ export default function PokemonList() {
         <SelectFilter value={filters.genFilter} options={genFilterOptions} onChange={setters.setGenFilter} label="世代筛选" emptyLabel="全部世代" />
         <BiomeFilter value={filters.biomeFilter} groups={groupedBiomes} allBiomes={allBiomes} onChange={setters.setBiomeFilter} label="地区筛选" emptyLabel="全部地区" />
         <SelectFilter value={filters.rarityFilter} options={rarityFilterOptions} onChange={setters.setRarityFilter} label="地区稀有度筛选" emptyLabel="全部稀有度" />
+        <button type="button" className="advanced-toggle" onClick={() => setAdvancedOpen(current => !current)} aria-expanded={advancedOpen}>
+          {advancedOpen ? '收起高级筛选' : '更多筛选'} <span aria-hidden="true">{advancedOpen ? '⌃' : '⌄'}</span>
+        </button>
+        {advancedOpen && <div className="advanced-filter-fields">
         <AbilityFilter value={filters.abilityFilter} options={allAbilities} onChange={setters.setAbilityFilter} label="特性/被动筛选" emptyLabel="全部特性/被动" />
         <MoveFilter value={filters.moveFilter} options={allMoves} onChange={setters.setMoveFilter} label="技能筛选" emptyLabel="全部技能" placeholder="输入技能名称..." kindLabel="技能" />
         <SelectFilter value={filters.hasPassiveFilter} options={passiveFilterOptions} onChange={setters.setHasPassiveFilter} label="被动筛选" emptyLabel="被动不限" />
@@ -193,6 +162,7 @@ export default function PokemonList() {
           <input className="range-input" type="number" min="0" placeholder="速度≥" value={filters.spdMin} onChange={e => setters.setSpdMin(e.target.value)} />
           <input className="range-input" type="number" min="0" placeholder="速度≤" value={filters.spdMax} onChange={e => setters.setSpdMax(e.target.value)} />
         </div>
+        </div>}
         <button className="reset-btn" onClick={resetFilters}>重置筛选</button>
         <ActiveFilterTags
           filters={[
@@ -222,7 +192,6 @@ export default function PokemonList() {
       <PokemonTable
         pokemons={filtered}
         iconAtlases={iconAtlases}
-        fallbackIconAtlases={fallbackIconAtlases}
         sortBy={sortBy}
         sortDesc={sortDesc}
         onSort={handleSort}

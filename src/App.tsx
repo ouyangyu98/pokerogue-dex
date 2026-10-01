@@ -8,16 +8,24 @@ interface DataReportInfo {
 }
 
 const navItems = [
-  { to: '/pokemon', label: '精灵图鉴' },
-  { to: '/biomes', label: '地区查询' },
-  { to: '/report', label: '数据报告' },
-  { to: '/natures', label: '性格表' },
-  { to: '/map', label: '地区导航' },
-  { to: '/types', label: '属性克制' },
+  { to: '/pokemon', label: '精灵图鉴', primary: true },
+  { to: '/biomes', label: '地区查询', primary: true },
+  { to: '/types', label: '属性克制', primary: true },
+  { to: '/team', label: '配队分析', primary: true },
   { to: '/items', label: '道具清单' },
-  { to: '/team', label: '配队分析' },
-  { to: '/feedback', label: '反馈' },
+  { to: '/natures', label: '性格表' },
+  { to: '/moves', label: '招式' },
+  { to: '/abilities', label: '特性' },
+  { to: '/report', label: '数据状态' },
 ]
+
+function formatDataVersion(sourceVersion: string, generationTime: string) {
+  const date = new Date(generationTime)
+  const formattedDate = Number.isNaN(date.getTime())
+    ? generationTime
+    : date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })
+  return `数据截至 ${formattedDate} · 来源 ${sourceVersion}`
+}
 
 export default function App() {
   const [dataVersion, setDataVersion] = useState('数据加载中...')
@@ -26,7 +34,7 @@ export default function App() {
     fetch('/data/data-report.json')
       .then(r => r.json())
       .then((data: DataReportInfo) => {
-        setDataVersion(`${data.sourceVersion} · ${data.generationTime}`)
+        setDataVersion(formatDataVersion(data.sourceVersion, data.generationTime))
       })
       .catch(() => setDataVersion('数据加载中...'))
   }, [])
@@ -44,7 +52,7 @@ export default function App() {
             <NavLink
               key={item.to}
               to={item.to}
-              className={({ isActive }: { isActive: boolean }) => (isActive ? 'active' : '')}
+              className={({ isActive }: { isActive: boolean }) => `${isActive ? 'active' : ''} ${item.primary ? '' : 'nav-secondary'}`.trim()}
               end={item.to === '/pokemon'}
             >
               {item.label}

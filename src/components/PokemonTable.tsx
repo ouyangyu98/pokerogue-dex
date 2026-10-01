@@ -33,26 +33,26 @@ export default function PokemonTable({
 
   return (
     <div className="table-container">
-      <table>
+      <table className="pokemon-data-table">
         <thead>
           <tr>
-            <th onClick={() => onSort('numericId')}>ID {sortIcon('numericId')}</th>
-            <th>图片</th>
-            <th onClick={() => onSort('nameZh')}>中文名 {sortIcon('nameZh')}</th>
-            <th onClick={() => onSort('nameEn')}>英文名 {sortIcon('nameEn')}</th>
-            <th>属性</th>
-            <th onClick={() => onSort('generation')}>世代 {sortIcon('generation')}</th>
-            <th onClick={() => onSort('starterCost')}>费用 {sortIcon('starterCost')}</th>
+            <th className="col-id" onClick={() => onSort('numericId')}>ID {sortIcon('numericId')}</th>
+            <th className="col-sprite">图片</th>
+            <th className="col-name" onClick={() => onSort('nameZh')}>中文名 {sortIcon('nameZh')}</th>
+            <th className="col-name-en" onClick={() => onSort('nameEn')}>英文名 {sortIcon('nameEn')}</th>
+            <th className="col-type">属性</th>
+            <th className="col-gen" onClick={() => onSort('generation')}>世代 {sortIcon('generation')}</th>
+            <th className="col-cost" onClick={() => onSort('starterCost')}>费用 {sortIcon('starterCost')}</th>
             <th onClick={() => onSort('baseHp')}>HP {sortIcon('baseHp')}</th>
             <th onClick={() => onSort('baseAtk')}>攻击 {sortIcon('baseAtk')}</th>
             <th onClick={() => onSort('baseDef')}>防御 {sortIcon('baseDef')}</th>
             <th onClick={() => onSort('baseSpatk')}>特攻 {sortIcon('baseSpatk')}</th>
             <th onClick={() => onSort('baseSpdef')}>特防 {sortIcon('baseSpdef')}</th>
             <th onClick={() => onSort('baseSpd')}>速度 {sortIcon('baseSpd')}</th>
-            <th>分布地区</th>
-            <th onClick={() => onSort('primaryBiomeRarity')}>地区稀有度 {sortIcon('primaryBiomeRarity')}</th>
-            <th onClick={() => onSort('catchProbability')}>捕捉概率 {sortIcon('catchProbability')}</th>
-            <th onClick={() => onSort('baseTotal')}>种族值 {sortIcon('baseTotal')}</th>
+            <th className="col-biome">分布地区</th>
+            <th className="col-rarity" onClick={() => onSort('primaryBiomeRarity')}>地区稀有度 {sortIcon('primaryBiomeRarity')}</th>
+            <th className="col-probability" onClick={() => onSort('catchProbability')}>遭遇概率 {sortIcon('catchProbability')}</th>
+            <th className="col-total" onClick={() => onSort('baseTotal')}>种族值 {sortIcon('baseTotal')}</th>
           </tr>
         </thead>
         <tbody>

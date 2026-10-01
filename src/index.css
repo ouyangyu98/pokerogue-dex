@@ -2764,6 +2764,252 @@ tr.clickable {
   }
 }
 
+/* ===== 查询体验优化 ===== */
+.home-eyebrow {
+  color: #5b6ee1;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.home-search {
+  display: flex;
+  max-width: 680px;
+  margin: 24px auto 0;
+  gap: 8px;
+}
+
+.home-search input {
+  flex: 1;
+  min-width: 0;
+  min-height: 50px;
+  padding: 12px 16px;
+  border: 1px solid #cdd7ef;
+  border-radius: 10px;
+  color: #1f2937;
+  font-size: 15px;
+}
+
+.home-search input:focus {
+  outline: none;
+  border-color: #5b6ee1;
+  box-shadow: 0 0 0 3px rgba(91, 110, 225, 0.14);
+}
+
+.home-search button {
+  min-height: 50px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 10px;
+  background: #5b6ee1;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.home-search-hint {
+  margin-top: 8px;
+  color: #8a94a6;
+  font-size: 12px;
+}
+
+.home-secondary {
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid #edf0f5;
+}
+
+.home-section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.home-section-heading h3 {
+  color: #1e293b;
+  font-size: 16px;
+}
+
+.home-section-heading span {
+  color: #8a94a6;
+  font-size: 12px;
+}
+
+.home-secondary-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.home-secondary-link {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid #e3e8f4;
+  border-radius: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.home-secondary-link:hover {
+  border-color: #aebcf0;
+  background: #fbfcff;
+}
+
+.home-secondary-link strong {
+  color: #334155;
+  font-size: 14px;
+}
+
+.home-secondary-link span {
+  color: #667085;
+  font-size: 12px;
+}
+
+.advanced-toggle {
+  min-height: 52px;
+  padding: 0 14px;
+  border: 1px dashed #b7c4e8;
+  border-radius: 14px;
+  background: #f8faff;
+  color: #4f61b9;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.advanced-toggle span {
+  margin-left: 5px;
+}
+
+.advanced-filter-fields {
+  display: contents;
+}
+
+.dp-collapsible {
+  overflow: hidden;
+}
+
+.dp-collapsible > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.dp-collapsible > summary::-webkit-details-marker {
+  display: none;
+}
+
+.collapse-hint {
+  margin-left: auto;
+  color: #8a94a6;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.dp-ability-desc {
+  display: block;
+  margin-top: 3px;
+  color: #667085;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.nav-secondary {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  header nav a {
+    padding: 7px 13px;
+    font-size: 13px;
+  }
+
+  header nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 3px;
+    scrollbar-width: thin;
+  }
+
+  header nav a {
+    flex: 0 0 auto;
+  }
+
+  .home-search {
+    flex-direction: column;
+  }
+
+  .home-search button {
+    width: 100%;
+  }
+
+  .home-secondary-links {
+    grid-template-columns: 1fr;
+  }
+
+  .advanced-filter-fields {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .advanced-filter-fields .stat-filters-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .advanced-filter-fields .range-input {
+    width: 100%;
+  }
+
+  .pokemon-data-table {
+    min-width: 660px;
+  }
+
+  .pokemon-data-table th:nth-child(4),
+  .pokemon-data-table td:nth-child(4),
+  .pokemon-data-table th:nth-child(6),
+  .pokemon-data-table td:nth-child(6),
+  .pokemon-data-table th:nth-child(8),
+  .pokemon-data-table td:nth-child(8),
+  .pokemon-data-table th:nth-child(9),
+  .pokemon-data-table td:nth-child(9),
+  .pokemon-data-table th:nth-child(10),
+  .pokemon-data-table td:nth-child(10),
+  .pokemon-data-table th:nth-child(11),
+  .pokemon-data-table td:nth-child(11),
+  .pokemon-data-table th:nth-child(12),
+  .pokemon-data-table td:nth-child(12),
+  .pokemon-data-table th:nth-child(13),
+  .pokemon-data-table td:nth-child(13) {
+    display: none;
+  }
+
+  .dp-hero {
+    flex-wrap: wrap;
+  }
+
+  .dp-hero-info {
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    margin: 4px 0 0;
+    padding: 10px 0 0;
+    border-left: none;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .dp-ability-desc {
+    max-width: 210px;
+  }
+}
+
 /* ===== 反馈留言页 ===== */
 .feedback-page {
   max-width: 760px;
