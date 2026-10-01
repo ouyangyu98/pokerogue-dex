@@ -1,31 +1,41 @@
 // Pokemon data utilities: evolution chain, filtering
 
+import type { EvolutionEntry } from '../types'
+
 export interface ChainNode {
   id: string
   nameZh: string
   nameEn: string
+  evolution?: EvolutionEntry
 }
 
 export interface EvolutionRelation {
   evolvesTo: Map<string, string[]>
   evolvesFrom: Map<string, string[]>
+  evolutionsByFrom: Map<string, EvolutionEntry[]>
 }
 
 /** From a flat pokemon list, build forward/backward evolution maps */
-export function normalizeChainMap(pokemons: Array<{ id: string; evolutions?: Array<{ toSpeciesId: string }> }>) {
+export function normalizeChainMap(pokemons: Array<{ id: string; evolutions?: EvolutionEntry[] }>): EvolutionRelation {
   const evolvesTo = new Map<string, string[]>()
   const evolvesFrom = new Map<string, string[]>()
+  const evolutionsByFrom = new Map<string, EvolutionEntry[]>()
 
   for (const p of pokemons) {
-    evolvesTo.set(p.id, (p.evolutions || []).map(e => e.toSpeciesId))
-    for (const evo of p.evolutions || []) {
+    const evolutions = p.evolutions || []
+    const uniqueEvolutions = evolutions.filter((evo, index, all) => all.findIndex(candidate => (
+      candidate.toSpeciesId === evo.toSpeciesId && candidate.descriptionZh === evo.descriptionZh
+    )) === index)
+    evolutionsByFrom.set(p.id, uniqueEvolutions)
+    evolvesTo.set(p.id, uniqueEvolutions.map(e => e.toSpeciesId))
+    for (const evo of uniqueEvolutions) {
       const list = evolvesFrom.get(evo.toSpeciesId) || []
-      list.push(p.id)
+      if (!list.includes(p.id)) list.push(p.id)
       evolvesFrom.set(evo.toSpeciesId, list)
     }
   }
 
-  return { evolvesTo, evolvesFrom }
+  return { evolvesTo, evolvesFrom, evolutionsByFrom }
 }
 
 /** BFS-based evolution path builder */
@@ -34,6 +44,7 @@ export function buildEvolutionPaths(
   pokemonMap: Map<string, { nameZh: string; nameEn: string }>,
   evolvesTo: Map<string, string[]>,
   evolvesFrom: Map<string, string[]>,
+  evolutionsByFrom: Map<string, EvolutionEntry[]> = new Map(),
 ): ChainNode[][] {
   function findRoots(id: string, visited = new Set<string>()): string[] {
     if (visited.has(id)) return [id]
@@ -57,8 +68,27 @@ export function buildEvolutionPaths(
 
   return paths.map(path => path.map(id => {
     const pokemon = pokemonMap.get(id)
-    return { id, nameZh: pokemon?.nameZh || id, nameEn: pokemon?.nameEn || id }
+    const parentId = path[path.indexOf(id) - 1]
+    const evolution = parentId
+      ? evolutionsByFrom.get(parentId)?.find(entry => entry.toSpeciesId === id)
+      : undefined
+    return { id, nameZh: pokemon?.nameZh || id, nameEn: pokemon?.nameEn || id, evolution }
   }))
+}
+
+/** Convert the raw evolution entry into short labels that fit beside a path. */
+export function getEvolutionConditionLabels(evolution?: EvolutionEntry): string[] {
+  if (!evolution) return []
+
+  const labels: string[] = []
+  if (evolution.level > 1) labels.push(`等级 ${evolution.level}`)
+  if (evolution.itemZh) labels.push(`使用 ${evolution.itemZh}`)
+  if (evolution.conditions.length > 0) {
+    if (evolution.level <= 1 && !evolution.itemZh) labels.push('升级')
+    labels.push(...evolution.conditions)
+  }
+  if (labels.length === 0 && evolution.descriptionZh) labels.push(evolution.descriptionZh)
+  return labels
 }
 
 export const eggTierNames: Record<string, string> = {

@@ -5,7 +5,7 @@ import JsonLd from '../seo/JsonLd'
 import { getPokemonMeta } from '../seo/generateMeta'
 import { buildPokemonSchema, buildBreadcrumbList } from '../seo/schemaBuilders'
 import { renderTypeBadge, renderStatBar, formatLevel, renderMoveCategoryBadge } from '../utils/render'
-import { normalizeChainMap, buildEvolutionPaths } from '../utils/pokemon'
+import { normalizeChainMap, buildEvolutionPaths, getEvolutionConditionLabels } from '../utils/pokemon'
 import { getCombinedDefenseBuckets } from '../typeMatchups'
 import { buildTextureAtlas, getAtlasSpriteStyle, getPokemonIconFrame, DEFAULT_ICON_SOURCE_SIZE, type TextureAtlas } from '../utils/atlas'
 import type { Pokemon } from '../types'
@@ -63,7 +63,13 @@ export default function PokemonDetailPage() {
 
   const meta = getPokemonMeta(pokemon)
   const buckets = getCombinedDefenseBuckets(pokemon.type1, pokemon.type2)
-  const evoPaths = buildEvolutionPaths(pokemon.id, pokemonMap, evolutionGraph.evolvesTo, evolutionGraph.evolvesFrom)
+  const evoPaths = buildEvolutionPaths(
+    pokemon.id,
+    pokemonMap,
+    evolutionGraph.evolvesTo,
+    evolutionGraph.evolvesFrom,
+    evolutionGraph.evolutionsByFrom,
+  )
 
   const moveEffectMap = nameMaps?.moveEffect || {}
   const abilityDescMap = nameMaps?.abilityDescription || {}
@@ -216,14 +222,23 @@ export default function PokemonDetailPage() {
               {evoPaths.map((path, pidx) => (
                 <div key={pidx} className="dp-evo-path">
                   {path.map((node, nidx) => (
-                    <span key={node.id} className="dp-evo-step">
-                      {nidx > 0 && <span className="dp-evo-arrow">→</span>}
+                    <span key={`${node.id}-${nidx}`} className="dp-evo-step">
                       <Link
                         to={`/pokemon/${node.id}`}
                         className={`dp-evo-node ${node.id === pokemon.id ? 'dp-evo-current' : ''}`}
                       >
                         {node.nameZh}
                       </Link>
+                      {nidx < path.length - 1 && (
+                        <span className="dp-evo-transition">
+                          <span className="dp-evo-arrow" aria-hidden="true">→</span>
+                          <span className="dp-evo-conditions">
+                            {getEvolutionConditionLabels(path[nidx + 1].evolution).map(label => (
+                              <span key={label} className="dp-evo-condition">{label}</span>
+                            ))}
+                          </span>
+                        </span>
+                      )}
                     </span>
                   ))}
                 </div>

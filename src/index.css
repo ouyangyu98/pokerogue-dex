@@ -2544,39 +2544,74 @@ tr.clickable {
 .dp-evo-chain {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 .dp-evo-path {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   flex-wrap: wrap;
+  min-width: 0;
+  padding: 8px 10px;
+  background: #fafafa;
+  border: 1px solid #eef0f4;
+  border-radius: 8px;
 }
 .dp-evo-step {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+  min-width: 0;
 }
 .dp-evo-arrow {
   color: #9ca3af;
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 1;
 }
 .dp-evo-node {
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
   color: #1f2937;
-  padding: 3px 8px;
+  white-space: nowrap;
+  padding: 5px 9px;
+  border: 1px solid transparent;
   border-radius: 6px;
   transition: all 0.15s;
 }
 .dp-evo-node:hover {
   background: #f3f4f6;
   color: #667eea;
+  border-color: #e5e7eb;
 }
 .dp-evo-current {
   background: #ede9fe;
   color: #6d28d9;
+  border-color: #ddd6fe;
+}
+.dp-evo-transition {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+.dp-evo-conditions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  max-width: 180px;
+}
+.dp-evo-condition {
+  display: inline-block;
+  max-width: 180px;
+  padding: 2px 6px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  background: #fff;
+  color: #667085;
+  font-size: 11px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
 /* Biomes */
@@ -2721,6 +2756,34 @@ tr.clickable {
   .dp-hero-sprite {
     width: 56px;
     height: 56px;
+  }
+  .dp-evo-path {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .dp-evo-step {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+  .dp-evo-node {
+    width: fit-content;
+  }
+  .dp-evo-transition {
+    align-items: flex-start;
+    padding-left: 12px;
+  }
+  .dp-evo-arrow {
+    transform: rotate(90deg);
+    margin-top: 3px;
+  }
+  .dp-evo-conditions {
+    max-width: none;
+  }
+  .dp-evo-condition {
+    max-width: none;
   }
 }
 
