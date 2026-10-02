@@ -11,6 +11,7 @@ import { buildTextureAtlas, getAtlasSpriteStyle, getPokemonIconFrame, DEFAULT_IC
 import type { Pokemon } from '../types'
 
 interface NameMaps {
+  move: Record<string, string>
   moveEffect: Record<string, string>
   abilityDescription: Record<string, string>
 }
@@ -72,6 +73,7 @@ export default function PokemonDetailPage() {
   )
 
   const moveEffectMap = nameMaps?.moveEffect || {}
+  const moveNameMap = nameMaps?.move || {}
   const abilityDescMap = nameMaps?.abilityDescription || {}
 
   const spriteFrame = spriteAtlas
@@ -417,19 +419,36 @@ export default function PokemonDetailPage() {
 
         {/* Smogon Sets */}
         {pokemon.smogonSets && pokemon.smogonSets.length > 0 && (
-          <div className="dp-card dp-card-full">
-            <h3 className="dp-card-title">推荐配招（Smogon）</h3>
-            {pokemon.smogonSets.map(set => (
-              <div key={set.name} className="smogon-set">
-                <h3>{set.name}</h3>
-                <p>{set.description}</p>
-                <ul>
-                  {set.moves.map(moveId => (
-                    <li key={moveId}>{moveId}</li>
-                  ))}
-                </ul>
+          <div className="dp-card dp-card-full dp-smogon-card">
+            <div className="dp-card-title-row smogon-title-row">
+              <div>
+                <h3 className="dp-card-title" style={{ margin: 0, border: 'none', paddingBottom: 0 }}>推荐配招</h3>
+                <p className="smogon-title-note">参考 Smogon 对战数据，按使用场景整理</p>
               </div>
-            ))}
+              <span className="smogon-source-badge">Smogon</span>
+            </div>
+            <div className="smogon-set-grid">
+              {pokemon.smogonSets.map((set, setIndex) => (
+                <section key={set.name} className="smogon-set">
+                  <div className="smogon-set-head">
+                    <span className="smogon-set-index">{String(setIndex + 1).padStart(2, '0')}</span>
+                    <div>
+                      <h3>{set.name}</h3>
+                      <span className="smogon-move-count">{set.moves.length} 招式</span>
+                    </div>
+                  </div>
+                  <p className="smogon-set-description">{set.description}</p>
+                  <div className="smogon-move-list">
+                    {set.moves.map(moveId => (
+                      <Link key={moveId} to={`/move/${moveId}`} className="smogon-move">
+                        <span className="smogon-move-name">{moveNameMap[moveId] || moveId.replace(/_/g, ' ')}</span>
+                        <span className="smogon-move-en">{moveId.replace(/_/g, ' ')}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
           </div>
         )}
       </div>
