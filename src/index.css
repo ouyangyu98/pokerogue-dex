@@ -1315,61 +1315,49 @@ main {
 }
 
 .event-narrative {
-  max-width: 760px;
   margin-bottom: 16px;
 }
 
+.event-narrative summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: fit-content;
+  min-height: 32px;
+  color: #667085;
+  cursor: pointer;
+  list-style: none;
+}
+
+.event-narrative summary::-webkit-details-marker {
+  display: none;
+}
+
 .event-narrative-label {
-  display: block;
-  margin-bottom: 3px;
   color: #7a8499;
   font-size: 12px;
   font-weight: 700;
 }
 
-.event-description {
-  color: #475467;
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  white-space: pre-line;
-}
-
-.event-narrative-details {
-  margin-top: 5px;
-}
-
-.event-narrative-details summary,
-.event-option-details summary {
-  display: inline;
-  padding: 0;
-  background: transparent;
+.event-narrative-action {
   color: #4f6eb8;
-  cursor: pointer;
   font-size: 12px;
   font-weight: 700;
-  list-style: none;
 }
 
-.event-narrative-details summary::-webkit-details-marker,
-.event-option-details summary::-webkit-details-marker {
-  display: none;
-}
-
-.event-narrative-details summary::after,
-.event-option-details summary::after {
+.event-narrative-action::after {
   content: ' +';
 }
 
-.event-narrative-details[open] summary::after,
-.event-option-details[open] summary::after {
+.event-narrative[open] .event-narrative-action::after {
   content: ' -';
 }
 
-.event-narrative-details > p {
+.event-description {
+  max-width: 760px;
   margin-top: 8px;
-  color: #526072;
+  color: #475467;
   font-size: 13px;
   line-height: 1.7;
   white-space: pre-line;
@@ -1519,7 +1507,6 @@ main {
 .event-option {
   display: flex;
   min-width: 0;
-  min-height: 132px;
   flex-direction: column;
   padding: 14px;
   border: 1px solid #e1e8f1;
@@ -1553,33 +1540,21 @@ main {
 
 .event-option-effect,
 .event-option-disabled,
-.event-option-condition {
+.event-option-condition,
+.event-option-selected {
+  display: grid;
+  gap: 4px;
+  margin: 10px 0 0;
   color: #526072;
   font-size: 13px;
+  line-height: 1.55;
   white-space: pre-line;
-}
-
-.event-option-effect {
-  margin: 8px 0 0;
-}
-
-.event-option-details {
-  align-self: flex-start;
-  margin-top: auto;
-  padding-top: 10px;
-}
-
-.event-option-details > div {
-  display: grid;
-  gap: 8px;
-  margin-top: 9px;
-  padding-top: 9px;
-  border-top: 1px solid #edf0f4;
 }
 
 .event-option-logic {
   display: grid;
   gap: 6px;
+  margin-top: 10px;
   padding: 10px 12px;
   border-left: 3px solid #5c7ed4;
   background: #f5f8ff;
@@ -1603,8 +1578,13 @@ main {
   line-height: 1.6;
 }
 
-.event-option-details p {
-  white-space: pre-line;
+.event-option-effect > span,
+.event-option-disabled > span,
+.event-option-condition > span,
+.event-option-selected > span {
+  color: #7a8499;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .event-option-disabled {
@@ -1613,6 +1593,12 @@ main {
 
 .event-option-condition {
   color: #547161;
+}
+
+.event-option-selected {
+  padding-top: 10px;
+  border-top: 1px solid #edf0f4;
+  color: #667085;
 }
 
 .event-empty-state {

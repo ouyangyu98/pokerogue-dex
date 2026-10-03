@@ -63,7 +63,7 @@ export default function EventListPage() {
         ]}
       />
       <h1>事件表</h1>
-      <p>收录 PokeRogue 神秘事件的触发条件、出现地区和官方中文选项提示。</p>
+      <p>收录 PokeRogue 神秘事件的触发条件、出现地区、选项提示和源码效果说明。</p>
 
       <div className="event-list-toolbar">
         <input
@@ -106,16 +106,13 @@ export default function EventListPage() {
               <span className="event-entry-meta">{waveLabel(event)} · {event.biomes.length} 个地区 · {event.options.length} 个选项</span>
             </summary>
             <div className="event-entry-content">
-              <div className="event-narrative">
-                <div>
+              <details className="event-narrative">
+                <summary>
                   <span className="event-narrative-label">事件背景</span>
-                  <p className="event-description">{event.description}</p>
-                </div>
-                <details className="event-narrative-details">
-                  <summary>查看完整描述</summary>
-                  <p>{event.description}</p>
-                </details>
-              </div>
+                  <span className="event-narrative-action">查看背景</span>
+                </summary>
+                <p className="event-description">{event.description}</p>
+              </details>
               <div className="event-overview">
                 <div className="event-wave-summary">
                   <span className="event-overview-label">出现波次</span>
@@ -159,23 +156,16 @@ export default function EventListPage() {
                       <span className="event-option-number">{option.index}</span>
                       <h3>{option.label}</h3>
                     </div>
-                    <p className="event-option-effect">{option.effectSummary || '官方提示未提供具体效果说明。'}</p>
-                    {(option.logicDetails.length > 0 || option.selectedText || option.disabledTooltip || option.conditions.length > 0) && (
-                      <details className="event-option-details">
-                        <summary>展开说明</summary>
-                        <div>
-                          <div className="event-option-logic">
-                            <span>实际效果</span>
-                            <ul>
-                              {option.logicDetails.map(detail => <li key={detail}>{detail}</li>)}
-                            </ul>
-                          </div>
-                          {option.selectedText && <p>选择后：{option.selectedText}</p>}
-                          {option.disabledTooltip && <p className="event-option-disabled">不可用时：{option.disabledTooltip}</p>}
-                          {option.conditions.length > 0 && <p className="event-option-condition">选项条件：{option.conditions.join('；')}</p>}
-                        </div>
-                      </details>
-                    )}
+                    <div className="event-option-logic">
+                      <span>实际效果</span>
+                      <ul>
+                        {option.logicDetails.map(detail => <li key={detail}>{detail}</li>)}
+                      </ul>
+                    </div>
+                    {option.conditions.length > 0 && <p className="event-option-condition"><span>选项条件</span>{option.conditions.join('；')}</p>}
+                    {option.disabledTooltip && <p className="event-option-disabled"><span>不可用时</span>{option.disabledTooltip}</p>}
+                    {option.effectSummary && <p className="event-option-effect"><span>官方提示</span>{option.effectSummary}</p>}
+                    {option.selectedText && <p className="event-option-selected"><span>剧情文本</span>{option.selectedText}</p>}
                   </article>
                 ))}
               </section>
