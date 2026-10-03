@@ -106,32 +106,42 @@ export default function EventListPage() {
             </summary>
             <div className="event-entry-content">
               <p className="event-description">{event.description}</p>
-              <dl className="event-info-grid">
-                <div>
-                  <dt>出现波次</dt>
-                  <dd>{waveLabel(event)}</dd>
+              <div className="event-overview">
+                <div className="event-wave-summary">
+                  <span className="event-overview-label">出现波次</span>
+                  <strong>{waveLabel(event)}</strong>
                 </div>
-                <div>
-                  <dt>逃跑</dt>
-                  <dd>{event.fleeAllowed ? '允许' : '不允许'}</dd>
-                </div>
-                <div>
-                  <dt>捕捉</dt>
-                  <dd>{event.catchAllowed ? '允许' : '不允许'}</dd>
-                </div>
-                <div>
-                  <dt>出现地区</dt>
-                  <dd>{event.biomes.length > 0 ? event.biomes.map(biome => biome.nameZh).join('、') : '当前未启用或未配置地区'}</dd>
-                </div>
-                {event.eventConditions.length > 0 && (
-                  <div className="event-info-wide">
-                    <dt>触发条件</dt>
-                    <dd>{event.eventConditions.join('；')}</dd>
+                <div className="event-availability">
+                  <span className="event-overview-label">战斗限制</span>
+                  <div className="event-availability-values">
+                    <span className={event.fleeAllowed ? 'event-status is-allowed' : 'event-status is-blocked'}>
+                      逃跑 {event.fleeAllowed ? '允许' : '不允许'}
+                    </span>
+                    <span className={event.catchAllowed ? 'event-status is-allowed' : 'event-status is-blocked'}>
+                      捕捉 {event.catchAllowed ? '允许' : '不允许'}
+                    </span>
                   </div>
-                )}
-              </dl>
+                </div>
+                <div className="event-biomes">
+                  <div className="event-biomes-heading">
+                    <span className="event-overview-label">出现地区</span>
+                    <strong>{event.biomes.length} 个地区</strong>
+                  </div>
+                  <div className="event-biome-tags">
+                    {event.biomes.length > 0
+                      ? event.biomes.map(biome => <span key={biome.id}>{biome.nameZh}</span>)
+                      : <span>当前未启用或未配置地区</span>}
+                  </div>
+                </div>
+              </div>
+              {event.eventConditions.length > 0 && (
+                <div className="event-conditions">
+                  <span>触发条件</span>
+                  <p>{event.eventConditions.join('；')}</p>
+                </div>
+              )}
 
-              <section className="event-options" aria-label={`${event.nameZh}的选项`}>
+              <section className={`event-options event-options-${event.options.length}`} aria-label={`${event.nameZh}的选项`}>
                 <h2>{event.query || '可选操作'}</h2>
                 {event.options.map(option => (
                   <article className="event-option" key={option.index}>
