@@ -1577,6 +1577,32 @@ main {
   border-top: 1px solid #edf0f4;
 }
 
+.event-option-logic {
+  display: grid;
+  gap: 6px;
+  padding: 10px 12px;
+  border-left: 3px solid #5c7ed4;
+  background: #f5f8ff;
+}
+
+.event-option-logic > span {
+  color: #4f6eb8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.event-option-logic ul {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.event-option-logic li {
+  color: #364152;
+  line-height: 1.6;
+}
+
 .event-option-details p {
   white-space: pre-line;
 }

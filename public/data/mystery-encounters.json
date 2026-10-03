@@ -160,7 +160,11 @@
         "disabledTooltip": "",
         "selectedText": "她伸出手去触摸你，\n然后一切都变黑了。\n然后……@d{64}你看到了一切。\n每一条时间线，你所有不同的自我，\n过去和未来。\n一切造就了你的事物，\n一切你将变成的事物……@d{64}",
         "conditions": [],
-        "effectSummary": "@[SUMMARY_GREEN]{(?)影响宝可梦}"
+        "effectSummary": "@[SUMMARY_GREEN]{(?)影响宝可梦}",
+        "logicDetails": [
+          "随机选一只队员，按梦境分支改变其状态或属性。",
+          "没有固定道具奖励。"
+        ]
       },
       {
         "index": 2,
@@ -169,7 +173,11 @@
         "disabledTooltip": "",
         "selectedText": "你感觉陷入了一个冰冷的梦境。",
         "conditions": [],
-        "effectSummary": "（-）艰难的战斗\n（+）丰厚的奖励"
+        "effectSummary": "（-）艰难的战斗\n（+）丰厚的奖励",
+        "logicDetails": [
+          "与梦中强敌战斗；胜利后结算高档事件奖励。",
+          "敌方强度随当前波次提升。"
+        ]
       },
       {
         "index": 3,
@@ -178,7 +186,11 @@
         "disabledTooltip": "",
         "selectedText": "你从麻木的控制中挣脱出来，匆匆离开。\n当你终于停下来收拾好自己时，你连忙检查队伍中的宝可梦。\n不知为何，他们的等级都下降了！",
         "conditions": [],
-        "effectSummary": "(-)影响宝可梦"
+        "effectSummary": "(-)影响宝可梦",
+        "logicDetails": [
+          "直接离开，但随机一只队员仍会受到梦境效果影响。",
+          "没有事件奖励。"
+        ]
       }
     ]
   },
@@ -265,7 +277,10 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(+)技能机商店"
+        "effectSummary": "(+)技能机商店",
+        "logicDetails": [
+          "获得 5 个技能机；每个独立抽取：普通 40%、高级 40%、超级 20%。"
+        ]
       },
       {
         "index": 2,
@@ -274,7 +289,10 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(+)努力药商店"
+        "effectSummary": "(+)努力药商店",
+        "logicDetails": [
+          "获得 3 个培养道具；每个独立抽取：努力值提升剂约 2/3、PP提升剂约 1/3。"
+        ]
       },
       {
         "index": 3,
@@ -283,7 +301,10 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(+)强化道具商店"
+        "effectSummary": "(+)强化道具商店",
+        "logicDetails": [
+          "获得 5 个战斗强化道具；每个独立抽取：临时能力等级强化 80%、要害攻击 20%。"
+        ]
       },
       {
         "index": 4,
@@ -292,7 +313,10 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(+)精灵球商店"
+        "effectSummary": "(+)精灵球商店",
+        "logicDetails": [
+          "获得 4 个精灵球；每个独立抽取：精灵球 15.38%、超级球 46.15%、高级球 30.77%、肉鸽球 7.69%。"
+        ]
       }
     ]
   },
@@ -433,7 +457,11 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(-)支付相关宝可梦\n(+)获得相关宝可梦和\n它的隐藏特性"
+        "effectSummary": "(-)支付相关宝可梦\n(+)获得相关宝可梦和\n它的隐藏特性",
+        "logicDetails": [
+          "支付按当前波次与宝可梦初始费用计算的价格，获得展示的宝可梦。",
+          "通常拥有隐藏特性；活动宝可梦有额外闪光判定，极少数情况下会售卖闪光鲤鱼王。"
+        ]
       },
       {
         "index": 2,
@@ -442,7 +470,10 @@
         "disabledTooltip": "",
         "selectedText": "不？@d{32} 你说不要？\n又不会让你吃亏！",
         "conditions": [],
-        "effectSummary": "(-)无奖励"
+        "effectSummary": "(-)无奖励",
+        "logicDetails": [
+          "离开，不扣钱，也没有经验或道具奖励。"
+        ]
       }
     ]
   },
@@ -607,7 +638,11 @@
         "disabledTooltip": "",
         "selectedText": "你在这堆东西周围徘徊，\n寻找表明这东西可能出现在这里的任何迹象……",
         "conditions": [],
-        "effectSummary": "(?)找到垃圾的来源"
+        "effectSummary": "(?)找到垃圾的来源",
+        "logicDetails": [
+          "与极巨化灰尘山战斗；开场会对我方使用剧毒，并对自身使用蓄力。",
+          "胜利必得吃剩的东西，另含肉鸽、超级、高级档各一项及常规补齐奖励。"
+        ]
       },
       {
         "index": 2,
@@ -616,7 +651,11 @@
         "disabledTooltip": "",
         "selectedText": "你穿过垃圾堆，没入污秽之中。\n在你这样肮脏的状态下，任何有尊严的店主\n都不会卖给你任何东西！\n你只能将就将就，不再购买治疗物品。\n然而，你在垃圾中还是发现了一些不可思议的宝贝！",
         "conditions": [],
-        "effectSummary": "(-)商店的治疗道具消失\n(+)获得精美礼品"
+        "effectSummary": "(-)商店的治疗道具消失\n(+)获得精美礼品",
+        "logicDetails": [
+          "不战斗；分别给可携带的队员 1 个吃剩的东西和 1 个贝壳之铃。",
+          "另得黑色淤泥；本局后续商店治疗道具价格变为 2.5 倍。"
+        ]
       }
     ]
   },
@@ -783,7 +822,12 @@
         "disabledTooltip": "",
         "selectedText": "对战，呃？\n我的虫系宝可梦早就准备好了。",
         "conditions": [],
-        "effectSummary": "(-)艰难的对战\n(+)习得虫系招式"
+        "effectSummary": "(-)艰难的对战\n(+)习得虫系招式",
+        "logicDetails": [
+          "与虫系狂热粉丝战斗；对手队伍会随波次扩充并强化。",
+          "胜利后从物理、特殊、变化、其他四组中各随机 1 招，再选择其中 1 招教给可学习的队员。",
+          "招式池包括超级角击、攻击指令、虫鸣、花粉团、黏黏网、丝线陷阱、急速折返、蝶舞等；另补齐常规事件奖励。"
+        ]
       },
       {
         "index": 2,
@@ -794,7 +838,12 @@
         "conditions": [
           "队伍中需有 虫属性宝可梦"
         ],
-        "effectSummary": "(+)获得一件道具"
+        "effectSummary": "(+)获得一件道具",
+        "logicDetails": [
+          "需至少有 1 只虫属性宝可梦；奖励按虫属性数量固定结算。",
+          "1只：超级引诱模块+超级球；2-3只：先制之爪+极限引诱模块+高级球；4-5只：紧缠钩爪+极限引诱模块+肉鸽球。",
+          "6只：大师球；未持有时补超级手环、极巨腕带，并从可用进化或形态道具中随机追加 1 件。"
+        ]
       },
       {
         "index": 3,
@@ -805,7 +854,11 @@
         "conditions": [
           "队伍中需有满足携带道具条件的宝可梦"
         ],
-        "effectSummary": "(-)给予训练师相关宝可梦\n(+)得到一件礼物"
+        "effectSummary": "(-)给予训练师相关宝可梦\n(+)得到一件礼物",
+        "logicDetails": [
+          "需交出可转移的先制之爪、紧缠钩爪或虫属性招式强化道具。",
+          "选择持有者和道具后会移除该道具，获得黄金捕虫网和复活之种各 1 个。"
+        ]
       }
     ]
   },
@@ -844,7 +897,11 @@
         "disabledTooltip": "",
         "selectedText": "你无所畏惧地\n走向了宝可梦们。",
         "conditions": [],
-        "effectSummary": "(-)与沉睡的卡比兽战斗\n(+)特别的奖励"
+        "effectSummary": "(-)与沉睡的卡比兽战斗\n(+)特别的奖励",
+        "logicDetails": [
+          "与沉睡的卡比兽战斗；胜利后结算特殊奖励和常规奖励。",
+          "卡比兽强度随当前波次提升。"
+        ]
       },
       {
         "index": 2,
@@ -853,7 +910,10 @@
         "disabledTooltip": "",
         "selectedText": ".@d{32}.@d{32}.@d{32}\n您等待了好一段时间，但是\n卡比兽的哈欠让你的队伍昏昏欲睡…………",
         "conditions": [],
-        "effectSummary": "(-)漫长的等待\n(+)回复队伍"
+        "effectSummary": "(-)漫长的等待\n(+)回复队伍",
+        "logicDetails": [
+          "等待后为全队回复生命；不进入战斗，也不额外发奖。"
+        ]
       },
       {
         "index": 3,
@@ -864,7 +924,10 @@
         "conditions": [
           "队伍中需有满足指定招式条件的宝可梦"
         ],
-        "effectSummary": "(+)所选宝可梦使用相关宝可梦\n(+)特别的奖励"
+        "effectSummary": "(+)所选宝可梦使用相关宝可梦\n(+)特别的奖励",
+        "logicDetails": [
+          "选择一只满足条件的队员偷偷取食，回复其生命并获得特殊奖励。"
+        ]
       }
     ]
   },
@@ -895,7 +958,11 @@
         "disabledTooltip": "",
         "selectedText": "你冲破风暴，发现两只相关宝可梦正在相互求偶！\n它们很不情愿被打扰，并发起了攻击！",
         "conditions": [],
-        "effectSummary": "(?)寻找源头\n(-)困难的战斗\n(+)获得携带道具"
+        "effectSummary": "(?)寻找源头\n(-)困难的战斗\n(+)获得携带道具",
+        "logicDetails": [
+          "追查源头并与火山环境中的强敌战斗。",
+          "胜利后给队首宝可梦一件持有道具，并补齐常规奖励。"
+        ]
       },
       {
         "index": 2,
@@ -904,7 +971,11 @@
         "disabledTooltip": "",
         "selectedText": "极端天气在你寻找庇护所时对你造成了严重的伤害！\n队伍受到最大生命值20%的伤害！",
         "conditions": [],
-        "effectSummary": "(-)忍受天气的影响\n(?)影响一只宝可梦的特性"
+        "effectSummary": "(-)忍受天气的影响\n(?)影响一只宝可梦的特性",
+        "logicDetails": [
+          "不战斗；全队承受炎热天气造成的伤害。",
+          "随机一只队员的特性会被改变。"
+        ]
       },
       {
         "index": 3,
@@ -915,7 +986,11 @@
         "conditions": [
           "队伍中需有 火属性宝可梦"
         ],
-        "effectSummary": "(+)解决困境\n(+)获得携带道具"
+        "effectSummary": "(+)解决困境\n(+)获得携带道具",
+        "logicDetails": [
+          "需要火属性或具备抗火能力的宝可梦协助。",
+          "安全解决事件，给队首宝可梦一件持有道具，并补齐常规奖励。"
+        ]
       }
     ]
   },
@@ -1078,7 +1153,10 @@
         "disabledTooltip": "",
         "selectedText": "你毫无畏惧地接近\n相关宝可梦。",
         "conditions": [],
-        "effectSummary": "(-)艰难的战斗\n(+)可捕获强敌"
+        "effectSummary": "(-)艰难的战斗\n(+)可捕获强敌",
+        "logicDetails": [
+          "与稀有个体战斗；胜利后可正常捕捉该强敌。"
+        ]
       },
       {
         "index": 2,
@@ -1089,7 +1167,10 @@
         "conditions": [
           "持有 树果至少 4 个"
         ],
-        "effectSummary": "(-)给予4个树果\n(+)相关宝可梦会喜欢你"
+        "effectSummary": "(-)给予4个树果\n(+)相关宝可梦会喜欢你",
+        "logicDetails": [
+          "交出 4 个树果，获得该宝可梦的好感；不进入战斗。"
+        ]
       },
       {
         "index": 3,
@@ -1100,7 +1181,10 @@
         "conditions": [
           "队伍中需有满足指定招式条件的宝可梦"
         ],
-        "effectSummary": "(+)所选宝可梦使用相关宝可梦\n(+)相关宝可梦会喜欢你"
+        "effectSummary": "(+)所选宝可梦使用相关宝可梦\n(+)相关宝可梦会喜欢你",
+        "logicDetails": [
+          "选择一只队员交朋友；所选队员获得经验和对方好感，不消耗树果。"
+        ]
       }
     ]
   },
@@ -1265,7 +1349,11 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(+)5个肉鸽球\n(?)强化随机宝可梦"
+        "effectSummary": "(+)5个肉鸽球\n(?)强化随机宝可梦",
+        "logicDetails": [
+          "直接获得 5 个肉鸽球。",
+          "随机一只队员会被强化，具体强化类别由随机分支决定。"
+        ]
       },
       {
         "index": 2,
@@ -1274,7 +1362,10 @@
         "disabledTooltip": "",
         "selectedText": "都不帮哥们儿个忙吗？\n害！",
         "conditions": [],
-        "effectSummary": "(-)无奖励"
+        "effectSummary": "(-)无奖励",
+        "logicDetails": [
+          "拒绝交易；没有奖励，也没有额外代价。"
+        ]
       }
     ]
   },
@@ -1439,7 +1530,10 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(-)轻松战斗\n(+)提升随机2只\n宝可梦的个体"
+        "effectSummary": "(-)轻松战斗\n(+)提升随机2只\n宝可梦的个体",
+        "logicDetails": [
+          "低强度训练战；胜利后随机 2 只队员各获得一次个体值提升。"
+        ]
       },
       {
         "index": 2,
@@ -1448,7 +1542,10 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(-)适中的战斗\n(+)改变宝可梦的性格"
+        "effectSummary": "(-)适中的战斗\n(+)改变宝可梦的性格",
+        "logicDetails": [
+          "中强度训练战；胜利后可改变一只队员的性格。"
+        ]
       },
       {
         "index": 3,
@@ -1457,7 +1554,10 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(-)艰苦的战斗\n(+)改变宝可梦的特性"
+        "effectSummary": "(-)艰苦的战斗\n(+)改变宝可梦的特性",
+        "logicDetails": [
+          "高强度训练战；胜利后可改变一只队员的特性。"
+        ]
       },
       {
         "index": 4,
@@ -1466,7 +1566,10 @@
         "disabledTooltip": "",
         "selectedText": "你无暇训练\n该动身了。",
         "conditions": [],
-        "effectSummary": "(-)无奖励"
+        "effectSummary": "(-)无奖励",
+        "logicDetails": [
+          "离开；不战斗、无奖励。"
+        ]
       }
     ]
   },
@@ -1553,7 +1656,10 @@
         "disabledTooltip": "",
         "selectedText": "您的相关宝可梦轮班为客户配送订单。",
         "conditions": [],
-        "effectSummary": "(-)使用速度\n(+)赚取@[MONEY]{金钱}"
+        "effectSummary": "(-)使用速度\n(+)赚取@[MONEY]{金钱}",
+        "logicDetails": [
+          "选择速度较高的队员送外卖，获得按当前波次计算的金钱。"
+        ]
       },
       {
         "index": 2,
@@ -1562,7 +1668,10 @@
         "disabledTooltip": "",
         "selectedText": "你的相关宝可梦轮班工作，在仓库内搬运物品。",
         "conditions": [],
-        "effectSummary": "(-)使用力量和耐力\n(+)赚取@[MONEY]{金钱}"
+        "effectSummary": "(-)使用力量和耐力\n(+)赚取@[MONEY]{金钱}",
+        "logicDetails": [
+          "选择兼具攻击与耐久的队员做仓管，获得按当前波次计算的金钱。"
+        ]
       },
       {
         "index": 3,
@@ -1573,7 +1682,10 @@
         "conditions": [
           "队伍中需有满足指定招式条件的宝可梦"
         ],
-        "effectSummary": "(-)你的所选宝可梦使用相关宝可梦\n(+)赚取@[MONEY]{金钱}"
+        "effectSummary": "(-)你的所选宝可梦使用相关宝可梦\n(+)赚取@[MONEY]{金钱}",
+        "logicDetails": [
+          "选择一只队员做销售，获得按当前波次计算的金钱；所选队员获得经验。"
+        ]
       }
     ]
   },
@@ -1664,7 +1776,12 @@
         "conditions": [
           "持有足够金钱（金额随当前波次变化）"
         ],
-        "effectSummary": "(-)支付相关宝可梦\n(+)玩相关宝可梦重拳出击！"
+        "effectSummary": "(-)支付相关宝可梦\n(+)玩相关宝可梦重拳出击！",
+        "logicDetails": [
+          "支付相当于 1.5 倍特效药的入场费，选一只未濒死队员参加 3 回合重拳小游戏。",
+          "目标是击败不会主动出招的果然翁；胜利按表现获得广角镜、焦点镜或多重镜等奖励。",
+          "未完成挑战会额外扣除同等复活费用。"
+        ]
       },
       {
         "index": 2,
@@ -1675,7 +1792,10 @@
         "conditions": [
           "持有足够金钱（金额随当前波次变化）"
         ],
-        "effectSummary": "(-)无奖励"
+        "effectSummary": "(-)无奖励",
+        "logicDetails": [
+          "离开；不扣钱、无奖励。"
+        ]
       }
     ]
   },
@@ -1816,7 +1936,10 @@
         "disabledTooltip": "",
         "selectedText": "挑战开始！",
         "conditions": [],
-        "effectSummary": "(-)残酷的战斗\n(+)特别的奖励"
+        "effectSummary": "(-)残酷的战斗\n(+)特别的奖励",
+        "logicDetails": [
+          "接受温斯特拉特家的连续对战；胜利后获得特殊事件奖励。"
+        ]
       },
       {
         "index": 2,
@@ -1825,7 +1948,10 @@
         "disabledTooltip": "",
         "selectedText": "太可惜了。话说，你们队伍看上去很疲惫，为什么不留下来休息一会儿呢？",
         "conditions": [],
-        "effectSummary": "(+)队伍痊愈\n(+)获得一个超神奇糖果"
+        "effectSummary": "(+)队伍痊愈\n(+)获得一个超神奇糖果",
+        "logicDetails": [
+          "拒绝对战；全队回复生命，并获得 1 个超神奇糖果。"
+        ]
       }
     ]
   },
@@ -1858,7 +1984,11 @@
         "disabledTooltip": "",
         "selectedText": "你眼前一黑",
         "conditions": [],
-        "effectSummary": "(?)可能会发生一些\n可怕或惊奇的事情"
+        "effectSummary": "(?)可能会发生一些\n可怕或惊奇的事情",
+        "logicDetails": [
+          "按种族值排序：最高的 2 只全基础能力各降低 15，HP按半值处理；其余队员各提高 10。",
+          "之后补齐常规事件奖励，不进入战斗。"
+        ]
       },
       {
         "index": 2,
@@ -1867,7 +1997,12 @@
         "disabledTooltip": "",
         "selectedText": "相关宝可梦被激怒了，它喝了一些果汁并发起了攻击！",
         "conditions": [],
-        "effectSummary": "(-)艰难的战斗\n(+)特别的奖励"
+        "effectSummary": "(-)艰难的战斗\n(+)特别的奖励",
+        "logicDetails": [
+          "与 5 条血量的壶壶首领战斗；招式为虫蚀、盐腌、胃液、回复指令。",
+          "携带文柚、谜芝、龙睛、沙鳞、2个木子果，登场时防御和特防各提升 1 级。",
+          "胜利必含心之水滴；开场还会施放胃液和隐形岩。"
+        ]
       }
     ]
   },
@@ -1898,7 +2033,11 @@
         "disabledTooltip": "",
         "selectedText": "所选宝可梦游在前面，引导你回到正轨。\n所选宝可梦似乎也在这次需要它的时候\n变得更强大了！",
         "conditions": [],
-        "effectSummary": "(+)所选宝可梦帮助你\n(+)所选宝可梦获得经验值"
+        "effectSummary": "(+)所选宝可梦帮助你\n(+)所选宝可梦获得经验值",
+        "logicDetails": [
+          "需要一只可学习冲浪且未濒死的宝可梦。",
+          "所选队员获得等同于拉普拉斯基础经验值的事件经验，安全离开。"
+        ]
       },
       {
         "index": 2,
@@ -1907,7 +2046,11 @@
         "disabledTooltip": "",
         "selectedText": "所选宝可梦飞在你的船前面，引导你回到正轨。\n在这次需要它的时候，\n所选宝可梦似乎也变得更强大了！",
         "conditions": [],
-        "effectSummary": "(+)所选宝可梦帮助你\n(+)所选宝可梦获得经验值"
+        "effectSummary": "(+)所选宝可梦帮助你\n(+)所选宝可梦获得经验值",
+        "logicDetails": [
+          "需要一只可学习飞翔且未濒死的宝可梦。",
+          "所选队员获得等同于拉普拉斯基础经验值的事件经验，安全离开。"
+        ]
       },
       {
         "index": 3,
@@ -1916,7 +2059,11 @@
         "disabledTooltip": "",
         "selectedText": "你在船上漂浮，漫无目的地航行，直到最后发现了一个你记得的地标。\n你和你的宝可梦因整个经历而疲惫不堪。",
         "conditions": [],
-        "effectSummary": "(-)每一只宝可梦\n损失相关宝可梦%的HP"
+        "effectSummary": "(-)每一只宝可梦\n损失相关宝可梦%的HP",
+        "logicDetails": [
+          "全体可战斗队员各失去最大HP的 25%。",
+          "无奖励。"
+        ]
       }
     ]
   },
@@ -2057,7 +2204,11 @@
         "disabledTooltip": "",
         "selectedText": "太棒了！@d{32}过来吧，相关宝可梦！\n现在是时候向游艇俱乐部的那帮小子炫耀一番了！\n他们肯定得酸爆了！",
         "conditions": [],
-        "effectSummary": "(-)失去相关宝可梦\n(+)获得一个@[TOOLTIP_TITLE]{ 相关宝可梦}\n(+)获得相关宝可梦"
+        "effectSummary": "(-)失去相关宝可梦\n(+)获得一个@[TOOLTIP_TITLE]{ 相关宝可梦}\n(+)获得相关宝可梦",
+        "logicDetails": [
+          "交出指定的一只队员，获得指定道具与一只交换来的宝可梦。",
+          "交换对象和道具由事件初始化时决定。"
+        ]
       },
       {
         "index": 2,
@@ -2068,7 +2219,11 @@
         "conditions": [
           "队伍中需有满足指定招式条件的宝可梦"
         ],
-        "effectSummary": "(+)所选宝可梦使用相关宝可梦\n(+)获得相关宝可梦"
+        "effectSummary": "(+)所选宝可梦使用相关宝可梦\n(+)获得相关宝可梦",
+        "logicDetails": [
+          "选择一只队员敲诈对方并获得金钱。",
+          "所选队员获得经验，不会交换宝可梦。"
+        ]
       },
       {
         "index": 3,
@@ -2079,7 +2234,10 @@
         "conditions": [
           "队伍中需有满足指定招式条件的宝可梦"
         ],
-        "effectSummary": "(-)无奖励"
+        "effectSummary": "(-)无奖励",
+        "logicDetails": [
+          "离开；无奖励。"
+        ]
       }
     ]
   },
@@ -2168,7 +2326,11 @@
         "conditions": [
           "队伍数量为 2-6"
         ],
-        "effectSummary": "(+)为一只宝可梦\n选择交换"
+        "effectSummary": "(+)为一只宝可梦\n选择交换",
+        "logicDetails": [
+          "浏览匹配请求后，选择符合要求的一只队员进行定向交换。",
+          "获得的宝可梦由所选请求固定，原队员会离队。"
+        ]
       },
       {
         "index": 2,
@@ -2179,7 +2341,10 @@
         "conditions": [
           "队伍数量为 2-6"
         ],
-        "effectSummary": "(+)发送一只宝可梦，\n并获得一只随机宝可梦"
+        "effectSummary": "(+)发送一只宝可梦，\n并获得一只随机宝可梦",
+        "logicDetails": [
+          "选择一只队员进行奇迹交换；原队员离队，换入一只随机宝可梦。"
+        ]
       },
       {
         "index": 3,
@@ -2188,7 +2353,11 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(+)发送一件道具\n并获得一件随机新道具"
+        "effectSummary": "(+)发送一件道具\n并获得一件随机新道具",
+        "logicDetails": [
+          "选择一件可转移持有道具交出。",
+          "获得一件与当前波次匹配的随机新道具，原道具会被移除。"
+        ]
       },
       {
         "index": 4,
@@ -2197,7 +2366,10 @@
         "disabledTooltip": "",
         "selectedText": "今日不宜交换！\n你上路了。",
         "conditions": [],
-        "effectSummary": "(-)无奖励"
+        "effectSummary": "(-)无奖励",
+        "logicDetails": [
+          "离开；无奖励。"
+        ]
       }
     ]
   },
@@ -2362,7 +2534,11 @@
         "disabledTooltip": "",
         "selectedText": "你打开箱子发现……",
         "conditions": [],
-        "effectSummary": "@[SUMMARY_BLUE]{(35%) 某种东西}\n@[SUMMARY_GREEN]{(相关宝可梦%) 一般奖励}\n@[SUMMARY_GREEN]{(相关宝可梦%) 精美奖励}\n@[SUMMARY_GREEN]{(相关宝可梦%) 珍稀奖励}\n@[SUMMARY_GREEN]{(相关宝可梦%) 超凡奖励}"
+        "effectSummary": "@[SUMMARY_BLUE]{(35%) 某种东西}\n@[SUMMARY_GREEN]{(相关宝可梦%) 一般奖励}\n@[SUMMARY_GREEN]{(相关宝可梦%) 精美奖励}\n@[SUMMARY_GREEN]{(相关宝可梦%) 珍稀奖励}\n@[SUMMARY_GREEN]{(相关宝可梦%) 超凡奖励}",
+        "logicDetails": [
+          "开箱先随机判定：35% 触发战斗，其余分支直接给奖励。",
+          "非战斗奖励按普通、高级、超级、肉鸽、大师档的固定奖励数量和概率结算；若触发战斗，胜利后补齐常规奖励。"
+        ]
       },
       {
         "index": 2,
@@ -2371,7 +2547,10 @@
         "disabledTooltip": "",
         "selectedText": "你匆匆上路，心里却有一丝遗憾。",
         "conditions": [],
-        "effectSummary": "(-)无奖励"
+        "effectSummary": "(-)无奖励",
+        "logicDetails": [
+          "离开；不触发战斗，也没有奖励。"
+        ]
       }
     ]
   },
@@ -2510,7 +2689,10 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(-)普通的战斗\n(+)道具奖励"
+        "effectSummary": "(-)普通的战斗\n(+)道具奖励",
+        "logicDetails": [
+          "挑战谨慎的训练家；固定含普通和高级技能机，再补齐常规奖励。"
+        ]
       },
       {
         "index": 2,
@@ -2519,7 +2701,10 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(-)困难的战斗\n(+)更好的奖励"
+        "effectSummary": "(-)困难的战斗\n(+)更好的奖励",
+        "logicDetails": [
+          "挑战自信的训练家；固定获得多件超级档奖励，再补齐常规奖励。"
+        ]
       },
       {
         "index": 3,
@@ -2528,7 +2713,10 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(-)艰苦的战斗\n(+)丰厚的奖励"
+        "effectSummary": "(-)艰苦的战斗\n(+)丰厚的奖励",
+        "logicDetails": [
+          "挑战威严的训练家；固定获得多件肉鸽档奖励，再补齐常规奖励。"
+        ]
       }
     ]
   },
@@ -2571,7 +2759,10 @@
         "conditions": [
           "持有足够金钱（金额随当前波次变化）"
         ],
-        "effectSummary": "(-)支付相关宝可梦\n@[SUMMARY_GREEN]{(?)狩猎地带}"
+        "effectSummary": "(-)支付相关宝可梦\n@[SUMMARY_GREEN]{(?)狩猎地带}",
+        "logicDetails": [
+          "支付按当前波次计算的进入费用，进入狩猎地带并在后续阶段选择捕捉方案。"
+        ]
       },
       {
         "index": 2,
@@ -2582,7 +2773,10 @@
         "conditions": [
           "持有足够金钱（金额随当前波次变化）"
         ],
-        "effectSummary": "(-)无奖励"
+        "effectSummary": "(-)无奖励",
+        "logicDetails": [
+          "离开；无奖励。"
+        ]
       }
     ]
   },
@@ -2748,7 +2942,10 @@
         "disabledTooltip": "",
         "selectedText": "你投入一些钱，胶囊就打开了。\n你走了进去……",
         "conditions": [],
-        "effectSummary": "(-)支付相关宝可梦\n(?)传送至随机地图"
+        "effectSummary": "(-)支付相关宝可梦\n(?)传送至随机地图",
+        "logicDetails": [
+          "支付投币费用后，传送到一个随机地图。"
+        ]
       },
       {
         "index": 2,
@@ -2757,7 +2954,10 @@
         "disabledTooltip": "你需要一只钢系或\n电系宝可梦来选择此项",
         "selectedText": "所选宝可梦的类型允许你绕过机器的付费装置！\n胶囊打开，你走进去……",
         "conditions": [],
-        "effectSummary": "(-)所选宝可梦帮忙\n(+)所选宝可梦获得经验\n(?)传送至随机地图"
+        "effectSummary": "(-)所选宝可梦帮忙\n(+)所选宝可梦获得经验\n(?)传送至随机地图",
+        "logicDetails": [
+          "选择一只队员协助机器；该队员获得经验，再传送到随机地图。"
+        ]
       },
       {
         "index": 3,
@@ -2766,7 +2966,10 @@
         "disabledTooltip": "",
         "selectedText": "你被闪烁的灯光和机器发出的奇怪声音吸引住了……\n你甚至没有注意到一只野生的\n宝可梦偷偷接近并偷袭了你！",
         "conditions": [],
-        "effectSummary": "(-)战斗"
+        "effectSummary": "(-)战斗",
+        "logicDetails": [
+          "检查机器并与故障来源战斗；胜利后按事件流程结算。"
+        ]
       }
     ]
   },
@@ -2929,7 +3132,10 @@
         "disabledTooltip": "",
         "selectedText": "你无所畏惧地\n走向了宝可梦们。",
         "conditions": [],
-        "effectSummary": "(-)艰难的战斗\n(+)获得树果"
+        "effectSummary": "(-)艰难的战斗\n(+)获得树果",
+        "logicDetails": [
+          "与守护果丛的强敌战斗；胜利后获得树果奖励。"
+        ]
       },
       {
         "index": 2,
@@ -2938,7 +3144,11 @@
         "disabledTooltip": "",
         "selectedText": "你的相关宝可梦冲向了果丛！\n它在相关宝可梦做出反应之前成功抓住了相关宝可梦！\n你带着你的战利品迅速撤退。",
         "conditions": [],
-        "effectSummary": "(-)相关宝可梦试试速度\n(+)获得树果"
+        "effectSummary": "(-)相关宝可梦试试速度\n(+)获得树果",
+        "logicDetails": [
+          "选择一只队员冲向果丛并进行速度判定。",
+          "成功获得更好的树果奖励；失败会进入战斗后再结算树果。"
+        ]
       },
       {
         "index": 3,
@@ -2947,7 +3157,10 @@
         "disabledTooltip": "",
         "selectedText": "你让那个宝可梦留着属于它的果子\n继续上路了。",
         "conditions": [],
-        "effectSummary": "(-)无奖励"
+        "effectSummary": "(-)无奖励",
+        "logicDetails": [
+          "离开；无奖励。"
+        ]
       }
     ]
   },
@@ -2988,7 +3201,10 @@
         "disabledTooltip": "",
         "selectedText": "贪心栗鼠塞满脸颊\n并准备战斗！",
         "conditions": [],
-        "effectSummary": "(-)艰难的战斗\n(+)树果宝藏的奖励"
+        "effectSummary": "(-)艰难的战斗\n(+)树果宝藏的奖励",
+        "logicDetails": [
+          "与贪心栗鼠战斗；胜利后取回树果并获得树果宝藏奖励。"
+        ]
       },
       {
         "index": 2,
@@ -2997,7 +3213,10 @@
         "disabledTooltip": "",
         "selectedText": "你的恳求引起了贪心栗鼠的共鸣。\n它不会把你所有的果子都归还给你，但仍然会扔给你一些。",
         "conditions": [],
-        "effectSummary": "(+)拿回一些失去的树果"
+        "effectSummary": "(+)拿回一些失去的树果",
+        "logicDetails": [
+          "和平交涉，只取回部分被偷走的树果；不进入战斗。"
+        ]
       },
       {
         "index": 3,
@@ -3006,7 +3225,10 @@
         "disabledTooltip": "",
         "selectedText": "贪心栗鼠一瞬间就吃掉了整个树果堆！\n它拍拍肚子，\n感激地看着你。\n也许你可以在冒险中喂它\n更多浆果……\n贪心栗鼠想加入你的队伍！",
         "conditions": [],
-        "effectSummary": "(-)失去所有树果\n(?)贪心栗鼠会很感激你"
+        "effectSummary": "(-)失去所有树果\n(?)贪心栗鼠会很感激你",
+        "logicDetails": [
+          "放弃所有树果，并让贪心栗鼠加入队伍；捕捉不消耗精灵球。"
+        ]
       }
     ]
   },
@@ -3133,7 +3355,11 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(+)物理类奖励"
+        "effectSummary": "(+)物理类奖励",
+        "logicDetails": [
+          "选择队员和物理招式作答；答对时该队员获 100 经验，答错则全队各获 50 经验。",
+          "答对得攻击、防御、速度临时强化、要害攻击和超神奇糖果各 1 个。"
+        ]
       },
       {
         "index": 2,
@@ -3142,7 +3368,11 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(+)特殊类奖励"
+        "effectSummary": "(+)特殊类奖励",
+        "logicDetails": [
+          "选择队员和特殊招式作答；经验规则与物理题相同。",
+          "答对得特攻、特防、速度临时强化、要害攻击和超神奇糖果各 1 个。"
+        ]
       },
       {
         "index": 3,
@@ -3151,7 +3381,11 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(+)变化类奖励"
+        "effectSummary": "(+)变化类奖励",
+        "logicDetails": [
+          "选择队员和变化招式作答；经验规则相同。",
+          "答对得命中、速度临时强化、超级球、个体值扫描仪和超神奇糖果各 1 个。"
+        ]
       }
     ]
   },
@@ -3298,7 +3532,10 @@
         "disabledTooltip": "",
         "selectedText": "相关宝可梦变得急躁，想要采取行动进行自卫！",
         "conditions": [],
-        "effectSummary": "(-)艰难的战斗\n(+)获得接力棒"
+        "effectSummary": "(-)艰难的战斗\n(+)获得接力棒",
+        "logicDetails": [
+          "与花舞鸟战斗；胜利后必得接力棒，并补齐常规奖励。"
+        ]
       },
       {
         "index": 2,
@@ -3307,7 +3544,10 @@
         "disabledTooltip": "",
         "selectedText": "您紧盯着相关宝可梦的舞蹈表演……\n你的相关宝可梦从相关宝可梦那里学到了！",
         "conditions": [],
-        "effectSummary": "(+)教宝可梦觉醒之舞"
+        "effectSummary": "(+)教宝可梦觉醒之舞",
+        "logicDetails": [
+          "选择可学习的队员，教授觉醒之舞；不战斗。"
+        ]
       },
       {
         "index": 3,
@@ -3318,7 +3558,10 @@
         "conditions": [
           "队伍中需有满足指定招式条件的宝可梦"
         ],
-        "effectSummary": "(-)教相关宝可梦一支舞蹈\n(+)相关宝可梦会喜欢你"
+        "effectSummary": "(-)教相关宝可梦一支舞蹈\n(+)相关宝可梦会喜欢你",
+        "logicDetails": [
+          "选择一只会跳舞招式的队员表演；队员会习得舞蹈招式，花舞鸟加入队伍。"
+        ]
       }
     ]
   },
@@ -3481,7 +3724,11 @@
         "disabledTooltip": "",
         "selectedText": "你可怜的宝可梦正准备上演可悲的马戏！",
         "conditions": [],
-        "effectSummary": "(-)奇妙的战斗\n(?)影响宝可梦特性"
+        "effectSummary": "(-)奇妙的战斗\n(?)影响宝可梦特性",
+        "logicDetails": [
+          "与小丑战斗；胜利后结算常规奖励。",
+          "随机一只队员的特性会被改变。"
+        ]
       },
       {
         "index": 2,
@@ -3490,7 +3737,10 @@
         "disabledTooltip": "",
         "selectedText": "小懦夫，竟敢拒绝我。\n尝尝我的厉害！",
         "conditions": [],
-        "effectSummary": "(-)让小丑失望\n(?)影响宝可梦道具"
+        "effectSummary": "(-)让小丑失望\n(?)影响宝可梦道具",
+        "logicDetails": [
+          "不战斗；随机一只队员的持有道具会被小丑变换。"
+        ]
       },
       {
         "index": 3,
@@ -3499,7 +3749,10 @@
         "disabledTooltip": "",
         "selectedText": "小懦夫，竟敢拒绝我。\n尝尝我的厉害！",
         "conditions": [],
-        "effectSummary": "(-)让小丑失望\n(?)影响宝可梦属性"
+        "effectSummary": "(-)让小丑失望\n(?)影响宝可梦属性",
+        "logicDetails": [
+          "不战斗；随机一只队员的属性会被小丑变换。"
+        ]
       }
     ]
   },
@@ -3665,7 +3918,10 @@
         "disabledTooltip": "",
         "selectedText": "你向相关宝可梦们扔了点钱，\n它们兴奋地互相嚷嚷着。\n信使鸟们转向你并高兴地给你一份礼物！",
         "conditions": [],
-        "effectSummary": "(-)给予相关宝可梦们相关宝可梦\n(+)获得一件礼物"
+        "effectSummary": "(-)给予相关宝可梦们相关宝可梦\n(+)获得一件礼物",
+        "logicDetails": [
+          "支付按当前波次计算的金钱，获得礼物。"
+        ]
       },
       {
         "index": 2,
@@ -3676,7 +3932,10 @@
         "conditions": [
           "队伍中需有满足携带道具条件的宝可梦"
         ],
-        "effectSummary": "(-)给予相关宝可梦们\n树果或复活之种\n(+)获得一件礼物"
+        "effectSummary": "(-)给予相关宝可梦们\n树果或复活之种\n(+)获得一件礼物",
+        "logicDetails": [
+          "交出树果或复活之种，获得礼物；选择后移除所交出的消耗品。"
+        ]
       },
       {
         "index": 3,
@@ -3687,7 +3946,10 @@
         "conditions": [
           "队伍中需有满足携带道具条件的宝可梦"
         ],
-        "effectSummary": "(-)给予相关宝可梦一件道具\n(+)获得一件礼物"
+        "effectSummary": "(-)给予相关宝可梦一件道具\n(+)获得一件礼物",
+        "logicDetails": [
+          "交出一件可转移持有道具，获得礼物；选择后移除原道具。"
+        ]
       }
     ]
   },
@@ -3850,7 +4112,11 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(-)残酷的战斗\n(+)获得一个@[TOOLTIP_TITLE]{非常稀有的蛋}"
+        "effectSummary": "(-)残酷的战斗\n(+)获得一个@[TOOLTIP_TITLE]{非常稀有的蛋}",
+        "logicDetails": [
+          "随机遇到五名能力训练家之一并战斗。",
+          "胜利后得 1 枚活动来源的史诗蛋，必含金色护符，另有 2 件肉鸽档奖励和常规补齐奖励。"
+        ]
       },
       {
         "index": 2,
@@ -3859,7 +4125,11 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(+)治疗全队\n(+)获得一个@[TOOLTIP_TITLE]{蛋}"
+        "effectSummary": "(+)治疗全队\n(+)获得一个@[TOOLTIP_TITLE]{蛋}",
+        "logicDetails": [
+          "拒绝挑战；全队回复生命。",
+          "获得 1 枚活动来源的稀有蛋。"
+        ]
       }
     ]
   },
@@ -4000,7 +4270,11 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(-)支付相关宝可梦\n(-)副作用？\n(+)选择的宝可梦获得\n两份随机努力药"
+        "effectSummary": "(-)支付相关宝可梦\n(-)副作用？\n(+)选择的宝可梦获得\n两份随机努力药",
+        "logicDetails": [
+          "支付较低价格，选择一只队员获得 2 次随机努力值提升。",
+          "有副作用：目标还会随机承受一项负面变化。"
+        ]
       },
       {
         "index": 2,
@@ -4009,7 +4283,10 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(-)支付相关宝可梦\n(+)选择的宝可梦获得\n两份随机努力药"
+        "effectSummary": "(-)支付相关宝可梦\n(+)选择的宝可梦获得\n两份随机努力药",
+        "logicDetails": [
+          "支付较高价格，选择一只队员获得 2 次随机努力值提升；无副作用。"
+        ]
       },
       {
         "index": 3,
@@ -4018,7 +4295,10 @@
         "disabledTooltip": "",
         "selectedText": "呵呵，没想到你竟然是个懦夫。",
         "conditions": [],
-        "effectSummary": "(-)无奖励"
+        "effectSummary": "(-)无奖励",
+        "logicDetails": [
+          "离开；无奖励。"
+        ]
       }
     ]
   },
@@ -4181,7 +4461,10 @@
         "disabledTooltip": "",
         "selectedText": "你无所畏惧的走向宝可梦。",
         "conditions": [],
-        "effectSummary": "(-)困难的战斗\n(+)新道具"
+        "effectSummary": "(-)困难的战斗\n(+)新道具",
+        "logicDetails": [
+          "与野生强敌战斗；胜利后获得一件按当前波次生成的新持有道具。"
+        ]
       },
       {
         "index": 2,
@@ -4192,7 +4475,10 @@
         "conditions": [
           "队伍中需有满足指定招式条件的宝可梦"
         ],
-        "effectSummary": "(+)所选宝可梦使用相关宝可梦"
+        "effectSummary": "(+)所选宝可梦使用相关宝可梦",
+        "logicDetails": [
+          "选择一只队员偷取敌方道具；无需战斗，获得同一件按当前波次生成的道具。"
+        ]
       },
       {
         "index": 3,
@@ -4203,7 +4489,10 @@
         "conditions": [
           "队伍中需有满足指定招式条件的宝可梦"
         ],
-        "effectSummary": "(-)无奖励"
+        "effectSummary": "(-)无奖励",
+        "logicDetails": [
+          "离开；无奖励。"
+        ]
       }
     ]
   },
@@ -4348,7 +4637,10 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(-)艰难的战斗\n(+)获得与随机宝可梦 1的友谊"
+        "effectSummary": "(-)艰难的战斗\n(+)获得与随机宝可梦 1的友谊",
+        "logicDetails": [
+          "挑战展示的第一只宝可梦；胜利后获得与该物种对应的友好度奖励。"
+        ]
       },
       {
         "index": 2,
@@ -4357,7 +4649,10 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(-)艰难的战斗\n(+)获得与随机宝可梦 2的友谊"
+        "effectSummary": "(-)艰难的战斗\n(+)获得与随机宝可梦 2的友谊",
+        "logicDetails": [
+          "挑战展示的第二只宝可梦；胜利后获得与该物种对应的友好度奖励。"
+        ]
       },
       {
         "index": 3,
@@ -4366,7 +4661,10 @@
         "disabledTooltip": "",
         "selectedText": "",
         "conditions": [],
-        "effectSummary": "(-)艰难的战斗\n(+)获得与随机宝可梦 3的友谊"
+        "effectSummary": "(-)艰难的战斗\n(+)获得与随机宝可梦 3的友谊",
+        "logicDetails": [
+          "挑战展示的第三只宝可梦；胜利后获得与该物种对应的友好度奖励。"
+        ]
       }
     ]
   }

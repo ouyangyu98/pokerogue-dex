@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { mysteryEncounterLogicDetails } from './mystery-encounter-logic.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const rootDir = path.join(__dirname, '..')
@@ -227,15 +228,21 @@ function parseEvent(sourceFile, registryBiomes, biomeNames) {
   const options = Object.entries(locale.option || {})
     .filter(([index]) => /^\d+$/.test(index))
     .sort(([a], [b]) => Number(a) - Number(b))
-    .map(([index, option]) => ({
-      index: Number(index),
-      label: cleanDialogue(option.label),
-      tooltip: cleanDialogue(option.tooltip || option.tooltipBase),
-      disabledTooltip: cleanDialogue(option.disabledTooltip),
-      selectedText: cleanDialogue(option.selected),
-      conditions: getOptionConditions(source, index),
-      effectSummary: cleanDialogue(option.tooltip || option.tooltipBase),
-    }))
+    .map(([index, option]) => {
+      const optionIndex = Number(index)
+      const logicDetails = mysteryEncounterLogicDetails[idMatch[1]]?.[optionIndex]
+      if (!logicDetails?.length) throw new Error(`Missing source logic summary: ${idMatch[1]}.${optionIndex}`)
+      return {
+        index: optionIndex,
+        label: cleanDialogue(option.label),
+        tooltip: cleanDialogue(option.tooltip || option.tooltipBase),
+        disabledTooltip: cleanDialogue(option.disabledTooltip),
+        selectedText: cleanDialogue(option.selected),
+        conditions: getOptionConditions(source, index),
+        effectSummary: cleanDialogue(option.tooltip || option.tooltipBase),
+        logicDetails,
+      }
+    })
 
   if (!locale.title || !locale.description || options.length < 2 || options.some(option => !option.label)) {
     throw new Error(`Incomplete localized content: ${localeName}`)

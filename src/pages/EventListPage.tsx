@@ -45,6 +45,7 @@ export default function EventListPage() {
           option.effectSummary,
           option.disabledTooltip,
           option.selectedText,
+          ...option.logicDetails,
           ...option.conditions,
         ]),
       ].join(' ').toLowerCase()
@@ -159,10 +160,16 @@ export default function EventListPage() {
                       <h3>{option.label}</h3>
                     </div>
                     <p className="event-option-effect">{option.effectSummary || '官方提示未提供具体效果说明。'}</p>
-                    {(option.selectedText || option.disabledTooltip || option.conditions.length > 0) && (
+                    {(option.logicDetails.length > 0 || option.selectedText || option.disabledTooltip || option.conditions.length > 0) && (
                       <details className="event-option-details">
                         <summary>展开说明</summary>
                         <div>
+                          <div className="event-option-logic">
+                            <span>实际效果</span>
+                            <ul>
+                              {option.logicDetails.map(detail => <li key={detail}>{detail}</li>)}
+                            </ul>
+                          </div>
                           {option.selectedText && <p>选择后：{option.selectedText}</p>}
                           {option.disabledTooltip && <p className="event-option-disabled">不可用时：{option.disabledTooltip}</p>}
                           {option.conditions.length > 0 && <p className="event-option-condition">选项条件：{option.conditions.join('；')}</p>}

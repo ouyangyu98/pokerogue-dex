@@ -226,6 +226,7 @@ export interface MysteryEncounterOption {
   selectedText?: string
   conditions: string[]
   effectSummary: string
+  logicDetails: string[]
 }
 
 export interface MysteryEncounter {
