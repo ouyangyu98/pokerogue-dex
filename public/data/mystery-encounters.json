@@ -1,0 +1,4373 @@
+[
+  {
+    "id": "WEIRD_DREAM",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/weird-dream-encounter.ts",
+    "nameZh": "???",
+    "description": "女人的话语在你的脑海里回荡。\n那不是同一个人的声音，\n而是来自所有时间和空间的众多声音。\n你开始感到头晕目眩，\n这个问题萦绕在你的脑海中……\n\n@[TOOLTIP_TITLE]{\"我看到了你的未来，你的过去……\n孩子，你也看到了吗？\"}",
+    "query": "你要怎么做？",
+    "tier": "ROGUE",
+    "tierLabel": "肉鸽",
+    "waveMin": 30,
+    "waveMax": 140,
+    "biomes": [
+      {
+        "id": "ABYSS",
+        "nameZh": "幽谷深渊"
+      },
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SEA",
+        "nameZh": "海洋"
+      },
+      {
+        "id": "SEABED",
+        "nameZh": "海底"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SPACE",
+        "nameZh": "太空"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      },
+      {
+        "id": "VOLCANO",
+        "nameZh": "火山"
+      },
+      {
+        "id": "WASTELAND",
+        "nameZh": "荒地龙巢"
+      }
+    ],
+    "eventConditions": [
+      "队伍数量为 3-6"
+    ],
+    "catchAllowed": false,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "\"我看见了\"",
+        "tooltip": "@[SUMMARY_GREEN]{(?)影响宝可梦}",
+        "disabledTooltip": "",
+        "selectedText": "她伸出手去触摸你，\n然后一切都变黑了。\n然后……@d{64}你看到了一切。\n每一条时间线，你所有不同的自我，\n过去和未来。\n一切造就了你的事物，\n一切你将变成的事物……@d{64}",
+        "conditions": [],
+        "effectSummary": "@[SUMMARY_GREEN]{(?)影响宝可梦}"
+      },
+      {
+        "index": 2,
+        "label": "“让我康康”",
+        "tooltip": "（-）艰难的战斗\n（+）丰厚的奖励",
+        "disabledTooltip": "",
+        "selectedText": "你感觉陷入了一个冰冷的梦境。",
+        "conditions": [],
+        "effectSummary": "（-）艰难的战斗\n（+）丰厚的奖励"
+      },
+      {
+        "index": 3,
+        "label": "匆匆离开",
+        "tooltip": "(-)影响宝可梦",
+        "disabledTooltip": "",
+        "selectedText": "你从麻木的控制中挣脱出来，匆匆离开。\n当你终于停下来收拾好自己时，你连忙检查队伍中的宝可梦。\n不知为何，他们的等级都下降了！",
+        "conditions": [],
+        "effectSummary": "(-)影响宝可梦"
+      }
+    ]
+  },
+  {
+    "id": "DEPARTMENT_STORE_SALE",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/department-store-sale-encounter.ts",
+    "nameZh": "百货公司促销",
+    "description": "到处都是商品！\n共有4个柜台可以用优惠券兑换商品。\n好礼多多！",
+    "query": "你要去哪里？",
+    "tier": "COMMON",
+    "tierLabel": "普通",
+    "waveMin": 10,
+    "waveMax": 100,
+    "biomes": [
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      }
+    ],
+    "eventConditions": [],
+    "catchAllowed": false,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "技能机柜台",
+        "tooltip": "(+)技能机商店",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(+)技能机商店"
+      },
+      {
+        "index": 2,
+        "label": "努力药柜台",
+        "tooltip": "(+)努力药商店",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(+)努力药商店"
+      },
+      {
+        "index": 3,
+        "label": "强化道具柜台",
+        "tooltip": "(+)强化道具商店",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(+)强化道具商店"
+      },
+      {
+        "index": 4,
+        "label": "精灵球柜台",
+        "tooltip": "(+)精灵球商店",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(+)精灵球商店"
+      }
+    ]
+  },
+  {
+    "id": "THE_POKEMON_SALESMAN",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/the-pokemon-salesman-encounter.ts",
+    "nameZh": "宝可梦销售员",
+    "description": "“这个相关宝可梦非常独特，\n拥有该物种通常不具备的特性！只需相关宝可梦就让你拥有\n这个与众不同的相关宝可梦！”\n\n“你怎么说？”",
+    "query": "你要怎么做？",
+    "tier": "ULTRA",
+    "tierLabel": "超级",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      }
+    ],
+    "eventConditions": [
+      "持有足够金钱（金额随当前波次变化）"
+    ],
+    "catchAllowed": false,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "接受",
+        "tooltip": "(-)支付相关宝可梦\n(+)获得相关宝可梦和\n它的隐藏特性",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(-)支付相关宝可梦\n(+)获得相关宝可梦和\n它的隐藏特性"
+      },
+      {
+        "index": 2,
+        "label": "拒绝",
+        "tooltip": "(-)无奖励",
+        "disabledTooltip": "",
+        "selectedText": "不？@d{32} 你说不要？\n又不会让你吃亏！",
+        "conditions": [],
+        "effectSummary": "(-)无奖励"
+      }
+    ]
+  },
+  {
+    "id": "TRASH_TO_TREASURE",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/trash-to-treasure-encounter.ts",
+    "nameZh": "变废为宝",
+    "description": "垃圾堆在你眼前晃来晃去，\n你似乎在垃圾中发现一些有价值的物品。\n不过，你确定要弄得脏兮兮地去拿它们吗？",
+    "query": "你要怎么做？",
+    "tier": "ULTRA",
+    "tierLabel": "超级",
+    "waveMin": 100,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "ABYSS",
+        "nameZh": "幽谷深渊"
+      },
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SEA",
+        "nameZh": "海洋"
+      },
+      {
+        "id": "SEABED",
+        "nameZh": "海底"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SPACE",
+        "nameZh": "太空"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      },
+      {
+        "id": "VOLCANO",
+        "nameZh": "火山"
+      },
+      {
+        "id": "WASTELAND",
+        "nameZh": "荒地龙巢"
+      }
+    ],
+    "eventConditions": [
+      "队伍数量为 3-6"
+    ],
+    "catchAllowed": false,
+    "fleeAllowed": false,
+    "options": [
+      {
+        "index": 1,
+        "label": "探究来源",
+        "tooltip": "(?)找到垃圾的来源",
+        "disabledTooltip": "",
+        "selectedText": "你在这堆东西周围徘徊，\n寻找表明这东西可能出现在这里的任何迹象……",
+        "conditions": [],
+        "effectSummary": "(?)找到垃圾的来源"
+      },
+      {
+        "index": 2,
+        "label": "挖掘宝贝",
+        "tooltip": "(-)商店的治疗道具消失\n(+)获得精美礼品",
+        "disabledTooltip": "",
+        "selectedText": "你穿过垃圾堆，没入污秽之中。\n在你这样肮脏的状态下，任何有尊严的店主\n都不会卖给你任何东西！\n你只能将就将就，不再购买治疗物品。\n然而，你在垃圾中还是发现了一些不可思议的宝贝！",
+        "conditions": [],
+        "effectSummary": "(-)商店的治疗道具消失\n(+)获得精美礼品"
+      }
+    ]
+  },
+  {
+    "id": "BUG_TYPE_SUPERFAN",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/bug-type-superfan-encounter.ts",
+    "nameZh": "超级虫系粉丝",
+    "description": "训练家喋喋不休，根本不听你回应…\n\n似乎唯一的办法就是引起他的注意！",
+    "query": "你要怎么做？",
+    "tier": "GREAT",
+    "tierLabel": "高级",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "ABYSS",
+        "nameZh": "幽谷深渊"
+      },
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SEA",
+        "nameZh": "海洋"
+      },
+      {
+        "id": "SEABED",
+        "nameZh": "海底"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SPACE",
+        "nameZh": "太空"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      },
+      {
+        "id": "VOLCANO",
+        "nameZh": "火山"
+      },
+      {
+        "id": "WASTELAND",
+        "nameZh": "荒地龙巢"
+      }
+    ],
+    "eventConditions": [
+      "队伍数量为 3-6",
+      "队伍中需有 虫属性宝可梦",
+      "队伍中需有满足携带道具条件的宝可梦"
+    ],
+    "catchAllowed": false,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "请求对战",
+        "tooltip": "(-)艰难的对战\n(+)习得虫系招式",
+        "disabledTooltip": "",
+        "selectedText": "对战，呃？\n我的虫系宝可梦早就准备好了。",
+        "conditions": [],
+        "effectSummary": "(-)艰难的对战\n(+)习得虫系招式"
+      },
+      {
+        "index": 2,
+        "label": "展示虫宝可梦",
+        "tooltip": "(+)获得一件道具",
+        "disabledTooltip": "你需要至少携带\n一只虫系宝可梦",
+        "selectedText": "你向训练师展示了你所有的虫系宝可梦",
+        "conditions": [
+          "队伍中需有 虫属性宝可梦"
+        ],
+        "effectSummary": "(+)获得一件道具"
+      },
+      {
+        "index": 3,
+        "label": "赠送虫系道具",
+        "tooltip": "(-)给予训练师相关宝可梦\n(+)得到一件礼物",
+        "disabledTooltip": "你需要一件相关宝可梦\n才能选择",
+        "selectedText": "你递交了相关宝可梦.",
+        "conditions": [
+          "队伍中需有满足携带道具条件的宝可梦"
+        ],
+        "effectSummary": "(-)给予训练师相关宝可梦\n(+)得到一件礼物"
+      }
+    ]
+  },
+  {
+    "id": "SLUMBERING_SNORLAX",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/slumbering-snorlax-encounter.ts",
+    "nameZh": "沉睡的卡比兽",
+    "description": "你可以攻击它来让它醒来，\n要么就等它睡醒。\n谁知道要等多久呢？",
+    "query": "你要怎么做？",
+    "tier": "GREAT",
+    "tierLabel": "高级",
+    "waveMin": 15,
+    "waveMax": 150,
+    "biomes": [
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      }
+    ],
+    "eventConditions": [],
+    "catchAllowed": true,
+    "fleeAllowed": false,
+    "options": [
+      {
+        "index": 1,
+        "label": "抡醒",
+        "tooltip": "(-)与沉睡的卡比兽战斗\n(+)特别的奖励",
+        "disabledTooltip": "",
+        "selectedText": "你无所畏惧地\n走向了宝可梦们。",
+        "conditions": [],
+        "effectSummary": "(-)与沉睡的卡比兽战斗\n(+)特别的奖励"
+      },
+      {
+        "index": 2,
+        "label": "干等",
+        "tooltip": "(-)漫长的等待\n(+)回复队伍",
+        "disabledTooltip": "",
+        "selectedText": ".@d{32}.@d{32}.@d{32}\n您等待了好一段时间，但是\n卡比兽的哈欠让你的队伍昏昏欲睡…………",
+        "conditions": [],
+        "effectSummary": "(-)漫长的等待\n(+)回复队伍"
+      },
+      {
+        "index": 3,
+        "label": "偷摸",
+        "tooltip": "(+)所选宝可梦使用相关宝可梦\n(+)特别的奖励",
+        "disabledTooltip": "宝可梦需要习得\n特别的招式来选择",
+        "selectedText": "你的所选宝可梦使用相关宝可梦！\n它从熟睡的\n卡比兽身上偷走了吃剩的东西，简直像个怪盗！",
+        "conditions": [
+          "队伍中需有满足指定招式条件的宝可梦"
+        ],
+        "effectSummary": "(+)所选宝可梦使用相关宝可梦\n(+)特别的奖励"
+      }
+    ]
+  },
+  {
+    "id": "FIERY_FALLOUT",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/fiery-fallout-encounter.ts",
+    "nameZh": "炽热余波",
+    "description": "呼啸的火山灰和余烬\n使能见度几乎为零。\n看来可能有什么…东西\n造成了这种状况。\n但到底会是什么呢？",
+    "query": "你要怎么做？",
+    "tier": "COMMON",
+    "tierLabel": "普通",
+    "waveMin": 40,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "VOLCANO",
+        "nameZh": "火山"
+      }
+    ],
+    "eventConditions": [],
+    "catchAllowed": true,
+    "fleeAllowed": false,
+    "options": [
+      {
+        "index": 1,
+        "label": "找到源头",
+        "tooltip": "(?)寻找源头\n(-)困难的战斗\n(+)获得携带道具",
+        "disabledTooltip": "",
+        "selectedText": "你冲破风暴，发现两只相关宝可梦正在相互求偶！\n它们很不情愿被打扰，并发起了攻击！",
+        "conditions": [],
+        "effectSummary": "(?)寻找源头\n(-)困难的战斗\n(+)获得携带道具"
+      },
+      {
+        "index": 2,
+        "label": "原地趴下",
+        "tooltip": "(-)忍受天气的影响\n(?)影响一只宝可梦的特性",
+        "disabledTooltip": "",
+        "selectedText": "极端天气在你寻找庇护所时对你造成了严重的伤害！\n队伍受到最大生命值20%的伤害！",
+        "conditions": [],
+        "effectSummary": "(-)忍受天气的影响\n(?)影响一只宝可梦的特性"
+      },
+      {
+        "index": 3,
+        "label": "让抗火的宝可梦帮忙",
+        "tooltip": "(+)解决困境\n(+)获得携带道具",
+        "disabledTooltip": "你需要一只火系宝可梦或\n有指定特性的宝可梦才能选择",
+        "selectedText": "你的所选宝可梦引导你发现了\n两只相关宝可梦正在求偶起舞的地方！\n幸运的是，你的宝可梦能够让它们平静下来，\n然后它们就平安离开了。",
+        "conditions": [
+          "队伍中需有 火属性宝可梦"
+        ],
+        "effectSummary": "(+)解决困境\n(+)获得携带道具"
+      }
+    ]
+  },
+  {
+    "id": "UNCOMMON_BREED",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/uncommon-breed-encounter.ts",
+    "nameZh": "罕见物种",
+    "description": "相关宝可梦看起来\n与其他同种宝可梦大相径庭。\n@[TOOLTIP_TITLE]{也许它会特殊招式？}\n你可以直接进行战斗并尝试捕获它，\n但可能也有办法和它交朋友。",
+    "query": "你要怎么做？",
+    "tier": "COMMON",
+    "tierLabel": "普通",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "ABYSS",
+        "nameZh": "幽谷深渊"
+      },
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SEA",
+        "nameZh": "海洋"
+      },
+      {
+        "id": "SEABED",
+        "nameZh": "海底"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SPACE",
+        "nameZh": "太空"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      },
+      {
+        "id": "VOLCANO",
+        "nameZh": "火山"
+      },
+      {
+        "id": "WASTELAND",
+        "nameZh": "荒地龙巢"
+      }
+    ],
+    "eventConditions": [],
+    "catchAllowed": true,
+    "fleeAllowed": false,
+    "options": [
+      {
+        "index": 1,
+        "label": "与它战斗",
+        "tooltip": "(-)艰难的战斗\n(+)可捕获强敌",
+        "disabledTooltip": "",
+        "selectedText": "你毫无畏惧地接近\n相关宝可梦。",
+        "conditions": [],
+        "effectSummary": "(-)艰难的战斗\n(+)可捕获强敌"
+      },
+      {
+        "index": 2,
+        "label": "给他吃的",
+        "tooltip": "(-)给予4个树果\n(+)相关宝可梦会喜欢你",
+        "disabledTooltip": "你需要4个树果\n来选择此项",
+        "selectedText": "你把树果扔向相关宝可梦！\n它高兴地把树果吃干抹净！\n相关宝可梦想加入你的队伍！",
+        "conditions": [
+          "持有 树果至少 4 个"
+        ],
+        "effectSummary": "(-)给予4个树果\n(+)相关宝可梦会喜欢你"
+      },
+      {
+        "index": 3,
+        "label": "交朋友",
+        "tooltip": "(+)所选宝可梦使用相关宝可梦\n(+)相关宝可梦会喜欢你",
+        "disabledTooltip": "你的宝可梦需要习得\n某些招式才能选择此项",
+        "selectedText": "你的所选宝可梦使用了相关宝可梦来吸引相关宝可梦！\n相关宝可梦想加入你的队伍！",
+        "conditions": [
+          "队伍中需有满足指定招式条件的宝可梦"
+        ],
+        "effectSummary": "(+)所选宝可梦使用相关宝可梦\n(+)相关宝可梦会喜欢你"
+      }
+    ]
+  },
+  {
+    "id": "DARK_DEAL",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/dark-deal-encounter.ts",
+    "nameZh": "黑暗交易",
+    "description": "这个诡异的家伙举起一些精灵球。\n我会让你感到物超所值的！\n我只要你队伍里的一只宝可梦，\n这些强力的精灵球就是你的了，嘿嘿…",
+    "query": "你要怎么做？",
+    "tier": "ROGUE",
+    "tierLabel": "肉鸽",
+    "waveMin": 30,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "ABYSS",
+        "nameZh": "幽谷深渊"
+      },
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SEA",
+        "nameZh": "海洋"
+      },
+      {
+        "id": "SEABED",
+        "nameZh": "海底"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SPACE",
+        "nameZh": "太空"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      },
+      {
+        "id": "VOLCANO",
+        "nameZh": "火山"
+      },
+      {
+        "id": "WASTELAND",
+        "nameZh": "荒地龙巢"
+      }
+    ],
+    "eventConditions": [
+      "队伍数量为 2-6"
+    ],
+    "catchAllowed": true,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "同意",
+        "tooltip": "(+)5个肉鸽球\n(?)强化随机宝可梦",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(+)5个肉鸽球\n(?)强化随机宝可梦"
+      },
+      {
+        "index": 2,
+        "label": "拒绝",
+        "tooltip": "(-)无奖励",
+        "disabledTooltip": "",
+        "selectedText": "都不帮哥们儿个忙吗？\n害！",
+        "conditions": [],
+        "effectSummary": "(-)无奖励"
+      }
+    ]
+  },
+  {
+    "id": "TRAINING_SESSION",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/training-session-encounter.ts",
+    "nameZh": "集训",
+    "description": "这些物品似乎可以\n用来训练你的队伍！\n有数种方式可以进行训练：\n让你队伍中的其他宝可梦与其进行对战。",
+    "query": "要怎么训练？",
+    "tier": "ULTRA",
+    "tierLabel": "超级",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "ABYSS",
+        "nameZh": "幽谷深渊"
+      },
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SEA",
+        "nameZh": "海洋"
+      },
+      {
+        "id": "SEABED",
+        "nameZh": "海底"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SPACE",
+        "nameZh": "太空"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      },
+      {
+        "id": "VOLCANO",
+        "nameZh": "火山"
+      },
+      {
+        "id": "WASTELAND",
+        "nameZh": "荒地龙巢"
+      }
+    ],
+    "eventConditions": [
+      "队伍数量为 2-6"
+    ],
+    "catchAllowed": false,
+    "fleeAllowed": false,
+    "options": [
+      {
+        "index": 1,
+        "label": "轻量训练",
+        "tooltip": "(-)轻松战斗\n(+)提升随机2只\n宝可梦的个体",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(-)轻松战斗\n(+)提升随机2只\n宝可梦的个体"
+      },
+      {
+        "index": 2,
+        "label": "适度训练",
+        "tooltip": "(-)适中的战斗\n(+)改变宝可梦的性格",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(-)适中的战斗\n(+)改变宝可梦的性格"
+      },
+      {
+        "index": 3,
+        "label": "重磅训练",
+        "tooltip": "(-)艰苦的战斗\n(+)改变宝可梦的特性",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(-)艰苦的战斗\n(+)改变宝可梦的特性"
+      },
+      {
+        "index": 4,
+        "label": "离开",
+        "tooltip": "(-)无奖励",
+        "disabledTooltip": "",
+        "selectedText": "你无暇训练\n该动身了。",
+        "conditions": [],
+        "effectSummary": "(-)无奖励"
+      }
+    ]
+  },
+  {
+    "id": "PART_TIMER",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/part-timer-encounter.ts",
+    "nameZh": "兼职",
+    "description": "似乎有不少活要干。\n根据你宝可梦对任务的适应度，\n你能获得或多或少的报酬。",
+    "query": "你要干什么活？",
+    "tier": "COMMON",
+    "tierLabel": "普通",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      }
+    ],
+    "eventConditions": [],
+    "catchAllowed": false,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "外卖",
+        "tooltip": "(-)使用速度\n(+)赚取@[MONEY]{金钱}",
+        "disabledTooltip": "",
+        "selectedText": "您的相关宝可梦轮班为客户配送订单。",
+        "conditions": [],
+        "effectSummary": "(-)使用速度\n(+)赚取@[MONEY]{金钱}"
+      },
+      {
+        "index": 2,
+        "label": "仓管",
+        "tooltip": "(-)使用力量和耐力\n(+)赚取@[MONEY]{金钱}",
+        "disabledTooltip": "",
+        "selectedText": "你的相关宝可梦轮班工作，在仓库内搬运物品。",
+        "conditions": [],
+        "effectSummary": "(-)使用力量和耐力\n(+)赚取@[MONEY]{金钱}"
+      },
+      {
+        "index": 3,
+        "label": "销售",
+        "tooltip": "(-)你的所选宝可梦使用相关宝可梦\n(+)赚取@[MONEY]{金钱}",
+        "disabledTooltip": "你的宝可梦需要习得\n适合这份工作的招式",
+        "selectedText": "你的所选宝可梦花费一天时间\n使用相关宝可梦来吸引客户！",
+        "conditions": [
+          "队伍中需有满足指定招式条件的宝可梦"
+        ],
+        "effectSummary": "(-)你的所选宝可梦使用相关宝可梦\n(+)赚取@[MONEY]{金钱}"
+      }
+    ]
+  },
+  {
+    "id": "FUN_AND_GAMES",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/fun-and-games-encounter.ts",
+    "nameZh": "快乐游戏！",
+    "description": "你遇到了一个有奖游戏活动！\n你有 @[TOOLTIP_TITLE]{3 回合}的时间来在\n@[TOOLTIP_TITLE]{不打倒}相关宝可梦的情况下将它尽可能的打到@[TOOLTIP_TITLE]{1血}\n这样，它就能通过反作用力\n在敲钟器上打出超高数字！\n但要小心！如果你不小心打倒了相关宝可梦，\n你就得付医疗费！",
+    "query": "要试试么？",
+    "tier": "GREAT",
+    "tierLabel": "高级",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      }
+    ],
+    "eventConditions": [
+      "持有足够金钱（金额随当前波次变化）"
+    ],
+    "catchAllowed": false,
+    "fleeAllowed": false,
+    "options": [
+      {
+        "index": 1,
+        "label": "游玩游戏",
+        "tooltip": "(-)支付相关宝可梦\n(+)玩相关宝可梦重拳出击！",
+        "disabledTooltip": "",
+        "selectedText": "该试试你的运气了",
+        "conditions": [
+          "持有足够金钱（金额随当前波次变化）"
+        ],
+        "effectSummary": "(-)支付相关宝可梦\n(+)玩相关宝可梦重拳出击！"
+      },
+      {
+        "index": 2,
+        "label": "离开",
+        "tooltip": "(-)无奖励",
+        "disabledTooltip": "",
+        "selectedText": "你匆匆上路，心里却有一丝遗憾。",
+        "conditions": [
+          "持有足够金钱（金额随当前波次变化）"
+        ],
+        "effectSummary": "(-)无奖励"
+      }
+    ]
+  },
+  {
+    "id": "THE_WINSTRATE_CHALLENGE",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/the-winstrate-challenge-encounter.ts",
+    "nameZh": "连胜家族的挑战",
+    "description": "连胜家族由5名训练师组成，\n他们想要战斗！\n如果你连续击败他们所有人，\n他们会给你一份大奖。\n但你能承受压力吗？",
+    "query": "你要怎么做？",
+    "tier": "ROGUE",
+    "tierLabel": "肉鸽",
+    "waveMin": 100,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      }
+    ],
+    "eventConditions": [
+      "队伍数量为 3-6"
+    ],
+    "catchAllowed": false,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "接受挑战",
+        "tooltip": "(-)残酷的战斗\n(+)特别的奖励",
+        "disabledTooltip": "",
+        "selectedText": "挑战开始！",
+        "conditions": [],
+        "effectSummary": "(-)残酷的战斗\n(+)特别的奖励"
+      },
+      {
+        "index": 2,
+        "label": "拒绝挑战",
+        "tooltip": "(+)队伍痊愈\n(+)获得一个超神奇糖果",
+        "disabledTooltip": "",
+        "selectedText": "太可惜了。话说，你们队伍看上去很疲惫，为什么不留下来休息一会儿呢？",
+        "conditions": [],
+        "effectSummary": "(+)队伍痊愈\n(+)获得一个超神奇糖果"
+      }
+    ]
+  },
+  {
+    "id": "THE_STRONG_STUFF",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/the-strong-stuff-encounter.ts",
+    "nameZh": "满满当当",
+    "description": "挡住你去路的相关宝可梦\n看起来异常强大。与此同时，它旁边的果汁\n散发着某种力量。\n\n相关宝可梦向你伸出了触角。\n它似乎想做些什么……",
+    "query": "你要怎么做？",
+    "tier": "COMMON",
+    "tierLabel": "普通",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      }
+    ],
+    "eventConditions": [
+      "队伍数量为 3-6"
+    ],
+    "catchAllowed": false,
+    "fleeAllowed": false,
+    "options": [
+      {
+        "index": 1,
+        "label": "接近相关宝可梦",
+        "tooltip": "(?)可能会发生一些\n可怕或惊奇的事情",
+        "disabledTooltip": "",
+        "selectedText": "你眼前一黑",
+        "conditions": [],
+        "effectSummary": "(?)可能会发生一些\n可怕或惊奇的事情"
+      },
+      {
+        "index": 2,
+        "label": "与相关宝可梦战斗",
+        "tooltip": "(-)艰难的战斗\n(+)特别的奖励",
+        "disabledTooltip": "",
+        "selectedText": "相关宝可梦被激怒了，它喝了一些果汁并发起了攻击！",
+        "conditions": [],
+        "effectSummary": "(-)艰难的战斗\n(+)特别的奖励"
+      }
+    ]
+  },
+  {
+    "id": "LOST_AT_SEA",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/lost-at-sea-encounter.ts",
+    "nameZh": "迷失大海",
+    "description": "这片海域波涛汹涌，\n你的体力即将耗尽。\n太糟了，有什么办法么？",
+    "query": "你要怎么做？",
+    "tier": "COMMON",
+    "tierLabel": "普通",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "SEA",
+        "nameZh": "海洋"
+      }
+    ],
+    "eventConditions": [],
+    "catchAllowed": false,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "所选宝可梦可以帮忙",
+        "tooltip": "(+)所选宝可梦帮助你\n(+)所选宝可梦获得经验值",
+        "disabledTooltip": "",
+        "selectedText": "所选宝可梦游在前面，引导你回到正轨。\n所选宝可梦似乎也在这次需要它的时候\n变得更强大了！",
+        "conditions": [],
+        "effectSummary": "(+)所选宝可梦帮助你\n(+)所选宝可梦获得经验值"
+      },
+      {
+        "index": 2,
+        "label": "所选宝可梦可以帮忙",
+        "tooltip": "(+)所选宝可梦帮助你\n(+)所选宝可梦获得经验值",
+        "disabledTooltip": "",
+        "selectedText": "所选宝可梦飞在你的船前面，引导你回到正轨。\n在这次需要它的时候，\n所选宝可梦似乎也变得更强大了！",
+        "conditions": [],
+        "effectSummary": "(+)所选宝可梦帮助你\n(+)所选宝可梦获得经验值"
+      },
+      {
+        "index": 3,
+        "label": "漫无目的地漂流",
+        "tooltip": "(-)每一只宝可梦\n损失相关宝可梦%的HP",
+        "disabledTooltip": "",
+        "selectedText": "你在船上漂浮，漫无目的地航行，直到最后发现了一个你记得的地标。\n你和你的宝可梦因整个经历而疲惫不堪。",
+        "conditions": [],
+        "effectSummary": "(-)每一只宝可梦\n损失相关宝可梦%的HP"
+      }
+    ]
+  },
+  {
+    "id": "AN_OFFER_YOU_CANT_REFUSE",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/an-offer-you-cant-refuse-encounter.ts",
+    "nameZh": "难以拒绝的买卖",
+    "description": "对方愿意为了你的相关宝可梦\n出一个@[TOOLTIP_TITLE]{ 相关宝可梦}和相关宝可梦。\n这交易非常划算，但是你真的舍得\n送走如此强大的伙伴吗？",
+    "query": "你要怎么做？",
+    "tier": "GREAT",
+    "tierLabel": "高级",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      }
+    ],
+    "eventConditions": [
+      "队伍数量为 2-6"
+    ],
+    "catchAllowed": false,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "接受交易",
+        "tooltip": "(-)失去相关宝可梦\n(+)获得一个@[TOOLTIP_TITLE]{ 相关宝可梦}\n(+)获得相关宝可梦",
+        "disabledTooltip": "",
+        "selectedText": "太棒了！@d{32}过来吧，相关宝可梦！\n现在是时候向游艇俱乐部的那帮小子炫耀一番了！\n他们肯定得酸爆了！",
+        "conditions": [],
+        "effectSummary": "(-)失去相关宝可梦\n(+)获得一个@[TOOLTIP_TITLE]{ 相关宝可梦}\n(+)获得相关宝可梦"
+      },
+      {
+        "index": 2,
+        "label": "敲诈他",
+        "tooltip": "(+)所选宝可梦使用相关宝可梦\n(+)获得相关宝可梦",
+        "disabledTooltip": "",
+        "selectedText": "我的天，你抢劫我。相关宝可梦，走了！\n我要找律师告你！",
+        "conditions": [
+          "队伍中需有满足指定招式条件的宝可梦"
+        ],
+        "effectSummary": "(+)所选宝可梦使用相关宝可梦\n(+)获得相关宝可梦"
+      },
+      {
+        "index": 3,
+        "label": "离开",
+        "tooltip": "(-)无奖励",
+        "disabledTooltip": "",
+        "selectedText": "真够跌份儿的……\n啊，好吧。那我们回游艇吧，相关宝可梦。",
+        "conditions": [
+          "队伍中需有满足指定招式条件的宝可梦"
+        ],
+        "effectSummary": "(-)无奖励"
+      }
+    ]
+  },
+  {
+    "id": "GLOBAL_TRADE_SYSTEM",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/global-trade-system-encounter.ts",
+    "nameZh": "全球交换系统（GTS）",
+    "description": "啊，GTS！科学的奇迹，\n你可以与世界各地的任何人联系，\n并与他们交换宝可梦！\n今天你的交换运会如何呢？",
+    "query": "你要怎么做？",
+    "tier": "COMMON",
+    "tierLabel": "普通",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      }
+    ],
+    "eventConditions": [],
+    "catchAllowed": false,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "查找交换请求",
+        "tooltip": "(+)为一只宝可梦\n选择交换",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [
+          "队伍数量为 2-6"
+        ],
+        "effectSummary": "(+)为一只宝可梦\n选择交换"
+      },
+      {
+        "index": 2,
+        "label": "奇迹交换",
+        "tooltip": "(+)发送一只宝可梦，\n并获得一只随机宝可梦",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [
+          "队伍数量为 2-6"
+        ],
+        "effectSummary": "(+)发送一只宝可梦，\n并获得一只随机宝可梦"
+      },
+      {
+        "index": 3,
+        "label": "道具交换",
+        "tooltip": "(+)发送一件道具\n并获得一件随机新道具",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(+)发送一件道具\n并获得一件随机新道具"
+      },
+      {
+        "index": 4,
+        "label": "离开",
+        "tooltip": "(-)无奖励",
+        "disabledTooltip": "",
+        "selectedText": "今日不宜交换！\n你上路了。",
+        "conditions": [],
+        "effectSummary": "(-)无奖励"
+      }
+    ]
+  },
+  {
+    "id": "MYSTERIOUS_CHEST",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/mysterious-chest-encounter.ts",
+    "nameZh": "神秘宝箱",
+    "description": "一个装饰精美的箱子立在地上。\n里面一定有好东西…吧？",
+    "query": "要打开么?",
+    "tier": "COMMON",
+    "tierLabel": "普通",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "ABYSS",
+        "nameZh": "幽谷深渊"
+      },
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SEA",
+        "nameZh": "海洋"
+      },
+      {
+        "id": "SEABED",
+        "nameZh": "海底"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SPACE",
+        "nameZh": "太空"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      },
+      {
+        "id": "VOLCANO",
+        "nameZh": "火山"
+      },
+      {
+        "id": "WASTELAND",
+        "nameZh": "荒地龙巢"
+      }
+    ],
+    "eventConditions": [
+      "队伍数量为 2-6"
+    ],
+    "catchAllowed": true,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "打开",
+        "tooltip": "@[SUMMARY_BLUE]{(35%) 某种东西}\n@[SUMMARY_GREEN]{(相关宝可梦%) 一般奖励}\n@[SUMMARY_GREEN]{(相关宝可梦%) 精美奖励}\n@[SUMMARY_GREEN]{(相关宝可梦%) 珍稀奖励}\n@[SUMMARY_GREEN]{(相关宝可梦%) 超凡奖励}",
+        "disabledTooltip": "",
+        "selectedText": "你打开箱子发现……",
+        "conditions": [],
+        "effectSummary": "@[SUMMARY_BLUE]{(35%) 某种东西}\n@[SUMMARY_GREEN]{(相关宝可梦%) 一般奖励}\n@[SUMMARY_GREEN]{(相关宝可梦%) 精美奖励}\n@[SUMMARY_GREEN]{(相关宝可梦%) 珍稀奖励}\n@[SUMMARY_GREEN]{(相关宝可梦%) 超凡奖励}"
+      },
+      {
+        "index": 2,
+        "label": "有诈，走了",
+        "tooltip": "(-)无奖励",
+        "disabledTooltip": "",
+        "selectedText": "你匆匆上路，心里却有一丝遗憾。",
+        "conditions": [],
+        "effectSummary": "(-)无奖励"
+      }
+    ]
+  },
+  {
+    "id": "MYSTERIOUS_CHALLENGERS",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/mysterious-challengers-encounter.ts",
+    "nameZh": "神秘挑战者",
+    "description": "如果你击败了挑战者，\n你给他们留下的强烈印象\n可能会换来奖励。\n但他们看起来很强，\n要接受挑战么？",
+    "query": "你要接受谁的挑战？",
+    "tier": "GREAT",
+    "tierLabel": "高级",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      }
+    ],
+    "eventConditions": [],
+    "catchAllowed": false,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "谨慎的对手",
+        "tooltip": "(-)普通的战斗\n(+)道具奖励",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(-)普通的战斗\n(+)道具奖励"
+      },
+      {
+        "index": 2,
+        "label": "自信的对手",
+        "tooltip": "(-)困难的战斗\n(+)更好的奖励",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(-)困难的战斗\n(+)更好的奖励"
+      },
+      {
+        "index": 3,
+        "label": "威严的对手",
+        "tooltip": "(-)艰苦的战斗\n(+)丰厚的奖励",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(-)艰苦的战斗\n(+)丰厚的奖励"
+      }
+    ]
+  },
+  {
+    "id": "SAFARI_ZONE",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/safari-zone-encounter.ts",
+    "nameZh": "狩猎地带",
+    "description": "这里有各种稀有和特殊的宝可梦！\n如果选择进入，你将有@[TOOLTIP_TITLE]{ 相关宝可梦次机会遇到野生宝可梦}，供你捕获。\n但注意了，它们可能会在你捕捉到之前逃走！",
+    "query": "要进去试试吗？",
+    "tier": "GREAT",
+    "tierLabel": "高级",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      }
+    ],
+    "eventConditions": [
+      "持有足够金钱（金额随当前波次变化）"
+    ],
+    "catchAllowed": false,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "进入",
+        "tooltip": "(-)支付相关宝可梦\n@[SUMMARY_GREEN]{(?)狩猎地带}",
+        "disabledTooltip": "",
+        "selectedText": "该试试运气了！",
+        "conditions": [
+          "持有足够金钱（金额随当前波次变化）"
+        ],
+        "effectSummary": "(-)支付相关宝可梦\n@[SUMMARY_GREEN]{(?)狩猎地带}"
+      },
+      {
+        "index": 2,
+        "label": "离开",
+        "tooltip": "(-)无奖励",
+        "disabledTooltip": "",
+        "selectedText": "你匆匆上路，心里却有一丝遗憾。",
+        "conditions": [
+          "持有足够金钱（金额随当前波次变化）"
+        ],
+        "effectSummary": "(-)无奖励"
+      }
+    ]
+  },
+  {
+    "id": "TELEPORTING_HIJINKS",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/teleporting-hijinks-encounter.ts",
+    "nameZh": "瞬移把戏",
+    "description": "机器上有一块牌子，上面写着：\n“使用时，先投币，然后走入胶囊。”\n\n也许它可以将你传送至某处…",
+    "query": "你要怎么做？",
+    "tier": "COMMON",
+    "tierLabel": "普通",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "ABYSS",
+        "nameZh": "幽谷深渊"
+      },
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SEA",
+        "nameZh": "海洋"
+      },
+      {
+        "id": "SEABED",
+        "nameZh": "海底"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SPACE",
+        "nameZh": "太空"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      },
+      {
+        "id": "VOLCANO",
+        "nameZh": "火山"
+      },
+      {
+        "id": "WASTELAND",
+        "nameZh": "荒地龙巢"
+      }
+    ],
+    "eventConditions": [
+      "持有足够金钱（金额随当前波次变化）",
+      "波次尾数为 2、3、4（每 10 波循环）"
+    ],
+    "catchAllowed": true,
+    "fleeAllowed": false,
+    "options": [
+      {
+        "index": 1,
+        "label": "投币",
+        "tooltip": "(-)支付相关宝可梦\n(?)传送至随机地图",
+        "disabledTooltip": "",
+        "selectedText": "你投入一些钱，胶囊就打开了。\n你走了进去……",
+        "conditions": [],
+        "effectSummary": "(-)支付相关宝可梦\n(?)传送至随机地图"
+      },
+      {
+        "index": 2,
+        "label": "宝可梦帮忙",
+        "tooltip": "(-)所选宝可梦帮忙\n(+)所选宝可梦获得经验\n(?)传送至随机地图",
+        "disabledTooltip": "你需要一只钢系或\n电系宝可梦来选择此项",
+        "selectedText": "所选宝可梦的类型允许你绕过机器的付费装置！\n胶囊打开，你走进去……",
+        "conditions": [],
+        "effectSummary": "(-)所选宝可梦帮忙\n(+)所选宝可梦获得经验\n(?)传送至随机地图"
+      },
+      {
+        "index": 3,
+        "label": "检查机器",
+        "tooltip": "(-)战斗",
+        "disabledTooltip": "",
+        "selectedText": "你被闪烁的灯光和机器发出的奇怪声音吸引住了……\n你甚至没有注意到一只野生的\n宝可梦偷偷接近并偷袭了你！",
+        "conditions": [],
+        "effectSummary": "(-)战斗"
+      }
+    ]
+  },
+  {
+    "id": "BERRIES_ABOUND",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/berries-abound-encounter.ts",
+    "nameZh": "硕“果”累累",
+    "description": "似乎有强大的宝可梦守护着树果丛。\n最简单的方法是战斗，\n但它的实力不容小觑。\n也许一只速度很快的宝可梦\n可以乘机顺走一些树果？",
+    "query": "你要怎么做？",
+    "tier": "COMMON",
+    "tierLabel": "普通",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "ABYSS",
+        "nameZh": "幽谷深渊"
+      },
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SEA",
+        "nameZh": "海洋"
+      },
+      {
+        "id": "SEABED",
+        "nameZh": "海底"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SPACE",
+        "nameZh": "太空"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      },
+      {
+        "id": "VOLCANO",
+        "nameZh": "火山"
+      },
+      {
+        "id": "WASTELAND",
+        "nameZh": "荒地龙巢"
+      }
+    ],
+    "eventConditions": [],
+    "catchAllowed": true,
+    "fleeAllowed": false,
+    "options": [
+      {
+        "index": 1,
+        "label": "与它战斗",
+        "tooltip": "(-)艰难的战斗\n(+)获得树果",
+        "disabledTooltip": "",
+        "selectedText": "你无所畏惧地\n走向了宝可梦们。",
+        "conditions": [],
+        "effectSummary": "(-)艰难的战斗\n(+)获得树果"
+      },
+      {
+        "index": 2,
+        "label": "冲向果丛",
+        "tooltip": "(-)相关宝可梦试试速度\n(+)获得树果",
+        "disabledTooltip": "",
+        "selectedText": "你的相关宝可梦冲向了果丛！\n它在相关宝可梦做出反应之前成功抓住了相关宝可梦！\n你带着你的战利品迅速撤退。",
+        "conditions": [],
+        "effectSummary": "(-)相关宝可梦试试速度\n(+)获得树果"
+      },
+      {
+        "index": 3,
+        "label": "离开",
+        "tooltip": "(-)无奖励",
+        "disabledTooltip": "",
+        "selectedText": "你让那个宝可梦留着属于它的果子\n继续上路了。",
+        "conditions": [],
+        "effectSummary": "(-)无奖励"
+      }
+    ]
+  },
+  {
+    "id": "ABSOLUTE_AVARICE",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/absolute-avarice-encounter.ts",
+    "nameZh": "贪得无厌",
+    "description": "贪心栗鼠让你措手不及，\n现在你所有的树果都被夺走了！\n\n贪心栗鼠正要吃掉它们时，\n突然停下来饶有兴趣地看着你。",
+    "query": "你要怎么做？",
+    "tier": "GREAT",
+    "tierLabel": "高级",
+    "waveMin": 20,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      }
+    ],
+    "eventConditions": [
+      "持有 树果至少 6 个"
+    ],
+    "catchAllowed": false,
+    "fleeAllowed": false,
+    "options": [
+      {
+        "index": 1,
+        "label": "必须战斗",
+        "tooltip": "(-)艰难的战斗\n(+)树果宝藏的奖励",
+        "disabledTooltip": "",
+        "selectedText": "贪心栗鼠塞满脸颊\n并准备战斗！",
+        "conditions": [],
+        "effectSummary": "(-)艰难的战斗\n(+)树果宝藏的奖励"
+      },
+      {
+        "index": 2,
+        "label": "讲点道理",
+        "tooltip": "(+)拿回一些失去的树果",
+        "disabledTooltip": "",
+        "selectedText": "你的恳求引起了贪心栗鼠的共鸣。\n它不会把你所有的果子都归还给你，但仍然会扔给你一些。",
+        "conditions": [],
+        "effectSummary": "(+)拿回一些失去的树果"
+      },
+      {
+        "index": 3,
+        "label": "让它拿吧",
+        "tooltip": "(-)失去所有树果\n(?)贪心栗鼠会很感激你",
+        "disabledTooltip": "",
+        "selectedText": "贪心栗鼠一瞬间就吃掉了整个树果堆！\n它拍拍肚子，\n感激地看着你。\n也许你可以在冒险中喂它\n更多浆果……\n贪心栗鼠想加入你的队伍！",
+        "conditions": [],
+        "effectSummary": "(-)失去所有树果\n(?)贪心栗鼠会很感激你"
+      }
+    ]
+  },
+  {
+    "id": "FIELD_TRIP",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/field-trip-encounter.ts",
+    "nameZh": "外出实践",
+    "description": "一位老师请求进行宝可梦招式演示。\n根据你选择的招式，她可能会给你\n一些有用的东西作为报酬。",
+    "query": "你要展示哪种类型的招式？",
+    "tier": "COMMON",
+    "tierLabel": "普通",
+    "waveMin": 10,
+    "waveMax": 100,
+    "biomes": [
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      }
+    ],
+    "eventConditions": [],
+    "catchAllowed": false,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "物理招式",
+        "tooltip": "(+)物理类奖励",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(+)物理类奖励"
+      },
+      {
+        "index": 2,
+        "label": "特殊招式",
+        "tooltip": "(+)特殊类奖励",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(+)特殊类奖励"
+      },
+      {
+        "index": 3,
+        "label": "变化招式",
+        "tooltip": "(+)变化类奖励",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(+)变化类奖励"
+      }
+    ]
+  },
+  {
+    "id": "DANCING_LESSONS",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/dancing-lessons-encounter.ts",
+    "nameZh": "舞蹈课",
+    "description": "相关宝可梦并不咄咄逼人，\n反而有些哀伤。\n\n也许他只想找个人一起跳舞…",
+    "query": "你要怎么做？",
+    "tier": "GREAT",
+    "tierLabel": "高级",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "ABYSS",
+        "nameZh": "幽谷深渊"
+      },
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      },
+      {
+        "id": "VOLCANO",
+        "nameZh": "火山"
+      },
+      {
+        "id": "WASTELAND",
+        "nameZh": "荒地龙巢"
+      }
+    ],
+    "eventConditions": [],
+    "catchAllowed": true,
+    "fleeAllowed": false,
+    "options": [
+      {
+        "index": 1,
+        "label": "战斗",
+        "tooltip": "(-)艰难的战斗\n(+)获得接力棒",
+        "disabledTooltip": "",
+        "selectedText": "相关宝可梦变得急躁，想要采取行动进行自卫！",
+        "conditions": [],
+        "effectSummary": "(-)艰难的战斗\n(+)获得接力棒"
+      },
+      {
+        "index": 2,
+        "label": "学习它的舞蹈",
+        "tooltip": "(+)教宝可梦觉醒之舞",
+        "disabledTooltip": "",
+        "selectedText": "您紧盯着相关宝可梦的舞蹈表演……\n你的相关宝可梦从相关宝可梦那里学到了！",
+        "conditions": [],
+        "effectSummary": "(+)教宝可梦觉醒之舞"
+      },
+      {
+        "index": 3,
+        "label": "表演一支舞蹈",
+        "tooltip": "(-)教相关宝可梦一支舞蹈\n(+)相关宝可梦会喜欢你",
+        "disabledTooltip": "你的宝可梦需要\n习得一种舞蹈动作。",
+        "selectedText": "相关宝可梦着迷地观看着\n相关宝可梦展示相关宝可梦！\n它喜欢这场表演！\n相关宝可梦想要加入你的队伍！",
+        "conditions": [
+          "队伍中需有满足指定招式条件的宝可梦"
+        ],
+        "effectSummary": "(-)教相关宝可梦一支舞蹈\n(+)相关宝可梦会喜欢你"
+      }
+    ]
+  },
+  {
+    "id": "CLOWNING_AROUND",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/clowning-around-encounter.ts",
+    "nameZh": "小丑闹剧",
+    "description": "有点不对劲，这小丑想要挑衅你，\n目的是什么呢？\n尤其是那相关宝可梦看起来非常奇怪，\n就好像它有着\n@[TOOLTIP_TITLE]{与众不同的属性和特性。}",
+    "query": "你要怎么做？",
+    "tier": "ULTRA",
+    "tierLabel": "超级",
+    "waveMin": 80,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "ABYSS",
+        "nameZh": "幽谷深渊"
+      },
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SEA",
+        "nameZh": "海洋"
+      },
+      {
+        "id": "SEABED",
+        "nameZh": "海底"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SPACE",
+        "nameZh": "太空"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      },
+      {
+        "id": "VOLCANO",
+        "nameZh": "火山"
+      },
+      {
+        "id": "WASTELAND",
+        "nameZh": "荒地龙巢"
+      }
+    ],
+    "eventConditions": [],
+    "catchAllowed": false,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "与小丑战斗",
+        "tooltip": "(-)奇妙的战斗\n(?)影响宝可梦特性",
+        "disabledTooltip": "",
+        "selectedText": "你可怜的宝可梦正准备上演可悲的马戏！",
+        "conditions": [],
+        "effectSummary": "(-)奇妙的战斗\n(?)影响宝可梦特性"
+      },
+      {
+        "index": 2,
+        "label": "保持冷静",
+        "tooltip": "(-)让小丑失望\n(?)影响宝可梦道具",
+        "disabledTooltip": "",
+        "selectedText": "小懦夫，竟敢拒绝我。\n尝尝我的厉害！",
+        "conditions": [],
+        "effectSummary": "(-)让小丑失望\n(?)影响宝可梦道具"
+      },
+      {
+        "index": 3,
+        "label": "骂回去",
+        "tooltip": "(-)让小丑失望\n(?)影响宝可梦属性",
+        "disabledTooltip": "",
+        "selectedText": "小懦夫，竟敢拒绝我。\n尝尝我的厉害！",
+        "conditions": [],
+        "effectSummary": "(-)让小丑失望\n(?)影响宝可梦属性"
+      }
+    ]
+  },
+  {
+    "id": "DELIBIRDY",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/delibirdy-encounter.ts",
+    "nameZh": "信使鸟快递",
+    "description": "相关宝可梦满怀期待地看着你，\n它们好像想要什么东西。\n\n给它们一件道具或一些钱的话\n会不会让它们满意呢？",
+    "query": "你要给它们什么？",
+    "tier": "GREAT",
+    "tierLabel": "高级",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "ABYSS",
+        "nameZh": "幽谷深渊"
+      },
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SEA",
+        "nameZh": "海洋"
+      },
+      {
+        "id": "SEABED",
+        "nameZh": "海底"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SPACE",
+        "nameZh": "太空"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      },
+      {
+        "id": "VOLCANO",
+        "nameZh": "火山"
+      },
+      {
+        "id": "WASTELAND",
+        "nameZh": "荒地龙巢"
+      }
+    ],
+    "eventConditions": [
+      "持有足够金钱（金额随当前波次变化）",
+      "队伍中需有满足携带道具条件的宝可梦"
+    ],
+    "catchAllowed": false,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "给钱",
+        "tooltip": "(-)给予相关宝可梦们相关宝可梦\n(+)获得一件礼物",
+        "disabledTooltip": "",
+        "selectedText": "你向相关宝可梦们扔了点钱，\n它们兴奋地互相嚷嚷着。\n信使鸟们转向你并高兴地给你一份礼物！",
+        "conditions": [],
+        "effectSummary": "(-)给予相关宝可梦们相关宝可梦\n(+)获得一件礼物"
+      },
+      {
+        "index": 2,
+        "label": "给吃的",
+        "tooltip": "(-)给予相关宝可梦们\n树果或复活之种\n(+)获得一件礼物",
+        "disabledTooltip": "",
+        "selectedText": "你向相关宝可梦们扔了点相关宝可梦，\n它们兴奋地互相嚷嚷着。\n信使鸟们转向你并高兴地给你一份礼物！",
+        "conditions": [
+          "队伍中需有满足携带道具条件的宝可梦"
+        ],
+        "effectSummary": "(-)给予相关宝可梦们\n树果或复活之种\n(+)获得一件礼物"
+      },
+      {
+        "index": 3,
+        "label": "给道具",
+        "tooltip": "(-)给予相关宝可梦一件道具\n(+)获得一件礼物",
+        "disabledTooltip": "",
+        "selectedText": "你向相关宝可梦们扔了点相关宝可梦，\n它们兴奋地互相嚷嚷着。\n信使鸟们转向你并高兴地给你一份礼物！",
+        "conditions": [
+          "队伍中需有满足携带道具条件的宝可梦"
+        ],
+        "effectSummary": "(-)给予相关宝可梦一件道具\n(+)获得一件礼物"
+      }
+    ]
+  },
+  {
+    "id": "A_TRAINERS_TEST",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/a-trainers-test-encounter.ts",
+    "nameZh": "训练家试炼",
+    "description": "不管你选择什么，此训练家都会给你一个蛋。\n然而，如果你能击败他，就会获得一个更稀有的蛋。",
+    "query": "你要怎么做？",
+    "tier": "ROGUE",
+    "tierLabel": "肉鸽",
+    "waveMin": 100,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "ABYSS",
+        "nameZh": "幽谷深渊"
+      },
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SEA",
+        "nameZh": "海洋"
+      },
+      {
+        "id": "SEABED",
+        "nameZh": "海底"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SPACE",
+        "nameZh": "太空"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      },
+      {
+        "id": "VOLCANO",
+        "nameZh": "火山"
+      },
+      {
+        "id": "WASTELAND",
+        "nameZh": "荒地龙巢"
+      }
+    ],
+    "eventConditions": [],
+    "catchAllowed": false,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "接受挑战",
+        "tooltip": "(-)残酷的战斗\n(+)获得一个@[TOOLTIP_TITLE]{非常稀有的蛋}",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(-)残酷的战斗\n(+)获得一个@[TOOLTIP_TITLE]{非常稀有的蛋}"
+      },
+      {
+        "index": 2,
+        "label": "拒绝挑战",
+        "tooltip": "(+)治疗全队\n(+)获得一个@[TOOLTIP_TITLE]{蛋}",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(+)治疗全队\n(+)获得一个@[TOOLTIP_TITLE]{蛋}"
+      }
+    ]
+  },
+  {
+    "id": "SHADY_VITAMIN_DEALER",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/shady-vitamin-dealer-encounter.ts",
+    "nameZh": "营养饮料商人",
+    "description": "男子打开外套，\n露出一些宝可梦营养饮料。\n他报出的数字非常划算。\n有点太划算了…\n他还提供两种套餐供你选择。",
+    "query": "你要选哪一种？",
+    "tier": "COMMON",
+    "tierLabel": "普通",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      }
+    ],
+    "eventConditions": [
+      "持有足够金钱（金额随当前波次变化）"
+    ],
+    "catchAllowed": false,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "经济套餐",
+        "tooltip": "(-)支付相关宝可梦\n(-)副作用？\n(+)选择的宝可梦获得\n两份随机努力药",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(-)支付相关宝可梦\n(-)副作用？\n(+)选择的宝可梦获得\n两份随机努力药"
+      },
+      {
+        "index": 2,
+        "label": "高级套餐",
+        "tooltip": "(-)支付相关宝可梦\n(+)选择的宝可梦获得\n两份随机努力药",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(-)支付相关宝可梦\n(+)选择的宝可梦获得\n两份随机努力药"
+      },
+      {
+        "index": 3,
+        "label": "离开",
+        "tooltip": "(-)无奖励",
+        "disabledTooltip": "",
+        "selectedText": "呵呵，没想到你竟然是个懦夫。",
+        "conditions": [],
+        "effectSummary": "(-)无奖励"
+      }
+    ]
+  },
+  {
+    "id": "FIGHT_OR_FLIGHT",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/fight-or-flight-encounter.ts",
+    "nameZh": "战逃反应",
+    "description": "似乎有强大的宝可梦守护着这一道具。\n战斗是最直接的方法，但是\n它的实力似乎不容小觑。\n如果你有合适的宝可梦，\n似乎也可以直接偷走它。",
+    "query": "你要怎么做？",
+    "tier": "COMMON",
+    "tierLabel": "普通",
+    "waveMin": 10,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "ABYSS",
+        "nameZh": "幽谷深渊"
+      },
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SEA",
+        "nameZh": "海洋"
+      },
+      {
+        "id": "SEABED",
+        "nameZh": "海底"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SPACE",
+        "nameZh": "太空"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      },
+      {
+        "id": "VOLCANO",
+        "nameZh": "火山"
+      },
+      {
+        "id": "WASTELAND",
+        "nameZh": "荒地龙巢"
+      }
+    ],
+    "eventConditions": [],
+    "catchAllowed": true,
+    "fleeAllowed": false,
+    "options": [
+      {
+        "index": 1,
+        "label": "战斗",
+        "tooltip": "(-)困难的战斗\n(+)新道具",
+        "disabledTooltip": "",
+        "selectedText": "你无所畏惧的走向宝可梦。",
+        "conditions": [],
+        "effectSummary": "(-)困难的战斗\n(+)新道具"
+      },
+      {
+        "index": 2,
+        "label": "窃取物品",
+        "tooltip": "(+)所选宝可梦使用相关宝可梦",
+        "disabledTooltip": "你的宝可梦需要习得\n特定的招式来选择。",
+        "selectedText": ".@d{32}.@d{32}.@d{32}\n你的所选宝可梦愿意帮忙，并使用了相关宝可梦！\n你偷走了道具！",
+        "conditions": [
+          "队伍中需有满足指定招式条件的宝可梦"
+        ],
+        "effectSummary": "(+)所选宝可梦使用相关宝可梦"
+      },
+      {
+        "index": 3,
+        "label": "离开",
+        "tooltip": "(-)无奖励",
+        "disabledTooltip": "",
+        "selectedText": "你决定把宝贝留给这只宝可梦\n并继续上路了。",
+        "conditions": [
+          "队伍中需有满足指定招式条件的宝可梦"
+        ],
+        "effectSummary": "(-)无奖励"
+      }
+    ]
+  },
+  {
+    "id": "THE_EXPERT_POKEMON_BREEDER",
+    "sourceFile": "source/pokerogue/src/data/mystery-encounters/encounters/the-expert-pokemon-breeder-encounter.ts",
+    "nameZh": "专业饲养员",
+    "description": "你被发起了一场\n@[TOOLTIP_TITLE]{只能使用一只宝可梦}的挑战。\n这可能很难，但它肯定会\n加深你与所选宝可梦之间的牵绊！\n如果你赢了，饲养员还会\n给你一些@[TOOLTIP_TITLE]{蛋}！",
+    "query": "你要与谁并肩作战？",
+    "tier": "ULTRA",
+    "tierLabel": "超级",
+    "waveMin": 25,
+    "waveMax": 180,
+    "biomes": [
+      {
+        "id": "BADLANDS",
+        "nameZh": "不毛之地"
+      },
+      {
+        "id": "BEACH",
+        "nameZh": "沙滩"
+      },
+      {
+        "id": "CAVE",
+        "nameZh": "洞窟"
+      },
+      {
+        "id": "CONSTRUCTION_SITE",
+        "nameZh": "工地"
+      },
+      {
+        "id": "DESERT",
+        "nameZh": "沙漠"
+      },
+      {
+        "id": "DOJO",
+        "nameZh": "道场"
+      },
+      {
+        "id": "FACTORY",
+        "nameZh": "工厂"
+      },
+      {
+        "id": "FAIRY_CAVE",
+        "nameZh": "妖精洞窟"
+      },
+      {
+        "id": "FOREST",
+        "nameZh": "森林"
+      },
+      {
+        "id": "GRASS",
+        "nameZh": "草地"
+      },
+      {
+        "id": "GRAVEYARD",
+        "nameZh": "墓地"
+      },
+      {
+        "id": "ICE_CAVE",
+        "nameZh": "寒冰洞窟"
+      },
+      {
+        "id": "ISLAND",
+        "nameZh": "岛屿"
+      },
+      {
+        "id": "JUNGLE",
+        "nameZh": "丛林"
+      },
+      {
+        "id": "LABORATORY",
+        "nameZh": "研究所"
+      },
+      {
+        "id": "LAKE",
+        "nameZh": "湖泊"
+      },
+      {
+        "id": "MEADOW",
+        "nameZh": "花丛"
+      },
+      {
+        "id": "METROPOLIS",
+        "nameZh": "城市"
+      },
+      {
+        "id": "MOUNTAIN",
+        "nameZh": "山脉"
+      },
+      {
+        "id": "PLAINS",
+        "nameZh": "平原"
+      },
+      {
+        "id": "POWER_PLANT",
+        "nameZh": "发电厂"
+      },
+      {
+        "id": "RUINS",
+        "nameZh": "遗迹"
+      },
+      {
+        "id": "SLUM",
+        "nameZh": "陋巷"
+      },
+      {
+        "id": "SNOWY_FOREST",
+        "nameZh": "冰雪森林"
+      },
+      {
+        "id": "SPACE",
+        "nameZh": "太空"
+      },
+      {
+        "id": "SWAMP",
+        "nameZh": "沼泽"
+      },
+      {
+        "id": "TALL_GRASS",
+        "nameZh": "高草丛"
+      },
+      {
+        "id": "TEMPLE",
+        "nameZh": "神殿"
+      },
+      {
+        "id": "TOWN",
+        "nameZh": "城镇"
+      }
+    ],
+    "eventConditions": [
+      "队伍数量为 4-6"
+    ],
+    "catchAllowed": false,
+    "fleeAllowed": true,
+    "options": [
+      {
+        "index": 1,
+        "label": "随机宝可梦 1",
+        "tooltip": "(-)艰难的战斗\n(+)获得与随机宝可梦 1的友谊",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(-)艰难的战斗\n(+)获得与随机宝可梦 1的友谊"
+      },
+      {
+        "index": 2,
+        "label": "随机宝可梦 2",
+        "tooltip": "(-)艰难的战斗\n(+)获得与随机宝可梦 2的友谊",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(-)艰难的战斗\n(+)获得与随机宝可梦 2的友谊"
+      },
+      {
+        "index": 3,
+        "label": "随机宝可梦 3",
+        "tooltip": "(-)艰难的战斗\n(+)获得与随机宝可梦 3的友谊",
+        "disabledTooltip": "",
+        "selectedText": "",
+        "conditions": [],
+        "effectSummary": "(-)艰难的战斗\n(+)获得与随机宝可梦 3的友谊"
+      }
+    ]
+  }
+]

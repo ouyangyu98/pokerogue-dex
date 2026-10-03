@@ -22,6 +22,7 @@ interface ReportData {
   passiveCount: number
   formCount: number
   itemCount?: number
+  mysteryEncounterCount?: number
   moveCount?: number
   abilityCount?: number
   nameMapCoverage?: Record<string, CoverageItem>
@@ -140,6 +141,10 @@ export default function DataReport() {
             <tr>
               <td>商店道具条目</td>
               <td>{report.itemCount ?? '-'}</td>
+            </tr>
+            <tr>
+              <td>神秘事件条目</td>
+              <td>{report.mysteryEncounterCount ?? '-'}</td>
             </tr>
             <tr>
               <td>普通遭遇记录</td>

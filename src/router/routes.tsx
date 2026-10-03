@@ -19,6 +19,7 @@ import BiomeMapPage from '../pages/BiomeMapPage'
 import DataReportPage from '../pages/DataReportPage'
 import TeamBuilderPage from '../pages/TeamBuilderPage'
 import FeedbackPage from '../pages/FeedbackPage'
+import EventListPage from '../pages/EventListPage'
 import NotFoundPage from '../pages/NotFoundPage'
 import EnLandingPage from '../pages/EnLandingPage'
 
@@ -38,6 +39,7 @@ export const routes = [
       { path: 'move/:id', element: <MoveDetailPage /> },
       { path: 'abilities', element: <AbilityListPage /> },
       { path: 'ability/:id', element: <AbilityDetailPage /> },
+      { path: 'events', element: <EventListPage /> },
       { path: 'natures', element: <NaturePage /> },
       { path: 'nature/:id', element: <NatureDetailPage /> },
       { path: 'types', element: <TypeMatchupPage /> },

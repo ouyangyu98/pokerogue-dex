@@ -17,6 +17,7 @@ const navItems = [
   { to: '/natures', label: '性格表' },
   { to: '/moves', label: '招式' },
   { to: '/abilities', label: '特性' },
+  { to: '/events', label: '事件表' },
   { to: '/report', label: '数据状态' },
 ]
 

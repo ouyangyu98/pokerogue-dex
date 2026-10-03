@@ -73,11 +73,12 @@ async function main() {
     console.warn('index.html missing <!-- SEO_INJECT --> placeholder, appending meta after <title>')
   }
 
-  const [pokemons, biomes, items, nameMaps] = await Promise.all([
+  const [pokemons, biomes, items, nameMaps, mysteryEncounters] = await Promise.all([
     readJson('pokemon.json'),
     readJson('biomes.json'),
     readJson('items.json'),
     readJson('name-maps.json'),
+    readJson('mystery-encounters.json'),
   ])
 
   const moveMap = nameMaps.move || {}
@@ -94,6 +95,7 @@ async function main() {
     { path: '/items', title: `道具清单 - PokeRogue 中文图鉴`, description: `查看 PokeRogue 全部 ${items.length} 个商店道具的效果说明、稀有度与图标。`, keywords: 'PokeRogue,宝可梦肉鸽,道具,商店道具,效果' },
     { path: '/moves', title: `招式查询 - PokeRogue 中文图鉴`, description: `查询 PokeRogue 全部 ${Object.keys(moveMap).length} 个招式的属性、分类、威力、命中与效果。`, keywords: 'PokeRogue,宝可梦肉鸽,招式,技能,效果' },
     { path: '/abilities', title: `特性查询 - PokeRogue 中文图鉴`, description: `查询 PokeRogue 全部 ${Object.keys(abilityMap).length} 个特性的效果，以及拥有该特性的宝可梦列表。`, keywords: 'PokeRogue,宝可梦肉鸽,特性,隐藏特性,被动' },
+    { path: '/events', title: `事件表 - PokeRogue 中文图鉴`, description: `查询 PokeRogue 全部 ${mysteryEncounters.length} 个神秘事件的出现场景、前置条件与每个选项的官方效果提示。`, keywords: 'PokeRogue,宝可梦肉鸽,神秘事件,事件表,选项,效果,遭遇' },
     { path: '/natures', title: `性格表 - PokeRogue 中文图鉴`, description: '查看 PokeRogue 全部 25 种性格的加成与减成效果。', keywords: 'PokeRogue,宝可梦肉鸽,性格,加成,减成' },
     { path: '/types', title: `属性克制 - PokeRogue 中文图鉴`, description: '查看 PokeRogue 18 种属性的攻击与防御相克关系。', keywords: 'PokeRogue,宝可梦肉鸽,属性克制,属性相性' },
     { path: '/map', title: `地区导航 - PokeRogue 中文图鉴`, description: 'PokeRogue 生态区地图导航，查看地区连接关系与推荐路线。', keywords: 'PokeRogue,宝可梦肉鸽,地图,地区导航,生态区' },

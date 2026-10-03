@@ -328,12 +328,13 @@ runStep('Step 2: Build name maps', 'node scripts/build-name-maps.mjs')
 runStep('Step 3: Extract pokemon data', 'node scripts/extract-pokemon.mjs')
 runStep('Step 4: Extract biome data', 'node scripts/extract-biomes.mjs')
 runStep('Step 5: Enrich pokemon data', 'node scripts/enrich-pokemon.mjs')
+runStep('Step 6: Extract mystery encounters', 'node scripts/extract-mystery-encounters.mjs')
 
 const pokemons = JSON.parse(fs.readFileSync(path.join(rootDir, 'public/data/pokemon.json'), 'utf-8'))
 const biomes = JSON.parse(fs.readFileSync(path.join(rootDir, 'public/data/biomes.json'), 'utf-8'))
 const nameMaps = JSON.parse(fs.readFileSync(path.join(rootDir, 'public/data/name-maps.json'), 'utf-8'))
 
-console.log('=== Step 6: Build item list for type matchup side rail ===')
+console.log('=== Step 7: Build item list for type matchup side rail ===')
 const modifierTypeLocale = JSON.parse(fs.readFileSync(path.join(localeRoot, 'zh-Hans/modifier-type.json'), 'utf-8'))
 const pokeballLocale = JSON.parse(fs.readFileSync(path.join(localeRoot, 'zh-Hans/pokeball.json'), 'utf-8'))
 const modifierEntries = modifierTypeLocale.ModifierType || {}
@@ -401,7 +402,7 @@ const sortedItems = items.sort((a, b) => {
 fs.writeFileSync(path.join(rootDir, 'public/data/items.json'), JSON.stringify(sortedItems, null, 2))
 console.log('Built item list with ' + sortedItems.length + ' entries')
 
-console.log('=== Step 7: Update data report ===')
+console.log('=== Step 8: Update data report ===')
 
 // Compute encounter splits
 const normalEncounters = biomes.flatMap(b => b.encounters.filter(e => !e.isBoss))
@@ -492,27 +493,28 @@ const report = {
   passiveCount: pokemons.filter(p => p.passive && p.passive !== 'NONE').length,
   formCount: pokemons.reduce((sum, p) => sum + (p.forms?.length || 0), 0),
   itemCount: sortedItems.length,
+  mysteryEncounterCount: JSON.parse(fs.readFileSync(path.join(rootDir, 'public/data/mystery-encounters.json'), 'utf-8')).length,
   moveCount: allMoveIds.size,
   abilityCount: allAbilityIds.size,
   nameMapCoverage,
 }
 fs.writeFileSync(path.join(rootDir, 'public/data/data-report.json'), JSON.stringify(report, null, 2))
 
-console.log('=== Step 8: Fetch Smogon sets ===')
+console.log('=== Step 9: Fetch Smogon sets ===')
 try {
   execSync('node scripts/fetch-smogon-sets.mjs', { cwd: rootDir, stdio: 'inherit' })
 } catch (e) {
   console.warn('Warning: Failed to fetch Smogon sets, skipping:', e.message)
 }
 
-console.log('=== Step 9: Process Smogon recommendations ===')
+console.log('=== Step 10: Process Smogon recommendations ===')
 try {
   execSync('node scripts/process-smogon-recommendations.mjs', { cwd: rootDir, stdio: 'inherit' })
 } catch (e) {
   console.warn('Warning: Failed to process Smogon recommendations, skipping:', e.message)
 }
 
-console.log('=== Step 10: Merge Smogon recommendations into pokemon.json ===')
+console.log('=== Step 11: Merge Smogon recommendations into pokemon.json ===')
 try {
   const smogonRecs = JSON.parse(fs.readFileSync(path.join(rootDir, 'public/data/smogon-recommendations.json'), 'utf-8'))
   let mergedCount = 0

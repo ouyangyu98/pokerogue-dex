@@ -1185,6 +1185,267 @@ main {
   font-size: 16px;
 }
 
+/* ===== 神秘事件表 ===== */
+.event-list-page > p {
+  color: #667085;
+  margin: 6px 0 16px;
+}
+
+.event-list-toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.event-tier-select {
+  min-height: 52px;
+  min-width: 132px;
+  padding: 12px 34px 12px 14px;
+  border: 1px solid #d9e2ef;
+  border-radius: 8px;
+  background: #fff;
+  color: #334155;
+  font-size: 14px;
+}
+
+.event-list-count {
+  margin: 0 0 12px;
+  color: #667085;
+  font-size: 13px;
+}
+
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.event-entry {
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.event-entry summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 66px;
+  padding: 13px 16px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.event-entry summary::-webkit-details-marker {
+  display: none;
+}
+
+.event-entry summary::after {
+  content: '+';
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 24px;
+  border: 1px solid #d9e2ef;
+  border-radius: 50%;
+  color: #526072;
+  font-size: 18px;
+}
+
+.event-entry[open] summary {
+  border-bottom: 1px solid #e5ebf3;
+  background: #f9fbfe;
+}
+
+.event-entry[open] summary::after {
+  content: '-';
+}
+
+.event-entry-main {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.event-entry-title {
+  color: #1e293b;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.event-entry-id,
+.event-entry-meta {
+  color: #7a8499;
+  font-size: 12px;
+}
+
+.event-entry-id {
+  overflow-wrap: anywhere;
+}
+
+.event-entry-meta {
+  flex: 0 0 auto;
+  text-align: right;
+}
+
+.event-tier-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.tier-common { background: #edf6ec; color: #3b6b35; }
+.tier-great { background: #eaf2ff; color: #245ca9; }
+.tier-ultra { background: #fff2dc; color: #9b5a05; }
+.tier-rogue { background: #f7eaf2; color: #9b346f; }
+.tier-master { background: #fbe9ea; color: #a63239; }
+
+.event-entry-content {
+  padding: 16px;
+}
+
+.event-description {
+  color: #475467;
+  white-space: pre-line;
+}
+
+.event-info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.event-info-grid > div {
+  min-width: 0;
+  padding: 10px 12px;
+  border-left: 3px solid #b8ccff;
+  background: #f8faff;
+}
+
+.event-info-grid .event-info-wide {
+  grid-column: span 4;
+}
+
+.event-info-grid dt {
+  margin-bottom: 2px;
+  color: #7a8499;
+  font-size: 12px;
+}
+
+.event-info-grid dd {
+  color: #344054;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.event-options {
+  border-top: 1px solid #e6ebf1;
+  padding-top: 16px;
+}
+
+.event-options h2 {
+  margin: 0 0 10px;
+  color: #344054;
+  font-size: 15px;
+}
+
+.event-option {
+  padding: 12px 0;
+  border-top: 1px solid #edf0f4;
+}
+
+.event-option:first-of-type {
+  border-top: 0;
+}
+
+.event-option-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.event-option-number {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  border-radius: 50%;
+  background: #eaf0ff;
+  color: #3758a8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.event-option h3 {
+  color: #344054;
+  font-size: 14px;
+}
+
+.event-option-effect,
+.event-option-disabled,
+.event-option-condition {
+  margin: 6px 0 0 30px;
+  color: #526072;
+  font-size: 13px;
+  white-space: pre-line;
+}
+
+.event-option-disabled {
+  color: #a45a18;
+}
+
+.event-option-condition {
+  color: #547161;
+}
+
+.event-empty-state {
+  padding: 44px 16px;
+  border: 1px dashed #cfd9e7;
+  border-radius: 8px;
+  color: #667085;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .event-list-toolbar {
+    align-items: stretch;
+  }
+
+  .event-list-toolbar .search-input,
+  .event-tier-select {
+    width: 100%;
+  }
+
+  .event-entry summary {
+    align-items: flex-start;
+    min-height: 0;
+  }
+
+  .event-entry-meta {
+    display: none;
+  }
+
+  .event-info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .event-info-grid .event-info-wide {
+    grid-column: span 2;
+  }
+}
+
 /* ===== 筛选器 ===== */
 .filters {
   display: flex;

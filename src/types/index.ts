@@ -212,7 +212,35 @@ export interface DataReport {
   passiveCount: number
   formCount: number
   itemCount?: number
+  mysteryEncounterCount?: number
   moveCount: number
   abilityCount: number
   nameMapCoverage: Record<string, CoverageItem>
+}
+
+export interface MysteryEncounterOption {
+  index: number
+  label: string
+  tooltip: string
+  disabledTooltip?: string
+  selectedText?: string
+  conditions: string[]
+  effectSummary: string
+}
+
+export interface MysteryEncounter {
+  id: string
+  sourceFile: string
+  nameZh: string
+  description: string
+  query: string
+  tier: 'COMMON' | 'GREAT' | 'ULTRA' | 'ROGUE' | 'MASTER'
+  tierLabel: string
+  waveMin?: number
+  waveMax?: number
+  biomes: BiomeRef[]
+  eventConditions: string[]
+  catchAllowed: boolean
+  fleeAllowed: boolean
+  options: MysteryEncounterOption[]
 }

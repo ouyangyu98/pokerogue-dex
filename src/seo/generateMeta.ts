@@ -111,6 +111,14 @@ export function getMoveListMeta(count: number): PageMeta {
   }
 }
 
+export function getEventListMeta(count: number): PageMeta {
+  return {
+    title: `事件表 - ${siteConfig.siteName}`,
+    description: `查询 PokeRogue 全部 ${count} 个神秘事件的出现场景、前置条件与每个选项的官方效果提示。`,
+    keywords: 'PokeRogue,宝可梦肉鸽,神秘事件,事件表,选项,效果,遭遇',
+  }
+}
+
 export interface MoveInfo {
   id: string
   nameZh: string
