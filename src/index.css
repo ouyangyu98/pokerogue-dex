@@ -1228,7 +1228,7 @@ main {
   background: #fff;
 }
 
-.event-entry summary {
+.event-entry > summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1239,11 +1239,11 @@ main {
   list-style: none;
 }
 
-.event-entry summary::-webkit-details-marker {
+.event-entry > summary::-webkit-details-marker {
   display: none;
 }
 
-.event-entry summary::after {
+.event-entry > summary::after {
   content: '+';
   width: 24px;
   height: 24px;
@@ -1256,12 +1256,12 @@ main {
   font-size: 18px;
 }
 
-.event-entry[open] summary {
+.event-entry[open] > summary {
   border-bottom: 1px solid #e5ebf3;
   background: #f9fbfe;
 }
 
-.event-entry[open] summary::after {
+.event-entry[open] > summary::after {
   content: '-';
 }
 
@@ -1314,8 +1314,64 @@ main {
   padding: 16px;
 }
 
+.event-narrative {
+  max-width: 760px;
+  margin-bottom: 16px;
+}
+
+.event-narrative-label {
+  display: block;
+  margin-bottom: 3px;
+  color: #7a8499;
+  font-size: 12px;
+  font-weight: 700;
+}
+
 .event-description {
   color: #475467;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: pre-line;
+}
+
+.event-narrative-details {
+  margin-top: 5px;
+}
+
+.event-narrative-details summary,
+.event-option-details summary {
+  display: inline;
+  padding: 0;
+  background: transparent;
+  color: #4f6eb8;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  list-style: none;
+}
+
+.event-narrative-details summary::-webkit-details-marker,
+.event-option-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.event-narrative-details summary::after,
+.event-option-details summary::after {
+  content: ' +';
+}
+
+.event-narrative-details[open] summary::after,
+.event-option-details[open] summary::after {
+  content: ' -';
+}
+
+.event-narrative-details > p {
+  margin-top: 8px;
+  color: #526072;
+  font-size: 13px;
+  line-height: 1.7;
   white-space: pre-line;
 }
 
@@ -1498,9 +1554,30 @@ main {
 .event-option-effect,
 .event-option-disabled,
 .event-option-condition {
-  margin: 8px 0 0;
   color: #526072;
   font-size: 13px;
+  white-space: pre-line;
+}
+
+.event-option-effect {
+  margin: 8px 0 0;
+}
+
+.event-option-details {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.event-option-details > div {
+  display: grid;
+  gap: 8px;
+  margin-top: 9px;
+  padding-top: 9px;
+  border-top: 1px solid #edf0f4;
+}
+
+.event-option-details p {
   white-space: pre-line;
 }
 
@@ -1509,9 +1586,6 @@ main {
 }
 
 .event-option-condition {
-  margin-top: auto;
-  padding-top: 8px;
-  border-top: 1px solid #edf0f4;
   color: #547161;
 }
 
@@ -1533,7 +1607,7 @@ main {
     width: 100%;
   }
 
-  .event-entry summary {
+  .event-entry > summary {
     align-items: flex-start;
     min-height: 0;
   }
@@ -1569,6 +1643,7 @@ main {
   .event-options {
     grid-template-columns: 1fr;
   }
+
 }
 
 /* ===== 筛选器 ===== */

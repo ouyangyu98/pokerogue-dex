@@ -105,7 +105,16 @@ export default function EventListPage() {
               <span className="event-entry-meta">{waveLabel(event)} · {event.biomes.length} 个地区 · {event.options.length} 个选项</span>
             </summary>
             <div className="event-entry-content">
-              <p className="event-description">{event.description}</p>
+              <div className="event-narrative">
+                <div>
+                  <span className="event-narrative-label">事件背景</span>
+                  <p className="event-description">{event.description}</p>
+                </div>
+                <details className="event-narrative-details">
+                  <summary>查看完整描述</summary>
+                  <p>{event.description}</p>
+                </details>
+              </div>
               <div className="event-overview">
                 <div className="event-wave-summary">
                   <span className="event-overview-label">出现波次</span>
@@ -150,8 +159,16 @@ export default function EventListPage() {
                       <h3>{option.label}</h3>
                     </div>
                     <p className="event-option-effect">{option.effectSummary || '官方提示未提供具体效果说明。'}</p>
-                    {option.disabledTooltip && <p className="event-option-disabled">不可用时：{option.disabledTooltip}</p>}
-                    {option.conditions.length > 0 && <p className="event-option-condition">选项条件：{option.conditions.join('；')}</p>}
+                    {(option.selectedText || option.disabledTooltip || option.conditions.length > 0) && (
+                      <details className="event-option-details">
+                        <summary>展开说明</summary>
+                        <div>
+                          {option.selectedText && <p>选择后：{option.selectedText}</p>}
+                          {option.disabledTooltip && <p className="event-option-disabled">不可用时：{option.disabledTooltip}</p>}
+                          {option.conditions.length > 0 && <p className="event-option-condition">选项条件：{option.conditions.join('；')}</p>}
+                        </div>
+                      </details>
+                    )}
                   </article>
                 ))}
               </section>
