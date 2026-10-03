@@ -5,6 +5,12 @@ import { fileURLToPath } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const rootDir = path.join(__dirname, '..')
+const sourceRoot = process.env.POKEROGUE_SOURCE_DIR
+  ? path.resolve(process.env.POKEROGUE_SOURCE_DIR)
+  : path.join(rootDir, 'source/pokerogue')
+const localeRoot = process.env.POKEROGUE_LOCALES_DIR
+  ? path.resolve(process.env.POKEROGUE_LOCALES_DIR)
+  : path.join(rootDir, 'source/pokerogue-locales')
 
 function runStep(title, command) {
   console.log(`=== ${title} ===`)
@@ -328,11 +334,11 @@ const biomes = JSON.parse(fs.readFileSync(path.join(rootDir, 'public/data/biomes
 const nameMaps = JSON.parse(fs.readFileSync(path.join(rootDir, 'public/data/name-maps.json'), 'utf-8'))
 
 console.log('=== Step 6: Build item list for type matchup side rail ===')
-const modifierTypeLocale = loadRootJson('source/pokerogue-locales/zh-Hans/modifier-type.json')
-const pokeballLocale = loadRootJson('source/pokerogue-locales/zh-Hans/pokeball.json')
+const modifierTypeLocale = JSON.parse(fs.readFileSync(path.join(localeRoot, 'zh-Hans/modifier-type.json'), 'utf-8'))
+const pokeballLocale = JSON.parse(fs.readFileSync(path.join(localeRoot, 'zh-Hans/pokeball.json'), 'utf-8'))
 const modifierEntries = modifierTypeLocale.ModifierType || {}
 const attackTypeBoosterNames = modifierTypeLocale.AttackTypeBoosterItem || {}
-const modifierPoolSource = fs.readFileSync(path.join(rootDir, 'source/pokerogue/src/modifier/init-modifier-pools.ts'), 'utf-8')
+const modifierPoolSource = fs.readFileSync(path.join(sourceRoot, 'src/modifier/init-modifier-pools.ts'), 'utf-8')
 const seenItemIds = new Set()
 const items = []
 
@@ -471,7 +477,7 @@ const nameMapCoverage = {
 }
 
 const report = {
-  sourceVersion: 'pokerogue-beta-2026-06-15',
+  sourceVersion: process.env.POKEROGUE_SOURCE_VERSION || 'pokerogue-beta-unknown',
   generationTime: new Date().toISOString(),
   pokemonCount: pokemons.length,
   biomeCount: biomes.length,

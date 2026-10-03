@@ -1,31 +1,31 @@
 {
-  "sourceVersion": "pokerogue-beta-2026-06-15",
-  "generationTime": "2026-07-01T02:29:18.375Z",
-  "pokemonCount": 1082,
+  "sourceVersion": "pokerogue-beta-1136dc8a0f90-2026-10-02",
+  "generationTime": "2026-10-03T07:52:10.825Z",
+  "pokemonCount": 1084,
   "biomeCount": 35,
-  "encounterCount": 1742,
-  "normalEncounterCount": 1041,
-  "bossEncounterCount": 701,
-  "levelMoveCount": 16676,
-  "eggMovePokemonCount": 1082,
-  "eggMoveCount": 4328,
+  "encounterCount": 1749,
+  "normalEncounterCount": 1045,
+  "bossEncounterCount": 704,
+  "levelMoveCount": 19093,
+  "eggMovePokemonCount": 1084,
+  "eggMoveCount": 4336,
   "evolutionCount": 544,
-  "costCount": 1082,
-  "passiveCount": 1082,
-  "formCount": 533,
+  "costCount": 1084,
+  "passiveCount": 1084,
+  "formCount": 609,
   "itemCount": 102,
-  "moveCount": 801,
-  "abilityCount": 310,
+  "moveCount": 821,
+  "abilityCount": 317,
   "nameMapCoverage": {
     "pokemon": {
-      "total": 1082,
-      "mapped": 1082,
+      "total": 1084,
+      "mapped": 1084,
       "coverage": 100
     },
     "form": {
-      "total": 533,
-      "mapped": 532,
-      "coverage": 99.81
+      "total": 609,
+      "mapped": 608,
+      "coverage": 99.84
     },
     "type": {
       "total": 20,
@@ -38,8 +38,8 @@
       "coverage": 100
     },
     "ability": {
-      "total": 315,
-      "mapped": 315,
+      "total": 318,
+      "mapped": 318,
       "coverage": 100
     },
     "biome": {

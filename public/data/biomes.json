@@ -3108,16 +3108,25 @@
         "isBoss": false,
         "rarity": "稀有",
         "tierProbability": 5.08,
-        "individualProbability": 5.08
+        "individualProbability": 1.69
       },
       {
-        "speciesId": "ETERNAL_FLOETTE",
-        "poolTier": "SUPER_RARE",
+        "speciesId": "FENNEKIN",
+        "poolTier": "RARE",
         "timeOfDay": "ALL",
         "isBoss": false,
-        "rarity": "SUPER_RARE",
-        "tierProbability": 0.98,
-        "individualProbability": 0.98
+        "rarity": "稀有",
+        "tierProbability": 5.08,
+        "individualProbability": 1.69
+      },
+      {
+        "speciesId": "IMPIDIMP",
+        "poolTier": "RARE",
+        "timeOfDay": "ALL",
+        "isBoss": false,
+        "rarity": "稀有",
+        "tierProbability": 5.08,
+        "individualProbability": 1.69
       },
       {
         "speciesId": "DIANCIE",
@@ -3129,7 +3138,7 @@
         "individualProbability": 0.1
       },
       {
-        "speciesId": "ENAMORUS",
+        "speciesId": "ETERNAL_FLOETTE",
         "poolTier": "ULTRA_RARE",
         "timeOfDay": "ALL",
         "isBoss": false,
@@ -3246,13 +3255,22 @@
         "individualProbability": 5.73
       },
       {
-        "speciesId": "ETERNAL_FLOETTE",
+        "speciesId": "DELPHOX",
         "poolTier": "BOSS_RARE",
         "timeOfDay": "ALL",
         "isBoss": true,
         "rarity": "BOSS_RARE",
         "tierProbability": 21.88,
-        "individualProbability": 21.88
+        "individualProbability": 10.94
+      },
+      {
+        "speciesId": "GRIMMSNARL",
+        "poolTier": "BOSS_RARE",
+        "timeOfDay": "ALL",
+        "isBoss": true,
+        "rarity": "BOSS_RARE",
+        "tierProbability": 21.88,
+        "individualProbability": 10.94
       },
       {
         "speciesId": "DIANCIE",
@@ -3264,7 +3282,7 @@
         "individualProbability": 3.91
       },
       {
-        "speciesId": "ENAMORUS",
+        "speciesId": "ETERNAL_FLOETTE",
         "poolTier": "BOSS_SUPER_RARE",
         "timeOfDay": "ALL",
         "isBoss": true,
@@ -7033,7 +7051,7 @@
         "isBoss": false,
         "rarity": "SUPER_RARE",
         "tierProbability": 0.98,
-        "individualProbability": 0.49
+        "individualProbability": 0.33
       },
       {
         "speciesId": "SLOWKING",
@@ -7042,7 +7060,16 @@
         "isBoss": false,
         "rarity": "SUPER_RARE",
         "tierProbability": 0.98,
-        "individualProbability": 0.49
+        "individualProbability": 0.33
+      },
+      {
+        "speciesId": "BATTLE_BOND_GRENINJA",
+        "poolTier": "SUPER_RARE",
+        "timeOfDay": "ALL",
+        "isBoss": false,
+        "rarity": "SUPER_RARE",
+        "tierProbability": 0.98,
+        "individualProbability": 0.33
       },
       {
         "speciesId": "SUICUNE",
@@ -7177,7 +7204,7 @@
         "isBoss": true,
         "rarity": "BOSS_RARE",
         "tierProbability": 21.88,
-        "individualProbability": 3.13
+        "individualProbability": 2.73
       },
       {
         "speciesId": "GYARADOS",
@@ -7186,7 +7213,7 @@
         "isBoss": true,
         "rarity": "BOSS_RARE",
         "tierProbability": 21.88,
-        "individualProbability": 3.13
+        "individualProbability": 2.73
       },
       {
         "speciesId": "VAPOREON",
@@ -7195,7 +7222,7 @@
         "isBoss": true,
         "rarity": "BOSS_RARE",
         "tierProbability": 21.88,
-        "individualProbability": 3.13
+        "individualProbability": 2.73
       },
       {
         "speciesId": "SLOWKING",
@@ -7204,7 +7231,7 @@
         "isBoss": true,
         "rarity": "BOSS_RARE",
         "tierProbability": 21.88,
-        "individualProbability": 3.13
+        "individualProbability": 2.73
       },
       {
         "speciesId": "SAMUROTT",
@@ -7213,7 +7240,7 @@
         "isBoss": true,
         "rarity": "BOSS_RARE",
         "tierProbability": 21.88,
-        "individualProbability": 3.13
+        "individualProbability": 2.73
       },
       {
         "speciesId": "GRENINJA",
@@ -7222,7 +7249,7 @@
         "isBoss": true,
         "rarity": "BOSS_RARE",
         "tierProbability": 21.88,
-        "individualProbability": 3.13
+        "individualProbability": 2.73
       },
       {
         "speciesId": "INTELEON",
@@ -7231,7 +7258,16 @@
         "isBoss": true,
         "rarity": "BOSS_RARE",
         "tierProbability": 21.88,
-        "individualProbability": 3.13
+        "individualProbability": 2.73
+      },
+      {
+        "speciesId": "BATTLE_BOND_GRENINJA",
+        "poolTier": "BOSS_RARE",
+        "timeOfDay": "ALL",
+        "isBoss": true,
+        "rarity": "BOSS_RARE",
+        "tierProbability": 21.88,
+        "individualProbability": 2.73
       },
       {
         "speciesId": "SUICUNE",
@@ -7644,7 +7680,7 @@
         "isBoss": false,
         "rarity": "ULTRA_RARE",
         "tierProbability": 0.2,
-        "individualProbability": 0.1
+        "individualProbability": 0.07
       },
       {
         "speciesId": "MELOETTA",
@@ -7653,7 +7689,16 @@
         "isBoss": false,
         "rarity": "ULTRA_RARE",
         "tierProbability": 0.2,
-        "individualProbability": 0.1
+        "individualProbability": 0.07
+      },
+      {
+        "speciesId": "ENAMORUS",
+        "poolTier": "ULTRA_RARE",
+        "timeOfDay": "ALL",
+        "isBoss": false,
+        "rarity": "ULTRA_RARE",
+        "tierProbability": 0.2,
+        "individualProbability": 0.07
       },
       {
         "speciesId": "LEDIAN",
@@ -7932,7 +7977,7 @@
         "isBoss": true,
         "rarity": "BOSS_SUPER_RARE",
         "tierProbability": 7.81,
-        "individualProbability": 3.91
+        "individualProbability": 2.6
       },
       {
         "speciesId": "MELOETTA",
@@ -7941,7 +7986,16 @@
         "isBoss": true,
         "rarity": "BOSS_SUPER_RARE",
         "tierProbability": 7.81,
-        "individualProbability": 3.91
+        "individualProbability": 2.6
+      },
+      {
+        "speciesId": "ENAMORUS",
+        "poolTier": "BOSS_SUPER_RARE",
+        "timeOfDay": "ALL",
+        "isBoss": true,
+        "rarity": "BOSS_SUPER_RARE",
+        "tierProbability": 7.81,
+        "individualProbability": 2.6
       }
     ]
   },
@@ -11183,7 +11237,7 @@
         "isBoss": false,
         "rarity": "稀有",
         "tierProbability": 5.08,
-        "individualProbability": 0.63
+        "individualProbability": 0.56
       },
       {
         "speciesId": "CORSOLA",
@@ -11192,7 +11246,7 @@
         "isBoss": false,
         "rarity": "稀有",
         "tierProbability": 5.08,
-        "individualProbability": 0.63
+        "individualProbability": 0.56
       },
       {
         "speciesId": "OCTILLERY",
@@ -11201,7 +11255,7 @@
         "isBoss": false,
         "rarity": "稀有",
         "tierProbability": 5.08,
-        "individualProbability": 0.63
+        "individualProbability": 0.56
       },
       {
         "speciesId": "FEEBAS",
@@ -11210,7 +11264,16 @@
         "isBoss": false,
         "rarity": "稀有",
         "tierProbability": 5.08,
-        "individualProbability": 0.63
+        "individualProbability": 0.56
+      },
+      {
+        "speciesId": "HISUI_BASCULIN",
+        "poolTier": "RARE",
+        "timeOfDay": "ALL",
+        "isBoss": false,
+        "rarity": "稀有",
+        "tierProbability": 5.08,
+        "individualProbability": 0.56
       },
       {
         "speciesId": "MANTYKE",
@@ -11219,7 +11282,7 @@
         "isBoss": false,
         "rarity": "稀有",
         "tierProbability": 5.08,
-        "individualProbability": 0.63
+        "individualProbability": 0.56
       },
       {
         "speciesId": "ALOMOMOLA",
@@ -11228,7 +11291,7 @@
         "isBoss": false,
         "rarity": "稀有",
         "tierProbability": 5.08,
-        "individualProbability": 0.63
+        "individualProbability": 0.56
       },
       {
         "speciesId": "TYNAMO",
@@ -11237,7 +11300,7 @@
         "isBoss": false,
         "rarity": "稀有",
         "tierProbability": 5.08,
-        "individualProbability": 0.63
+        "individualProbability": 0.56
       },
       {
         "speciesId": "DHELMISE",
@@ -11246,7 +11309,7 @@
         "isBoss": false,
         "rarity": "稀有",
         "tierProbability": 5.08,
-        "individualProbability": 0.63
+        "individualProbability": 0.56
       },
       {
         "speciesId": "OMANYTE",

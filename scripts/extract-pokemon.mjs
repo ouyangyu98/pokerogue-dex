@@ -3,10 +3,16 @@ import * as path from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const SOURCE_DIR = path.join(__dirname, '../source/pokerogue/src/data/balance/species')
-const LOCALES_DIR = path.join(__dirname, '../source/pokerogue-locales/zh-Hans')
-const EGG_MOVES_FILE = path.join(__dirname, '../source/pokerogue/src/data/balance/moves/egg-moves.ts')
-const MOVES_FILE = path.join(__dirname, '../source/pokerogue/src/data/moves/move.ts')
+const SOURCE_ROOT = process.env.POKEROGUE_SOURCE_DIR
+  ? path.resolve(process.env.POKEROGUE_SOURCE_DIR)
+  : path.join(__dirname, '../source/pokerogue')
+const LOCALE_ROOT = process.env.POKEROGUE_LOCALES_DIR
+  ? path.resolve(process.env.POKEROGUE_LOCALES_DIR)
+  : path.join(__dirname, '../source/pokerogue-locales')
+const SOURCE_DIR = path.join(SOURCE_ROOT, 'src/data/balance/species')
+const LOCALES_DIR = path.join(LOCALE_ROOT, 'zh-Hans')
+const EGG_MOVES_FILE = path.join(SOURCE_ROOT, 'src/data/balance/moves/egg-moves.ts')
+const MOVES_FILE = path.join(SOURCE_ROOT, 'src/data/moves/move.ts')
 
 function loadJson(filename) {
   return JSON.parse(fs.readFileSync(path.join(LOCALES_DIR, filename), 'utf-8'))

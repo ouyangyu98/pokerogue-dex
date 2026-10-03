@@ -3,7 +3,10 @@ import * as path from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const SPECIES_ID_FILE = path.join(__dirname, '../source/pokerogue/src/enums/species-id.ts')
+const SOURCE_ROOT = process.env.POKEROGUE_SOURCE_DIR
+  ? path.resolve(process.env.POKEROGUE_SOURCE_DIR)
+  : path.join(__dirname, '../source/pokerogue')
+const SPECIES_ID_FILE = path.join(SOURCE_ROOT, 'src/enums/species-id.ts')
 
 function extractSpeciesIds(content) {
   const speciesIds = {}

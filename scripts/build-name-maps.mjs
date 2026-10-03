@@ -3,8 +3,11 @@ import * as path from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const LOCALES_DIR = path.join(__dirname, '../source/pokerogue-locales/zh-Hans')
-const EN_LOCALES_DIR = path.join(__dirname, '../source/pokerogue-locales/en')
+const LOCALE_ROOT = process.env.POKEROGUE_LOCALES_DIR
+  ? path.resolve(process.env.POKEROGUE_LOCALES_DIR)
+  : path.join(__dirname, '../source/pokerogue-locales')
+const LOCALES_DIR = path.join(LOCALE_ROOT, 'zh-Hans')
+const EN_LOCALES_DIR = path.join(LOCALE_ROOT, 'en')
 
 function loadJson(filename, baseDir = LOCALES_DIR) {
   return JSON.parse(fs.readFileSync(path.join(baseDir, filename), 'utf-8'))

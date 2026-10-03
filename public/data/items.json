@@ -254,8 +254,8 @@
   },
   {
     "id": "MEGA_BRACELET",
-    "nameZh": "MEGA手镯",
-    "description": "能让携带着MEGA石战斗的宝可梦 进行MEGA进化。",
+    "nameZh": "超級手鐲",
+    "description": "能讓攜帶着超級石戰鬥的寶可夢進行 超級進化。",
     "tier": "ROGUE",
     "tierLabel": "肉鸽",
     "sortOrder": 4,
@@ -320,7 +320,7 @@
   },
   {
     "id": "PP_MAX",
-    "nameZh": "PP极限提升剂",
+    "nameZh": "ＰＰ极限提升剂",
     "description": "使一个招式的 PP 最大值提升至极限（相当于 3 次 PP 提升剂）。",
     "tier": "ULTRA",
     "tierLabel": "超级",
@@ -442,7 +442,7 @@
   {
     "id": "REVIVER_SEED",
     "nameZh": "复活种子",
-    "description": "受到技能攻击伤害濒死时， 恢复该宝可梦的HP至1/2。",
+    "description": "受到技能攻击伤害濒死时， 恢复该宝可梦的ＨＰ至１/２。",
     "tier": "ULTRA",
     "tierLabel": "超级",
     "sortOrder": 3,
@@ -771,7 +771,7 @@
   },
   {
     "id": "PP_UP",
-    "nameZh": "PP提升剂",
+    "nameZh": "ＰＰ提升剂",
     "description": "使一个招式的 PP 最大值提升基础的 20%（最多 3 次）。",
     "tier": "GREAT",
     "tierLabel": "高级",
@@ -859,7 +859,7 @@
   },
   {
     "id": "ELIXIR",
-    "nameZh": "PP多项小补剂",
+    "nameZh": "ＰＰ多项小补剂",
     "description": "为一只宝可梦的所有招式回复 10 PP。",
     "tier": "GREAT",
     "tierLabel": "高级",
@@ -870,7 +870,7 @@
   },
   {
     "id": "MAX_ELIXIR",
-    "nameZh": "PP多项全补剂",
+    "nameZh": "ＰＰ多项全补剂",
     "description": "完全回复一只宝可梦所有招式的 PP。",
     "tier": "GREAT",
     "tierLabel": "高级",
@@ -1057,7 +1057,7 @@
   },
   {
     "id": "ETHER",
-    "nameZh": "PP单项小补剂",
+    "nameZh": "ＰＰ单项小补剂",
     "description": "为一只宝可梦的一个招式回复 10 PP。",
     "tier": "COMMON",
     "tierLabel": "普通",
@@ -1068,7 +1068,7 @@
   },
   {
     "id": "MAX_ETHER",
-    "nameZh": "PP单项全补剂",
+    "nameZh": "ＰＰ单项全补剂",
     "description": "完全回复一只宝可梦一个招式的 PP。",
     "tier": "COMMON",
     "tierLabel": "普通",

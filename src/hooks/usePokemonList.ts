@@ -223,12 +223,16 @@ export function usePokemonList(): UsePokemonListResult {
   const filtered = useMemo(() => {
     const keyword = search.trim().toLowerCase()
     const result = pokemons.filter(p => {
+      const formSearchText = (p.forms || [])
+        .map(form => `${form.formNameZh}${p.nameZh} ${p.nameEn}`)
+        .join(' ')
+        .toLowerCase()
       const matchSearch = !keyword
         || p.nameZh.toLowerCase().includes(keyword)
         || p.nameEn.toLowerCase().includes(keyword)
         || p.id.toLowerCase().includes(keyword)
         || String(p.numericId).includes(keyword)
-        || (p.forms || []).some(f => f.formNameZh.toLowerCase().includes(keyword))
+        || formSearchText.includes(keyword)
       const matchType = !typeFilter || p.type1 === typeFilter || p.type2 === typeFilter
       const matchGen = !genFilter || p.generation === Number(genFilter)
       const matchBiome = !biomeFilter || (p.biomes || []).some(b => b.id === biomeFilter)

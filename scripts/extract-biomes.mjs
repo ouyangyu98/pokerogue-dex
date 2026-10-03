@@ -3,8 +3,14 @@ import * as path from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const BIOMES_DIR = path.join(__dirname, '../source/pokerogue/src/data/balance/biomes')
-const LOCALES_DIR = path.join(__dirname, '../source/pokerogue-locales/zh-Hans')
+const SOURCE_ROOT = process.env.POKEROGUE_SOURCE_DIR
+  ? path.resolve(process.env.POKEROGUE_SOURCE_DIR)
+  : path.join(__dirname, '../source/pokerogue')
+const LOCALE_ROOT = process.env.POKEROGUE_LOCALES_DIR
+  ? path.resolve(process.env.POKEROGUE_LOCALES_DIR)
+  : path.join(__dirname, '../source/pokerogue-locales')
+const BIOMES_DIR = path.join(SOURCE_ROOT, 'src/data/balance/biomes')
+const LOCALES_DIR = path.join(LOCALE_ROOT, 'zh-Hans')
 
 const NON_BOSS_TIER_PROB = {
   COMMON: 356 / 512,

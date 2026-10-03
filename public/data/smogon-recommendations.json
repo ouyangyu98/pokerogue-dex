@@ -1,14 +1,69 @@
 {
+  "IVYSAUR": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "GIGA_DRAIN",
+          "LEECH_SEED",
+          "SYNTHESIS"
+        ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "LEECH_SEED",
+          "SYNTHESIS",
+          "GIGA_DRAIN"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "GIGA_DRAIN",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "LEECH_SEED",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "SYNTHESIS",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 1,
+      "totalFormats": 1
+    }
+  },
   "VENUSAUR": {
     "sets": [
       {
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
+          "GIGA_DRAIN",
           "EARTH_POWER",
           "SYNTHESIS",
-          "GROWTH",
-          "LEECH_SEED"
+          "GROWTH"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "GIGA_DRAIN",
+          "EARTH_POWER",
+          "SOLAR_BEAM"
         ]
       },
       {
@@ -17,8 +72,8 @@
         "moves": [
           "SYNTHESIS",
           "GROWTH",
-          "EARTH_POWER",
-          "SOLAR_BEAM"
+          "GIGA_DRAIN",
+          "EARTH_POWER"
         ]
       },
       {
@@ -26,6 +81,7 @@
         "description": "以强化招式为核心，配合攻击招式滚雪球",
         "moves": [
           "GROWTH",
+          "GIGA_DRAIN",
           "EARTH_POWER",
           "SOLAR_BEAM"
         ]
@@ -33,10 +89,16 @@
     ],
     "allMoves": [
       {
+        "moveId": "GIGA_DRAIN",
+        "count": 12,
+        "formatCount": 9,
+        "setCount": 5
+      },
+      {
         "moveId": "EARTH_POWER",
-        "count": 10,
-        "formatCount": 8,
-        "setCount": 6
+        "count": 9,
+        "formatCount": 7,
+        "setCount": 5
       },
       {
         "moveId": "SYNTHESIS",
@@ -64,8 +126,8 @@
       }
     ],
     "stats": {
-      "totalSets": 15,
-      "totalFormats": 11
+      "totalSets": 14,
+      "totalFormats": 10
     }
   },
   "CHARIZARD": {
@@ -104,9 +166,9 @@
     "allMoves": [
       {
         "moveId": "FLAMETHROWER",
-        "count": 3,
-        "formatCount": 3,
-        "setCount": 3
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
       },
       {
         "moveId": "HEAT_WAVE",
@@ -140,8 +202,8 @@
       }
     ],
     "stats": {
-      "totalSets": 9,
-      "totalFormats": 6
+      "totalSets": 7,
+      "totalFormats": 5
     }
   },
   "WARTORTLE": {
@@ -188,6 +250,135 @@
     "stats": {
       "totalSets": 1,
       "totalFormats": 1
+    }
+  },
+  "BEEDRILL": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "PURSUIT",
+          "POISON_JAB",
+          "DRILL_RUN"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "PURSUIT",
+          "POISON_JAB",
+          "DRILL_RUN"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "PURSUIT",
+        "count": 2,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "POISON_JAB",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "DRILL_RUN",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 1,
+      "totalFormats": 1
+    }
+  },
+  "PIDGEOT": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "HURRICANE",
+          "HEAT_WAVE",
+          "ROOST"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "HURRICANE",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
+      {
+        "moveId": "HEAT_WAVE",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
+      {
+        "moveId": "ROOST",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      }
+    ],
+    "stats": {
+      "totalSets": 2,
+      "totalFormats": 2
+    }
+  },
+  "PIKACHU": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "VOLT_TACKLE",
+          "QUICK_ATTACK",
+          "THUNDERBOLT"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "VOLT_TACKLE",
+          "QUICK_ATTACK",
+          "THUNDERBOLT"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "VOLT_TACKLE",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "QUICK_ATTACK",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "THUNDERBOLT",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 2,
+      "totalFormats": 2
     }
   },
   "SANDSHREW": {
@@ -484,8 +675,8 @@
     "allMoves": [
       {
         "moveId": "WILL_O_WISP",
-        "count": 5,
-        "formatCount": 5,
+        "count": 6,
+        "formatCount": 6,
         "setCount": 3
       },
       {
@@ -658,6 +849,43 @@
       "totalFormats": 1
     }
   },
+  "MANKEY": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "CLOSE_COMBAT",
+          "U_TURN",
+          "ASSURANCE"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "CLOSE_COMBAT",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "U_TURN",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "ASSURANCE",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 1,
+      "totalFormats": 1
+    }
+  },
   "PRIMEAPE": {
     "sets": [
       {
@@ -666,6 +894,7 @@
         "moves": [
           "RAGE_FIST",
           "CLOSE_COMBAT",
+          "U_TURN",
           "DRAIN_PUNCH"
         ]
       },
@@ -688,6 +917,12 @@
       },
       {
         "moveId": "CLOSE_COMBAT",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "U_TURN",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -739,21 +974,21 @@
     "allMoves": [
       {
         "moveId": "EXTREME_SPEED",
-        "count": 3,
-        "formatCount": 1,
-        "setCount": 2
+        "count": 5,
+        "formatCount": 2,
+        "setCount": 4
       },
       {
         "moveId": "FLARE_BLITZ",
-        "count": 2,
-        "formatCount": 1,
-        "setCount": 2
+        "count": 4,
+        "formatCount": 2,
+        "setCount": 4
       },
       {
         "moveId": "MORNING_SUN",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
       },
       {
         "moveId": "ROAR",
@@ -769,8 +1004,8 @@
       }
     ],
     "stats": {
-      "totalSets": 2,
-      "totalFormats": 1
+      "totalSets": 4,
+      "totalFormats": 2
     }
   },
   "VICTREEBEL": {
@@ -862,6 +1097,52 @@
     "stats": {
       "totalSets": 12,
       "totalFormats": 8
+    }
+  },
+  "MAGNETON": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "THUNDERBOLT",
+          "FLASH_CANNON",
+          "TRI_ATTACK"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "THUNDERBOLT",
+          "FLASH_CANNON",
+          "TRI_ATTACK"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "THUNDERBOLT",
+        "count": 5,
+        "formatCount": 2,
+        "setCount": 4
+      },
+      {
+        "moveId": "FLASH_CANNON",
+        "count": 5,
+        "formatCount": 2,
+        "setCount": 4
+      },
+      {
+        "moveId": "TRI_ATTACK",
+        "count": 4,
+        "formatCount": 2,
+        "setCount": 4
+      }
+    ],
+    "stats": {
+      "totalSets": 5,
+      "totalFormats": 2
     }
   },
   "CLOYSTER": {
@@ -969,9 +1250,9 @@
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
           "SHADOW_BALL",
+          "SLUDGE_WAVE",
           "DESTINY_BOND",
-          "MALIGNANT_CHAIN",
-          "MEAN_LOOK"
+          "WILL_O_WISP"
         ]
       },
       {
@@ -979,7 +1260,7 @@
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
           "SHADOW_BALL",
-          "MALIGNANT_CHAIN",
+          "SLUDGE_WAVE",
           "HEX"
         ]
       }
@@ -987,9 +1268,15 @@
     "allMoves": [
       {
         "moveId": "SHADOW_BALL",
-        "count": 10,
+        "count": 11,
         "formatCount": 6,
-        "setCount": 10
+        "setCount": 11
+      },
+      {
+        "moveId": "SLUDGE_WAVE",
+        "count": 5,
+        "formatCount": 3,
+        "setCount": 5
       },
       {
         "moveId": "DESTINY_BOND",
@@ -998,9 +1285,15 @@
         "setCount": 4
       },
       {
-        "moveId": "MALIGNANT_CHAIN",
+        "moveId": "WILL_O_WISP",
+        "count": 3,
+        "formatCount": 3,
+        "setCount": 3
+      },
+      {
+        "moveId": "HEX",
         "count": 2,
-        "formatCount": 1,
+        "formatCount": 2,
         "setCount": 2
       },
       {
@@ -1008,12 +1301,6 @@
         "count": 2,
         "formatCount": 1,
         "setCount": 2
-      },
-      {
-        "moveId": "HEX",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
       }
     ],
     "stats": {
@@ -1067,43 +1354,6 @@
       "totalFormats": 1
     }
   },
-  "HITMONCHAN": {
-    "sets": [
-      {
-        "name": "综合推荐",
-        "description": "基于Smogon所有对战分级中出现频率最高的招式",
-        "moves": [
-          "DRAIN_PUNCH",
-          "MACH_PUNCH",
-          "RAPID_SPIN"
-        ]
-      }
-    ],
-    "allMoves": [
-      {
-        "moveId": "DRAIN_PUNCH",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
-      },
-      {
-        "moveId": "MACH_PUNCH",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
-      },
-      {
-        "moveId": "RAPID_SPIN",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
-      }
-    ],
-    "stats": {
-      "totalSets": 1,
-      "totalFormats": 1
-    }
-  },
   "CHANSEY": {
     "sets": [
       {
@@ -1119,14 +1369,14 @@
     "allMoves": [
       {
         "moveId": "SEISMIC_TOSS",
-        "count": 9,
-        "formatCount": 9,
+        "count": 8,
+        "formatCount": 8,
         "setCount": 7
       },
       {
         "moveId": "SOFT_BOILED",
-        "count": 9,
-        "formatCount": 9,
+        "count": 8,
+        "formatCount": 8,
         "setCount": 7
       },
       {
@@ -1137,8 +1387,8 @@
       }
     ],
     "stats": {
-      "totalSets": 10,
-      "totalFormats": 10
+      "totalSets": 9,
+      "totalFormats": 9
     }
   },
   "KANGASKHAN": {
@@ -1248,8 +1498,8 @@
         "moves": [
           "WATERFALL",
           "DRAGON_DANCE",
-          "ICE_FANG",
-          "CRUNCH"
+          "DRAGON_TAIL",
+          "ICE_FANG"
         ]
       },
       {
@@ -1259,6 +1509,16 @@
           "WATERFALL",
           "ICE_FANG",
           "CRUNCH"
+        ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "DRAGON_DANCE",
+          "DRAGON_TAIL",
+          "WATERFALL",
+          "ICE_FANG"
         ]
       },
       {
@@ -1286,6 +1546,12 @@
         "setCount": 3
       },
       {
+        "moveId": "DRAGON_TAIL",
+        "count": 2,
+        "formatCount": 1,
+        "setCount": 2
+      },
+      {
         "moveId": "ICE_FANG",
         "count": 2,
         "formatCount": 1,
@@ -1299,7 +1565,7 @@
       }
     ],
     "stats": {
-      "totalSets": 7,
+      "totalSets": 8,
       "totalFormats": 6
     }
   },
@@ -1365,32 +1631,38 @@
     "allMoves": [
       {
         "moveId": "BODY_SLAM",
-        "count": 3,
-        "formatCount": 3,
-        "setCount": 2
+        "count": 5,
+        "formatCount": 4,
+        "setCount": 3
       },
       {
         "moveId": "REST",
-        "count": 3,
-        "formatCount": 3,
-        "setCount": 2
+        "count": 5,
+        "formatCount": 4,
+        "setCount": 3
       },
       {
         "moveId": "CRUNCH",
-        "count": 2,
-        "formatCount": 2,
-        "setCount": 2
+        "count": 3,
+        "formatCount": 3,
+        "setCount": 3
       },
       {
         "moveId": "HEAVY_SLAM",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
+      },
+      {
+        "moveId": "SLEEP_TALK",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       }
     ],
     "stats": {
-      "totalSets": 4,
-      "totalFormats": 4
+      "totalSets": 6,
+      "totalFormats": 5
     }
   },
   "ARTICUNO": {
@@ -1467,8 +1739,8 @@
         "moves": [
           "ROOST",
           "DISCHARGE",
-          "THUNDER",
-          "CHARGE"
+          "THUNDERBOLT",
+          "THUNDER"
         ]
       },
       {
@@ -1476,6 +1748,7 @@
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
           "DISCHARGE",
+          "THUNDERBOLT",
           "THUNDER",
           "ZAP_CANNON"
         ]
@@ -1487,7 +1760,7 @@
           "ROOST",
           "THUNDER_WAVE",
           "DISCHARGE",
-          "THUNDER"
+          "THUNDERBOLT"
         ]
       },
       {
@@ -1496,23 +1769,29 @@
         "moves": [
           "CALM_MIND",
           "DISCHARGE",
-          "THUNDER",
-          "ZAP_CANNON"
+          "THUNDERBOLT",
+          "THUNDER"
         ]
       }
     ],
     "allMoves": [
       {
         "moveId": "ROOST",
-        "count": 16,
-        "formatCount": 9,
-        "setCount": 13
+        "count": 18,
+        "formatCount": 10,
+        "setCount": 14
       },
       {
         "moveId": "DISCHARGE",
-        "count": 7,
+        "count": 9,
+        "formatCount": 6,
+        "setCount": 8
+      },
+      {
+        "moveId": "THUNDERBOLT",
+        "count": 9,
         "formatCount": 5,
-        "setCount": 7
+        "setCount": 9
       },
       {
         "moveId": "THUNDER",
@@ -1521,13 +1800,19 @@
         "setCount": 3
       },
       {
+        "moveId": "THUNDER_WAVE",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
+      {
         "moveId": "CHARGE",
         "count": 2,
         "formatCount": 1,
         "setCount": 1
       },
       {
-        "moveId": "THUNDER_WAVE",
+        "moveId": "ZAP_CANNON",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -1537,17 +1822,80 @@
         "count": 1,
         "formatCount": 1,
         "setCount": 1
-      },
-      {
-        "moveId": "ZAP_CANNON",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
       }
     ],
     "stats": {
-      "totalSets": 23,
-      "totalFormats": 10
+      "totalSets": 25,
+      "totalFormats": 11
+    }
+  },
+  "MOLTRES": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "ROOST",
+          "FLAMETHROWER",
+          "WILL_O_WISP",
+          "HURRICANE"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "FLAMETHROWER",
+          "HURRICANE",
+          "SOLAR_BEAM"
+        ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "ROOST",
+          "WILL_O_WISP",
+          "FLAMETHROWER",
+          "HURRICANE"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "ROOST",
+        "count": 8,
+        "formatCount": 7,
+        "setCount": 6
+      },
+      {
+        "moveId": "FLAMETHROWER",
+        "count": 6,
+        "formatCount": 6,
+        "setCount": 5
+      },
+      {
+        "moveId": "WILL_O_WISP",
+        "count": 6,
+        "formatCount": 5,
+        "setCount": 5
+      },
+      {
+        "moveId": "HURRICANE",
+        "count": 3,
+        "formatCount": 3,
+        "setCount": 2
+      },
+      {
+        "moveId": "SOLAR_BEAM",
+        "count": 2,
+        "formatCount": 1,
+        "setCount": 2
+      }
+    ],
+    "stats": {
+      "totalSets": 8,
+      "totalFormats": 7
     }
   },
   "DRAGONITE": {
@@ -1557,8 +1905,8 @@
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
           "EXTREME_SPEED",
-          "ROOST",
           "DRAGON_DANCE",
+          "ROOST",
           "FIRE_PUNCH"
         ]
       },
@@ -1576,8 +1924,8 @@
         "name": "功能向",
         "description": "优先选择强化、回复或控场招式，兼顾稳定性",
         "moves": [
-          "ROOST",
           "DRAGON_DANCE",
+          "ROOST",
           "EXTREME_SPEED",
           "FIRE_PUNCH"
         ]
@@ -1596,9 +1944,15 @@
     "allMoves": [
       {
         "moveId": "EXTREME_SPEED",
-        "count": 30,
+        "count": 31,
         "formatCount": 14,
-        "setCount": 23
+        "setCount": 25
+      },
+      {
+        "moveId": "DRAGON_DANCE",
+        "count": 19,
+        "formatCount": 9,
+        "setCount": 18
       },
       {
         "moveId": "ROOST",
@@ -1607,22 +1961,16 @@
         "setCount": 17
       },
       {
-        "moveId": "DRAGON_DANCE",
-        "count": 18,
-        "formatCount": 9,
-        "setCount": 17
-      },
-      {
         "moveId": "FIRE_PUNCH",
-        "count": 14,
+        "count": 15,
         "formatCount": 8,
-        "setCount": 11
+        "setCount": 13
       },
       {
         "moveId": "OUTRAGE",
-        "count": 14,
-        "formatCount": 8,
-        "setCount": 9
+        "count": 15,
+        "formatCount": 9,
+        "setCount": 10
       },
       {
         "moveId": "DRAGON_TAIL",
@@ -1641,10 +1989,22 @@
         "count": 2,
         "formatCount": 1,
         "setCount": 2
+      },
+      {
+        "moveId": "BREAKING_SWIPE",
+        "count": 2,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "AIR_SLASH",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       }
     ],
     "stats": {
-      "totalSets": 37,
+      "totalSets": 38,
       "totalFormats": 14
     }
   },
@@ -1790,10 +2150,10 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
+          "FOUL_PLAY",
           "WISH",
           "MOONLIGHT",
-          "HELPING_HAND",
-          "SNARL"
+          "HELPING_HAND"
         ]
       },
       {
@@ -1802,11 +2162,18 @@
         "moves": [
           "WISH",
           "MOONLIGHT",
+          "FOUL_PLAY",
           "SNARL"
         ]
       }
     ],
     "allMoves": [
+      {
+        "moveId": "FOUL_PLAY",
+        "count": 4,
+        "formatCount": 4,
+        "setCount": 4
+      },
       {
         "moveId": "WISH",
         "count": 3,
@@ -1957,7 +2324,17 @@
         "moves": [
           "ROOST",
           "GLARE",
+          "BODY_SLAM",
           "COIL"
+        ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "ROOST",
+          "GLARE",
+          "BODY_SLAM"
         ]
       }
     ],
@@ -1975,6 +2352,12 @@
         "setCount": 2
       },
       {
+        "moveId": "BODY_SLAM",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
         "moveId": "COIL",
         "count": 1,
         "formatCount": 1,
@@ -1986,6 +2369,52 @@
       "totalFormats": 1
     }
   },
+  "GLIGAR": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "EARTHQUAKE",
+          "U_TURN",
+          "KNOCK_OFF"
+        ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "U_TURN",
+          "KNOCK_OFF",
+          "EARTHQUAKE"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "EARTHQUAKE",
+        "count": 4,
+        "formatCount": 4,
+        "setCount": 4
+      },
+      {
+        "moveId": "U_TURN",
+        "count": 4,
+        "formatCount": 4,
+        "setCount": 4
+      },
+      {
+        "moveId": "KNOCK_OFF",
+        "count": 4,
+        "formatCount": 3,
+        "setCount": 3
+      }
+    ],
+    "stats": {
+      "totalSets": 4,
+      "totalFormats": 4
+    }
+  },
   "STEELIX": {
     "sets": [
       {
@@ -1994,7 +2423,17 @@
         "moves": [
           "CURSE",
           "STEALTH_ROCK",
+          "EARTHQUAKE",
           "GYRO_BALL"
+        ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "CURSE",
+          "STEALTH_ROCK",
+          "EARTHQUAKE"
         ]
       }
     ],
@@ -2007,6 +2446,12 @@
       },
       {
         "moveId": "STEALTH_ROCK",
+        "count": 2,
+        "formatCount": 1,
+        "setCount": 2
+      },
+      {
+        "moveId": "EARTHQUAKE",
         "count": 2,
         "formatCount": 1,
         "setCount": 2
@@ -2031,6 +2476,7 @@
         "moves": [
           "SPIKES",
           "BARB_BARRAGE",
+          "GUNK_SHOT",
           "TOXIC"
         ]
       },
@@ -2040,33 +2486,46 @@
         "moves": [
           "SPIKES",
           "TOXIC",
-          "BARB_BARRAGE"
+          "BARB_BARRAGE",
+          "GUNK_SHOT"
         ]
       }
     ],
     "allMoves": [
       {
         "moveId": "SPIKES",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
+        "count": 3,
+        "formatCount": 2,
+        "setCount": 3
       },
       {
         "moveId": "BARB_BARRAGE",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
+        "count": 3,
+        "formatCount": 2,
+        "setCount": 3
+      },
+      {
+        "moveId": "GUNK_SHOT",
+        "count": 3,
+        "formatCount": 2,
+        "setCount": 2
       },
       {
         "moveId": "TOXIC",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
+      {
+        "moveId": "DESTINY_BOND",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
       }
     ],
     "stats": {
-      "totalSets": 2,
-      "totalFormats": 1
+      "totalSets": 5,
+      "totalFormats": 2
     }
   },
   "SCIZOR": {
@@ -2077,7 +2536,17 @@
         "moves": [
           "BULLET_PUNCH",
           "SWORDS_DANCE",
-          "QUICK_ATTACK"
+          "QUICK_ATTACK",
+          "PURSUIT"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "BULLET_PUNCH",
+          "QUICK_ATTACK",
+          "PURSUIT"
         ]
       },
       {
@@ -2086,7 +2555,8 @@
         "moves": [
           "SWORDS_DANCE",
           "BULLET_PUNCH",
-          "QUICK_ATTACK"
+          "QUICK_ATTACK",
+          "PURSUIT"
         ]
       }
     ],
@@ -2105,6 +2575,12 @@
       },
       {
         "moveId": "QUICK_ATTACK",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "PURSUIT",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -2178,6 +2654,12 @@
         "count": 2,
         "formatCount": 1,
         "setCount": 2
+      },
+      {
+        "moveId": "BULLET_SEED",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       }
     ],
     "stats": {
@@ -2243,6 +2725,69 @@
     "stats": {
       "totalSets": 13,
       "totalFormats": 11
+    }
+  },
+  "HOUNDOOM": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "NASTY_PLOT",
+          "DARK_PULSE",
+          "FLAMETHROWER",
+          "TAUNT"
+        ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "NASTY_PLOT",
+          "TAUNT",
+          "DARK_PULSE",
+          "FLAMETHROWER"
+        ]
+      },
+      {
+        "name": "强化向",
+        "description": "以强化招式为核心，配合攻击招式滚雪球",
+        "moves": [
+          "NASTY_PLOT",
+          "DARK_PULSE",
+          "FLAMETHROWER"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "NASTY_PLOT",
+        "count": 3,
+        "formatCount": 3,
+        "setCount": 3
+      },
+      {
+        "moveId": "DARK_PULSE",
+        "count": 3,
+        "formatCount": 3,
+        "setCount": 3
+      },
+      {
+        "moveId": "FLAMETHROWER",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
+      {
+        "moveId": "TAUNT",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 3,
+      "totalFormats": 3
     }
   },
   "KINGDRA": {
@@ -2382,6 +2927,17 @@
         "moves": [
           "RECOVER",
           "TRI_ATTACK",
+          "DISCHARGE",
+          "THUNDER_WAVE"
+        ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "RECOVER",
+          "THUNDER_WAVE",
+          "TRI_ATTACK",
           "DISCHARGE"
         ]
       }
@@ -2404,48 +2960,17 @@
         "count": 5,
         "formatCount": 4,
         "setCount": 4
+      },
+      {
+        "moveId": "THUNDER_WAVE",
+        "count": 3,
+        "formatCount": 3,
+        "setCount": 2
       }
     ],
     "stats": {
       "totalSets": 12,
       "totalFormats": 11
-    }
-  },
-  "HITMONTOP": {
-    "sets": [
-      {
-        "name": "综合推荐",
-        "description": "基于Smogon所有对战分级中出现频率最高的招式",
-        "moves": [
-          "RAPID_SPIN",
-          "CLOSE_COMBAT",
-          "MACH_PUNCH"
-        ]
-      }
-    ],
-    "allMoves": [
-      {
-        "moveId": "RAPID_SPIN",
-        "count": 2,
-        "formatCount": 2,
-        "setCount": 1
-      },
-      {
-        "moveId": "CLOSE_COMBAT",
-        "count": 2,
-        "formatCount": 2,
-        "setCount": 1
-      },
-      {
-        "moveId": "MACH_PUNCH",
-        "count": 2,
-        "formatCount": 2,
-        "setCount": 1
-      }
-    ],
-    "stats": {
-      "totalSets": 2,
-      "totalFormats": 2
     }
   },
   "BLISSEY": {
@@ -2456,7 +2981,6 @@
         "moves": [
           "SOFT_BOILED",
           "SEISMIC_TOSS",
-          "HEALING_WISH",
           "FLING"
         ]
       }
@@ -2473,12 +2997,6 @@
         "count": 12,
         "formatCount": 11,
         "setCount": 8
-      },
-      {
-        "moveId": "HEALING_WISH",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
       },
       {
         "moveId": "FLING",
@@ -2552,9 +3070,9 @@
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
           "CALM_MIND",
+          "ICE_BEAM",
           "ROAR",
-          "RECOVER",
-          "TAILWIND"
+          "RECOVER"
         ]
       },
       {
@@ -2563,6 +3081,16 @@
         "moves": [
           "CALM_MIND",
           "ROAR",
+          "ICE_BEAM",
+          "SURF"
+        ]
+      },
+      {
+        "name": "强化向",
+        "description": "以强化招式为核心，配合攻击招式滚雪球",
+        "moves": [
+          "CALM_MIND",
+          "ICE_BEAM",
           "SURF"
         ]
       }
@@ -2573,6 +3101,12 @@
         "count": 6,
         "formatCount": 5,
         "setCount": 5
+      },
+      {
+        "moveId": "ICE_BEAM",
+        "count": 3,
+        "formatCount": 3,
+        "setCount": 3
       },
       {
         "moveId": "ROAR",
@@ -2623,8 +3157,8 @@
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
           "STONE_EDGE",
-          "CRUNCH",
           "EARTHQUAKE",
+          "CRUNCH",
           "ROCK_SLIDE"
         ]
       },
@@ -2633,8 +3167,8 @@
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
           "STONE_EDGE",
-          "CRUNCH",
           "EARTHQUAKE",
+          "CRUNCH",
           "ROCK_SLIDE"
         ]
       },
@@ -2645,7 +3179,7 @@
           "DRAGON_DANCE",
           "SHORE_UP",
           "STONE_EDGE",
-          "CRUNCH"
+          "EARTHQUAKE"
         ]
       },
       {
@@ -2654,26 +3188,26 @@
         "moves": [
           "DRAGON_DANCE",
           "STONE_EDGE",
-          "CRUNCH",
-          "EARTHQUAKE"
+          "EARTHQUAKE",
+          "CRUNCH"
         ]
       }
     ],
     "allMoves": [
       {
         "moveId": "STONE_EDGE",
-        "count": 9,
-        "formatCount": 7,
+        "count": 12,
+        "formatCount": 9,
+        "setCount": 10
+      },
+      {
+        "moveId": "EARTHQUAKE",
+        "count": 8,
+        "formatCount": 5,
         "setCount": 8
       },
       {
         "moveId": "CRUNCH",
-        "count": 5,
-        "formatCount": 3,
-        "setCount": 5
-      },
-      {
-        "moveId": "EARTHQUAKE",
         "count": 5,
         "formatCount": 3,
         "setCount": 5
@@ -2704,8 +3238,8 @@
       }
     ],
     "stats": {
-      "totalSets": 20,
-      "totalFormats": 12
+      "totalSets": 23,
+      "totalFormats": 13
     }
   },
   "LUGIA": {
@@ -2716,8 +3250,8 @@
         "moves": [
           "RECOVER",
           "CALM_MIND",
-          "WHIRLWIND",
-          "AEROBLAST"
+          "AIR_SLASH",
+          "WHIRLWIND"
         ]
       },
       {
@@ -2726,6 +3260,16 @@
         "moves": [
           "RECOVER",
           "CALM_MIND",
+          "AIR_SLASH",
+          "AEROBLAST"
+        ]
+      },
+      {
+        "name": "强化向",
+        "description": "以强化招式为核心，配合攻击招式滚雪球",
+        "moves": [
+          "CALM_MIND",
+          "AIR_SLASH",
           "AEROBLAST"
         ]
       }
@@ -2742,6 +3286,12 @@
         "count": 3,
         "formatCount": 2,
         "setCount": 3
+      },
+      {
+        "moveId": "AIR_SLASH",
+        "count": 2,
+        "formatCount": 1,
+        "setCount": 2
       },
       {
         "moveId": "WHIRLWIND",
@@ -2813,16 +3363,17 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
+          "CLOSE_COMBAT",
           "PYRO_BALL",
           "FLARE_BLITZ",
-          "THUNDEROUS_KICK",
-          "BURNING_BULWARK"
+          "THUNDEROUS_KICK"
         ]
       },
       {
         "name": "输出向",
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
+          "CLOSE_COMBAT",
           "PYRO_BALL",
           "FLARE_BLITZ",
           "THUNDEROUS_KICK"
@@ -2830,6 +3381,12 @@
       }
     ],
     "allMoves": [
+      {
+        "moveId": "CLOSE_COMBAT",
+        "count": 3,
+        "formatCount": 3,
+        "setCount": 3
+      },
       {
         "moveId": "PYRO_BALL",
         "count": 2,
@@ -2866,9 +3423,9 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
-          "HYDRO_PUMP",
           "GIGA_DRAIN",
           "ICE_BEAM",
+          "HYDRO_PUMP",
           "RAIN_DANCE"
         ]
       },
@@ -2876,27 +3433,27 @@
         "name": "输出向",
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
-          "HYDRO_PUMP",
           "GIGA_DRAIN",
-          "ICE_BEAM"
+          "ICE_BEAM",
+          "HYDRO_PUMP"
         ]
       }
     ],
     "allMoves": [
       {
-        "moveId": "HYDRO_PUMP",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
-      },
-      {
         "moveId": "GIGA_DRAIN",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
       },
       {
         "moveId": "ICE_BEAM",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
+      {
+        "moveId": "HYDRO_PUMP",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -2915,8 +3472,8 @@
       }
     ],
     "stats": {
-      "totalSets": 1,
-      "totalFormats": 1
+      "totalSets": 2,
+      "totalFormats": 2
     }
   },
   "PELIPPER": {
@@ -2937,7 +3494,6 @@
         "moves": [
           "HURRICANE",
           "HYDRO_PUMP",
-          "QUICK_ATTACK",
           "STEAM_ERUPTION"
         ]
       }
@@ -2974,12 +3530,6 @@
         "setCount": 2
       },
       {
-        "moveId": "QUICK_ATTACK",
-        "count": 2,
-        "formatCount": 1,
-        "setCount": 1
-      },
-      {
         "moveId": "STEAM_ERUPTION",
         "count": 2,
         "formatCount": 1,
@@ -3009,7 +3559,8 @@
         "moves": [
           "MOONBLAST",
           "MYSTICAL_FIRE",
-          "PSYCHIC"
+          "PSYCHIC",
+          "HYPER_VOICE"
         ]
       },
       {
@@ -3059,21 +3610,21 @@
         "setCount": 2
       },
       {
-        "moveId": "CALM_MIND",
+        "moveId": "HYPER_VOICE",
         "count": 2,
         "formatCount": 2,
         "setCount": 2
       },
       {
-        "moveId": "TELEPORT",
+        "moveId": "CALM_MIND",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
       }
     ],
     "stats": {
-      "totalSets": 9,
-      "totalFormats": 7
+      "totalSets": 8,
+      "totalFormats": 6
     }
   },
   "BRELOOM": {
@@ -3083,19 +3634,8 @@
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
           "MACH_PUNCH",
-          "SPORE",
           "SEED_BOMB",
           "LEECH_SEED"
-        ]
-      },
-      {
-        "name": "功能向",
-        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
-        "moves": [
-          "SPORE",
-          "LEECH_SEED",
-          "MACH_PUNCH",
-          "SEED_BOMB"
         ]
       }
     ],
@@ -3105,12 +3645,6 @@
         "count": 7,
         "formatCount": 4,
         "setCount": 7
-      },
-      {
-        "moveId": "SPORE",
-        "count": 6,
-        "formatCount": 3,
-        "setCount": 5
       },
       {
         "moveId": "SEED_BOMB",
@@ -3221,6 +3755,7 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
+          "WILL_O_WISP",
           "RECOVER",
           "KNOCK_OFF",
           "NIGHT_SHADE"
@@ -3229,27 +3764,70 @@
     ],
     "allMoves": [
       {
+        "moveId": "WILL_O_WISP",
+        "count": 6,
+        "formatCount": 4,
+        "setCount": 6
+      },
+      {
         "moveId": "RECOVER",
-        "count": 7,
-        "formatCount": 5,
+        "count": 6,
+        "formatCount": 4,
         "setCount": 6
       },
       {
         "moveId": "KNOCK_OFF",
-        "count": 5,
-        "formatCount": 4,
+        "count": 4,
+        "formatCount": 3,
         "setCount": 4
       },
       {
         "moveId": "NIGHT_SHADE",
-        "count": 2,
-        "formatCount": 2,
-        "setCount": 2
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       }
     ],
     "stats": {
-      "totalSets": 7,
-      "totalFormats": 5
+      "totalSets": 6,
+      "totalFormats": 4
+    }
+  },
+  "MAWILE": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "PLAY_ROUGH",
+          "KNOCK_OFF",
+          "SUCKER_PUNCH"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "PLAY_ROUGH",
+        "count": 2,
+        "formatCount": 1,
+        "setCount": 2
+      },
+      {
+        "moveId": "KNOCK_OFF",
+        "count": 2,
+        "formatCount": 1,
+        "setCount": 2
+      },
+      {
+        "moveId": "SUCKER_PUNCH",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 2,
+      "totalFormats": 1
     }
   },
   "AGGRON": {
@@ -3351,7 +3929,7 @@
         "moves": [
           "SLUDGE_BOMB",
           "ENCORE",
-          "PAIN_SPLIT"
+          "KNOCK_OFF"
         ]
       },
       {
@@ -3359,7 +3937,7 @@
         "description": "优先选择强化、回复或控场招式，兼顾稳定性",
         "moves": [
           "ENCORE",
-          "PAIN_SPLIT",
+          "KNOCK_OFF",
           "SLUDGE_BOMB"
         ]
       }
@@ -3378,7 +3956,7 @@
         "setCount": 1
       },
       {
-        "moveId": "PAIN_SPLIT",
+        "moveId": "KNOCK_OFF",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -3513,6 +4091,52 @@
       "totalFormats": 14
     }
   },
+  "TRAPINCH": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "EARTHQUAKE",
+          "FEINT",
+          "SUPERPOWER"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "EARTHQUAKE",
+          "FEINT",
+          "SUPERPOWER"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "EARTHQUAKE",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 1
+      },
+      {
+        "moveId": "FEINT",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "SUPERPOWER",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 2,
+      "totalFormats": 2
+    }
+  },
   "FLYGON": {
     "sets": [
       {
@@ -3520,9 +4144,18 @@
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
           "EARTHQUAKE",
+          "OUTRAGE",
           "DRAGON_CLAW",
-          "DRAGON_DANCE",
-          "DRAGON_TAIL"
+          "DRAGON_DANCE"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "EARTHQUAKE",
+          "OUTRAGE",
+          "DRAGON_CLAW"
         ]
       },
       {
@@ -3532,7 +4165,7 @@
           "DRAGON_DANCE",
           "DRAGON_TAIL",
           "EARTHQUAKE",
-          "DRAGON_CLAW"
+          "OUTRAGE"
         ]
       },
       {
@@ -3541,6 +4174,7 @@
         "moves": [
           "DRAGON_DANCE",
           "EARTHQUAKE",
+          "OUTRAGE",
           "DRAGON_CLAW"
         ]
       }
@@ -3551,6 +4185,12 @@
         "count": 10,
         "formatCount": 3,
         "setCount": 7
+      },
+      {
+        "moveId": "OUTRAGE",
+        "count": 4,
+        "formatCount": 2,
+        "setCount": 2
       },
       {
         "moveId": "DRAGON_CLAW",
@@ -3574,6 +4214,59 @@
     "stats": {
       "totalSets": 10,
       "totalFormats": 3
+    }
+  },
+  "ALTARIA": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "ROOST",
+          "BRAVE_BIRD",
+          "PERISH_SONG",
+          "DRAGON_DANCE"
+        ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "ROOST",
+          "DRAGON_DANCE",
+          "BRAVE_BIRD"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "ROOST",
+        "count": 3,
+        "formatCount": 2,
+        "setCount": 3
+      },
+      {
+        "moveId": "BRAVE_BIRD",
+        "count": 2,
+        "formatCount": 1,
+        "setCount": 2
+      },
+      {
+        "moveId": "PERISH_SONG",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "DRAGON_DANCE",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 3,
+      "totalFormats": 2
     }
   },
   "ZANGOOSE": {
@@ -3725,6 +4418,43 @@
       "totalFormats": 4
     }
   },
+  "MILOTIC": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "RECOVER",
+          "DRAGON_TAIL",
+          "REFRESH"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "RECOVER",
+        "count": 5,
+        "formatCount": 5,
+        "setCount": 5
+      },
+      {
+        "moveId": "DRAGON_TAIL",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
+      {
+        "moveId": "REFRESH",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 5,
+      "totalFormats": 5
+    }
+  },
   "ABSOL": {
     "sets": [
       {
@@ -3733,6 +4463,7 @@
         "moves": [
           "KNOCK_OFF",
           "SUCKER_PUNCH",
+          "PURSUIT",
           "SWORDS_DANCE"
         ]
       },
@@ -3742,7 +4473,17 @@
         "moves": [
           "KNOCK_OFF",
           "SWORDS_DANCE",
-          "SUCKER_PUNCH"
+          "SUCKER_PUNCH",
+          "PURSUIT"
+        ]
+      },
+      {
+        "name": "强化向",
+        "description": "以强化招式为核心，配合攻击招式滚雪球",
+        "moves": [
+          "SWORDS_DANCE",
+          "SUCKER_PUNCH",
+          "PURSUIT"
         ]
       }
     ],
@@ -3758,6 +4499,12 @@
         "count": 2,
         "formatCount": 1,
         "setCount": 2
+      },
+      {
+        "moveId": "PURSUIT",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       },
       {
         "moveId": "SWORDS_DANCE",
@@ -3779,8 +4526,8 @@
         "moves": [
           "DRAGON_DANCE",
           "ROOST",
-          "DRAGON_DARTS",
-          "FLAMETHROWER"
+          "PROTECT",
+          "DRAGON_DARTS"
         ]
       },
       {
@@ -3828,6 +4575,12 @@
         "setCount": 5
       },
       {
+        "moveId": "PROTECT",
+        "count": 4,
+        "formatCount": 1,
+        "setCount": 2
+      },
+      {
         "moveId": "DRAGON_DARTS",
         "count": 4,
         "formatCount": 1,
@@ -3846,12 +4599,6 @@
         "setCount": 3
       },
       {
-        "moveId": "PROTECT",
-        "count": 3,
-        "formatCount": 1,
-        "setCount": 2
-      },
-      {
         "moveId": "OUTRAGE",
         "count": 3,
         "formatCount": 2,
@@ -3862,6 +4609,12 @@
         "count": 3,
         "formatCount": 2,
         "setCount": 3
+      },
+      {
+        "moveId": "AIR_SLASH",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       }
     ],
     "stats": {
@@ -3911,9 +4664,9 @@
       },
       {
         "moveId": "METEOR_MASH",
-        "count": 7,
-        "formatCount": 4,
-        "setCount": 6
+        "count": 6,
+        "formatCount": 3,
+        "setCount": 5
       },
       {
         "moveId": "EXPLOSION",
@@ -3935,6 +4688,12 @@
       },
       {
         "moveId": "HAMMER_ARM",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "PURSUIT",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -4022,8 +4781,8 @@
       }
     ],
     "stats": {
-      "totalSets": 3,
-      "totalFormats": 3
+      "totalSets": 4,
+      "totalFormats": 4
     }
   },
   "LATIAS": {
@@ -4044,6 +4803,7 @@
         "moves": [
           "PSYCHIC",
           "STORED_POWER",
+          "DRAINING_KISS",
           "MIST_BALL"
         ]
       },
@@ -4084,6 +4844,12 @@
         "setCount": 3
       },
       {
+        "moveId": "DRAINING_KISS",
+        "count": 4,
+        "formatCount": 4,
+        "setCount": 3
+      },
+      {
         "moveId": "MIST_BALL",
         "count": 3,
         "formatCount": 3,
@@ -4097,6 +4863,12 @@
       },
       {
         "moveId": "HELPING_HAND",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "REFRESH",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -4115,6 +4887,7 @@
         "moves": [
           "LUSTER_PURGE",
           "RECOVER",
+          "PROTECT",
           "TAILWIND"
         ]
       }
@@ -4131,6 +4904,12 @@
         "count": 10,
         "formatCount": 7,
         "setCount": 10
+      },
+      {
+        "moveId": "PROTECT",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
       },
       {
         "moveId": "TAILWIND",
@@ -4167,6 +4946,16 @@
         ]
       },
       {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "CALM_MIND",
+          "REST",
+          "ICE_BEAM",
+          "ORIGIN_PULSE"
+        ]
+      },
+      {
         "name": "强化向",
         "description": "以强化招式为核心，配合攻击招式滚雪球",
         "moves": [
@@ -4180,9 +4969,9 @@
     "allMoves": [
       {
         "moveId": "ICE_BEAM",
-        "count": 19,
-        "formatCount": 7,
-        "setCount": 13
+        "count": 20,
+        "formatCount": 8,
+        "setCount": 14
       },
       {
         "moveId": "ORIGIN_PULSE",
@@ -4207,11 +4996,23 @@
         "count": 2,
         "formatCount": 2,
         "setCount": 2
+      },
+      {
+        "moveId": "REST",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "RECOVER",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       }
     ],
     "stats": {
-      "totalSets": 19,
-      "totalFormats": 7
+      "totalSets": 20,
+      "totalFormats": 8
     }
   },
   "GROUDON": {
@@ -4221,6 +5022,7 @@
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
           "PRECIPICE_BLADES",
+          "HEAT_CRASH",
           "ERUPTION",
           "EARTHQUAKE"
         ]
@@ -4241,6 +5043,12 @@
         "count": 12,
         "formatCount": 6,
         "setCount": 9
+      },
+      {
+        "moveId": "HEAT_CRASH",
+        "count": 6,
+        "formatCount": 5,
+        "setCount": 5
       },
       {
         "moveId": "ERUPTION",
@@ -4331,8 +5139,8 @@
         "moves": [
           "HEALING_WISH",
           "WISH",
-          "LIFE_DEW",
-          "ZEN_HEADBUTT"
+          "ZEN_HEADBUTT",
+          "LIFE_DEW"
         ]
       },
       {
@@ -4358,14 +5166,20 @@
     "allMoves": [
       {
         "moveId": "HEALING_WISH",
-        "count": 7,
-        "formatCount": 6,
+        "count": 6,
+        "formatCount": 5,
         "setCount": 5
       },
       {
         "moveId": "WISH",
-        "count": 4,
+        "count": 5,
         "formatCount": 4,
+        "setCount": 4
+      },
+      {
+        "moveId": "ZEN_HEADBUTT",
+        "count": 3,
+        "formatCount": 3,
         "setCount": 3
       },
       {
@@ -4373,12 +5187,6 @@
         "count": 2,
         "formatCount": 1,
         "setCount": 1
-      },
-      {
-        "moveId": "ZEN_HEADBUTT",
-        "count": 2,
-        "formatCount": 2,
-        "setCount": 2
       },
       {
         "moveId": "FUTURE_SIGHT",
@@ -4394,8 +5202,54 @@
       }
     ],
     "stats": {
-      "totalSets": 14,
+      "totalSets": 16,
       "totalFormats": 8
+    }
+  },
+  "DEOXYS": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "PSYCHO_BOOST",
+          "KNOCK_OFF",
+          "NASTY_PLOT"
+        ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "KNOCK_OFF",
+          "NASTY_PLOT",
+          "PSYCHO_BOOST"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "PSYCHO_BOOST",
+        "count": 4,
+        "formatCount": 2,
+        "setCount": 4
+      },
+      {
+        "moveId": "KNOCK_OFF",
+        "count": 2,
+        "formatCount": 1,
+        "setCount": 2
+      },
+      {
+        "moveId": "NASTY_PLOT",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 4,
+      "totalFormats": 2
     }
   },
   "TORTERRA": {
@@ -4469,24 +5323,13 @@
         "moves": [
           "CLOSE_COMBAT",
           "FLARE_BLITZ",
-          "MACH_PUNCH",
-          "NASTY_PLOT"
+          "MACH_PUNCH"
         ]
       },
       {
         "name": "输出向",
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
-          "CLOSE_COMBAT",
-          "FLARE_BLITZ",
-          "MACH_PUNCH"
-        ]
-      },
-      {
-        "name": "强化向",
-        "description": "以强化招式为核心，配合攻击招式滚雪球",
-        "moves": [
-          "NASTY_PLOT",
           "CLOSE_COMBAT",
           "FLARE_BLITZ",
           "MACH_PUNCH"
@@ -4508,12 +5351,6 @@
       },
       {
         "moveId": "MACH_PUNCH",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
-      },
-      {
-        "moveId": "NASTY_PLOT",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -4532,7 +5369,7 @@
         "moves": [
           "CLOSE_COMBAT",
           "FLARE_BLITZ",
-          "NASTY_PLOT",
+          "U_TURN",
           "MACH_PUNCH"
         ]
       },
@@ -4542,28 +5379,17 @@
         "moves": [
           "CLOSE_COMBAT",
           "FLARE_BLITZ",
-          "MACH_PUNCH",
-          "FLAMETHROWER"
+          "MACH_PUNCH"
         ]
       },
       {
         "name": "功能向",
         "description": "优先选择强化、回复或控场招式，兼顾稳定性",
         "moves": [
-          "NASTY_PLOT",
+          "U_TURN",
           "TAUNT",
           "CLOSE_COMBAT",
           "FLARE_BLITZ"
-        ]
-      },
-      {
-        "name": "强化向",
-        "description": "以强化招式为核心，配合攻击招式滚雪球",
-        "moves": [
-          "NASTY_PLOT",
-          "CLOSE_COMBAT",
-          "FLARE_BLITZ",
-          "MACH_PUNCH"
         ]
       }
     ],
@@ -4581,22 +5407,16 @@
         "setCount": 4
       },
       {
-        "moveId": "NASTY_PLOT",
-        "count": 2,
-        "formatCount": 2,
-        "setCount": 1
+        "moveId": "U_TURN",
+        "count": 6,
+        "formatCount": 4,
+        "setCount": 4
       },
       {
         "moveId": "MACH_PUNCH",
         "count": 2,
         "formatCount": 2,
         "setCount": 2
-      },
-      {
-        "moveId": "FLAMETHROWER",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
       },
       {
         "moveId": "TAUNT",
@@ -4715,6 +5535,52 @@
       "totalFormats": 1
     }
   },
+  "CRANIDOS": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "ROCK_SLIDE",
+          "HEAD_SMASH",
+          "ZEN_HEADBUTT"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "ROCK_SLIDE",
+          "HEAD_SMASH",
+          "ZEN_HEADBUTT"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "ROCK_SLIDE",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
+      {
+        "moveId": "HEAD_SMASH",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
+      {
+        "moveId": "ZEN_HEADBUTT",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 2,
+      "totalFormats": 2
+    }
+  },
   "BASTIODON": {
     "sets": [
       {
@@ -4760,7 +5626,8 @@
         "moves": [
           "WAVE_CRASH",
           "AQUA_JET",
-          "LIQUIDATION"
+          "LIQUIDATION",
+          "WATERFALL"
         ]
       },
       {
@@ -4769,7 +5636,8 @@
         "moves": [
           "WAVE_CRASH",
           "AQUA_JET",
-          "LIQUIDATION"
+          "LIQUIDATION",
+          "WATERFALL"
         ]
       }
     ],
@@ -4791,48 +5659,17 @@
         "count": 1,
         "formatCount": 1,
         "setCount": 1
-      }
-    ],
-    "stats": {
-      "totalSets": 2,
-      "totalFormats": 2
-    }
-  },
-  "GASTRODON": {
-    "sets": [
-      {
-        "name": "综合推荐",
-        "description": "基于Smogon所有对战分级中出现频率最高的招式",
-        "moves": [
-          "RECOVER",
-          "EARTH_POWER",
-          "SCORCHING_SANDS"
-        ]
-      }
-    ],
-    "allMoves": [
-      {
-        "moveId": "RECOVER",
-        "count": 8,
-        "formatCount": 6,
-        "setCount": 7
       },
       {
-        "moveId": "EARTH_POWER",
-        "count": 4,
-        "formatCount": 3,
-        "setCount": 4
-      },
-      {
-        "moveId": "SCORCHING_SANDS",
+        "moveId": "WATERFALL",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
       }
     ],
     "stats": {
-      "totalSets": 9,
-      "totalFormats": 7
+      "totalSets": 2,
+      "totalFormats": 2
     }
   },
   "DRIFBLIM": {
@@ -4888,8 +5725,17 @@
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
           "RETURN",
-          "TRIPLE_AXEL",
-          "FRUSTRATION",
+          "FAKE_OUT",
+          "POWER_UP_PUNCH",
+          "QUICK_ATTACK"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "FAKE_OUT",
+          "POWER_UP_PUNCH",
           "QUICK_ATTACK"
         ]
       }
@@ -4902,13 +5748,13 @@
         "setCount": 2
       },
       {
-        "moveId": "TRIPLE_AXEL",
+        "moveId": "FAKE_OUT",
         "count": 2,
         "formatCount": 2,
         "setCount": 2
       },
       {
-        "moveId": "FRUSTRATION",
+        "moveId": "POWER_UP_PUNCH",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -4923,6 +5769,80 @@
     "stats": {
       "totalSets": 3,
       "totalFormats": 2
+    }
+  },
+  "SKUNTANK": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "SUCKER_PUNCH",
+          "TOXIC",
+          "POISON_JAB"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "SUCKER_PUNCH",
+        "count": 4,
+        "formatCount": 3,
+        "setCount": 4
+      },
+      {
+        "moveId": "TOXIC",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "POISON_JAB",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 4,
+      "totalFormats": 3
+    }
+  },
+  "BRONZONG": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "BODY_PRESS",
+          "HEAVY_SLAM",
+          "IRON_DEFENSE"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "BODY_PRESS",
+        "count": 5,
+        "formatCount": 4,
+        "setCount": 5
+      },
+      {
+        "moveId": "HEAVY_SLAM",
+        "count": 3,
+        "formatCount": 3,
+        "setCount": 3
+      },
+      {
+        "moveId": "IRON_DEFENSE",
+        "count": 3,
+        "formatCount": 2,
+        "setCount": 3
+      }
+    ],
+    "stats": {
+      "totalSets": 5,
+      "totalFormats": 4
     }
   },
   "SPIRITOMB": {
@@ -4979,8 +5899,8 @@
         "moves": [
           "CLOSE_COMBAT",
           "SWORDS_DANCE",
-          "METEOR_MASH",
-          "EXTREME_SPEED"
+          "DARK_PULSE",
+          "METEOR_MASH"
         ]
       },
       {
@@ -4988,9 +5908,9 @@
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
           "CLOSE_COMBAT",
+          "DARK_PULSE",
           "METEOR_MASH",
-          "EXTREME_SPEED",
-          "VACUUM_WAVE"
+          "EXTREME_SPEED"
         ]
       },
       {
@@ -4999,8 +5919,8 @@
         "moves": [
           "SWORDS_DANCE",
           "CLOSE_COMBAT",
-          "METEOR_MASH",
-          "EXTREME_SPEED"
+          "DARK_PULSE",
+          "METEOR_MASH"
         ]
       }
     ],
@@ -5018,6 +5938,12 @@
         "setCount": 3
       },
       {
+        "moveId": "DARK_PULSE",
+        "count": 3,
+        "formatCount": 3,
+        "setCount": 3
+      },
+      {
         "moveId": "METEOR_MASH",
         "count": 2,
         "formatCount": 2,
@@ -5025,6 +5951,12 @@
       },
       {
         "moveId": "EXTREME_SPEED",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
+      {
+        "moveId": "BULLET_PUNCH",
         "count": 2,
         "formatCount": 2,
         "setCount": 2
@@ -5107,6 +6039,52 @@
       "totalFormats": 8
     }
   },
+  "SNOVER": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "BLIZZARD",
+          "GIGA_DRAIN",
+          "ICE_SHARD"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "BLIZZARD",
+          "GIGA_DRAIN",
+          "ICE_SHARD"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "BLIZZARD",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "GIGA_DRAIN",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "ICE_SHARD",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 1,
+      "totalFormats": 1
+    }
+  },
   "ABOMASNOW": {
     "sets": [
       {
@@ -5115,6 +6093,17 @@
         "moves": [
           "AURORA_VEIL",
           "BLIZZARD",
+          "LEAF_STORM",
+          "GIGA_DRAIN"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "BLIZZARD",
+          "LEAF_STORM",
+          "GIGA_DRAIN",
           "ICE_SHARD"
         ]
       }
@@ -5131,6 +6120,18 @@
         "count": 4,
         "formatCount": 3,
         "setCount": 3
+      },
+      {
+        "moveId": "LEAF_STORM",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 1
+      },
+      {
+        "moveId": "GIGA_DRAIN",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
       },
       {
         "moveId": "ICE_SHARD",
@@ -5152,7 +6153,8 @@
         "moves": [
           "ICE_SHARD",
           "TRIPLE_AXEL",
-          "BEAT_UP"
+          "BEAT_UP",
+          "PUNISHMENT"
         ]
       }
     ],
@@ -5174,6 +6176,12 @@
         "count": 1,
         "formatCount": 1,
         "setCount": 1
+      },
+      {
+        "moveId": "PUNISHMENT",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       }
     ],
     "stats": {
@@ -5188,9 +6196,9 @@
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
           "FLASH_CANNON",
-          "MIRROR_COAT",
+          "THUNDERBOLT",
           "THUNDERCLAP",
-          "DISCHARGE"
+          "MIRROR_COAT"
         ]
       },
       {
@@ -5198,9 +6206,9 @@
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
           "FLASH_CANNON",
+          "THUNDERBOLT",
           "THUNDERCLAP",
-          "DISCHARGE",
-          "PARABOLIC_CHARGE"
+          "TRI_ATTACK"
         ]
       }
     ],
@@ -5212,16 +6220,28 @@
         "setCount": 7
       },
       {
-        "moveId": "MIRROR_COAT",
-        "count": 3,
-        "formatCount": 3,
-        "setCount": 3
+        "moveId": "THUNDERBOLT",
+        "count": 7,
+        "formatCount": 6,
+        "setCount": 6
       },
       {
         "moveId": "THUNDERCLAP",
         "count": 3,
         "formatCount": 1,
         "setCount": 3
+      },
+      {
+        "moveId": "MIRROR_COAT",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
+      {
+        "moveId": "TRI_ATTACK",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       },
       {
         "moveId": "DISCHARGE",
@@ -5267,9 +6287,9 @@
     "allMoves": [
       {
         "moveId": "EARTHQUAKE",
-        "count": 11,
+        "count": 10,
         "formatCount": 6,
-        "setCount": 9
+        "setCount": 8
       },
       {
         "moveId": "STONE_EDGE",
@@ -5285,9 +6305,9 @@
       },
       {
         "moveId": "ROCK_WRECKER",
-        "count": 3,
+        "count": 2,
         "formatCount": 1,
-        "setCount": 3
+        "setCount": 2
       },
       {
         "moveId": "ROCK_BLAST",
@@ -5303,7 +6323,7 @@
       }
     ],
     "stats": {
-      "totalSets": 11,
+      "totalSets": 10,
       "totalFormats": 6
     }
   },
@@ -5410,35 +6430,51 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
+          "EARTHQUAKE",
           "KNOCK_OFF",
           "U_TURN",
           "SWORDS_DANCE"
+        ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "KNOCK_OFF",
+          "U_TURN",
+          "EARTHQUAKE"
         ]
       }
     ],
     "allMoves": [
       {
-        "moveId": "KNOCK_OFF",
-        "count": 18,
+        "moveId": "EARTHQUAKE",
+        "count": 14,
         "formatCount": 9,
-        "setCount": 11
+        "setCount": 9
+      },
+      {
+        "moveId": "KNOCK_OFF",
+        "count": 13,
+        "formatCount": 8,
+        "setCount": 6
       },
       {
         "moveId": "U_TURN",
-        "count": 8,
-        "formatCount": 7,
-        "setCount": 5
+        "count": 6,
+        "formatCount": 6,
+        "setCount": 4
       },
       {
         "moveId": "SWORDS_DANCE",
-        "count": 6,
-        "formatCount": 5,
-        "setCount": 3
+        "count": 4,
+        "formatCount": 4,
+        "setCount": 1
       }
     ],
     "stats": {
-      "totalSets": 24,
-      "totalFormats": 11
+      "totalSets": 17,
+      "totalFormats": 10
     }
   },
   "GALLADE": {
@@ -5532,7 +6568,7 @@
           "DESTINY_BOND",
           "WILL_O_WISP",
           "SHADOW_BALL",
-          "ICY_WIND"
+          "ICE_BEAM"
         ]
       },
       {
@@ -5540,6 +6576,7 @@
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
           "SHADOW_BALL",
+          "ICE_BEAM",
           "ICY_WIND",
           "HEX"
         ]
@@ -5554,14 +6591,20 @@
       },
       {
         "moveId": "WILL_O_WISP",
-        "count": 5,
+        "count": 6,
         "formatCount": 5,
-        "setCount": 5
+        "setCount": 6
       },
       {
         "moveId": "SHADOW_BALL",
         "count": 4,
         "formatCount": 3,
+        "setCount": 4
+      },
+      {
+        "moveId": "ICE_BEAM",
+        "count": 4,
+        "formatCount": 4,
         "setCount": 4
       },
       {
@@ -5580,6 +6623,43 @@
     "stats": {
       "totalSets": 7,
       "totalFormats": 5
+    }
+  },
+  "ROTOM": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "SHADOW_BALL",
+          "TRICK",
+          "SUBSTITUTE"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "SHADOW_BALL",
+        "count": 2,
+        "formatCount": 1,
+        "setCount": 2
+      },
+      {
+        "moveId": "TRICK",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "SUBSTITUTE",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 2,
+      "totalFormats": 1
     }
   },
   "AZELF": {
@@ -5652,6 +6732,52 @@
       "totalFormats": 4
     }
   },
+  "DIALGA": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "FLASH_CANNON",
+          "EARTH_POWER",
+          "DRAGON_PULSE"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "FLASH_CANNON",
+          "EARTH_POWER",
+          "DRAGON_PULSE"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "FLASH_CANNON",
+        "count": 4,
+        "formatCount": 4,
+        "setCount": 3
+      },
+      {
+        "moveId": "EARTH_POWER",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
+      {
+        "moveId": "DRAGON_PULSE",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 5,
+      "totalFormats": 4
+    }
+  },
   "PALKIA": {
     "sets": [
       {
@@ -5706,8 +6832,8 @@
         "moves": [
           "EARTH_POWER",
           "MAGMA_STORM",
-          "HEAT_WAVE",
-          "LAVA_PLUME"
+          "FLASH_CANNON",
+          "HEAT_WAVE"
         ]
       },
       {
@@ -5716,27 +6842,33 @@
         "moves": [
           "EARTH_POWER",
           "MAGMA_STORM",
-          "HEAT_WAVE",
-          "LAVA_PLUME"
+          "FLASH_CANNON",
+          "HEAT_WAVE"
         ]
       }
     ],
     "allMoves": [
       {
         "moveId": "EARTH_POWER",
-        "count": 25,
-        "formatCount": 13,
-        "setCount": 15
+        "count": 29,
+        "formatCount": 14,
+        "setCount": 16
       },
       {
         "moveId": "MAGMA_STORM",
-        "count": 18,
-        "formatCount": 9,
-        "setCount": 13
+        "count": 21,
+        "formatCount": 10,
+        "setCount": 14
+      },
+      {
+        "moveId": "FLASH_CANNON",
+        "count": 10,
+        "formatCount": 7,
+        "setCount": 7
       },
       {
         "moveId": "HEAT_WAVE",
-        "count": 6,
+        "count": 7,
         "formatCount": 4,
         "setCount": 4
       },
@@ -5754,8 +6886,8 @@
       }
     ],
     "stats": {
-      "totalSets": 25,
-      "totalFormats": 13
+      "totalSets": 29,
+      "totalFormats": 14
     }
   },
   "CRESSELIA": {
@@ -5783,15 +6915,15 @@
     "allMoves": [
       {
         "moveId": "MOONLIGHT",
-        "count": 16,
+        "count": 17,
         "formatCount": 10,
-        "setCount": 12
+        "setCount": 14
       },
       {
         "moveId": "MOONBLAST",
-        "count": 15,
+        "count": 16,
         "formatCount": 12,
-        "setCount": 12
+        "setCount": 14
       },
       {
         "moveId": "LUNAR_DANCE",
@@ -5806,15 +6938,15 @@
         "setCount": 4
       },
       {
+        "moveId": "LUNAR_BLESSING",
+        "count": 4,
+        "formatCount": 4,
+        "setCount": 4
+      },
+      {
         "moveId": "FUTURE_SIGHT",
         "count": 3,
         "formatCount": 2,
-        "setCount": 3
-      },
-      {
-        "moveId": "LUNAR_BLESSING",
-        "count": 3,
-        "formatCount": 3,
         "setCount": 3
       },
       {
@@ -5825,7 +6957,7 @@
       }
     ],
     "stats": {
-      "totalSets": 20,
+      "totalSets": 22,
       "totalFormats": 14
     }
   },
@@ -5837,16 +6969,17 @@
         "moves": [
           "TAIL_GLOW",
           "TAKE_HEART",
-          "ACID_ARMOR"
+          "ACID_ARMOR",
+          "HYDRO_PUMP"
         ]
       }
     ],
     "allMoves": [
       {
         "moveId": "TAIL_GLOW",
-        "count": 10,
-        "formatCount": 9,
-        "setCount": 7
+        "count": 8,
+        "formatCount": 7,
+        "setCount": 6
       },
       {
         "moveId": "TAKE_HEART",
@@ -5859,11 +6992,17 @@
         "count": 2,
         "formatCount": 2,
         "setCount": 2
+      },
+      {
+        "moveId": "HYDRO_PUMP",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       }
     ],
     "stats": {
-      "totalSets": 14,
-      "totalFormats": 9
+      "totalSets": 12,
+      "totalFormats": 8
     }
   },
   "DARKRAI": {
@@ -5917,9 +7056,9 @@
       },
       {
         "moveId": "NASTY_PLOT",
-        "count": 7,
+        "count": 6,
         "formatCount": 5,
-        "setCount": 4
+        "setCount": 3
       },
       {
         "moveId": "FIERY_WRATH",
@@ -5949,6 +7088,43 @@
     "stats": {
       "totalSets": 19,
       "totalFormats": 7
+    }
+  },
+  "SHAYMIN": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "SEED_FLARE",
+          "EARTH_POWER",
+          "SYNTHESIS"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "SEED_FLARE",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "EARTH_POWER",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "SYNTHESIS",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 1,
+      "totalFormats": 1
     }
   },
   "ARCEUS": {
@@ -6094,6 +7270,52 @@
       "totalFormats": 6
     }
   },
+  "EMBOAR": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "FLARE_BLITZ",
+          "SUCKER_PUNCH",
+          "HEAD_SMASH"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "FLARE_BLITZ",
+          "SUCKER_PUNCH",
+          "HEAD_SMASH"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "FLARE_BLITZ",
+        "count": 3,
+        "formatCount": 2,
+        "setCount": 3
+      },
+      {
+        "moveId": "SUCKER_PUNCH",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
+      {
+        "moveId": "HEAD_SMASH",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      }
+    ],
+    "stats": {
+      "totalSets": 3,
+      "totalFormats": 2
+    }
+  },
   "DRILBUR": {
     "sets": [
       {
@@ -6144,6 +7366,15 @@
         ]
       },
       {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "EARTHQUAKE",
+          "ROCK_SLIDE",
+          "HEADLONG_RUSH"
+        ]
+      },
+      {
         "name": "功能向",
         "description": "优先选择强化、回复或控场招式，兼顾稳定性",
         "moves": [
@@ -6159,7 +7390,8 @@
         "moves": [
           "SWORDS_DANCE",
           "EARTHQUAKE",
-          "ROCK_SLIDE"
+          "ROCK_SLIDE",
+          "HEADLONG_RUSH"
         ]
       }
     ],
@@ -6187,6 +7419,12 @@
         "count": 11,
         "formatCount": 9,
         "setCount": 5
+      },
+      {
+        "moveId": "HEADLONG_RUSH",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       }
     ],
     "stats": {
@@ -6340,8 +7578,8 @@
         "moves": [
           "MOONBLAST",
           "TAILWIND",
-          "LEECH_SEED",
-          "HELPING_HAND"
+          "HELPING_HAND",
+          "LEECH_SEED"
         ]
       },
       {
@@ -6378,16 +7616,16 @@
         "setCount": 7
       },
       {
-        "moveId": "LEECH_SEED",
-        "count": 4,
-        "formatCount": 2,
-        "setCount": 4
-      },
-      {
         "moveId": "HELPING_HAND",
         "count": 4,
         "formatCount": 3,
         "setCount": 1
+      },
+      {
+        "moveId": "LEECH_SEED",
+        "count": 3,
+        "formatCount": 1,
+        "setCount": 3
       },
       {
         "moveId": "ENERGY_BALL",
@@ -6396,16 +7634,16 @@
         "setCount": 2
       },
       {
-        "moveId": "SUNNY_DAY",
+        "moveId": "STUN_SPORE",
         "count": 3,
         "formatCount": 3,
         "setCount": 3
       },
       {
-        "moveId": "STUN_SPORE",
-        "count": 2,
-        "formatCount": 2,
-        "setCount": 2
+        "moveId": "SUNNY_DAY",
+        "count": 3,
+        "formatCount": 3,
+        "setCount": 3
       },
       {
         "moveId": "GIGA_DRAIN",
@@ -6507,8 +7745,8 @@
         "moves": [
           "TIDY_UP",
           "TAIL_SLAP",
-          "BULLET_SEED",
-          "ENCORE"
+          "ENCORE",
+          "BULLET_SEED"
         ]
       },
       {
@@ -6535,16 +7773,16 @@
         "setCount": 2
       },
       {
-        "moveId": "BULLET_SEED",
-        "count": 2,
-        "formatCount": 2,
-        "setCount": 1
-      },
-      {
         "moveId": "ENCORE",
         "count": 2,
         "formatCount": 2,
         "setCount": 2
+      },
+      {
+        "moveId": "BULLET_SEED",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 1
       },
       {
         "moveId": "ROCK_BLAST",
@@ -6602,18 +7840,18 @@
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
           "RECOVER",
-          "PSYSHOCK",
           "FUTURE_SIGHT",
-          "PSYCHIC"
+          "PSYCHIC",
+          "PSYSHOCK"
         ]
       },
       {
         "name": "输出向",
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
-          "PSYSHOCK",
           "FUTURE_SIGHT",
-          "PSYCHIC"
+          "PSYCHIC",
+          "PSYSHOCK"
         ]
       }
     ],
@@ -6625,12 +7863,6 @@
         "setCount": 2
       },
       {
-        "moveId": "PSYSHOCK",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
-      },
-      {
         "moveId": "FUTURE_SIGHT",
         "count": 1,
         "formatCount": 1,
@@ -6638,6 +7870,12 @@
       },
       {
         "moveId": "PSYCHIC",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "PSYSHOCK",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -6850,7 +8088,7 @@
         "description": "优先选择强化、回复或控场招式，兼顾稳定性",
         "moves": [
           "SPORE",
-          "TOXIC",
+          "SYNTHESIS",
           "FOUL_PLAY",
           "CLEAR_SMOG"
         ]
@@ -6871,8 +8109,8 @@
       },
       {
         "moveId": "CLEAR_SMOG",
-        "count": 11,
-        "formatCount": 10,
+        "count": 12,
+        "formatCount": 11,
         "setCount": 8
       },
       {
@@ -6882,16 +8120,16 @@
         "setCount": 6
       },
       {
-        "moveId": "TOXIC",
-        "count": 7,
-        "formatCount": 6,
-        "setCount": 4
+        "moveId": "SYNTHESIS",
+        "count": 8,
+        "formatCount": 7,
+        "setCount": 5
       },
       {
-        "moveId": "SYNTHESIS",
-        "count": 7,
-        "formatCount": 6,
-        "setCount": 5
+        "moveId": "TOXIC",
+        "count": 6,
+        "formatCount": 5,
+        "setCount": 4
       },
       {
         "moveId": "POLLEN_PUFF",
@@ -6924,8 +8162,8 @@
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
           "FLIP_TURN",
-          "WISH",
           "PROTECT",
+          "WISH",
           "AQUA_JET"
         ]
       },
@@ -6943,21 +8181,21 @@
     "allMoves": [
       {
         "moveId": "FLIP_TURN",
-        "count": 12,
+        "count": 13,
         "formatCount": 9,
-        "setCount": 9
-      },
-      {
-        "moveId": "WISH",
-        "count": 10,
-        "formatCount": 10,
         "setCount": 8
       },
       {
         "moveId": "PROTECT",
         "count": 10,
         "formatCount": 10,
-        "setCount": 8
+        "setCount": 7
+      },
+      {
+        "moveId": "WISH",
+        "count": 10,
+        "formatCount": 10,
+        "setCount": 7
       },
       {
         "moveId": "AQUA_JET",
@@ -6973,7 +8211,7 @@
       }
     ],
     "stats": {
-      "totalSets": 13,
+      "totalSets": 14,
       "totalFormats": 10
     }
   },
@@ -7060,68 +8298,23 @@
       "totalFormats": 3
     }
   },
-  "EELEKTROSS": {
-    "sets": [
-      {
-        "name": "综合推荐",
-        "description": "基于Smogon所有对战分级中出现频率最高的招式",
-        "moves": [
-          "DISCHARGE",
-          "ACID_SPRAY",
-          "COIL"
-        ]
-      },
-      {
-        "name": "强化向",
-        "description": "以强化招式为核心，配合攻击招式滚雪球",
-        "moves": [
-          "COIL",
-          "DISCHARGE",
-          "ACID_SPRAY"
-        ]
-      }
-    ],
-    "allMoves": [
-      {
-        "moveId": "DISCHARGE",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
-      },
-      {
-        "moveId": "ACID_SPRAY",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
-      },
-      {
-        "moveId": "COIL",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
-      }
-    ],
-    "stats": {
-      "totalSets": 2,
-      "totalFormats": 1
-    }
-  },
   "CHANDELURE": {
     "sets": [
       {
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
+          "FLAMETHROWER",
           "SHADOW_BALL",
           "OVERHEAT",
-          "PAIN_SPLIT",
-          "HEX"
+          "PAIN_SPLIT"
         ]
       },
       {
         "name": "输出向",
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
+          "FLAMETHROWER",
           "SHADOW_BALL",
           "OVERHEAT",
           "HEX"
@@ -7133,21 +8326,27 @@
         "moves": [
           "PAIN_SPLIT",
           "WILL_O_WISP",
-          "SHADOW_BALL",
-          "OVERHEAT"
+          "FLAMETHROWER",
+          "SHADOW_BALL"
         ]
       }
     ],
     "allMoves": [
       {
-        "moveId": "SHADOW_BALL",
+        "moveId": "FLAMETHROWER",
         "count": 7,
         "formatCount": 3,
         "setCount": 5
       },
       {
+        "moveId": "SHADOW_BALL",
+        "count": 6,
+        "formatCount": 3,
+        "setCount": 4
+      },
+      {
         "moveId": "OVERHEAT",
-        "count": 4,
+        "count": 5,
         "formatCount": 3,
         "setCount": 2
       },
@@ -7171,8 +8370,54 @@
       }
     ],
     "stats": {
-      "totalSets": 8,
+      "totalSets": 7,
       "totalFormats": 3
+    }
+  },
+  "AXEW": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "DRAGON_DANCE",
+          "OUTRAGE",
+          "FIRST_IMPRESSION"
+        ]
+      },
+      {
+        "name": "强化向",
+        "description": "以强化招式为核心，配合攻击招式滚雪球",
+        "moves": [
+          "DRAGON_DANCE",
+          "OUTRAGE",
+          "FIRST_IMPRESSION"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "DRAGON_DANCE",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "OUTRAGE",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "FIRST_IMPRESSION",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 1,
+      "totalFormats": 1
     }
   },
   "FRAXURE": {
@@ -7183,6 +8428,16 @@
         "moves": [
           "OUTRAGE",
           "SWORDS_DANCE",
+          "FIRST_IMPRESSION",
+          "DRAGON_CLAW"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "OUTRAGE",
+          "FIRST_IMPRESSION",
           "DRAGON_CLAW"
         ]
       },
@@ -7192,6 +8447,7 @@
         "moves": [
           "SWORDS_DANCE",
           "OUTRAGE",
+          "FIRST_IMPRESSION",
           "DRAGON_CLAW"
         ]
       }
@@ -7205,6 +8461,12 @@
       },
       {
         "moveId": "SWORDS_DANCE",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "FIRST_IMPRESSION",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -7228,9 +8490,18 @@
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
           "OUTRAGE",
+          "FIRST_IMPRESSION",
           "SWORDS_DANCE",
-          "TAUNT",
-          "DRAGON_DANCE"
+          "TAUNT"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "OUTRAGE",
+          "FIRST_IMPRESSION",
+          "DRAGON_CLAW"
         ]
       },
       {
@@ -7240,7 +8511,7 @@
           "SWORDS_DANCE",
           "TAUNT",
           "OUTRAGE",
-          "DRAGON_CLAW"
+          "FIRST_IMPRESSION"
         ]
       },
       {
@@ -7249,6 +8520,7 @@
         "moves": [
           "SWORDS_DANCE",
           "OUTRAGE",
+          "FIRST_IMPRESSION",
           "DRAGON_CLAW"
         ]
       }
@@ -7259,6 +8531,12 @@
         "count": 6,
         "formatCount": 3,
         "setCount": 5
+      },
+      {
+        "moveId": "FIRST_IMPRESSION",
+        "count": 4,
+        "formatCount": 2,
+        "setCount": 3
       },
       {
         "moveId": "SWORDS_DANCE",
@@ -7670,33 +8948,33 @@
     "allMoves": [
       {
         "moveId": "TOXIC",
-        "count": 16,
+        "count": 17,
         "formatCount": 9,
-        "setCount": 9
+        "setCount": 8
       },
       {
         "moveId": "FOUL_PLAY",
         "count": 14,
         "formatCount": 10,
-        "setCount": 10
+        "setCount": 9
       },
       {
         "moveId": "DEFOG",
         "count": 14,
         "formatCount": 10,
-        "setCount": 10
+        "setCount": 9
       },
       {
         "moveId": "ROOST",
         "count": 14,
         "formatCount": 10,
-        "setCount": 10
+        "setCount": 9
       },
       {
         "moveId": "KNOCK_OFF",
-        "count": 11,
+        "count": 10,
         "formatCount": 7,
-        "setCount": 6
+        "setCount": 5
       },
       {
         "moveId": "IRON_DEFENSE",
@@ -7858,7 +9136,17 @@
         "moves": [
           "IRON_HEAD",
           "CLOSE_COMBAT",
-          "SWORDS_DANCE"
+          "SWORDS_DANCE",
+          "MEGAHORN"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "IRON_HEAD",
+          "CLOSE_COMBAT",
+          "MEGAHORN"
         ]
       },
       {
@@ -7867,7 +9155,8 @@
         "moves": [
           "SWORDS_DANCE",
           "IRON_HEAD",
-          "CLOSE_COMBAT"
+          "CLOSE_COMBAT",
+          "MEGAHORN"
         ]
       }
     ],
@@ -7886,6 +9175,12 @@
       },
       {
         "moveId": "SWORDS_DANCE",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "MEGAHORN",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -7980,6 +9275,17 @@
         "moves": [
           "SWORDS_DANCE",
           "CLOSE_COMBAT",
+          "LEAF_BLADE",
+          "SYNTHESIS"
+        ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "SWORDS_DANCE",
+          "SYNTHESIS",
+          "CLOSE_COMBAT",
           "LEAF_BLADE"
         ]
       },
@@ -8011,6 +9317,12 @@
         "count": 2,
         "formatCount": 2,
         "setCount": 1
+      },
+      {
+        "moveId": "SYNTHESIS",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       }
     ],
     "stats": {
@@ -8036,6 +9348,17 @@
         "moves": [
           "BLEAKWIND_STORM",
           "HURRICANE",
+          "HAMMER_ARM",
+          "DARK_PULSE"
+        ]
+      },
+      {
+        "name": "强化向",
+        "description": "以强化招式为核心，配合攻击招式滚雪球",
+        "moves": [
+          "NASTY_PLOT",
+          "BLEAKWIND_STORM",
+          "HURRICANE",
           "HAMMER_ARM"
         ]
       }
@@ -8055,9 +9378,9 @@
       },
       {
         "moveId": "RAIN_DANCE",
-        "count": 8,
-        "formatCount": 5,
-        "setCount": 6
+        "count": 10,
+        "formatCount": 6,
+        "setCount": 7
       },
       {
         "moveId": "HURRICANE",
@@ -8066,7 +9389,19 @@
         "setCount": 4
       },
       {
+        "moveId": "NASTY_PLOT",
+        "count": 4,
+        "formatCount": 4,
+        "setCount": 2
+      },
+      {
         "moveId": "HAMMER_ARM",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "DARK_PULSE",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -8083,13 +9418,39 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
+          "NASTY_PLOT",
           "VOLT_SWITCH",
           "RAIN_DANCE",
           "WILDBOLT_STORM"
         ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "NASTY_PLOT",
+          "VOLT_SWITCH",
+          "WILDBOLT_STORM",
+          "DARK_PULSE"
+        ]
+      },
+      {
+        "name": "强化向",
+        "description": "以强化招式为核心，配合攻击招式滚雪球",
+        "moves": [
+          "NASTY_PLOT",
+          "WILDBOLT_STORM",
+          "DARK_PULSE"
+        ]
       }
     ],
     "allMoves": [
+      {
+        "moveId": "NASTY_PLOT",
+        "count": 4,
+        "formatCount": 4,
+        "setCount": 2
+      },
       {
         "moveId": "VOLT_SWITCH",
         "count": 3,
@@ -8107,6 +9468,12 @@
         "count": 2,
         "formatCount": 2,
         "setCount": 2
+      },
+      {
+        "moveId": "DARK_PULSE",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       }
     ],
     "stats": {
@@ -8228,7 +9595,8 @@
         "moves": [
           "FREEZE_DRY",
           "ICE_BEAM",
-          "BLIZZARD"
+          "BLIZZARD",
+          "ICICLE_SPEAR"
         ]
       },
       {
@@ -8237,32 +9605,39 @@
         "moves": [
           "FREEZE_DRY",
           "ICE_BEAM",
-          "BLIZZARD"
+          "BLIZZARD",
+          "ICICLE_SPEAR"
         ]
       }
     ],
     "allMoves": [
       {
         "moveId": "FREEZE_DRY",
-        "count": 21,
+        "count": 22,
         "formatCount": 7,
         "setCount": 17
       },
       {
         "moveId": "ICE_BEAM",
-        "count": 12,
+        "count": 13,
         "formatCount": 5,
         "setCount": 8
       },
       {
         "moveId": "BLIZZARD",
-        "count": 4,
+        "count": 5,
+        "formatCount": 4,
+        "setCount": 5
+      },
+      {
+        "moveId": "ICICLE_SPEAR",
+        "count": 3,
         "formatCount": 3,
-        "setCount": 4
+        "setCount": 3
       }
     ],
     "stats": {
-      "totalSets": 22,
+      "totalSets": 23,
       "totalFormats": 7
     }
   },
@@ -8274,7 +9649,8 @@
         "moves": [
           "SECRET_SWORD",
           "HYDRO_PUMP",
-          "STEAM_ERUPTION"
+          "AURA_SPHERE",
+          "AIR_SLASH"
         ]
       },
       {
@@ -8283,16 +9659,17 @@
         "moves": [
           "SECRET_SWORD",
           "HYDRO_PUMP",
-          "STEAM_ERUPTION"
+          "AURA_SPHERE",
+          "AIR_SLASH"
         ]
       }
     ],
     "allMoves": [
       {
         "moveId": "SECRET_SWORD",
-        "count": 19,
+        "count": 20,
         "formatCount": 8,
-        "setCount": 11
+        "setCount": 12
       },
       {
         "moveId": "HYDRO_PUMP",
@@ -8301,7 +9678,13 @@
         "setCount": 7
       },
       {
-        "moveId": "STEAM_ERUPTION",
+        "moveId": "AURA_SPHERE",
+        "count": 2,
+        "formatCount": 1,
+        "setCount": 2
+      },
+      {
+        "moveId": "AIR_SLASH",
         "count": 2,
         "formatCount": 1,
         "setCount": 2
@@ -8490,12 +9873,6 @@
         "setCount": 2
       },
       {
-        "moveId": "FIERY_WRATH",
-        "count": 2,
-        "formatCount": 1,
-        "setCount": 2
-      },
-      {
         "moveId": "SHADOW_SNEAK",
         "count": 1,
         "formatCount": 1,
@@ -8583,17 +9960,17 @@
         "moveId": "ROOST",
         "count": 6,
         "formatCount": 6,
-        "setCount": 6
+        "setCount": 5
       },
       {
         "moveId": "FLARE_BLITZ",
         "count": 5,
         "formatCount": 4,
-        "setCount": 4
+        "setCount": 3
       },
       {
         "moveId": "BRAVE_BIRD",
-        "count": 5,
+        "count": 4,
         "formatCount": 4,
         "setCount": 4
       },
@@ -8617,8 +9994,7 @@
         "moves": [
           "HURRICANE",
           "SLEEP_POWDER",
-          "STUN_SPORE",
-          "PROTECT"
+          "STUN_SPORE"
         ]
       },
       {
@@ -8649,12 +10025,6 @@
         "count": 1,
         "formatCount": 1,
         "setCount": 1
-      },
-      {
-        "moveId": "PROTECT",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
       }
     ],
     "stats": {
@@ -8670,7 +10040,8 @@
         "moves": [
           "MOONBLAST",
           "SYNTHESIS",
-          "WISH"
+          "WISH",
+          "DRAINING_KISS"
         ]
       },
       {
@@ -8679,7 +10050,8 @@
         "moves": [
           "SYNTHESIS",
           "WISH",
-          "MOONBLAST"
+          "MOONBLAST",
+          "DRAINING_KISS"
         ]
       }
     ],
@@ -8701,11 +10073,100 @@
         "count": 5,
         "formatCount": 2,
         "setCount": 3
+      },
+      {
+        "moveId": "DRAINING_KISS",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       }
     ],
     "stats": {
       "totalSets": 7,
       "totalFormats": 2
+    }
+  },
+  "AEGISLASH": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "SHADOW_SNEAK",
+          "SWORDS_DANCE",
+          "SHADOW_CLAW"
+        ]
+      },
+      {
+        "name": "强化向",
+        "description": "以强化招式为核心，配合攻击招式滚雪球",
+        "moves": [
+          "SWORDS_DANCE",
+          "SHADOW_SNEAK",
+          "SHADOW_CLAW"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "SHADOW_SNEAK",
+        "count": 3,
+        "formatCount": 1,
+        "setCount": 3
+      },
+      {
+        "moveId": "SWORDS_DANCE",
+        "count": 2,
+        "formatCount": 1,
+        "setCount": 2
+      },
+      {
+        "moveId": "SHADOW_CLAW",
+        "count": 2,
+        "formatCount": 1,
+        "setCount": 2
+      }
+    ],
+    "stats": {
+      "totalSets": 4,
+      "totalFormats": 1
+    }
+  },
+  "MALAMAR": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "KNOCK_OFF",
+          "SUPERPOWER",
+          "PSYCHO_CUT"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "KNOCK_OFF",
+        "count": 3,
+        "formatCount": 3,
+        "setCount": 3
+      },
+      {
+        "moveId": "SUPERPOWER",
+        "count": 3,
+        "formatCount": 3,
+        "setCount": 3
+      },
+      {
+        "moveId": "PSYCHO_CUT",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 3,
+      "totalFormats": 3
     }
   },
   "CLAWITZER": {
@@ -8768,16 +10229,17 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
+          "HYPER_VOICE",
           "WISH",
           "QUICK_ATTACK",
-          "BOOMBURST",
-          "DRAINING_KISS"
+          "BOOMBURST"
         ]
       },
       {
         "name": "输出向",
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
+          "HYPER_VOICE",
           "QUICK_ATTACK",
           "BOOMBURST",
           "DRAINING_KISS"
@@ -8785,6 +10247,12 @@
       }
     ],
     "allMoves": [
+      {
+        "moveId": "HYPER_VOICE",
+        "count": 10,
+        "formatCount": 6,
+        "setCount": 10
+      },
       {
         "moveId": "WISH",
         "count": 4,
@@ -8810,12 +10278,6 @@
         "setCount": 2
       },
       {
-        "moveId": "CHARM",
-        "count": 2,
-        "formatCount": 1,
-        "setCount": 2
-      },
-      {
         "moveId": "MISTY_TERRAIN",
         "count": 1,
         "formatCount": 1,
@@ -8823,7 +10285,7 @@
       }
     ],
     "stats": {
-      "totalSets": 14,
+      "totalSets": 13,
       "totalFormats": 7
     }
   },
@@ -8892,6 +10354,7 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
+          "SPIKES",
           "FOUL_PLAY",
           "PLAY_ROUGH",
           "DRAINING_KISS"
@@ -8908,6 +10371,12 @@
       }
     ],
     "allMoves": [
+      {
+        "moveId": "SPIKES",
+        "count": 6,
+        "formatCount": 5,
+        "setCount": 6
+      },
       {
         "moveId": "FOUL_PLAY",
         "count": 5,
@@ -9135,7 +10604,7 @@
           "COIL",
           "THOUSAND_ARROWS",
           "GLARE",
-          "THOUSAND_WAVES"
+          "DRAGON_DANCE"
         ]
       },
       {
@@ -9178,6 +10647,12 @@
         "setCount": 1
       },
       {
+        "moveId": "DRAGON_DANCE",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
         "moveId": "THOUSAND_WAVES",
         "count": 1,
         "formatCount": 1,
@@ -9197,8 +10672,8 @@
         "moves": [
           "MOONBLAST",
           "DIAMOND_STORM",
-          "STEALTH_ROCK",
-          "POWER_GEM"
+          "TRICK_ROOM",
+          "STEALTH_ROCK"
         ]
       },
       {
@@ -9207,7 +10682,18 @@
         "moves": [
           "MOONBLAST",
           "DIAMOND_STORM",
-          "POWER_GEM"
+          "POWER_GEM",
+          "DRAINING_KISS"
+        ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "TRICK_ROOM",
+          "STEALTH_ROCK",
+          "MOONBLAST",
+          "DIAMOND_STORM"
         ]
       }
     ],
@@ -9225,6 +10711,12 @@
         "setCount": 7
       },
       {
+        "moveId": "TRICK_ROOM",
+        "count": 5,
+        "formatCount": 5,
+        "setCount": 4
+      },
+      {
         "moveId": "STEALTH_ROCK",
         "count": 5,
         "formatCount": 2,
@@ -9235,11 +10727,70 @@
         "count": 2,
         "formatCount": 2,
         "setCount": 2
+      },
+      {
+        "moveId": "DRAINING_KISS",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       }
     ],
     "stats": {
       "totalSets": 13,
       "totalFormats": 9
+    }
+  },
+  "HOOPA": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "SHADOW_BALL",
+          "TRICK",
+          "PSYCHIC",
+          "NASTY_PLOT"
+        ]
+      },
+      {
+        "name": "强化向",
+        "description": "以强化招式为核心，配合攻击招式滚雪球",
+        "moves": [
+          "NASTY_PLOT",
+          "SHADOW_BALL",
+          "PSYCHIC"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "SHADOW_BALL",
+        "count": 4,
+        "formatCount": 2,
+        "setCount": 4
+      },
+      {
+        "moveId": "TRICK",
+        "count": 3,
+        "formatCount": 2,
+        "setCount": 3
+      },
+      {
+        "moveId": "PSYCHIC",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
+      {
+        "moveId": "NASTY_PLOT",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 4,
+      "totalFormats": 2
     }
   },
   "VOLCANION": {
@@ -9249,9 +10800,9 @@
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
           "STEAM_ERUPTION",
+          "FLAMETHROWER",
           "OVERHEAT",
-          "FIRE_SPIN",
-          "FLARE_BLITZ"
+          "FIRE_SPIN"
         ]
       },
       {
@@ -9259,9 +10810,9 @@
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
           "STEAM_ERUPTION",
+          "FLAMETHROWER",
           "OVERHEAT",
-          "FIRE_SPIN",
-          "FLARE_BLITZ"
+          "FIRE_SPIN"
         ]
       },
       {
@@ -9270,8 +10821,8 @@
         "moves": [
           "FLAME_CHARGE",
           "STEAM_ERUPTION",
-          "OVERHEAT",
-          "FIRE_SPIN"
+          "FLAMETHROWER",
+          "OVERHEAT"
         ]
       }
     ],
@@ -9281,6 +10832,12 @@
         "count": 25,
         "formatCount": 13,
         "setCount": 20
+      },
+      {
+        "moveId": "FLAMETHROWER",
+        "count": 10,
+        "formatCount": 8,
+        "setCount": 9
       },
       {
         "moveId": "OVERHEAT",
@@ -9403,7 +10960,7 @@
           "MOONBLAST",
           "PSYCHIC_NOISE",
           "SPARKLING_ARIA",
-          "HYPER_VOICE"
+          "HYDRO_PUMP"
         ]
       },
       {
@@ -9426,15 +10983,15 @@
       },
       {
         "moveId": "PSYCHIC_NOISE",
-        "count": 22,
+        "count": 23,
         "formatCount": 9,
-        "setCount": 16
+        "setCount": 17
       },
       {
         "moveId": "ENCORE",
-        "count": 6,
+        "count": 5,
         "formatCount": 4,
-        "setCount": 6
+        "setCount": 5
       },
       {
         "moveId": "SPARKLING_ARIA",
@@ -9447,6 +11004,12 @@
         "count": 3,
         "formatCount": 2,
         "setCount": 3
+      },
+      {
+        "moveId": "HYDRO_PUMP",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
       },
       {
         "moveId": "HYPER_VOICE",
@@ -9465,12 +11028,6 @@
         "count": 1,
         "formatCount": 1,
         "setCount": 1
-      },
-      {
-        "moveId": "HYDRO_PUMP",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
       }
     ],
     "stats": {
@@ -9484,24 +11041,24 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
-          "BUG_BUZZ",
           "THUNDERBOLT",
+          "BUG_BUZZ",
           "STICKY_WEB"
         ]
       }
     ],
     "allMoves": [
       {
+        "moveId": "THUNDERBOLT",
+        "count": 6,
+        "formatCount": 4,
+        "setCount": 5
+      },
+      {
         "moveId": "BUG_BUZZ",
         "count": 5,
         "formatCount": 3,
         "setCount": 5
-      },
-      {
-        "moveId": "THUNDERBOLT",
-        "count": 5,
-        "formatCount": 3,
-        "setCount": 4
       },
       {
         "moveId": "STICKY_WEB",
@@ -9511,8 +11068,54 @@
       }
     ],
     "stats": {
-      "totalSets": 5,
-      "totalFormats": 3
+      "totalSets": 6,
+      "totalFormats": 4
+    }
+  },
+  "CRABOMINABLE": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "ICE_HAMMER",
+          "CLOSE_COMBAT",
+          "DRAIN_PUNCH"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "ICE_HAMMER",
+          "CLOSE_COMBAT",
+          "DRAIN_PUNCH"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "ICE_HAMMER",
+        "count": 2,
+        "formatCount": 1,
+        "setCount": 2
+      },
+      {
+        "moveId": "CLOSE_COMBAT",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "DRAIN_PUNCH",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 2,
+      "totalFormats": 1
     }
   },
   "ORICORIO": {
@@ -9662,7 +11265,7 @@
       },
       {
         "moveId": "TOXIC_SPIKES",
-        "count": 10,
+        "count": 11,
         "formatCount": 9,
         "setCount": 8
       },
@@ -9679,16 +11282,16 @@
         "setCount": 2
       },
       {
+        "moveId": "BANEFUL_BUNKER",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
+      {
         "moveId": "FLIP_TURN",
         "count": 2,
         "formatCount": 1,
         "setCount": 2
-      },
-      {
-        "moveId": "BANEFUL_BUNKER",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
       },
       {
         "moveId": "BODY_PRESS",
@@ -9765,21 +11368,21 @@
     "allMoves": [
       {
         "moveId": "LIQUIDATION",
-        "count": 9,
-        "formatCount": 7,
-        "setCount": 6
+        "count": 11,
+        "formatCount": 8,
+        "setCount": 8
       },
       {
         "moveId": "LEECH_LIFE",
-        "count": 6,
+        "count": 7,
         "formatCount": 5,
-        "setCount": 5
+        "setCount": 7
       },
       {
         "moveId": "LUNGE",
-        "count": 4,
+        "count": 3,
         "formatCount": 3,
-        "setCount": 1
+        "setCount": 2
       },
       {
         "moveId": "MIRROR_COAT",
@@ -9788,27 +11391,21 @@
         "setCount": 2
       },
       {
-        "moveId": "INFESTATION",
-        "count": 2,
-        "formatCount": 2,
-        "setCount": 2
-      },
-      {
-        "moveId": "JET_PUNCH",
-        "count": 2,
-        "formatCount": 1,
-        "setCount": 2
-      },
-      {
         "moveId": "ENTRAINMENT",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "INFESTATION",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
       }
     ],
     "stats": {
-      "totalSets": 14,
-      "totalFormats": 9
+      "totalSets": 16,
+      "totalFormats": 10
     }
   },
   "SALAZZLE": {
@@ -9817,45 +11414,39 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
+          "ENCORE",
           "TOXIC",
           "FLAMETHROWER",
-          "ENCORE",
-          "KNOCK_OFF"
+          "NASTY_PLOT"
         ]
       },
       {
         "name": "功能向",
         "description": "优先选择强化、回复或控场招式，兼顾稳定性",
         "moves": [
-          "TOXIC",
           "ENCORE",
+          "TOXIC",
           "FLAMETHROWER"
         ]
       }
     ],
     "allMoves": [
       {
+        "moveId": "ENCORE",
+        "count": 4,
+        "formatCount": 3,
+        "setCount": 3
+      },
+      {
         "moveId": "TOXIC",
-        "count": 6,
-        "formatCount": 4,
-        "setCount": 5
+        "count": 4,
+        "formatCount": 3,
+        "setCount": 3
       },
       {
         "moveId": "FLAMETHROWER",
-        "count": 5,
-        "formatCount": 3,
-        "setCount": 5
-      },
-      {
-        "moveId": "ENCORE",
-        "count": 5,
-        "formatCount": 4,
-        "setCount": 4
-      },
-      {
-        "moveId": "KNOCK_OFF",
         "count": 3,
-        "formatCount": 3,
+        "formatCount": 2,
         "setCount": 3
       },
       {
@@ -9865,15 +11456,15 @@
         "setCount": 1
       },
       {
-        "moveId": "ENDEAVOR",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
+        "moveId": "KNOCK_OFF",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
       }
     ],
     "stats": {
-      "totalSets": 6,
-      "totalFormats": 4
+      "totalSets": 4,
+      "totalFormats": 3
     }
   },
   "TSAREENA": {
@@ -9944,22 +11535,38 @@
         "moves": [
           "DRAINING_KISS",
           "SYNTHESIS",
+          "GROWTH",
           "FLORAL_HEALING"
+        ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "SYNTHESIS",
+          "GROWTH",
+          "DRAINING_KISS"
         ]
       }
     ],
     "allMoves": [
       {
         "moveId": "DRAINING_KISS",
-        "count": 4,
-        "formatCount": 4,
-        "setCount": 3
+        "count": 5,
+        "formatCount": 5,
+        "setCount": 4
       },
       {
         "moveId": "SYNTHESIS",
         "count": 2,
         "formatCount": 2,
         "setCount": 2
+      },
+      {
+        "moveId": "GROWTH",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       },
       {
         "moveId": "FLORAL_HEALING",
@@ -9969,8 +11576,8 @@
       }
     ],
     "stats": {
-      "totalSets": 4,
-      "totalFormats": 4
+      "totalSets": 5,
+      "totalFormats": 5
     }
   },
   "PALOSSAND": {
@@ -10142,9 +11749,9 @@
     "allMoves": [
       {
         "moveId": "MOONBLAST",
-        "count": 3,
+        "count": 4,
         "formatCount": 2,
-        "setCount": 3
+        "setCount": 4
       },
       {
         "moveId": "HYDRO_PUMP",
@@ -10166,7 +11773,7 @@
       }
     ],
     "stats": {
-      "totalSets": 4,
+      "totalSets": 5,
       "totalFormats": 3
     }
   },
@@ -10264,6 +11871,69 @@
       "totalFormats": 7
     }
   },
+  "BUZZWOLE": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "BULK_UP",
+          "DRAIN_PUNCH",
+          "THUNDER_PUNCH",
+          "ICE_PUNCH"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "DRAIN_PUNCH",
+          "THUNDER_PUNCH",
+          "ICE_PUNCH"
+        ]
+      },
+      {
+        "name": "强化向",
+        "description": "以强化招式为核心，配合攻击招式滚雪球",
+        "moves": [
+          "BULK_UP",
+          "DRAIN_PUNCH",
+          "THUNDER_PUNCH",
+          "ICE_PUNCH"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "BULK_UP",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
+      {
+        "moveId": "DRAIN_PUNCH",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
+      {
+        "moveId": "THUNDER_PUNCH",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "ICE_PUNCH",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      }
+    ],
+    "stats": {
+      "totalSets": 4,
+      "totalFormats": 3
+    }
+  },
   "CELESTEELA": {
     "sets": [
       {
@@ -10272,26 +11942,63 @@
         "moves": [
           "HEAVY_SLAM",
           "LEECH_SEED",
+          "AIR_SLASH",
+          "AUTOTOMIZE"
+        ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "LEECH_SEED",
           "AUTOTOMIZE",
-          "RECOVER"
+          "AIR_SLASH",
+          "FLASH_CANNON"
+        ]
+      },
+      {
+        "name": "强化向",
+        "description": "以强化招式为核心，配合攻击招式滚雪球",
+        "moves": [
+          "AUTOTOMIZE",
+          "AIR_SLASH",
+          "FLASH_CANNON"
         ]
       }
     ],
     "allMoves": [
       {
         "moveId": "HEAVY_SLAM",
-        "count": 6,
+        "count": 7,
         "formatCount": 4,
-        "setCount": 4
+        "setCount": 5
       },
       {
         "moveId": "LEECH_SEED",
-        "count": 5,
+        "count": 6,
         "formatCount": 4,
-        "setCount": 4
+        "setCount": 5
+      },
+      {
+        "moveId": "AIR_SLASH",
+        "count": 5,
+        "formatCount": 3,
+        "setCount": 5
       },
       {
         "moveId": "AUTOTOMIZE",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "IRON_DEFENSE",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "FLASH_CANNON",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -10304,7 +12011,7 @@
       }
     ],
     "stats": {
-      "totalSets": 8,
+      "totalSets": 10,
       "totalFormats": 5
     }
   },
@@ -10318,6 +12025,15 @@
           "SACRED_SWORD",
           "DEFOG",
           "SWORDS_DANCE"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "LEAF_BLADE",
+          "SACRED_SWORD",
+          "SMART_STRIKE"
         ]
       },
       {
@@ -10336,7 +12052,8 @@
         "moves": [
           "SWORDS_DANCE",
           "LEAF_BLADE",
-          "SACRED_SWORD"
+          "SACRED_SWORD",
+          "SMART_STRIKE"
         ]
       }
     ],
@@ -10366,6 +12083,12 @@
         "setCount": 1
       },
       {
+        "moveId": "SMART_STRIKE",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
         "moveId": "SYNTHESIS",
         "count": 1,
         "formatCount": 1,
@@ -10373,8 +12096,8 @@
       }
     ],
     "stats": {
-      "totalSets": 3,
-      "totalFormats": 1
+      "totalSets": 4,
+      "totalFormats": 2
     }
   },
   "NECROZMA": {
@@ -10453,9 +12176,9 @@
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
           "FLEUR_CANNON",
+          "DRAINING_KISS",
           "SHIFT_GEAR",
-          "PAIN_SPLIT",
-          "IRON_HEAD"
+          "PAIN_SPLIT"
         ]
       },
       {
@@ -10463,9 +12186,9 @@
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
           "FLEUR_CANNON",
+          "DRAINING_KISS",
           "IRON_HEAD",
-          "AURA_SPHERE",
-          "MOONBLAST"
+          "AURA_SPHERE"
         ]
       },
       {
@@ -10475,7 +12198,7 @@
           "SHIFT_GEAR",
           "PAIN_SPLIT",
           "FLEUR_CANNON",
-          "IRON_HEAD"
+          "DRAINING_KISS"
         ]
       },
       {
@@ -10484,8 +12207,8 @@
         "moves": [
           "SHIFT_GEAR",
           "FLEUR_CANNON",
-          "IRON_HEAD",
-          "AURA_SPHERE"
+          "DRAINING_KISS",
+          "IRON_HEAD"
         ]
       }
     ],
@@ -10495,6 +12218,12 @@
         "count": 5,
         "formatCount": 3,
         "setCount": 5
+      },
+      {
+        "moveId": "DRAINING_KISS",
+        "count": 4,
+        "formatCount": 2,
+        "setCount": 3
       },
       {
         "moveId": "SHIFT_GEAR",
@@ -10525,17 +12254,11 @@
         "count": 1,
         "formatCount": 1,
         "setCount": 1
-      },
-      {
-        "moveId": "MOONBLAST",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
       }
     ],
     "stats": {
-      "totalSets": 9,
-      "totalFormats": 4
+      "totalSets": 8,
+      "totalFormats": 3
     }
   },
   "MARSHADOW": {
@@ -10654,7 +12377,7 @@
           "PLASMA_FISTS",
           "CLOSE_COMBAT",
           "VOLT_SWITCH",
-          "FAKE_OUT"
+          "SNARL"
         ]
       },
       {
@@ -10663,8 +12386,8 @@
         "moves": [
           "PLASMA_FISTS",
           "CLOSE_COMBAT",
-          "FAKE_OUT",
-          "SNARL"
+          "SNARL",
+          "FAKE_OUT"
         ]
       }
     ],
@@ -10677,9 +12400,9 @@
       },
       {
         "moveId": "CLOSE_COMBAT",
-        "count": 3,
-        "formatCount": 2,
-        "setCount": 3
+        "count": 4,
+        "formatCount": 3,
+        "setCount": 4
       },
       {
         "moveId": "VOLT_SWITCH",
@@ -10688,13 +12411,13 @@
         "setCount": 2
       },
       {
-        "moveId": "FAKE_OUT",
-        "count": 1,
+        "moveId": "SNARL",
+        "count": 2,
         "formatCount": 1,
         "setCount": 1
       },
       {
-        "moveId": "SNARL",
+        "moveId": "FAKE_OUT",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -10760,8 +12483,8 @@
       }
     ],
     "stats": {
-      "totalSets": 6,
-      "totalFormats": 4
+      "totalSets": 5,
+      "totalFormats": 3
     }
   },
   "GROOKEY": {
@@ -11061,15 +12784,15 @@
       },
       {
         "moveId": "BRAVE_BIRD",
-        "count": 18,
+        "count": 17,
         "formatCount": 9,
-        "setCount": 14
+        "setCount": 13
       },
       {
         "moveId": "IRON_DEFENSE",
-        "count": 8,
-        "formatCount": 7,
-        "setCount": 5
+        "count": 9,
+        "formatCount": 8,
+        "setCount": 6
       },
       {
         "moveId": "TAUNT",
@@ -11142,19 +12865,9 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
-          "SHELL_SMASH",
           "LIQUIDATION",
           "CRUNCH",
-          "ICE_FANG"
-        ]
-      },
-      {
-        "name": "输出向",
-        "description": "优先选择高威力攻击招式，追求最大化伤害",
-        "moves": [
-          "LIQUIDATION",
-          "CRUNCH",
-          "ICE_FANG"
+          "SHELL_SMASH"
         ]
       },
       {
@@ -11163,40 +12876,33 @@
         "moves": [
           "SHELL_SMASH",
           "LIQUIDATION",
-          "CRUNCH",
-          "ICE_FANG"
+          "CRUNCH"
         ]
       }
     ],
     "allMoves": [
       {
-        "moveId": "SHELL_SMASH",
-        "count": 2,
-        "formatCount": 2,
-        "setCount": 2
-      },
-      {
         "moveId": "LIQUIDATION",
-        "count": 2,
-        "formatCount": 2,
-        "setCount": 2
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       },
       {
         "moveId": "CRUNCH",
-        "count": 2,
-        "formatCount": 2,
-        "setCount": 2
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       },
       {
-        "moveId": "ICE_FANG",
+        "moveId": "SHELL_SMASH",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
       }
     ],
     "stats": {
-      "totalSets": 2,
-      "totalFormats": 2
+      "totalSets": 1,
+      "totalFormats": 1
     }
   },
   "BARRASKEWDA": {
@@ -11326,9 +13032,9 @@
     "allMoves": [
       {
         "moveId": "CALM_MIND",
-        "count": 8,
-        "formatCount": 6,
-        "setCount": 6
+        "count": 9,
+        "formatCount": 7,
+        "setCount": 7
       },
       {
         "moveId": "DAZZLING_GLEAM",
@@ -11350,8 +13056,8 @@
       }
     ],
     "stats": {
-      "totalSets": 20,
-      "totalFormats": 11
+      "totalSets": 21,
+      "totalFormats": 12
     }
   },
   "GRIMMSNARL": {
@@ -11683,7 +13389,8 @@
         "moves": [
           "DRAGON_DARTS",
           "PHANTOM_FORCE",
-          "HEX"
+          "HEX",
+          "SUCKER_PUNCH"
         ]
       },
       {
@@ -11710,20 +13417,20 @@
     "allMoves": [
       {
         "moveId": "DRAGON_DARTS",
-        "count": 17,
+        "count": 18,
         "formatCount": 9,
         "setCount": 15
       },
       {
         "moveId": "U_TURN",
-        "count": 15,
+        "count": 16,
         "formatCount": 9,
         "setCount": 12
       },
       {
         "moveId": "PHANTOM_FORCE",
-        "count": 9,
-        "formatCount": 6,
+        "count": 10,
+        "formatCount": 7,
         "setCount": 7
       },
       {
@@ -11733,14 +13440,26 @@
         "setCount": 6
       },
       {
+        "moveId": "SUCKER_PUNCH",
+        "count": 5,
+        "formatCount": 4,
+        "setCount": 3
+      },
+      {
         "moveId": "DRAGON_DANCE",
         "count": 2,
         "formatCount": 1,
         "setCount": 2
+      },
+      {
+        "moveId": "ASTONISH",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       }
     ],
     "stats": {
-      "totalSets": 21,
+      "totalSets": 22,
       "totalFormats": 9
     }
   },
@@ -11750,22 +13469,30 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
+          "PLAY_ROUGH",
           "CLOSE_COMBAT",
           "CRUNCH",
-          "MAGICAL_TORQUE"
+          "SPIRIT_BREAK"
         ]
       },
       {
         "name": "输出向",
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
+          "PLAY_ROUGH",
           "CLOSE_COMBAT",
           "CRUNCH",
-          "MAGICAL_TORQUE"
+          "SPIRIT_BREAK"
         ]
       }
     ],
     "allMoves": [
+      {
+        "moveId": "PLAY_ROUGH",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
+      },
       {
         "moveId": "CLOSE_COMBAT",
         "count": 2,
@@ -11779,7 +13506,7 @@
         "setCount": 2
       },
       {
-        "moveId": "MAGICAL_TORQUE",
+        "moveId": "SPIRIT_BREAK",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -11838,25 +13565,25 @@
         "moveId": "CRUNCH",
         "count": 19,
         "formatCount": 7,
-        "setCount": 15
+        "setCount": 14
       },
       {
         "moveId": "CLOSE_COMBAT",
-        "count": 11,
+        "count": 12,
         "formatCount": 7,
-        "setCount": 8
+        "setCount": 9
       },
       {
         "moveId": "BODY_PRESS",
-        "count": 7,
+        "count": 8,
         "formatCount": 6,
-        "setCount": 6
+        "setCount": 5
       },
       {
         "moveId": "IRON_DEFENSE",
         "count": 6,
         "formatCount": 6,
-        "setCount": 5
+        "setCount": 4
       },
       {
         "moveId": "HOWL",
@@ -11878,7 +13605,7 @@
       }
     ],
     "stats": {
-      "totalSets": 21,
+      "totalSets": 22,
       "totalFormats": 8
     }
   },
@@ -11929,8 +13656,8 @@
       },
       {
         "moveId": "TOXIC",
-        "count": 8,
-        "formatCount": 5,
+        "count": 9,
+        "formatCount": 6,
         "setCount": 5
       },
       {
@@ -11972,7 +13699,7 @@
           "CLOSE_COMBAT",
           "DETECT",
           "IRON_HEAD",
-          "BULK_UP"
+          "COUNTER"
         ]
       },
       {
@@ -12000,7 +13727,7 @@
         "moveId": "CLOSE_COMBAT",
         "count": 17,
         "formatCount": 8,
-        "setCount": 13
+        "setCount": 12
       },
       {
         "moveId": "DETECT",
@@ -12010,24 +13737,18 @@
       },
       {
         "moveId": "IRON_HEAD",
-        "count": 3,
+        "count": 4,
         "formatCount": 3,
-        "setCount": 3
+        "setCount": 4
       },
       {
-        "moveId": "BULK_UP",
-        "count": 2,
-        "formatCount": 1,
-        "setCount": 2
-      },
-      {
-        "moveId": "ENDURE",
+        "moveId": "COUNTER",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
       },
       {
-        "moveId": "COUNTER",
+        "moveId": "BULK_UP",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -12040,7 +13761,7 @@
       }
     ],
     "stats": {
-      "totalSets": 18,
+      "totalSets": 17,
       "totalFormats": 8
     }
   },
@@ -12053,7 +13774,16 @@
           "POWER_WHIP",
           "JUNGLE_HEALING",
           "U_TURN",
-          "SYNTHESIS"
+          "CRUNCH"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "POWER_WHIP",
+          "CRUNCH",
+          "BULLET_SEED"
         ]
       },
       {
@@ -12062,7 +13792,18 @@
         "moves": [
           "JUNGLE_HEALING",
           "U_TURN",
-          "POWER_WHIP"
+          "POWER_WHIP",
+          "CRUNCH"
+        ]
+      },
+      {
+        "name": "强化向",
+        "description": "以强化招式为核心，配合攻击招式滚雪球",
+        "moves": [
+          "BULK_UP",
+          "POWER_WHIP",
+          "CRUNCH",
+          "BULLET_SEED"
         ]
       }
     ],
@@ -12086,7 +13827,25 @@
         "setCount": 3
       },
       {
+        "moveId": "CRUNCH",
+        "count": 2,
+        "formatCount": 1,
+        "setCount": 2
+      },
+      {
         "moveId": "SYNTHESIS",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "BULLET_SEED",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
+        "moveId": "BULK_UP",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -12106,7 +13865,7 @@
           "RAPID_SPIN",
           "EXPLOSION",
           "THUNDERBOLT",
-          "EXTREME_SPEED"
+          "THUNDER_WAVE"
         ]
       },
       {
@@ -12118,24 +13877,40 @@
           "EXTREME_SPEED",
           "ANCIENT_POWER"
         ]
+      },
+      {
+        "name": "功能向",
+        "description": "优先选择强化、回复或控场招式，兼顾稳定性",
+        "moves": [
+          "RAPID_SPIN",
+          "THUNDER_WAVE",
+          "EXPLOSION",
+          "THUNDERBOLT"
+        ]
       }
     ],
     "allMoves": [
       {
         "moveId": "RAPID_SPIN",
-        "count": 7,
-        "formatCount": 5,
-        "setCount": 4
+        "count": 8,
+        "formatCount": 6,
+        "setCount": 6
       },
       {
         "moveId": "EXPLOSION",
         "count": 5,
         "formatCount": 4,
-        "setCount": 2
+        "setCount": 3
       },
       {
         "moveId": "THUNDERBOLT",
-        "count": 2,
+        "count": 4,
+        "formatCount": 3,
+        "setCount": 4
+      },
+      {
+        "moveId": "THUNDER_WAVE",
+        "count": 3,
         "formatCount": 2,
         "setCount": 2
       },
@@ -12153,8 +13928,8 @@
       }
     ],
     "stats": {
-      "totalSets": 7,
-      "totalFormats": 5
+      "totalSets": 8,
+      "totalFormats": 6
     }
   },
   "GLASTRIER": {
@@ -12165,7 +13940,17 @@
         "moves": [
           "SWORDS_DANCE",
           "ICICLE_CRASH",
-          "HIGH_HORSEPOWER"
+          "HIGH_HORSEPOWER",
+          "STOMPING_TANTRUM"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "ICICLE_CRASH",
+          "HIGH_HORSEPOWER",
+          "STOMPING_TANTRUM"
         ]
       },
       {
@@ -12174,7 +13959,8 @@
         "moves": [
           "SWORDS_DANCE",
           "ICICLE_CRASH",
-          "HIGH_HORSEPOWER"
+          "HIGH_HORSEPOWER",
+          "STOMPING_TANTRUM"
         ]
       }
     ],
@@ -12196,6 +13982,12 @@
         "count": 2,
         "formatCount": 2,
         "setCount": 2
+      },
+      {
+        "moveId": "STOMPING_TANTRUM",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       }
     ],
     "stats": {
@@ -12280,8 +14072,8 @@
         "moves": [
           "STONE_AXE",
           "X_SCISSOR",
-          "SWORDS_DANCE",
-          "MIGHTY_CLEAVE"
+          "NIGHT_SLASH",
+          "SWORDS_DANCE"
         ]
       },
       {
@@ -12290,7 +14082,8 @@
         "moves": [
           "STONE_AXE",
           "X_SCISSOR",
-          "MIGHTY_CLEAVE"
+          "NIGHT_SLASH",
+          "FEINT"
         ]
       },
       {
@@ -12300,7 +14093,7 @@
           "SWORDS_DANCE",
           "STONE_AXE",
           "X_SCISSOR",
-          "MIGHTY_CLEAVE"
+          "NIGHT_SLASH"
         ]
       }
     ],
@@ -12318,10 +14111,22 @@
         "setCount": 5
       },
       {
+        "moveId": "NIGHT_SLASH",
+        "count": 7,
+        "formatCount": 4,
+        "setCount": 5
+      },
+      {
         "moveId": "SWORDS_DANCE",
         "count": 2,
         "formatCount": 2,
         "setCount": 2
+      },
+      {
+        "moveId": "FEINT",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       },
       {
         "moveId": "MIGHTY_CLEAVE",
@@ -12335,6 +14140,52 @@
       "totalFormats": 5
     }
   },
+  "URSALUNA": {
+    "sets": [
+      {
+        "name": "综合推荐",
+        "description": "基于Smogon所有对战分级中出现频率最高的招式",
+        "moves": [
+          "FACADE",
+          "HEADLONG_RUSH",
+          "PLAY_ROUGH"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "FACADE",
+          "HEADLONG_RUSH",
+          "PLAY_ROUGH"
+        ]
+      }
+    ],
+    "allMoves": [
+      {
+        "moveId": "FACADE",
+        "count": 16,
+        "formatCount": 13,
+        "setCount": 11
+      },
+      {
+        "moveId": "HEADLONG_RUSH",
+        "count": 13,
+        "formatCount": 10,
+        "setCount": 8
+      },
+      {
+        "moveId": "PLAY_ROUGH",
+        "count": 3,
+        "formatCount": 1,
+        "setCount": 3
+      }
+    ],
+    "stats": {
+      "totalSets": 21,
+      "totalFormats": 13
+    }
+  },
   "BASCULEGION": {
     "sets": [
       {
@@ -12344,7 +14195,7 @@
           "AQUA_JET",
           "WAVE_CRASH",
           "LAST_RESPECTS",
-          "PHANTOM_FORCE"
+          "HEAD_SMASH"
         ]
       },
       {
@@ -12354,7 +14205,7 @@
           "AQUA_JET",
           "WAVE_CRASH",
           "LAST_RESPECTS",
-          "PHANTOM_FORCE"
+          "HEAD_SMASH"
         ]
       }
     ],
@@ -12378,18 +14229,6 @@
         "setCount": 9
       },
       {
-        "moveId": "PHANTOM_FORCE",
-        "count": 4,
-        "formatCount": 3,
-        "setCount": 4
-      },
-      {
-        "moveId": "SHADOW_BALL",
-        "count": 2,
-        "formatCount": 2,
-        "setCount": 2
-      },
-      {
         "moveId": "HEAD_SMASH",
         "count": 2,
         "formatCount": 1,
@@ -12397,8 +14236,8 @@
       }
     ],
     "stats": {
-      "totalSets": 19,
-      "totalFormats": 10
+      "totalSets": 17,
+      "totalFormats": 9
     }
   },
   "SNEASLER": {
@@ -12461,10 +14300,19 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
+          "GUNK_SHOT",
           "CRUNCH",
           "SPIKES",
-          "BARB_BARRAGE",
-          "TOXIC_SPIKES"
+          "BARB_BARRAGE"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "GUNK_SHOT",
+          "CRUNCH",
+          "BARB_BARRAGE"
         ]
       },
       {
@@ -12473,12 +14321,18 @@
         "moves": [
           "SPIKES",
           "TOXIC_SPIKES",
-          "CRUNCH",
-          "BARB_BARRAGE"
+          "GUNK_SHOT",
+          "CRUNCH"
         ]
       }
     ],
     "allMoves": [
+      {
+        "moveId": "GUNK_SHOT",
+        "count": 6,
+        "formatCount": 4,
+        "setCount": 3
+      },
       {
         "moveId": "CRUNCH",
         "count": 6,
@@ -12527,16 +14381,17 @@
         "moves": [
           "MOONBLAST",
           "MYSTICAL_FIRE",
-          "SUPERPOWER"
+          "SUPERPOWER",
+          "DRAINING_KISS"
         ]
       }
     ],
     "allMoves": [
       {
         "moveId": "MOONBLAST",
-        "count": 14,
+        "count": 15,
         "formatCount": 7,
-        "setCount": 10
+        "setCount": 11
       },
       {
         "moveId": "MYSTICAL_FIRE",
@@ -12555,10 +14410,16 @@
         "count": 8,
         "formatCount": 3,
         "setCount": 7
+      },
+      {
+        "moveId": "DRAINING_KISS",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       }
     ],
     "stats": {
-      "totalSets": 15,
+      "totalSets": 16,
       "totalFormats": 7
     }
   },
@@ -12755,8 +14616,8 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
-          "TORCH_SONG",
           "SLACK_OFF",
+          "TORCH_SONG",
           "WILL_O_WISP",
           "HEX"
         ]
@@ -12774,8 +14635,8 @@
         "name": "功能向",
         "description": "优先选择强化、回复或控场招式，兼顾稳定性",
         "moves": [
-          "TORCH_SONG",
           "SLACK_OFF",
+          "TORCH_SONG",
           "HEX",
           "SHADOW_BALL"
         ]
@@ -12793,14 +14654,14 @@
     ],
     "allMoves": [
       {
-        "moveId": "TORCH_SONG",
-        "count": 16,
-        "formatCount": 11,
-        "setCount": 12
-      },
-      {
         "moveId": "SLACK_OFF",
         "count": 16,
+        "formatCount": 11,
+        "setCount": 11
+      },
+      {
+        "moveId": "TORCH_SONG",
+        "count": 15,
         "formatCount": 11,
         "setCount": 11
       },
@@ -12842,7 +14703,7 @@
       }
     ],
     "stats": {
-      "totalSets": 16,
+      "totalSets": 15,
       "totalFormats": 11
     }
   },
@@ -12984,15 +14845,15 @@
       },
       {
         "moveId": "KNOCK_OFF",
-        "count": 12,
+        "count": 11,
         "formatCount": 6,
-        "setCount": 11
+        "setCount": 10
       },
       {
         "moveId": "SUCKER_PUNCH",
-        "count": 11,
-        "formatCount": 8,
-        "setCount": 10
+        "count": 10,
+        "formatCount": 7,
+        "setCount": 9
       },
       {
         "moveId": "AXE_KICK",
@@ -13008,7 +14869,7 @@
       }
     ],
     "stats": {
-      "totalSets": 14,
+      "totalSets": 13,
       "totalFormats": 8
     }
   },
@@ -13028,15 +14889,15 @@
     "allMoves": [
       {
         "moveId": "CLOSE_COMBAT",
-        "count": 12,
-        "formatCount": 7,
-        "setCount": 10
+        "count": 13,
+        "formatCount": 8,
+        "setCount": 11
       },
       {
         "moveId": "DOUBLE_SHOCK",
-        "count": 11,
-        "formatCount": 7,
-        "setCount": 9
+        "count": 12,
+        "formatCount": 8,
+        "setCount": 10
       },
       {
         "moveId": "REVIVAL_BLESSING",
@@ -13052,8 +14913,8 @@
       }
     ],
     "stats": {
-      "totalSets": 12,
-      "totalFormats": 7
+      "totalSets": 13,
+      "totalFormats": 8
     }
   },
   "MAUSHOLD": {
@@ -13242,7 +15103,7 @@
           "SALT_CURE",
           "RECOVER",
           "STEALTH_ROCK",
-          "IRON_DEFENSE"
+          "EARTHQUAKE"
         ]
       },
       {
@@ -13280,21 +15141,15 @@
       },
       {
         "moveId": "STEALTH_ROCK",
-        "count": 13,
+        "count": 14,
         "formatCount": 11,
-        "setCount": 8
-      },
-      {
-        "moveId": "IRON_DEFENSE",
-        "count": 11,
-        "formatCount": 10,
-        "setCount": 6
+        "setCount": 9
       },
       {
         "moveId": "EARTHQUAKE",
-        "count": 9,
-        "formatCount": 7,
-        "setCount": 6
+        "count": 8,
+        "formatCount": 6,
+        "setCount": 5
       },
       {
         "moveId": "HEAVY_SLAM",
@@ -13321,9 +15176,9 @@
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
           "ARMOR_CANNON",
+          "AURA_SPHERE",
           "EXPANDING_FORCE",
-          "FLAMETHROWER",
-          "CALM_MIND"
+          "FLAMETHROWER"
         ]
       },
       {
@@ -13331,9 +15186,9 @@
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
           "ARMOR_CANNON",
+          "AURA_SPHERE",
           "EXPANDING_FORCE",
-          "FLAMETHROWER",
-          "PSYSHOCK"
+          "FLAMETHROWER"
         ]
       },
       {
@@ -13342,8 +15197,8 @@
         "moves": [
           "CALM_MIND",
           "ARMOR_CANNON",
-          "EXPANDING_FORCE",
-          "FLAMETHROWER"
+          "AURA_SPHERE",
+          "EXPANDING_FORCE"
         ]
       }
     ],
@@ -13353,6 +15208,12 @@
         "count": 6,
         "formatCount": 5,
         "setCount": 6
+      },
+      {
+        "moveId": "AURA_SPHERE",
+        "count": 5,
+        "formatCount": 3,
+        "setCount": 5
       },
       {
         "moveId": "EXPANDING_FORCE",
@@ -13435,15 +15296,15 @@
     "allMoves": [
       {
         "moveId": "BITTER_BLADE",
-        "count": 12,
+        "count": 11,
         "formatCount": 7,
-        "setCount": 8
+        "setCount": 7
       },
       {
         "moveId": "SHADOW_SNEAK",
-        "count": 11,
+        "count": 10,
         "formatCount": 5,
-        "setCount": 8
+        "setCount": 7
       },
       {
         "moveId": "SWORDS_DANCE",
@@ -13471,7 +15332,7 @@
       }
     ],
     "stats": {
-      "totalSets": 13,
+      "totalSets": 12,
       "totalFormats": 7
     }
   },
@@ -13845,20 +15706,20 @@
     "allMoves": [
       {
         "moveId": "SOLAR_BEAM",
-        "count": 11,
-        "formatCount": 5,
+        "count": 12,
+        "formatCount": 6,
         "setCount": 6
       },
       {
         "moveId": "FLAMETHROWER",
-        "count": 9,
-        "formatCount": 5,
+        "count": 10,
+        "formatCount": 6,
         "setCount": 7
       },
       {
         "moveId": "OVERHEAT",
-        "count": 5,
-        "formatCount": 5,
+        "count": 6,
+        "formatCount": 6,
         "setCount": 4
       },
       {
@@ -13869,8 +15730,8 @@
       }
     ],
     "stats": {
-      "totalSets": 8,
-      "totalFormats": 5
+      "totalSets": 9,
+      "totalFormats": 6
     }
   },
   "ESPATHRA": {
@@ -13932,25 +15793,25 @@
     "allMoves": [
       {
         "moveId": "GIGATON_HAMMER",
-        "count": 11,
+        "count": 12,
         "formatCount": 9,
-        "setCount": 11
+        "setCount": 12
       },
       {
         "moveId": "KNOCK_OFF",
-        "count": 10,
+        "count": 12,
         "formatCount": 8,
-        "setCount": 10
+        "setCount": 11
       },
       {
         "moveId": "PLAY_ROUGH",
-        "count": 4,
-        "formatCount": 4,
-        "setCount": 4
+        "count": 5,
+        "formatCount": 5,
+        "setCount": 5
       }
     ],
     "stats": {
-      "totalSets": 11,
+      "totalSets": 12,
       "totalFormats": 9
     }
   },
@@ -14253,16 +16114,17 @@
         "name": "综合推荐",
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
+          "EARTH_POWER",
           "MORTAL_SPIN",
           "STEALTH_ROCK",
-          "POWER_GEM",
-          "SPIKY_SHIELD"
+          "POWER_GEM"
         ]
       },
       {
         "name": "输出向",
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
+          "EARTH_POWER",
           "MORTAL_SPIN",
           "POWER_GEM",
           "SLUDGE_WAVE"
@@ -14274,12 +16136,18 @@
         "moves": [
           "STEALTH_ROCK",
           "TOXIC_SPIKES",
-          "MORTAL_SPIN",
-          "POWER_GEM"
+          "EARTH_POWER",
+          "MORTAL_SPIN"
         ]
       }
     ],
     "allMoves": [
+      {
+        "moveId": "EARTH_POWER",
+        "count": 20,
+        "formatCount": 10,
+        "setCount": 14
+      },
       {
         "moveId": "MORTAL_SPIN",
         "count": 17,
@@ -14377,7 +16245,16 @@
           "BRAVE_BIRD",
           "ROOST",
           "THROAT_CHOP",
-          "WIDE_GUARD"
+          "DUAL_WINGBEAT"
+        ]
+      },
+      {
+        "name": "输出向",
+        "description": "优先选择高威力攻击招式，追求最大化伤害",
+        "moves": [
+          "BRAVE_BIRD",
+          "THROAT_CHOP",
+          "DUAL_WINGBEAT"
         ]
       }
     ],
@@ -14399,6 +16276,12 @@
         "count": 2,
         "formatCount": 2,
         "setCount": 2
+      },
+      {
+        "moveId": "DUAL_WINGBEAT",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
       },
       {
         "moveId": "WIDE_GUARD",
@@ -14508,13 +16391,13 @@
         "moveId": "REST",
         "count": 11,
         "formatCount": 10,
-        "setCount": 9
+        "setCount": 10
       },
       {
         "moveId": "SLEEP_TALK",
         "count": 10,
         "formatCount": 9,
-        "setCount": 8
+        "setCount": 9
       },
       {
         "moveId": "HEAVY_SLAM",
@@ -14612,7 +16495,7 @@
           "RAGE_FIST",
           "CLOSE_COMBAT",
           "DRAIN_PUNCH",
-          "FINAL_GAMBIT"
+          "U_TURN"
         ]
       },
       {
@@ -14644,6 +16527,12 @@
         "count": 9,
         "formatCount": 6,
         "setCount": 7
+      },
+      {
+        "moveId": "U_TURN",
+        "count": 7,
+        "formatCount": 5,
+        "setCount": 4
       },
       {
         "moveId": "FINAL_GAMBIT",
@@ -14707,33 +16596,33 @@
     "allMoves": [
       {
         "moveId": "EARTHQUAKE",
-        "count": 15,
-        "formatCount": 10,
-        "setCount": 11
+        "count": 17,
+        "formatCount": 11,
+        "setCount": 12
       },
       {
         "moveId": "RECOVER",
+        "count": 16,
+        "formatCount": 10,
+        "setCount": 12
+      },
+      {
+        "moveId": "TOXIC",
         "count": 14,
         "formatCount": 9,
         "setCount": 11
       },
       {
-        "moveId": "TOXIC",
-        "count": 12,
-        "formatCount": 8,
-        "setCount": 10
-      },
-      {
         "moveId": "POISON_JAB",
-        "count": 5,
-        "formatCount": 3,
-        "setCount": 4
+        "count": 8,
+        "formatCount": 5,
+        "setCount": 6
       },
       {
         "moveId": "TOXIC_SPIKES",
-        "count": 4,
-        "formatCount": 4,
-        "setCount": 3
+        "count": 6,
+        "formatCount": 5,
+        "setCount": 5
       },
       {
         "moveId": "AMNESIA",
@@ -14755,7 +16644,7 @@
       }
     ],
     "stats": {
-      "totalSets": 16,
+      "totalSets": 17,
       "totalFormats": 11
     }
   },
@@ -14963,21 +16852,21 @@
       },
       {
         "moveId": "HEADLONG_RUSH",
-        "count": 33,
+        "count": 34,
         "formatCount": 12,
         "setCount": 23
       },
       {
         "moveId": "RAPID_SPIN",
-        "count": 33,
+        "count": 34,
         "formatCount": 11,
         "setCount": 23
       },
       {
         "moveId": "CLOSE_COMBAT",
-        "count": 23,
+        "count": 25,
         "formatCount": 13,
-        "setCount": 15
+        "setCount": 16
       },
       {
         "moveId": "EARTHQUAKE",
@@ -15005,7 +16894,7 @@
       }
     ],
     "stats": {
-      "totalSets": 44,
+      "totalSets": 45,
       "totalFormats": 13
     }
   },
@@ -15289,7 +17178,7 @@
     "allMoves": [
       {
         "moveId": "FIRST_IMPRESSION",
-        "count": 10,
+        "count": 11,
         "formatCount": 7,
         "setCount": 9
       },
@@ -15437,7 +17326,7 @@
         "moveId": "KNOCK_OFF",
         "count": 23,
         "formatCount": 12,
-        "setCount": 16
+        "setCount": 17
       },
       {
         "moveId": "EARTHQUAKE",
@@ -15447,9 +17336,9 @@
       },
       {
         "moveId": "IRON_HEAD",
-        "count": 8,
-        "formatCount": 6,
-        "setCount": 7
+        "count": 7,
+        "formatCount": 5,
+        "setCount": 6
       },
       {
         "moveId": "HEAVY_SLAM",
@@ -15465,12 +17354,6 @@
       },
       {
         "moveId": "ENDEAVOR",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
-      },
-      {
-        "moveId": "SHORE_UP",
         "count": 1,
         "formatCount": 1,
         "setCount": 1
@@ -15728,15 +17611,15 @@
     "allMoves": [
       {
         "moveId": "SLUDGE_WAVE",
-        "count": 18,
+        "count": 20,
         "formatCount": 11,
-        "setCount": 14
+        "setCount": 15
       },
       {
         "moveId": "FIERY_DANCE",
-        "count": 16,
+        "count": 18,
         "formatCount": 10,
-        "setCount": 13
+        "setCount": 14
       },
       {
         "moveId": "DISCHARGE",
@@ -15746,15 +17629,15 @@
       },
       {
         "moveId": "OVERHEAT",
-        "count": 6,
-        "formatCount": 5,
-        "setCount": 5
+        "count": 8,
+        "formatCount": 6,
+        "setCount": 6
       },
       {
         "moveId": "MORNING_SUN",
-        "count": 4,
-        "formatCount": 4,
-        "setCount": 4
+        "count": 5,
+        "formatCount": 5,
+        "setCount": 5
       },
       {
         "moveId": "WHIRLWIND",
@@ -15782,7 +17665,7 @@
       }
     ],
     "stats": {
-      "totalSets": 25,
+      "totalSets": 27,
       "totalFormats": 13
     }
   },
@@ -15922,7 +17805,7 @@
           "SHADOW_BALL",
           "MAKE_IT_RAIN",
           "POWER_GEM",
-          "AURA_SPHERE"
+          "FLASH_CANNON"
         ]
       },
       {
@@ -15949,27 +17832,27 @@
     "allMoves": [
       {
         "moveId": "SHADOW_BALL",
-        "count": 38,
+        "count": 37,
         "formatCount": 14,
-        "setCount": 21
+        "setCount": 20
       },
       {
         "moveId": "MAKE_IT_RAIN",
-        "count": 37,
+        "count": 36,
         "formatCount": 13,
-        "setCount": 20
+        "setCount": 19
       },
       {
         "moveId": "NASTY_PLOT",
         "count": 27,
         "formatCount": 15,
-        "setCount": 16
+        "setCount": 15
       },
       {
         "moveId": "RECOVER",
-        "count": 25,
+        "count": 24,
         "formatCount": 11,
-        "setCount": 16
+        "setCount": 15
       },
       {
         "moveId": "POWER_GEM",
@@ -15984,6 +17867,12 @@
         "setCount": 2
       },
       {
+        "moveId": "FLASH_CANNON",
+        "count": 1,
+        "formatCount": 1,
+        "setCount": 1
+      },
+      {
         "moveId": "AURA_SPHERE",
         "count": 1,
         "formatCount": 1,
@@ -15991,7 +17880,7 @@
       }
     ],
     "stats": {
-      "totalSets": 44,
+      "totalSets": 43,
       "totalFormats": 15
     }
   },
@@ -16131,7 +18020,7 @@
       },
       {
         "moveId": "SPIRIT_BREAK",
-        "count": 8,
+        "count": 9,
         "formatCount": 7,
         "setCount": 6
       },
@@ -16146,6 +18035,12 @@
         "count": 5,
         "formatCount": 2,
         "setCount": 5
+      },
+      {
+        "moveId": "MAGICAL_TORQUE",
+        "count": 3,
+        "formatCount": 1,
+        "setCount": 3
       },
       {
         "moveId": "SECRET_SWORD",
@@ -16203,9 +18098,9 @@
       },
       {
         "moveId": "CLOSE_COMBAT",
-        "count": 9,
+        "count": 10,
         "formatCount": 4,
-        "setCount": 6
+        "setCount": 7
       },
       {
         "moveId": "OUTRAGE",
@@ -16233,8 +18128,8 @@
       }
     ],
     "stats": {
-      "totalSets": 15,
-      "totalFormats": 5
+      "totalSets": 17,
+      "totalFormats": 6
     }
   },
   "MIRAIDON": {
@@ -16339,15 +18234,15 @@
     "allMoves": [
       {
         "moveId": "FLAMETHROWER",
-        "count": 15,
+        "count": 16,
         "formatCount": 10,
-        "setCount": 13
+        "setCount": 14
       },
       {
         "moveId": "HYDRO_STEAM",
-        "count": 14,
+        "count": 15,
         "formatCount": 10,
-        "setCount": 10
+        "setCount": 11
       },
       {
         "moveId": "HYDRO_PUMP",
@@ -16357,8 +18252,14 @@
       },
       {
         "moveId": "DRAGON_PULSE",
+        "count": 6,
+        "formatCount": 5,
+        "setCount": 6
+      },
+      {
+        "moveId": "STEAM_ERUPTION",
         "count": 4,
-        "formatCount": 4,
+        "formatCount": 1,
         "setCount": 4
       },
       {
@@ -16375,7 +18276,7 @@
       }
     ],
     "stats": {
-      "totalSets": 23,
+      "totalSets": 25,
       "totalFormats": 12
     }
   },
@@ -16648,7 +18549,7 @@
           "ROOST",
           "MOONBLAST",
           "BEAT_UP",
-          "QUICK_ATTACK"
+          "PLAY_ROUGH"
         ]
       },
       {
@@ -16656,6 +18557,7 @@
         "description": "优先选择高威力攻击招式，追求最大化伤害",
         "moves": [
           "MOONBLAST",
+          "PLAY_ROUGH",
           "QUICK_ATTACK",
           "DOUBLE_KICK"
         ]
@@ -16679,6 +18581,12 @@
         "count": 3,
         "formatCount": 3,
         "setCount": 3
+      },
+      {
+        "moveId": "PLAY_ROUGH",
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
       },
       {
         "moveId": "QUICK_ATTACK",
@@ -16714,15 +18622,15 @@
     "allMoves": [
       {
         "moveId": "IVY_CUDGEL",
-        "count": 10,
+        "count": 11,
         "formatCount": 6,
-        "setCount": 7
+        "setCount": 8
       },
       {
         "moveId": "SUPERPOWER",
-        "count": 2,
-        "formatCount": 2,
-        "setCount": 2
+        "count": 3,
+        "formatCount": 3,
+        "setCount": 3
       },
       {
         "moveId": "FOLLOW_ME",
@@ -16744,7 +18652,7 @@
       }
     ],
     "stats": {
-      "totalSets": 10,
+      "totalSets": 11,
       "totalFormats": 6
     }
   },
@@ -17011,8 +18919,8 @@
         "description": "基于Smogon所有对战分级中出现频率最高的招式",
         "moves": [
           "THUNDERCLAP",
-          "CALM_MIND",
           "DRAGON_PULSE",
+          "CALM_MIND",
           "DISCHARGE"
         ]
       },
@@ -17040,21 +18948,21 @@
     "allMoves": [
       {
         "moveId": "THUNDERCLAP",
-        "count": 33,
+        "count": 34,
         "formatCount": 14,
-        "setCount": 20
+        "setCount": 22
+      },
+      {
+        "moveId": "DRAGON_PULSE",
+        "count": 16,
+        "formatCount": 9,
+        "setCount": 10
       },
       {
         "moveId": "CALM_MIND",
         "count": 15,
         "formatCount": 13,
         "setCount": 8
-      },
-      {
-        "moveId": "DRAGON_PULSE",
-        "count": 14,
-        "formatCount": 9,
-        "setCount": 9
       },
       {
         "moveId": "DISCHARGE",
@@ -17064,9 +18972,9 @@
       },
       {
         "moveId": "THUNDER",
-        "count": 1,
-        "formatCount": 1,
-        "setCount": 1
+        "count": 2,
+        "formatCount": 2,
+        "setCount": 2
       },
       {
         "moveId": "CHARGE",
@@ -17082,7 +18990,7 @@
       }
     ],
     "stats": {
-      "totalSets": 34,
+      "totalSets": 35,
       "totalFormats": 14
     }
   },
@@ -17266,21 +19174,21 @@
     "allMoves": [
       {
         "moveId": "TERA_STARSTORM",
-        "count": 11,
+        "count": 12,
         "formatCount": 7,
-        "setCount": 9
+        "setCount": 10
       },
       {
         "moveId": "EARTH_POWER",
-        "count": 9,
+        "count": 10,
         "formatCount": 6,
-        "setCount": 7
+        "setCount": 8
       },
       {
         "moveId": "RAPID_SPIN",
-        "count": 4,
+        "count": 5,
         "formatCount": 4,
-        "setCount": 4
+        "setCount": 5
       },
       {
         "moveId": "PROTECT",
@@ -17302,7 +19210,7 @@
       }
     ],
     "stats": {
-      "totalSets": 11,
+      "totalSets": 12,
       "totalFormats": 7
     }
   },
@@ -17341,38 +19249,38 @@
     "allMoves": [
       {
         "moveId": "RECOVER",
-        "count": 21,
-        "formatCount": 10,
+        "count": 23,
+        "formatCount": 11,
         "setCount": 17
       },
       {
         "moveId": "MALIGNANT_CHAIN",
-        "count": 18,
-        "formatCount": 9,
+        "count": 20,
+        "formatCount": 10,
         "setCount": 15
       },
       {
         "moveId": "PARTING_SHOT",
-        "count": 15,
-        "formatCount": 10,
+        "count": 16,
+        "formatCount": 11,
         "setCount": 12
       },
       {
         "moveId": "SHADOW_BALL",
-        "count": 8,
-        "formatCount": 6,
+        "count": 9,
+        "formatCount": 7,
         "setCount": 7
       },
       {
         "moveId": "TOXIC",
-        "count": 5,
-        "formatCount": 4,
+        "count": 6,
+        "formatCount": 5,
         "setCount": 4
       },
       {
         "moveId": "NASTY_PLOT",
-        "count": 5,
-        "formatCount": 5,
+        "count": 6,
+        "formatCount": 6,
         "setCount": 4
       },
       {
@@ -17389,8 +19297,8 @@
       }
     ],
     "stats": {
-      "totalSets": 21,
-      "totalFormats": 10
+      "totalSets": 23,
+      "totalFormats": 11
     }
   }
 }
