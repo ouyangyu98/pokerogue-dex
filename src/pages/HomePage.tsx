@@ -34,6 +34,12 @@ const navCards: NavCard[] = [
     desc: '查看每个地区的遭遇列表、稀有度和首领信息。',
   },
   {
+    to: '/map',
+    icon: '🧭',
+    title: '地区路线图',
+    desc: '选择起点和终点，查看肉鸽地图中的最短路线。',
+  },
+  {
     to: '/types',
     icon: '⚔️',
     title: '查属性克制',
@@ -74,7 +80,6 @@ const navCards: NavCard[] = [
 const quickLinks: QuickLink[] = [
   { to: '/moves', title: '招式资料', desc: '按招式名称查看属性、威力和效果。' },
   { to: '/abilities', title: '特性资料', desc: '查找特性与被动效果。' },
-  { to: '/map', title: '地区地图', desc: '按流程查看地区路线。' },
 ]
 
 export default function HomePage() {
