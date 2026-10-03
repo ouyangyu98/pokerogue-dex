@@ -18,6 +18,8 @@ interface BiomeLink {
   weight?: number
 }
 
+type RouteStatus = 'idle' | 'ready' | 'found' | 'unreachable'
+
 // 生态区节点数据（手动布局，基于游戏内地理位置）
 const biomeNodes: BiomeNode[] = [
   // 0步 - 起点
@@ -143,6 +145,8 @@ const biomeLinks: BiomeLink[] = [
   { from: 'WASTELAND', to: 'BADLANDS' },
 ]
 
+const selectableBiomeNodes = biomeNodes.filter(node => node.id !== 'END')
+
 // BFS 找最短路径
 function findShortestPath(start: string, end: string): string[] | null {
   if (start === end) return [start]
@@ -176,6 +180,7 @@ export default function BiomeMapPage() {
   const [startId, setStartId] = useState<string>('')
   const [endId, setEndId] = useState<string>('')
   const [path, setPath] = useState<string[] | null>(null)
+  const [routeStatus, setRouteStatus] = useState<RouteStatus>('idle')
   const [hoveredNode, setHoveredNode] = useState<string | null>(null)
 
   const nodeMap = useMemo(() => {
@@ -199,21 +204,64 @@ export default function BiomeMapPage() {
     return links
   }, [path])
 
-  const handleCalculate = useCallback(() => {
-    if (!startId || !endId) return
-    const result = findShortestPath(startId, endId)
+  const calculateRoute = useCallback((from: string, to: string) => {
+    if (!from || !to) {
+      setPath(null)
+      setRouteStatus('idle')
+      return
+    }
+    const result = findShortestPath(from, to)
     setPath(result)
-  }, [startId, endId])
+    setRouteStatus(result ? 'found' : 'unreachable')
+  }, [])
+
+  const handleCalculate = useCallback(() => {
+    calculateRoute(startId, endId)
+  }, [calculateRoute, endId, startId])
+
+  const handleStartChange = useCallback((value: string) => {
+    setStartId(value)
+    setPath(null)
+    setRouteStatus(value && endId ? 'ready' : 'idle')
+  }, [endId])
+
+  const handleEndChange = useCallback((value: string) => {
+    setEndId(value)
+    setPath(null)
+    setRouteStatus(startId && value ? 'ready' : 'idle')
+  }, [startId])
+
+  const handleSwap = useCallback(() => {
+    if (!startId || !endId) return
+    const nextStart = endId
+    const nextEnd = startId
+    setStartId(nextStart)
+    setEndId(nextEnd)
+    setPath(null)
+    setRouteStatus('ready')
+  }, [endId, startId])
+
+  const handleReset = useCallback(() => {
+    setStartId('')
+    setEndId('')
+    setPath(null)
+    setRouteStatus('idle')
+  }, [])
 
   const handleNodeClick = useCallback((nodeId: string) => {
     if (!startId) {
       setStartId(nodeId)
+      setPath(null)
+      setRouteStatus('idle')
     } else if (!endId) {
       setEndId(nodeId)
+      setPath(null)
+      setRouteStatus('ready')
     } else {
       setStartId(nodeId)
       setEndId('')
       setPath(null)
+      setRouteStatus('idle')
     }
   }, [startId, endId])
 
@@ -240,16 +288,16 @@ export default function BiomeMapPage() {
     <div className="biome-map-page">
       <div className="biome-map-header">
         <h2>地区导航</h2>
-        <p>选择起点和终点，查看最短路线</p>
+        <p>选择起点和终点，查看地图中的最短可行路线</p>
       </div>
 
       <div className="biome-map-controls">
         <div className="biome-map-selectors">
           <div className="biome-map-select-group">
             <label>起点</label>
-            <select value={startId} onChange={e => setStartId(e.target.value)}>
+            <select value={startId} onChange={e => handleStartChange(e.target.value)}>
               <option value="">请选择起点</option>
-              {biomeNodes.map(node => (
+              {selectableBiomeNodes.map(node => (
                 <option key={node.id} value={node.id}>{node.nameZh}</option>
               ))}
             </select>
@@ -257,9 +305,9 @@ export default function BiomeMapPage() {
           <div className="biome-map-arrow">→</div>
           <div className="biome-map-select-group">
             <label>终点</label>
-            <select value={endId} onChange={e => setEndId(e.target.value)}>
+            <select value={endId} onChange={e => handleEndChange(e.target.value)}>
               <option value="">请选择终点</option>
-              {biomeNodes.map(node => (
+              {selectableBiomeNodes.map(node => (
                 <option key={node.id} value={node.id}>{node.nameZh}</option>
               ))}
             </select>
@@ -269,14 +317,33 @@ export default function BiomeMapPage() {
             onClick={handleCalculate}
             disabled={!startId || !endId}
           >
-            计算路线
+            {routeStatus === 'found' ? '重新计算' : '查看路线'}
           </button>
+          <div className="biome-map-secondary-actions">
+            <button
+              type="button"
+              className="biome-map-action-btn"
+              onClick={handleSwap}
+              disabled={!startId || !endId}
+            >
+              ⇄ 交换
+            </button>
+            <button type="button" className="biome-map-action-btn" onClick={handleReset}>
+              清空
+            </button>
+          </div>
         </div>
 
-        {path && (
+        <div className="biome-map-selection-hint" aria-live="polite">
+          {!startId && '先选择起点，也可以直接点击地图节点。'}
+          {startId && !endId && `已选择起点：${nodeMap.get(startId)?.nameZh}，请选择终点。`}
+          {routeStatus === 'ready' && startId && endId && '起点和终点已就绪，点击“查看路线”计算。'}
+        </div>
+
+        {routeStatus === 'found' && path && (
           <div className="biome-map-result">
             <div className="biome-map-result-title">
-              路线结果（{path.length - 1} 步）
+              找到路线 · {path.length - 1} 步
             </div>
             <div className="biome-map-result-path">
               {path.map((nodeId, i) => {
@@ -298,15 +365,27 @@ export default function BiomeMapPage() {
           </div>
         )}
 
-        {path === null && startId && endId && (
+        {routeStatus === 'unreachable' && (
           <div className="biome-map-result biome-map-result-none">
-            无法到达：{nodeMap.get(startId)?.nameZh} → {nodeMap.get(endId)?.nameZh}
+            <strong>当前方向无法到达</strong>
+            <span>
+              地图按单向路线计算，暂时找不到从 {nodeMap.get(startId)?.nameZh} 到 {nodeMap.get(endId)?.nameZh} 的路径。
+              可以尝试交换起终点，或重新选择节点。
+            </span>
           </div>
         )}
       </div>
 
       <div className="biome-map-container">
         <svg viewBox="0 0 900 750" className="biome-map-svg">
+          <defs>
+            <marker id="biome-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+              <path d="M0,0 L7,3.5 L0,7 Z" fill="#cbd5e1" />
+            </marker>
+            <marker id="biome-route-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 Z" fill="#f59e0b" />
+            </marker>
+          </defs>
           {/* 连接线 */}
           {biomeLinks.map((link, i) => {
             const fromNode = nodeMap.get(link.from)
@@ -326,6 +405,7 @@ export default function BiomeMapPage() {
                 stroke={isPathLink ? '#f59e0b' : isHovered ? '#94a3b8' : '#cbd5e1'}
                 strokeWidth={isPathLink ? 3 : isHovered ? 2 : 1}
                 opacity={isPathLink ? 1 : 0.6}
+                markerEnd={isPathLink ? 'url(#biome-route-arrow)' : 'url(#biome-arrow)'}
               />
             )
           })}
@@ -338,6 +418,8 @@ export default function BiomeMapPage() {
               onClick={() => handleNodeClick(node.id)}
               onMouseEnter={() => setHoveredNode(node.id)}
               onMouseLeave={() => setHoveredNode(null)}
+              role="button"
+              aria-label={`选择${node.nameZh}`}
             >
               <circle
                 cx={node.x}
@@ -389,9 +471,10 @@ export default function BiomeMapPage() {
         </div>
         <div className="biome-map-legend-item">
           <span className="biome-map-legend-arrow">→</span>
-          <span>单向通行</span>
+          <span>路线方向</span>
         </div>
       </div>
+      <p className="biome-map-footnote">地图中的箭头表示可前往方向；选好两个节点后，路线会按最少经过地区计算。“终点”是地图示意标记，不参与路线选择。</p>
     </div>
   )
 }
