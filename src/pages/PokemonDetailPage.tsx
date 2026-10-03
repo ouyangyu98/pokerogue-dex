@@ -45,6 +45,11 @@ export default function PokemonDetailPage() {
   const pokemon = useMemo(() => pokemons.find(p => p.id === id), [pokemons, id])
   const pokemonMap = useMemo(() => new Map(pokemons.map(p => [p.id, p])), [pokemons])
   const evolutionGraph = useMemo(() => normalizeChainMap(pokemons), [pokemons])
+  const megaForms = useMemo(() => (pokemon?.forms || []).filter(form =>
+    form.formKey.startsWith('MEGA') ||
+    form.formNameZh.includes('超级') ||
+    form.formNameZh.includes('超級')
+  ), [pokemon])
 
   useEffect(() => {
     if (!pokemon) return
@@ -58,6 +63,12 @@ export default function PokemonDetailPage() {
       .catch(err => console.error('Failed to load sprite atlas:', err))
     return () => { cancelled = true }
   }, [pokemon?.numericId])
+
+  const [formsOpen, setFormsOpen] = useState(false)
+
+  useEffect(() => {
+    setFormsOpen(megaForms.length > 0)
+  }, [pokemon?.id, megaForms.length])
 
   if (loading) return <div className="loading">加载中...</div>
   if (!pokemon) return <div className="loading">未找到该宝可梦</div>
@@ -389,8 +400,12 @@ export default function PokemonDetailPage() {
 
         {/* Forms */}
         {pokemon.forms && pokemon.forms.length > 0 && (
-          <details className="dp-card dp-card-full dp-collapsible">
-            <summary className="dp-card-title">形态（{pokemon.forms.length} 种）<span className="collapse-hint">点击展开</span></summary>
+          <details className="dp-card dp-card-full dp-collapsible" open={formsOpen} onToggle={event => setFormsOpen(event.currentTarget.open)}>
+            <summary className="dp-card-title">
+              形态（{pokemon.forms.length} 种）
+              {megaForms.length > 0 && <span className="form-mega-badge">含 {megaForms.length} 个超级形态</span>}
+              <span className="collapse-hint">点击展开</span>
+            </summary>
             <div className="form-grid">
               {pokemon.forms.map((form, idx) => (
                 <div key={idx} className="form-card">

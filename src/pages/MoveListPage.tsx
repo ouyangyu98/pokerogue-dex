@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import SEOMeta from '../seo/SEOMeta'
 import JsonLd from '../seo/JsonLd'
@@ -14,6 +14,7 @@ interface NameMaps {
 
 export default function MoveListPage() {
   const [moves, setMoves] = useState<{ id: string; nameZh: string; type?: string; category?: string; power?: number | null; accuracy?: number | null }[]>([])
+  const [search, setSearch] = useState('')
   const [count, setCount] = useState(0)
   const meta = getMoveListMeta(count)
 
@@ -56,6 +57,15 @@ export default function MoveListPage() {
       .catch(() => {})
   }, [])
 
+  const filteredMoves = useMemo(() => {
+    const keyword = search.trim().toLowerCase()
+    if (!keyword) return moves
+    return moves.filter(move =>
+      move.nameZh.toLowerCase().includes(keyword) ||
+      move.id.toLowerCase().includes(keyword)
+    )
+  }, [moves, search])
+
   return (
     <div className="page">
       <SEOMeta title={meta.title} description={meta.description} path="/moves" keywords={meta.keywords} />
@@ -66,7 +76,22 @@ export default function MoveListPage() {
         ]}
       />
       <h1>招式查询</h1>
-      <p>共 {count} 个招式，点击招式查看可学习的宝可梦列表。</p>
+      <p>共 {filteredMoves.length} 个招式，点击招式查看可学习的宝可梦列表。</p>
+      <div className="move-list-toolbar">
+        <input
+          className="search-input"
+          type="search"
+          value={search}
+          onChange={event => setSearch(event.target.value)}
+          placeholder="搜索招式中文名或内部 ID..."
+          aria-label="搜索招式中文名或内部 ID"
+        />
+        {search && (
+          <button type="button" className="reset-btn" onClick={() => setSearch('')}>
+            清除搜索
+          </button>
+        )}
+      </div>
       <div className="table-container">
         <table>
           <thead>
@@ -80,7 +105,7 @@ export default function MoveListPage() {
             </tr>
           </thead>
           <tbody>
-            {moves.map(move => (
+            {filteredMoves.map(move => (
               <tr key={move.id} className="clickable">
                 <td><Link to={`/move/${move.id}`}>{move.nameZh}</Link></td>
                 <td>{move.id}</td>
@@ -90,6 +115,11 @@ export default function MoveListPage() {
                 <td>{move.accuracy ?? '-'}</td>
               </tr>
             ))}
+            {filteredMoves.length === 0 && (
+              <tr>
+                <td colSpan={6} className="empty-cell">没有找到匹配的招式。</td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
