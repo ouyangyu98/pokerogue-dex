@@ -1806,6 +1806,27 @@ main {
   overflow-y: auto;
 }
 
+.advanced-filters > .biome-filter-dropdown.is-open {
+  flex: 1 0 100%;
+  display: grid;
+  grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
+  align-items: start;
+}
+
+.advanced-filters > .biome-filter-dropdown.is-open .biome-filter-trigger {
+  width: 220px;
+}
+
+.advanced-filters > .biome-filter-dropdown.is-open .biome-filter-menu {
+  position: relative;
+  top: 8px;
+  left: auto;
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 100%;
+  max-height: min(520px, 60vh);
+}
+
 .biome-filter-menu-sticky {
   position: sticky;
   top: 0;
@@ -2438,6 +2459,10 @@ tr.clickable {
   .filter-menu,
   .biome-filter-menu {
     width: 100%;
+  }
+
+  .advanced-filters > .biome-filter-dropdown.is-open {
+    display: block;
   }
 
   .filter-menu,

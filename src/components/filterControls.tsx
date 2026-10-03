@@ -125,7 +125,7 @@ export function BiomeFilter({ value, groups, allBiomes, onChange, label = 'åœ°åŒ
   const currentLabel = value ? (allBiomes.find(([id]) => id === value)?.[1] || value) : emptyLabel
 
   return (
-    <div className="biome-filter-dropdown filter-dropdown" ref={rootRef}>
+    <div className={`biome-filter-dropdown filter-dropdown ${open ? 'is-open' : ''}`} ref={rootRef}>
       <button
         type="button"
         className={`filter-trigger biome-filter-trigger ${open ? 'is-open' : ''}`}
