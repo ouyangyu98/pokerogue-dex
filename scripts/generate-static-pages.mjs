@@ -99,7 +99,7 @@ async function main() {
     { path: '/abilities', title: `特性查询 - PokeRogue 中文图鉴`, description: `查询 PokeRogue 全部 ${Object.keys(abilityMap).length} 个特性的效果，以及拥有该特性的宝可梦列表。`, keywords: 'PokeRogue,宝可梦肉鸽,特性,隐藏特性,被动' },
     { path: '/events', title: `事件表 - PokeRogue 中文图鉴`, description: `查询 PokeRogue 全部 ${mysteryEncounters.length} 个神秘事件的出现场景、前置条件与每个选项的官方效果提示。`, keywords: 'PokeRogue,宝可梦肉鸽,神秘事件,事件表,选项,效果,遭遇' },
     { path: '/natures', title: `性格表 - PokeRogue 中文图鉴`, description: '查看 PokeRogue 全部 25 种性格的加成与减成效果。', keywords: 'PokeRogue,宝可梦肉鸽,性格,加成,减成' },
-    { path: '/types', title: `属性克制 - PokeRogue 中文图鉴`, description: '查看 PokeRogue 18 种属性的攻击与防御相克关系。', keywords: 'PokeRogue,宝可梦肉鸽,属性克制,属性相性' },
+    { path: '/types', title: `属性克制 - PokeRogue 中文图鉴`, description: '查看 PokeRogue 18 种属性的攻击与防御相克关系，支持多属性打击面覆盖和双属性防御分析。', keywords: 'PokeRogue,宝可梦肉鸽,属性克制,属性相性,打击面,属性覆盖' },
     { path: '/map', title: `地区导航 - PokeRogue 中文图鉴`, description: 'PokeRogue 生态区地图导航，查看地区连接关系与推荐路线。', keywords: 'PokeRogue,宝可梦肉鸽,地图,地区导航,生态区' },
     { path: '/report', title: `数据报告 - PokeRogue 中文图鉴`, description: 'PokeRogue 数据报告：覆盖率、数据版本与生成时间。', keywords: 'PokeRogue,宝可梦肉鸽,数据报告,覆盖率' },
     { path: '/team', title: `配队分析 - PokeRogue 中文图鉴`, description: 'PokeRogue 队伍构建工具：分析属性覆盖、防守抗性、职责分配与队伍缺口。', keywords: 'PokeRogue,宝可梦肉鸽,配队,队伍分析,队伍构建' },

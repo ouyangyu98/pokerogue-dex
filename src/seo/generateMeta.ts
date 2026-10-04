@@ -201,8 +201,8 @@ export function getNatureMeta(nature: NatureInfo): PageMeta {
 export function getTypeListMeta(): PageMeta {
   return {
     title: `属性克制 - ${siteConfig.siteName}`,
-    description: '查看 PokeRogue 18 种属性的攻击与防御相克关系。',
-    keywords: 'PokeRogue,宝可梦肉鸽,属性克制,属性相性',
+    description: '查看 PokeRogue 18 种属性的攻击与防御相克关系，支持多属性打击面覆盖和双属性防御分析。',
+    keywords: 'PokeRogue,宝可梦肉鸽,属性克制,属性相性,打击面,属性覆盖',
   }
 }
 
