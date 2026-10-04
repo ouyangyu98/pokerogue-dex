@@ -61,10 +61,11 @@ export default function PokemonTable({
               p.numericId,
               p.generation,
               iconAtlases,
-              fallbackIconAtlases
+              fallbackIconAtlases,
+              p.formKey,
             )
             return (
-              <tr key={p.id} onClick={() => onRowClick(p)} className="clickable">
+              <tr key={p.id} onClick={() => onRowClick(p)} className={`clickable${p.isForm ? ' pokemon-form-row' : ''}`}>
                 <td>{p.numericId}</td>
                 <td
                   className="sprite-cell"
@@ -85,7 +86,10 @@ export default function PokemonTable({
                     <span className="sprite-placeholder sprite-placeholder-sm">-</span>
                   )}
                 </td>
-                <td className="name-zh">{p.nameZh}</td>
+                <td className="name-zh">
+                  <span>{p.nameZh}</span>
+                  {p.isForm && <span className="pokemon-form-badge">{p.formNameZh}</span>}
+                </td>
                 <td className="name-en">{p.nameEn}</td>
                 <td>
                   {renderTypeBadge(p.type1)}

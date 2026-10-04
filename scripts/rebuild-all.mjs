@@ -530,4 +530,11 @@ try {
   console.warn('Warning: Failed to merge Smogon recommendations:', e.message)
 }
 
+console.log('=== Step 12: Build independent Pokemon form entries ===')
+try {
+  execSync('node scripts/build-pokemon-forms.mjs', { cwd: rootDir, stdio: 'inherit' })
+} catch (e) {
+  console.warn('Warning: Failed to build Pokemon form entries:', e.message)
+}
+
 console.log('=== All done! ===')

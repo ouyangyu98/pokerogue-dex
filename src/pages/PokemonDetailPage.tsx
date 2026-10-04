@@ -18,6 +18,14 @@ interface NameMaps {
 
 const REMOTE_ASSET_BASE = 'https://raw.githubusercontent.com/pagefaultgames/pokerogue-assets/beta'
 
+function formRouteId(baseId: string, formKey: string) {
+  return `${baseId}--${formKey.toUpperCase().replace(/[^A-Z0-9]+/g, '-')}`
+}
+
+function formLabel(value: string) {
+  return value.replace(/超級/g, '超级').replace(/Ｘ/g, 'X').replace(/Ｙ/g, 'Y')
+}
+
 export default function PokemonDetailPage() {
   const { id } = useParams()
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
@@ -29,10 +37,11 @@ export default function PokemonDetailPage() {
   useEffect(() => {
     Promise.all([
       fetch('/data/pokemon.json').then(r => r.json()),
+      fetch('/data/pokemon-forms.json').then(r => r.json()),
       fetch('/data/name-maps.json').then(r => r.json()),
     ])
-      .then(([pData, nmData]: [Pokemon[], NameMaps]) => {
-        setPokemons(pData)
+      .then(([pData, formData, nmData]: [Pokemon[], Pokemon[], NameMaps]) => {
+        setPokemons([...pData, ...formData])
         setNameMaps(nmData)
         setLoading(false)
       })
@@ -44,12 +53,11 @@ export default function PokemonDetailPage() {
 
   const pokemon = useMemo(() => pokemons.find(p => p.id === id), [pokemons, id])
   const pokemonMap = useMemo(() => new Map(pokemons.map(p => [p.id, p])), [pokemons])
+  const basePokemon = useMemo(
+    () => pokemon?.baseId ? pokemons.find(entry => entry.id === pokemon.baseId) || pokemon : pokemon,
+    [pokemon, pokemons],
+  )
   const evolutionGraph = useMemo(() => normalizeChainMap(pokemons), [pokemons])
-  const megaForms = useMemo(() => (pokemon?.forms || []).filter(form =>
-    form.formKey.startsWith('MEGA') ||
-    form.formNameZh.includes('超级') ||
-    form.formNameZh.includes('超級')
-  ), [pokemon])
 
   useEffect(() => {
     if (!pokemon) return
@@ -64,19 +72,13 @@ export default function PokemonDetailPage() {
     return () => { cancelled = true }
   }, [pokemon?.numericId])
 
-  const [formsOpen, setFormsOpen] = useState(false)
-
-  useEffect(() => {
-    setFormsOpen(megaForms.length > 0)
-  }, [pokemon?.id, megaForms.length])
-
   if (loading) return <div className="loading">加载中...</div>
-  if (!pokemon) return <div className="loading">未找到该宝可梦</div>
+  if (!pokemon || !basePokemon) return <div className="loading">未找到该宝可梦</div>
 
   const meta = getPokemonMeta(pokemon)
   const buckets = getCombinedDefenseBuckets(pokemon.type1, pokemon.type2)
   const evoPaths = buildEvolutionPaths(
-    pokemon.id,
+    basePokemon.id,
     pokemonMap,
     evolutionGraph.evolvesTo,
     evolutionGraph.evolvesFrom,
@@ -88,7 +90,7 @@ export default function PokemonDetailPage() {
   const abilityDescMap = nameMaps?.abilityDescription || {}
 
   const spriteFrame = spriteAtlas
-    ? getPokemonIconFrame(pokemon.numericId, pokemon.generation, { [`pokemon_icons_${pokemon.generation}`]: spriteAtlas }).frame
+    ? getPokemonIconFrame(pokemon.numericId, pokemon.generation, { [`pokemon_icons_${pokemon.generation}`]: spriteAtlas }, undefined, pokemon.formKey).frame
     : null
   const spriteStyle = spriteAtlas && spriteFrame
     ? getAtlasSpriteStyle(spriteAtlas, spriteFrame, spriteFrame.sourceSize || DEFAULT_ICON_SOURCE_SIZE, 80)
@@ -100,6 +102,30 @@ export default function PokemonDetailPage() {
     : moveTab === 'egg' && hasEggMoves ? 'egg'
     : hasLevelMoves ? 'level'
     : 'egg'
+  const formEntries = [
+    {
+      id: basePokemon.id,
+      formNameZh: '基础形态',
+      formKey: 'BASE',
+      type1: basePokemon.type1,
+      type2: basePokemon.type2,
+      baseHp: basePokemon.baseHp,
+      baseAtk: basePokemon.baseAtk,
+      baseDef: basePokemon.baseDef,
+      baseSpatk: basePokemon.baseSpatk,
+      baseSpdef: basePokemon.baseSpdef,
+      baseSpd: basePokemon.baseSpd,
+      baseTotal: basePokemon.baseTotal,
+    },
+    ...(basePokemon.forms || [])
+      .filter(form => form.formIndex > 0 && form.formKey)
+      .map(form => ({
+        ...form,
+        id: formRouteId(basePokemon.id, form.formKey),
+        formNameZh: formLabel(form.formNameZh || form.formKey),
+      })),
+  ]
+  const megaFormCount = formEntries.filter(form => form.formKey.startsWith('MEGA')).length
 
   return (
     <div className="pokemon-detail-page">
@@ -145,6 +171,11 @@ export default function PokemonDetailPage() {
             <span className="dp-tag-gen">第 {pokemon.generation} 世代</span>
             {pokemon.starterCost != null && <span className="dp-tag-cost">费用 {pokemon.starterCost}</span>}
             {pokemon.isFinalEvolution && <span className="dp-tag-final">最终形态</span>}
+            {pokemon.isForm && (
+              <Link to={`/pokemon/${basePokemon.id}`} className="dp-tag-form-parent">
+                本体：{basePokemon.nameZh}
+              </Link>
+            )}
           </div>
         </div>
         <div className="dp-hero-info">
@@ -229,7 +260,7 @@ export default function PokemonDetailPage() {
         </div>
 
         <div className="dp-card">
-          <h3 className="dp-card-title">进化链</h3>
+          <h3 className="dp-card-title">{pokemon.isForm ? '进化链（基础形态）' : '进化链'}</h3>
           {evoPaths.length > 0 ? (
             <div className="dp-evo-chain">
               {evoPaths.map((path, pidx) => (
@@ -238,7 +269,7 @@ export default function PokemonDetailPage() {
                     <span key={`${node.id}-${nidx}`} className="dp-evo-step">
                       <Link
                         to={`/pokemon/${node.id}`}
-                        className={`dp-evo-node ${node.id === pokemon.id ? 'dp-evo-current' : ''}`}
+                        className={`dp-evo-node ${node.id === basePokemon.id ? 'dp-evo-current' : ''}`}
                       >
                         {node.nameZh}
                       </Link>
@@ -398,17 +429,15 @@ export default function PokemonDetailPage() {
           </div>
         </div>
 
-        {/* Forms */}
-        {pokemon.forms && pokemon.forms.length > 0 && (
-          <details className="dp-card dp-card-full dp-collapsible" open={formsOpen} onToggle={event => setFormsOpen(event.currentTarget.open)}>
-            <summary className="dp-card-title">
-              形态（{pokemon.forms.length} 种）
-              {megaForms.length > 0 && <span className="form-mega-badge">含 {megaForms.length} 个超级形态</span>}
-              <span className="collapse-hint">点击展开</span>
-            </summary>
+        {formEntries.length > 1 && (
+          <section className="dp-card dp-card-full">
+            <h3 className="dp-card-title">
+              形态切换（{formEntries.length} 种）
+              {megaFormCount > 0 && <span className="form-mega-badge">含 {megaFormCount} 个超级形态</span>}
+            </h3>
             <div className="form-grid">
-              {pokemon.forms.map((form, idx) => (
-                <div key={idx} className="form-card">
+              {formEntries.map(form => (
+                <Link key={form.id} to={`/pokemon/${form.id}`} className={`form-card form-card-link ${form.id === pokemon.id ? 'is-current' : ''}`}>
                   <div className="form-card-header">
                     <span className="form-name">{form.formNameZh}</span>
                     <span className="form-key">{form.formKey}</span>
@@ -426,14 +455,14 @@ export default function PokemonDetailPage() {
                     <span>速度 {form.baseSpd}</span>
                     <span>总和 {form.baseTotal}</span>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
-          </details>
+          </section>
         )}
 
         {/* Smogon Sets */}
-        {pokemon.smogonSets && pokemon.smogonSets.length > 0 && (
+        {!pokemon.isForm && pokemon.smogonSets && pokemon.smogonSets.length > 0 && (
           <div className="dp-card dp-card-full dp-smogon-card">
             <div className="dp-card-title-row smogon-title-row">
               <div>

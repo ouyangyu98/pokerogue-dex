@@ -45,8 +45,8 @@ export interface PageMeta {
 export function getPokemonListMeta(count: number): PageMeta {
   return {
     title: `精灵图鉴 - ${siteConfig.siteName}`,
-    description: `查看 PokeRogue 全部 ${count} 只宝可梦的种族值、特性、技能、进化、出现地区与 Smogon 推荐配招。`,
-    keywords: 'PokeRogue,宝可梦肉鸽,精灵图鉴,种族值,特性,技能,进化',
+    description: `查看 PokeRogue 全部 ${count} 条图鉴记录，覆盖基础精灵与超级、超极巨化等特殊形态的种族值、特性、技能、进化和出现地区。`,
+    keywords: 'PokeRogue,宝可梦肉鸽,精灵图鉴,超级进化,超极巨化,特殊形态,种族值,特性,技能,进化',
   }
 }
 
@@ -57,7 +57,9 @@ export function getPokemonMeta(p: Pokemon): PageMeta {
     .join('/')
   const title = `${p.nameZh} ${p.nameEn} - PokeRogue 精灵图鉴`
   const parts: string[] = [
-    `${p.nameZh}（${p.nameEn}）是${typeZh}属性宝可梦`,
+    p.isForm
+      ? `${p.nameZh}（${p.nameEn}）是${p.baseNameZh}的${p.formNameZh}形态，属性为${typeZh}`
+      : `${p.nameZh}（${p.nameEn}）是${typeZh}属性宝可梦`,
     `全国图鉴编号 #${p.numericId}`,
     p.isFinalEvolution ? '最终形态' : '可进化',
     `种族值总和 ${p.baseTotal}`,

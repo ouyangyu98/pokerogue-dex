@@ -118,6 +118,10 @@ export default function PokemonList() {
     { value: '', label: '最终形态不限' }, { value: 'yes', label: '仅最终形态' }, { value: 'no', label: '排除最终形态' },
   ], [])
 
+  const formFilterOptions = useMemo<SelectOption[]>(() => [
+    { value: '', label: '形态不限' }, { value: 'form', label: '仅特殊形态' }, { value: 'base', label: '仅基础形态' },
+  ], [])
+
   if (loading) return <div className="loading">加载中...</div>
 
   return (
@@ -144,6 +148,7 @@ export default function PokemonList() {
         <SelectFilter value={filters.hasEggMoveFilter} options={eggMoveFilterOptions} onChange={setters.setHasEggMoveFilter} label="蛋招筛选" emptyLabel="蛋招不限" />
         <SelectFilter value={filters.hasHiddenAbilityFilter} options={hiddenAbilityFilterOptions} onChange={setters.setHasHiddenAbilityFilter} label="隐藏特性筛选" emptyLabel="隐藏特性不限" />
         <SelectFilter value={filters.finalEvolutionFilter} options={finalEvolutionFilterOptions} onChange={setters.setFinalEvolutionFilter} label="最终形态筛选" emptyLabel="最终形态不限" />
+        <SelectFilter value={filters.formFilter} options={formFilterOptions} onChange={setters.setFormFilter} label="形态筛选" emptyLabel="形态不限" />
         <input className="range-input" type="number" min="0" placeholder="费用≥" value={filters.costMin} onChange={e => setters.setCostMin(e.target.value)} />
         <input className="range-input" type="number" min="0" placeholder="费用≤" value={filters.costMax} onChange={e => setters.setCostMax(e.target.value)} />
         <input className="range-input" type="number" min="0" placeholder="总和≥" value={filters.totalMin} onChange={e => setters.setTotalMin(e.target.value)} />
@@ -176,6 +181,7 @@ export default function PokemonList() {
             { key: 'egg', label: '蛋招', value: filters.hasEggMoveFilter, display: filters.hasEggMoveFilter === 'yes' ? '有蛋招' : filters.hasEggMoveFilter === 'no' ? '无蛋招' : '', onClear: () => setters.setHasEggMoveFilter('') },
             { key: 'hidden', label: '隐藏特性', value: filters.hasHiddenAbilityFilter, display: filters.hasHiddenAbilityFilter === 'yes' ? '有隐藏特性' : filters.hasHiddenAbilityFilter === 'no' ? '无隐藏特性' : '', onClear: () => setters.setHasHiddenAbilityFilter('') },
             { key: 'final', label: '最终形态', value: filters.finalEvolutionFilter, display: filters.finalEvolutionFilter === 'yes' ? '仅最终形态' : filters.finalEvolutionFilter === 'no' ? '排除最终形态' : '', onClear: () => setters.setFinalEvolutionFilter('') },
+            { key: 'form', label: '形态', value: filters.formFilter, display: filters.formFilter === 'form' ? '仅特殊形态' : filters.formFilter === 'base' ? '仅基础形态' : '', onClear: () => setters.setFormFilter('') },
             { key: 'cost', label: '费用', value: filters.costMin || filters.costMax, display: (filters.costMin || filters.costMax) ? `费用 ${filters.costMin || '0'}~${filters.costMax || '∞'}` : '', onClear: () => { setters.setCostMin(''); setters.setCostMax('') } },
             { key: 'total', label: '总和', value: filters.totalMin || filters.totalMax, display: (filters.totalMin || filters.totalMax) ? `总和 ${filters.totalMin || '0'}~${filters.totalMax || '∞'}` : '', onClear: () => { setters.setTotalMin(''); setters.setTotalMax('') } },
             { key: 'hp', label: 'HP', value: filters.hpMin || filters.hpMax, display: (filters.hpMin || filters.hpMax) ? `HP ${filters.hpMin || '0'}~${filters.hpMax || '∞'}` : '', onClear: () => { setters.setHpMin(''); setters.setHpMax('') } },

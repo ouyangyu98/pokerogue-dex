@@ -82,12 +82,30 @@ export function getPokemonIconFrame(
   generation: number,
   iconAtlases: Record<string, TextureAtlas>,
   fallbackAtlases?: Record<string, TextureAtlas>,
+  formKey?: string,
 ) {
+  const normalizedFormKey = formKey
+    ? `${numericId}-${formKey.toLowerCase().replace(/_/g, '-')}`
+    : null
+  const formFrameNames = normalizedFormKey
+    ? [
+        normalizedFormKey,
+        ...(normalizedFormKey === '718-10-pc' ? ['718-10'] : []),
+        ...(normalizedFormKey === '718-10-complete' ? ['718-complete'] : []),
+      ]
+    : []
+  const findFrame = (atlas: TextureAtlas) => {
+    for (const frameName of formFrameNames) {
+      if (atlas.frames[frameName]) return atlas.frames[frameName]
+    }
+    return atlas.frames[String(numericId)]
+      || Object.entries(atlas.frames).find(([key]) => key.startsWith(`${numericId}-`))?.[1]
+  }
+
   // Primary: look in the Pokémon's own generation atlas
   const primaryAtlas = iconAtlases[getPokemonIconAtlasKey(generation)]
   if (primaryAtlas) {
-    const frame = primaryAtlas.frames[String(numericId)]
-      || Object.entries(primaryAtlas.frames).find(([key]) => key.startsWith(`${numericId}-`))?.[1]
+    const frame = findFrame(primaryAtlas)
     if (frame) return { atlas: primaryAtlas, frame }
   }
 
@@ -96,8 +114,7 @@ export function getPokemonIconFrame(
   // their gen's icon set but may exist in another.
   for (const [key, atlas] of Object.entries(iconAtlases)) {
     if (key === getPokemonIconAtlasKey(generation)) continue
-    const frame = atlas.frames[String(numericId)]
-      || Object.entries(atlas.frames).find(([frameKey]) => frameKey.startsWith(`${numericId}-`))?.[1]
+    const frame = findFrame(atlas)
     if (frame) return { atlas, frame }
   }
 

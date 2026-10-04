@@ -11,9 +11,11 @@ export default function PokemonListPage() {
   const meta = getPokemonListMeta(count)
 
   useEffect(() => {
-    fetch('/data/pokemon.json')
-      .then(r => r.json())
-      .then((data: Pokemon[]) => setCount(data.length))
+    Promise.all([
+      fetch('/data/pokemon.json').then(r => r.json()),
+      fetch('/data/pokemon-forms.json').then(r => r.json()),
+    ])
+      .then(([pokemonData, formData]: [Pokemon[], Pokemon[]]) => setCount(pokemonData.length + formData.length))
       .catch(() => {})
   }, [])
 

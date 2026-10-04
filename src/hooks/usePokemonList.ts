@@ -4,7 +4,7 @@ import type { Pokemon } from '../types'
 import { rarityOrder, inRange } from '../utils/pokemon'
 
 const FILTER_STORAGE_KEY = 'pokerogue-dex-filters'
-const DATA_CACHE_KEY = 'pokerogue-dex-data-cache'
+const DATA_CACHE_KEY = 'pokerogue-dex-data-cache-v2'
 const DATA_CACHE_TTL_MS = 1000 * 60 * 60 * 24 // 24小时
 
 export interface PokemonListFilters {
@@ -19,6 +19,7 @@ export interface PokemonListFilters {
   hasEggMoveFilter: string
   hasHiddenAbilityFilter: string
   finalEvolutionFilter: string
+  formFilter: string
   costMin: string
   costMax: string
   totalMin: string
@@ -54,6 +55,7 @@ export interface UsePokemonListResult {
     setHasEggMoveFilter: (v: string) => void
     setHasHiddenAbilityFilter: (v: string) => void
     setFinalEvolutionFilter: (v: string) => void
+    setFormFilter: (v: string) => void
     setCostMin: (v: string) => void
     setCostMax: (v: string) => void
     setTotalMin: (v: string) => void
@@ -111,6 +113,7 @@ export function usePokemonList(): UsePokemonListResult {
   const [hasEggMoveFilter, setHasEggMoveFilter] = useState('')
   const [hasHiddenAbilityFilter, setHasHiddenAbilityFilter] = useState('')
   const [finalEvolutionFilter, setFinalEvolutionFilter] = useState('')
+  const [formFilter, setFormFilter] = useState('')
   const [costMin, setCostMin] = useState('')
   const [costMax, setCostMax] = useState('')
   const [totalMin, setTotalMin] = useState('')
@@ -147,6 +150,7 @@ export function usePokemonList(): UsePokemonListResult {
         if (parsed.hasEggMoveFilter !== undefined) setHasEggMoveFilter(parsed.hasEggMoveFilter)
         if (parsed.hasHiddenAbilityFilter !== undefined) setHasHiddenAbilityFilter(parsed.hasHiddenAbilityFilter)
         if (parsed.finalEvolutionFilter !== undefined) setFinalEvolutionFilter(parsed.finalEvolutionFilter)
+        if (parsed.formFilter !== undefined) setFormFilter(parsed.formFilter)
         if (parsed.costMin !== undefined) setCostMin(parsed.costMin)
         if (parsed.costMax !== undefined) setCostMax(parsed.costMax)
         if (parsed.totalMin !== undefined) setTotalMin(parsed.totalMin)
@@ -175,25 +179,31 @@ export function usePokemonList(): UsePokemonListResult {
     const state = {
       search, typeFilter, genFilter, biomeFilter, rarityFilter, abilityFilter, moveFilter,
       hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter,
+      formFilter,
       costMin, costMax, totalMin, totalMax,
       hpMin, hpMax, atkMin, atkMax, defMin, defMax,
       spatkMin, spatkMax, spdefMin, spdefMax, spdMin, spdMax,
       sortBy, sortDesc,
     }
     localStorage.setItem(FILTER_STORAGE_KEY, JSON.stringify(state))
-  }, [search, typeFilter, genFilter, biomeFilter, rarityFilter, abilityFilter, moveFilter, hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter, costMin, costMax, totalMin, totalMax, hpMin, hpMax, atkMin, atkMax, defMin, defMax, spatkMin, spatkMax, spdefMin, spdefMax, spdMin, spdMax, sortBy, sortDesc])
+  }, [search, typeFilter, genFilter, biomeFilter, rarityFilter, abilityFilter, moveFilter, hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter, formFilter, costMin, costMax, totalMin, totalMax, hpMin, hpMax, atkMin, atkMax, defMin, defMax, spatkMin, spatkMax, spdefMin, spdefMax, spdMin, spdMax, sortBy, sortDesc])
 
   // 数据加载
   useEffect(() => {
     async function loadData() {
       try {
+        const loadPokemonEntries = () => Promise.all([
+          fetch('/data/pokemon.json').then(r => r.json()),
+          fetch('/data/pokemon-forms.json').then(r => r.json()),
+        ]).then(([pokemonData, formData]: [Pokemon[], Pokemon[]]) => [...pokemonData, ...formData])
+
         const cachedRaw = localStorage.getItem(DATA_CACHE_KEY)
         if (cachedRaw) {
           const cached = JSON.parse(cachedRaw)
           if (cached.timestamp && Date.now() - cached.timestamp < DATA_CACHE_TTL_MS) {
             setPokemons(cached.pokemons)
             setLoading(false)
-            fetch('/data/pokemon.json').then(r => r.json()).then((pokemonData: Pokemon[]) => {
+            loadPokemonEntries().then(pokemonData => {
               setPokemons(pokemonData)
               localStorage.setItem(DATA_CACHE_KEY, JSON.stringify({
                 pokemons: pokemonData,
@@ -205,7 +215,7 @@ export function usePokemonList(): UsePokemonListResult {
           }
         }
 
-        const pokemonData = await fetch('/data/pokemon.json').then(r => r.json())
+        const pokemonData = await loadPokemonEntries()
         setPokemons(pokemonData)
         localStorage.setItem(DATA_CACHE_KEY, JSON.stringify({
           pokemons: pokemonData,
@@ -258,6 +268,8 @@ export function usePokemonList(): UsePokemonListResult {
       const isFinalEvolution = p.isFinalEvolution ?? (p.evolutions || []).length === 0
       const matchFinalEvolution = !finalEvolutionFilter
         || (finalEvolutionFilter === 'yes' ? isFinalEvolution : !isFinalEvolution)
+      const matchForm = !formFilter
+        || (formFilter === 'form' ? Boolean(p.isForm) : !p.isForm)
       const matchCost = inRange(p.starterCost ?? -1, costMin, costMax)
       const matchTotal = inRange(p.baseTotal, totalMin, totalMax)
       const matchHp = inRange(p.baseHp, hpMin, hpMax)
@@ -268,6 +280,7 @@ export function usePokemonList(): UsePokemonListResult {
       const matchSpd = inRange(p.baseSpd, spdMin, spdMax)
       return matchSearch && matchType && matchGen && matchBiome && matchRarity
         && matchAbility && matchMove && matchPassive && matchEggMoves && matchHiddenAbility && matchFinalEvolution
+        && matchForm
         && matchCost && matchTotal && matchHp && matchAtk && matchDef
         && matchSpatk && matchSpdef && matchSpd
     })
@@ -284,11 +297,14 @@ export function usePokemonList(): UsePokemonListResult {
       let vb: string | number = typeof valueB === 'number' ? valueB : String(valueB ?? '').toLowerCase()
       if (va < vb) return sortDesc ? 1 : -1
       if (va > vb) return sortDesc ? -1 : 1
-      return 0
+      if (a.numericId === b.numericId) {
+        return (a.formIndex || 0) - (b.formIndex || 0)
+      }
+      return a.id.localeCompare(b.id)
     })
 
     return result
-  }, [pokemons, search, typeFilter, genFilter, biomeFilter, rarityFilter, abilityFilter, moveFilter, hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter, costMin, costMax, totalMin, totalMax, hpMin, hpMax, atkMin, atkMax, defMin, defMax, spatkMin, spatkMax, spdefMin, spdefMax, spdMin, spdMax, sortBy, sortDesc])
+  }, [pokemons, search, typeFilter, genFilter, biomeFilter, rarityFilter, abilityFilter, moveFilter, hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter, formFilter, costMin, costMax, totalMin, totalMax, hpMin, hpMax, atkMin, atkMax, defMin, defMax, spatkMin, spatkMax, spdefMin, spdefMax, spdMin, spdMax, sortBy, sortDesc])
 
   const allTypes = useMemo(() => {
     const types = new Set<string>()
@@ -397,6 +413,7 @@ export function usePokemonList(): UsePokemonListResult {
     setHasEggMoveFilter('')
     setHasHiddenAbilityFilter('')
     setFinalEvolutionFilter('')
+    setFormFilter('')
     setCostMin('')
     setCostMax('')
     setTotalMin('')
@@ -421,14 +438,14 @@ export function usePokemonList(): UsePokemonListResult {
     filtered,
     filters: {
       search, typeFilter, genFilter, biomeFilter, rarityFilter, abilityFilter, moveFilter,
-      hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter,
+      hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter, formFilter,
       costMin, costMax, totalMin, totalMax,
       hpMin, hpMax, atkMin, atkMax, defMin, defMax,
       spatkMin, spatkMax, spdefMin, spdefMax, spdMin, spdMax,
     },
     setters: {
       setSearch, setTypeFilter, setGenFilter, setBiomeFilter, setRarityFilter, setAbilityFilter, setMoveFilter,
-      setHasPassiveFilter, setHasEggMoveFilter, setHasHiddenAbilityFilter, setFinalEvolutionFilter,
+      setHasPassiveFilter, setHasEggMoveFilter, setHasHiddenAbilityFilter, setFinalEvolutionFilter, setFormFilter,
       setCostMin, setCostMax, setTotalMin, setTotalMax,
       setHpMin, setHpMax, setAtkMin, setAtkMax, setDefMin, setDefMax,
       setSpatkMin, setSpatkMax, setSpdefMin, setSpdefMax, setSpdMin, setSpdMax,

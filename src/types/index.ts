@@ -152,6 +152,12 @@ export interface Pokemon {
   catchRate: number
   catchProbability: number
   smogonSets?: SmogonSet[]
+  baseId?: string
+  baseNameZh?: string
+  isForm?: boolean
+  formIndex?: number
+  formKey?: string
+  formNameZh?: string
 }
 
 export interface SmogonSet {

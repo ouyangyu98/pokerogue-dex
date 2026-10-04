@@ -73,13 +73,15 @@ async function main() {
     console.warn('index.html missing <!-- SEO_INJECT --> placeholder, appending meta after <title>')
   }
 
-  const [pokemons, biomes, items, nameMaps, mysteryEncounters] = await Promise.all([
+  const [pokemons, pokemonForms, biomes, items, nameMaps, mysteryEncounters] = await Promise.all([
     readJson('pokemon.json'),
+    readJson('pokemon-forms.json'),
     readJson('biomes.json'),
     readJson('items.json'),
     readJson('name-maps.json'),
     readJson('mystery-encounters.json'),
   ])
+  const pokemonEntries = [...pokemons, ...pokemonForms]
 
   const moveMap = nameMaps.move || {}
   const abilityMap = nameMaps.ability || {}
@@ -90,7 +92,7 @@ async function main() {
   const urls = []
   const staticPaths = [
     { path: '/', title: 'PokeRogue 中文图鉴 - 宝可梦肉鸽数据查询工具', description: 'PokeRogue 中文图鉴提供宝可梦肉鸽（PokeRogue）全精灵、地区、道具、招式、特性、性格、属性克制的详细数据查询，支持配队分析与 Smogon 推荐配招。', keywords: 'PokeRogue,宝可梦肉鸽,图鉴,精灵图鉴,道具,招式,特性,性格,属性克制,配队,Smogon' },
-    { path: '/pokemon', title: `精灵图鉴 - PokeRogue 中文图鉴`, description: `查看 PokeRogue 全部 ${pokemons.length} 只宝可梦的种族值、特性、技能、进化、出现地区与 Smogon 推荐配招。`, keywords: 'PokeRogue,宝可梦肉鸽,精灵图鉴,种族值,特性,技能,进化' },
+    { path: '/pokemon', title: `精灵图鉴 - PokeRogue 中文图鉴`, description: `查看 PokeRogue 全部 ${pokemonEntries.length} 条图鉴记录，覆盖基础精灵与超级、超极巨化等特殊形态的种族值、特性、技能、进化与出现地区。`, keywords: 'PokeRogue,宝可梦肉鸽,精灵图鉴,超级进化,超极巨化,特殊形态,种族值,特性,技能,进化' },
     { path: '/biomes', title: `地区查询 - PokeRogue 中文图鉴`, description: `查询 PokeRogue 全部 ${biomes.length} 个生态区的遭遇精灵、稀有度、时间段与连接地区。`, keywords: 'PokeRogue,宝可梦肉鸽,地区,生态区,遭遇,刷新点' },
     { path: '/items', title: `道具清单 - PokeRogue 中文图鉴`, description: `查看 PokeRogue 全部 ${items.length} 个商店道具的效果说明、稀有度与图标。`, keywords: 'PokeRogue,宝可梦肉鸽,道具,商店道具,效果' },
     { path: '/moves', title: `招式查询 - PokeRogue 中文图鉴`, description: `查询 PokeRogue 全部 ${Object.keys(moveMap).length} 个招式的属性、分类、威力、命中与效果。`, keywords: 'PokeRogue,宝可梦肉鸽,招式,技能,效果' },
@@ -122,17 +124,18 @@ async function main() {
   }
 
   // Pokemon detail pages
-  for (const p of pokemons) {
+  for (const p of pokemonEntries) {
     const typeZh = [p.type1, p.type2].filter(Boolean).map(t => typeMap[t] || t).join('/')
     const title = `${p.nameZh} ${p.nameEn} - PokeRogue 精灵图鉴`
-    const description = `${p.nameZh}（${p.nameEn}）是${typeZh}属性宝可梦，全国图鉴编号 #${p.numericId}，种族值总和 ${p.baseTotal}。查看详细技能、特性、被动、进化链与配队建议。`
-    const keywords = `PokeRogue,宝可梦肉鸽,${p.nameZh},${p.nameEn},${typeZh},图鉴,种族值,技能,特性`
+    const formDescription = p.isForm ? `是${p.baseNameZh}的${p.formNameZh}形态，` : '是'
+    const description = `${p.nameZh}（${p.nameEn}）${formDescription}${typeZh}属性宝可梦，全国图鉴编号 #${p.numericId}，种族值总和 ${p.baseTotal}。查看详细技能、特性、被动、进化链与形态切换。`
+    const keywords = `PokeRogue,宝可梦肉鸽,${p.nameZh},${p.nameEn},${p.formNameZh || ''},${typeZh},图鉴,特殊形态,种族值,技能,特性`
     const jsonLd = [
       {
         '@context': 'https://schema.org',
         '@type': 'VideoGameCharacter',
         name: `${p.nameZh} ${p.nameEn}`,
-        description: `${p.nameZh}（${p.nameEn}）是${typeZh}属性宝可梦，全国图鉴编号 #${p.numericId}，种族值总和 ${p.baseTotal}。`,
+        description: `${p.nameZh}（${p.nameEn}）${formDescription}${typeZh}属性宝可梦，全国图鉴编号 #${p.numericId}，种族值总和 ${p.baseTotal}。`,
         identifier: p.id,
         url: `${SITE_URL}/pokemon/${p.id}`,
       },
