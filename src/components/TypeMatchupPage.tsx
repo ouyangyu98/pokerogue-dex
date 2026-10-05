@@ -118,8 +118,8 @@ function renderBucketGroup(
 export default function TypeMatchupPage() {
   const [perspective, setPerspective] = useState<Perspective>('attack')
   const [selectedType, setSelectedType] = useState<MatchupTypeKey | null>(null)
-  const [comboType1, setComboType1] = useState<MatchupTypeKey>('WATER')
-  const [comboType2, setComboType2] = useState<MatchupTypeKey>('GROUND')
+  const [pokemonType1, setPokemonType1] = useState<MatchupTypeKey>('WATER')
+  const [pokemonType2, setPokemonType2] = useState<MatchupTypeKey | null>('GROUND')
   const [coverageTypes, setCoverageTypes] = useState<MatchupTypeKey[]>(['FIRE', 'WATER', 'GRASS'])
   const rows = useMemo(() => buildSingleTypeMatchupRows(), [])
 
@@ -129,13 +129,15 @@ export default function TypeMatchupPage() {
   )
 
   const combinedBuckets = useMemo(
-    () => getCombinedDefenseBuckets(comboType1, comboType2),
-    [comboType1, comboType2],
+    () => getCombinedDefenseBuckets(pokemonType1, pokemonType2),
+    [pokemonType1, pokemonType2],
   )
 
   const activePreset = useMemo(
-    () => COMMON_TYPE_COMBOS.find(combo => isSameCombo(comboType1, comboType2, combo.type1, combo.type2)) || null,
-    [comboType1, comboType2],
+    () => pokemonType2
+      ? COMMON_TYPE_COMBOS.find(combo => isSameCombo(pokemonType1, pokemonType2, combo.type1, combo.type2)) || null
+      : null,
+    [pokemonType1, pokemonType2],
   )
 
   const coverageResults = useMemo(
@@ -154,6 +156,7 @@ export default function TypeMatchupPage() {
   }
 
   const toggleCoverageType = (type: MatchupTypeKey) => {
+    if (!coverageTypes.includes(type) && coverageTypes.length >= 4) return
     setCoverageTypes(current => (
       current.includes(type)
         ? current.filter(currentType => currentType !== type)
@@ -162,15 +165,15 @@ export default function TypeMatchupPage() {
   }
 
   const handlePresetSelect = (type1: MatchupTypeKey, type2: MatchupTypeKey) => {
-    setComboType1(type1)
-    setComboType2(type2)
+    setPokemonType1(type1)
+    setPokemonType2(type2)
   }
 
   return (
     <div className="type-overview-page">
       <div className="type-overview-header">
         <h2>属性克制关系</h2>
-        <p>支持多属性打击面、双属性防御组合，以及 18 种属性的攻击 / 防御关系总览。</p>
+        <p>模拟精灵属性与配招属性的组合效果，并查看 18 种属性的攻击 / 防御关系总览。</p>
       </div>
 
       <div className="type-overview-summary">
@@ -180,47 +183,109 @@ export default function TypeMatchupPage() {
         </div>
         <div className="type-overview-summary-item">
           <span className="type-overview-summary-label">当前范围</span>
-          <span className="type-overview-summary-value">已支持多属性打击面 + 双属性防御组合倍率分析</span>
+          <span className="type-overview-summary-value">精灵单 / 双属性 + 最多 4 种招式属性覆盖分析</span>
         </div>
       </div>
 
-      <div className="type-combo-section">
-        <div className="type-combo-header">
+      <section className="type-analysis-section" aria-labelledby="type-analysis-heading">
+        <div className="type-analysis-header">
           <div>
-            <span className="type-overview-summary-label">双属性组合分析</span>
-            <h3>{typeNames[comboType1]} + {typeNames[comboType2]}</h3>
+            <span className="type-overview-summary-label">属性配置与配招分析</span>
+            <h3 id="type-analysis-heading">
+              {typeNames[pokemonType1]}{pokemonType2 ? ` + ${typeNames[pokemonType2]}` : ''} 的攻守覆盖
+            </h3>
           </div>
-          <p>查看双属性组合在防御端的 4 倍、2 倍、1/2、1/4 与免疫分组。</p>
+          <p>左侧配置精灵属性与招式属性，下面同步查看防守弱点和进攻打击面。</p>
         </div>
 
-        <div className="type-combo-controls">
-          <div className="type-combo-select-group">
-            <label>属性 1</label>
-            <select value={comboType1} onChange={e => setComboType1(e.target.value as MatchupTypeKey)}>
-              {rows.map(row => (
-                <option key={`combo-type1-${row.type}`} value={row.type}>{row.nameZh}</option>
-              ))}
-            </select>
+        <div className="type-analysis-config">
+          <div className="type-analysis-config-block">
+            <div className="type-analysis-block-heading">
+              <div>
+                <h4>精灵属性</h4>
+                <p>用于计算这只精灵的防守端倍率</p>
+              </div>
+              <span className="type-analysis-slot-count">{pokemonType2 ? '双属性' : '单属性'}</span>
+            </div>
+            <div className="type-analysis-selects">
+              <label className="type-combo-select-group">
+                <span>属性 1</span>
+                <select value={pokemonType1} onChange={e => {
+                  const nextType = e.target.value as MatchupTypeKey
+                  setPokemonType1(nextType)
+                  if (pokemonType2 === nextType) setPokemonType2(null)
+                }}>
+                  {rows.map(row => (
+                    <option key={`pokemon-type1-${row.type}`} value={row.type}>{row.nameZh}</option>
+                  ))}
+                </select>
+              </label>
+              <span className="type-analysis-plus">+</span>
+              <label className="type-combo-select-group">
+                <span>属性 2（可选）</span>
+                <select value={pokemonType2 || ''} onChange={e => setPokemonType2((e.target.value || null) as MatchupTypeKey | null)}>
+                  <option value="">不选择</option>
+                  {rows.map(row => (
+                    <option key={`pokemon-type2-${row.type}`} value={row.type} disabled={row.type === pokemonType1}>
+                      {row.nameZh}{row.type === pokemonType1 ? '（与属性 1 相同）' : ''}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
           </div>
-          <div className="type-combo-plus">+</div>
-          <div className="type-combo-select-group">
-            <label>属性 2</label>
-            <select value={comboType2} onChange={e => setComboType2(e.target.value as MatchupTypeKey)}>
-              {rows.map(row => (
-                <option key={`combo-type2-${row.type}`} value={row.type}>{row.nameZh}</option>
-              ))}
-            </select>
+
+          <div className="type-analysis-config-block type-analysis-moves-block">
+            <div className="type-analysis-block-heading">
+              <div>
+                <h4>招式属性</h4>
+                <p>最多选择 4 种不同属性，支持只配置一部分</p>
+              </div>
+              <span className="type-analysis-slot-count">{coverageTypes.length} / 4</span>
+            </div>
+            <div className="type-analysis-move-list">
+              {MATCHUP_TYPE_ORDER.map(type => {
+                const isSelected = coverageTypes.includes(type)
+                const isDisabled = !isSelected && coverageTypes.length >= 4
+                return (
+                  <button
+                    key={type}
+                    type="button"
+                    className={`type-analysis-move-button ${isSelected ? 'is-selected' : ''}`}
+                    onClick={() => toggleCoverageType(type)}
+                    aria-pressed={isSelected}
+                    disabled={isDisabled}
+                    title={`${isSelected ? '移除' : '加入'}${typeNames[type]}招式属性`}
+                  >
+                    {renderTypeBadge(type, isSelected)}
+                  </button>
+                )
+              })}
+            </div>
+            <div className="type-analysis-move-footer">
+              <span>{coverageTypes.length > 0 ? `已配置 ${coverageTypes.length} 种招式属性` : '尚未配置招式属性'}</span>
+              <button
+                type="button"
+                className="type-coverage-clear-btn"
+                onClick={() => setCoverageTypes([])}
+                disabled={coverageTypes.length === 0}
+              >
+                清空招式
+              </button>
+            </div>
           </div>
         </div>
 
-        <div className="type-combo-presets">
-          <div className="type-combo-presets-header">
-            <span className="type-overview-summary-label">常用组合</span>
-            <span className="type-combo-presets-hint">一键切换到常见联防 / 输出组合</span>
+        <div className="type-analysis-presets">
+          <div className="type-analysis-presets-heading">
+            <span className="type-overview-summary-label">常用精灵属性组合</span>
+            <span>一键填充防守端属性</span>
           </div>
-          <div className="type-combo-preset-list">
+          <div className="type-analysis-preset-list">
             {COMMON_TYPE_COMBOS.map(combo => {
-              const isActive = isSameCombo(comboType1, comboType2, combo.type1, combo.type2)
+              const isActive = pokemonType2
+                ? isSameCombo(pokemonType1, pokemonType2, combo.type1, combo.type2)
+                : false
               return (
                 <button
                   key={combo.label}
@@ -242,69 +307,35 @@ export default function TypeMatchupPage() {
           )}
         </div>
 
-        <div className="type-combo-grid">
-          {renderBucketGroup('4倍弱点', combinedBuckets.quadWeak, selectedType, handleTypeSelect)}
-          {renderBucketGroup('2倍弱点', combinedBuckets.weak, selectedType, handleTypeSelect)}
-          {renderBucketGroup('1/2抗性', combinedBuckets.resist, selectedType, handleTypeSelect)}
-          {renderBucketGroup('1/4抗性', combinedBuckets.doubleResist, selectedType, handleTypeSelect)}
-          {renderBucketGroup('免疫', combinedBuckets.immune, selectedType, handleTypeSelect)}
-        </div>
-      </div>
-
-      <section className="type-coverage-section" aria-labelledby="type-coverage-heading">
-        <div className="type-coverage-header">
-          <div>
-            <span className="type-overview-summary-label">多属性打击面</span>
-            <h3 id="type-coverage-heading">选择攻击属性，查看当前可克制的属性</h3>
-            <p>适合按队伍或配招组合查看基础属性覆盖；结果以单属性防御为准。</p>
-          </div>
-          <div className="type-coverage-count" aria-label={`当前覆盖 ${coveredTypes.length} 种属性`}>
-            <strong>{coveredTypes.length}</strong>
-            <span>/ {MATCHUP_TYPE_ORDER.length} 种已覆盖</span>
-          </div>
-        </div>
-
-        <div className="type-coverage-layout">
-          <div className="type-coverage-selector">
-            <div className="type-coverage-subhead">
+        <div className="type-analysis-results">
+          <div className="type-analysis-defense">
+            <div className="type-analysis-result-header">
               <div>
-                <h4>攻击属性</h4>
-                <p>可同时选择多种属性</p>
+                <span className="type-overview-summary-label">防守端</span>
+                <h4>{typeNames[pokemonType1]}{pokemonType2 ? ` + ${typeNames[pokemonType2]}` : ''} 的属性弱点与抗性</h4>
               </div>
-              <button
-                type="button"
-                className="type-coverage-clear-btn"
-                onClick={() => setCoverageTypes([])}
-                disabled={coverageTypes.length === 0}
-              >
-                清空
-              </button>
+              <span className="type-analysis-result-note">按防守倍率计算</span>
             </div>
-            <div className="type-coverage-type-list">
-              {MATCHUP_TYPE_ORDER.map(type => {
-                const isSelected = coverageTypes.includes(type)
-                return (
-                  <button
-                    key={type}
-                    type="button"
-                    className={`type-coverage-type-button ${isSelected ? 'is-selected' : ''}`}
-                    onClick={() => toggleCoverageType(type)}
-                    aria-pressed={isSelected}
-                    title={`${isSelected ? '移除' : '加入'}${typeNames[type]}`}
-                  >
-                    {renderTypeBadge(type, isSelected)}
-                  </button>
-                )
-              })}
+            <div className="type-analysis-defense-grid">
+              {renderBucketGroup('4倍弱点', combinedBuckets.quadWeak, selectedType, handleTypeSelect)}
+              {renderBucketGroup('2倍弱点', combinedBuckets.weak, selectedType, handleTypeSelect)}
+              {renderBucketGroup('1/2抗性', combinedBuckets.resist, selectedType, handleTypeSelect)}
+              {renderBucketGroup('1/4抗性', combinedBuckets.doubleResist, selectedType, handleTypeSelect)}
+              {renderBucketGroup('免疫', combinedBuckets.immune, selectedType, handleTypeSelect)}
             </div>
-            <p className="type-coverage-selection-summary">
-              {coverageTypes.length > 0
-                ? `已选 ${coverageTypes.length} 种攻击属性`
-                : '至少选择一种攻击属性以查看覆盖结果'}
-            </p>
           </div>
 
-          <div className="type-coverage-results">
+          <div className="type-analysis-offense">
+            <div className="type-analysis-result-header">
+              <div>
+                <span className="type-overview-summary-label">进攻端</span>
+                <h4>招式打击面</h4>
+              </div>
+              <div className="type-coverage-count" aria-label={`当前覆盖 ${coveredTypes.length} 种属性`}>
+                <strong>{coveredTypes.length}</strong>
+                <span>/ {MATCHUP_TYPE_ORDER.length} 种已覆盖</span>
+              </div>
+            </div>
             {coverageTypes.length > 0 ? (
               <>
                 <div className="type-coverage-result-group">
@@ -316,12 +347,11 @@ export default function TypeMatchupPage() {
                     {coveredTypes.map(item => (
                       <div key={item.type} className="type-coverage-result-row">
                         {renderTypeBadge(item.type)}
-                        <span>由 {item.effectiveAttackers.map(type => typeNames[type]).join('、')} 克制</span>
+                        <span>由 {item.effectiveAttackers.map(type => typeNames[type]).join('、')} 招式克制</span>
                       </div>
                     ))}
                   </div>
                 </div>
-
                 <div className="type-coverage-result-group type-coverage-uncovered-group">
                   <div className="type-coverage-result-title">
                     <h4>尚未覆盖</h4>
@@ -334,7 +364,7 @@ export default function TypeMatchupPage() {
               </>
             ) : (
               <div className="type-coverage-empty">
-                选择攻击属性后，会显示可克制的防御属性和对应来源。
+                还没有配置招式属性；可从上方选择 1 至 4 种招式属性。
               </div>
             )}
           </div>
@@ -484,7 +514,7 @@ export default function TypeMatchupPage() {
           <h3>说明</h3>
           <ul>
             <li>该页面用于全属性总览，不替代精灵详情页中的个体克制摘要。</li>
-            <li>当前已支持多属性打击面、双属性防御组合分析与常用组合快捷切换；商店道具已改为顶部独立导航入口。</li>
+            <li>属性配置分析支持单属性、双属性和最多 4 种招式属性；相同属性不会重复计算。</li>
           </ul>
         </div>
       </div>
