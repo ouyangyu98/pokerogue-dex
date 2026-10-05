@@ -164,10 +164,14 @@ export default function TeamBuilderPage() {
               ? <span>继续补充 {6 - filledCount} 名精灵，能更完整地判断共同弱点与职能缺口。</span>
               : <span>队伍已满，可优先根据下方缺口建议调整成员或形态。</span>}
           </div>
+          <DefenseOverview
+            defense={analysis.defense}
+            details={analysis.pokemonDetails}
+            profiles={analysis.defenseProfiles}
+          />
           <GapSuggestions gaps={analysis.gaps} />
           <div className="analysis-grid">
             <CoverageAnalysis coverage={analysis.coverage} />
-            <DefenseOverview defense={analysis.defense} />
             <RoleDistribution roles={analysis.roles} />
           </div>
           <TeamDataTable details={analysis.pokemonDetails} />

@@ -33,7 +33,7 @@ export default function TeamDataTable({ details }: TeamDataTableProps) {
                 <tr key={slotIndex}>
                   <td className="team-table-name">
                     <div>{pokemon.nameZh}</div>
-                    {form.formNameZh && form.formNameZh !== pokemon.nameZh && (
+                    {form.formIndex > 0 && form.formNameZh && form.formNameZh !== pokemon.nameZh && (
                       <div className="team-table-form">{form.formNameZh}</div>
                     )}
                   </td>

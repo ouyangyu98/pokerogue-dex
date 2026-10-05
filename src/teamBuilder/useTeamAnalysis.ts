@@ -4,6 +4,8 @@ import type { TeamSlot, TeamPokemonDetail, TeamAnalysisResult } from './types'
 import {
   getTeamCoverage,
   getTeamDefenseMatrix,
+  getTeamPokemonForm,
+  getPokemonDefenseProfile,
   getTeamRoleDistribution,
   generateGapSuggestions,
 } from './teamUtils'
@@ -21,8 +23,7 @@ export function useTeamAnalysis(
       if (!slot) continue
       const pokemon = pokemonMap.get(slot.speciesId)
       if (!pokemon) continue
-      const form = pokemon.forms[slot.formIndex] ?? pokemon.forms[0]
-      if (!form) continue
+      const form = getTeamPokemonForm(pokemon, slot.formIndex)
       details.push({ pokemon, form, slotIndex: i })
     }
 
@@ -30,12 +31,14 @@ export function useTeamAnalysis(
 
     const coverage = getTeamCoverage(details)
     const defense = getTeamDefenseMatrix(details)
+    const defenseProfiles = details.map(getPokemonDefenseProfile)
     const roles = getTeamRoleDistribution(details)
     const gaps = generateGapSuggestions(details, coverage, defense, roles)
 
     return {
       coverage,
       defense,
+      defenseProfiles,
       roles,
       gaps,
       pokemonDetails: details,

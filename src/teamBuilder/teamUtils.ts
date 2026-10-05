@@ -14,11 +14,36 @@ import type {
   CoverageResult,
   DefenseResult,
   DefenseStat,
+  PokemonDefenseProfile,
   RoleResult,
   PokemonRole,
   TeamPokemonDetail,
 } from './types'
 import type { Pokemon, PokemonFormEntry } from '../types'
+
+export function getTeamPokemonForm(
+  pokemon: Pokemon,
+  formIndex: number,
+): PokemonFormEntry {
+  return pokemon.forms[formIndex] ?? pokemon.forms[0] ?? {
+    formIndex: 0,
+    formKey: '',
+    formNameZh: '',
+    type1: pokemon.type1,
+    type2: pokemon.type2,
+    ability1: pokemon.ability1,
+    ability2: pokemon.ability2,
+    abilityHidden: pokemon.abilityHidden,
+    passive: pokemon.passive,
+    baseTotal: pokemon.baseTotal,
+    baseHp: pokemon.baseHp,
+    baseAtk: pokemon.baseAtk,
+    baseDef: pokemon.baseDef,
+    baseSpatk: pokemon.baseSpatk,
+    baseSpdef: pokemon.baseSpdef,
+    baseSpd: pokemon.baseSpd,
+  }
+}
 
 // ========== 属性覆盖分析 ==========
 
@@ -103,6 +128,42 @@ export function getTeamDefenseMatrix(team: TeamPokemonDetail[]): DefenseResult {
   const dangerousTypes = stats.filter(s => s.weakCount >= dangerThreshold)
 
   return { stats, dangerousTypes, dangerThreshold }
+}
+
+export function getPokemonDefenseProfile(
+  detail: TeamPokemonDetail,
+): PokemonDefenseProfile {
+  const quadWeak: string[] = []
+  const weak: string[] = []
+  const resist: string[] = []
+  const doubleResist: string[] = []
+  const immune: string[] = []
+  const multipliers: Record<string, number> = {}
+  const defenseTypes = [detail.form.type1, detail.form.type2].filter(Boolean) as string[]
+
+  for (const attackType of MATCHUP_TYPE_ORDER) {
+    const multiplier = defenseTypes.reduce(
+      (acc, defendType) => acc * getSingleTypeMultiplier(attackType, defendType),
+      1,
+    )
+    multipliers[attackType] = multiplier
+
+    if (multiplier === 0) immune.push(attackType)
+    else if (multiplier >= 4) quadWeak.push(attackType)
+    else if (multiplier > 1) weak.push(attackType)
+    else if (multiplier <= 0.25) doubleResist.push(attackType)
+    else if (multiplier < 1) resist.push(attackType)
+  }
+
+  return {
+    slotIndex: detail.slotIndex,
+    quadWeak,
+    weak,
+    resist,
+    doubleResist,
+    immune,
+    multipliers,
+  }
 }
 
 // ========== 职能分布 ==========
@@ -191,7 +252,7 @@ export function generateGapSuggestions(
   // 1. 共同弱点预警
   if (defense.dangerousTypes.length > 0) {
     const types = defense.dangerousTypes.map(t => t.nameZh).join('、')
-    suggestions.push(`危险：队伍中有 3 只以上精灵共同弱 ${types}，建议补充对应抗性。`)
+    suggestions.push(`危险：队伍中有 ${defense.dangerThreshold} 只以上精灵共同弱 ${types}，建议补充对应抗性。`)
   }
 
   // 2. 属性盲区

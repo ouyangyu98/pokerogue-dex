@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { Pokemon } from '../types'
 import type { TextureAtlas } from '../utils/atlas'
 import type { TeamSlot } from './types'
+import { getTeamPokemonForm } from './teamUtils'
 import { renderTypeBadge } from '../utils/render'
 import {
   getPokemonIconFrame,
@@ -60,7 +61,7 @@ export default function TeamSlots({
       <div className="team-slots">
         {slots.map((slot, index) => {
           const pokemon = slot ? pokemonMap.get(slot.speciesId) : null
-          const form = pokemon ? (pokemon.forms[slot!.formIndex] ?? pokemon.forms[0]) : null
+          const form = pokemon ? getTeamPokemonForm(pokemon, slot!.formIndex) : null
 
           const { atlas, frame } = pokemon
             ? getPokemonIconFrame(pokemon.numericId, pokemon.generation, iconAtlases)
@@ -118,8 +119,8 @@ export default function TeamSlots({
                 </div>
                 <div className="slot-name">{pokemon.nameZh}</div>
                 <div className="slot-types">
-                  {renderTypeBadge(form?.type1 ?? pokemon.type1)}
-                  {renderTypeBadge(form?.type2 ?? pokemon.type2)}
+                  {renderTypeBadge(form ? form.type1 : pokemon.type1)}
+                  {renderTypeBadge(form ? form.type2 : pokemon.type2)}
                 </div>
               </div>
               <div className="slot-controls">

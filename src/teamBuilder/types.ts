@@ -44,6 +44,16 @@ export interface DefenseResult {
   dangerThreshold: number
 }
 
+export interface PokemonDefenseProfile {
+  slotIndex: number
+  quadWeak: string[]
+  weak: string[]
+  resist: string[]
+  doubleResist: string[]
+  immune: string[]
+  multipliers: Record<string, number>
+}
+
 // 职能分布
 export type PokemonRole =
   | 'physical_attacker'
@@ -74,6 +84,7 @@ export const ROLE_LABELS: Record<PokemonRole, string> = {
 export interface TeamAnalysisResult {
   coverage: CoverageResult
   defense: DefenseResult
+  defenseProfiles: PokemonDefenseProfile[]
   roles: RoleResult
   gaps: string[]
   pokemonDetails: TeamPokemonDetail[]
