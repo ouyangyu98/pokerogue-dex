@@ -1,4 +1,5 @@
 import { useEffect, type ReactNode } from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
 
 interface HelmetProps {
   children?: ReactNode
@@ -9,8 +10,8 @@ export function Helmet({ children }: HelmetProps) {
     if (!children) return
 
     const container = document.createElement('div')
-    container.innerHTML = `<head>${childrenToString(children)}</head>`
-    const elements = Array.from(container.querySelectorAll('head > *'))
+    container.innerHTML = renderToStaticMarkup(<>{children}</>)
+    const elements = Array.from(container.children)
 
     const applied: HTMLElement[] = []
     elements.forEach(el => {
@@ -34,13 +35,6 @@ export function Helmet({ children }: HelmetProps) {
   }, [children])
 
   return null
-}
-
-function childrenToString(children: ReactNode): string {
-  if (children == null) return ''
-  if (typeof children === 'string' || typeof children === 'number') return String(children)
-  if (Array.isArray(children)) return children.map(childrenToString).join('')
-  return ''
 }
 
 export function HelmetProvider({ children }: { children: ReactNode }) {

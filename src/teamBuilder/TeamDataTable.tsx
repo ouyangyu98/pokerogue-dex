@@ -2,6 +2,8 @@ import type { TeamPokemonDetail } from './types'
 import { ROLE_LABELS } from './types'
 import { getPokemonRoles } from './teamUtils'
 import { renderTypeBadge } from '../utils/render'
+import { Link } from 'react-router-dom'
+import { getPokemonDetailPath } from '../utils/pokemonRoutes'
 
 interface TeamDataTableProps {
   details: TeamPokemonDetail[]
@@ -32,7 +34,7 @@ export default function TeamDataTable({ details }: TeamDataTableProps) {
               return (
                 <tr key={slotIndex}>
                   <td className="team-table-name">
-                    <div>{pokemon.nameZh}</div>
+                    <Link to={getPokemonDetailPath(pokemon, form)}>{pokemon.nameZh}</Link>
                     {form.formIndex > 0 && form.formNameZh && form.formNameZh !== pokemon.nameZh && (
                       <div className="team-table-form">{form.formNameZh}</div>
                     )}

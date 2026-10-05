@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import type { Pokemon } from '../types'
 import type { TextureAtlas } from '../utils/atlas'
 import type { TeamSlot } from './types'
 import { getTeamPokemonForm } from './teamUtils'
+import { getPokemonDetailPath } from '../utils/pokemonRoutes'
 import { renderTypeBadge } from '../utils/render'
 import {
   getPokemonIconFrame,
@@ -109,7 +111,11 @@ export default function TeamSlots({
                   ×
                 </button>
               </div>
-              <div className="slot-main">
+              <Link
+                to={getPokemonDetailPath(pokemon, form)}
+                className="slot-main slot-main-link"
+                aria-label={`查看${pokemon.nameZh}详情`}
+              >
                 <div className="slot-icon">
                   {iconStyle ? (
                     <div style={iconStyle} />
@@ -122,7 +128,7 @@ export default function TeamSlots({
                   {renderTypeBadge(form ? form.type1 : pokemon.type1)}
                   {renderTypeBadge(form ? form.type2 : pokemon.type2)}
                 </div>
-              </div>
+              </Link>
               <div className="slot-controls">
                 <button type="button" className="slot-replace-btn" onClick={() => openPicker(index)}>
                   替换

@@ -6,6 +6,8 @@ import type {
   PokemonDefenseProfile,
   TeamPokemonDetail,
 } from './types'
+import { getPokemonDetailPath } from '../utils/pokemonRoutes'
+import { Link } from 'react-router-dom'
 
 interface DefenseOverviewProps {
   defense: DefenseResult
@@ -188,10 +190,14 @@ export default function DefenseOverview({
             return (
               <article key={detail.slotIndex} className={`team-defense-member${state}`}>
                 <div className="team-defense-member-header">
-                  <span className="team-defense-member-name">
+                  <Link
+                    to={getPokemonDetailPath(detail.pokemon, detail.form)}
+                    className="team-defense-member-name team-defense-member-link"
+                    aria-label={`查看${detail.pokemon.nameZh}详情`}
+                  >
                     <strong>{detail.pokemon.nameZh}</strong>
                     {formName && <small>{formName}</small>}
-                  </span>
+                  </Link>
                   <span className="team-defense-member-types">
                     <TypePill type={detail.form.type1 || detail.pokemon.type1 || 'UNKNOWN'} />
                     {detail.form.type2 && <TypePill type={detail.form.type2} />}

@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState, useMemo, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import SEOMeta from '../seo/SEOMeta'
 import JsonLd from '../seo/JsonLd'
@@ -8,6 +8,7 @@ import { renderTypeBadge, renderStatBar, formatLevel, renderMoveCategoryBadge } 
 import { normalizeChainMap, buildEvolutionPaths, getEvolutionConditionLabels } from '../utils/pokemon'
 import { getCombinedDefenseBuckets } from '../typeMatchups'
 import { buildTextureAtlas, getAtlasSpriteStyle, getPokemonIconFrame, DEFAULT_ICON_SOURCE_SIZE, type TextureAtlas } from '../utils/atlas'
+import { formRouteId } from '../utils/pokemonRoutes'
 import type { Pokemon } from '../types'
 
 interface NameMaps {
@@ -18,12 +19,68 @@ interface NameMaps {
 
 const REMOTE_ASSET_BASE = 'https://raw.githubusercontent.com/pagefaultgames/pokerogue-assets/beta'
 
-function formRouteId(baseId: string, formKey: string) {
-  return `${baseId}--${formKey.toUpperCase().replace(/[^A-Z0-9]+/g, '-')}`
-}
-
 function formLabel(value: string) {
   return value.replace(/超級/g, '超级').replace(/Ｘ/g, 'X').replace(/Ｙ/g, 'Y')
+}
+
+function PokemonDetailSearch({ pokemons }: { pokemons: Pokemon[] }) {
+  const [query, setQuery] = useState('')
+  const wrapperRef = useRef<HTMLDivElement>(null)
+  const keyword = query.trim().toLowerCase()
+  const results = useMemo(() => {
+    if (!keyword) return []
+    return pokemons
+      .filter(entry =>
+        entry.nameZh.toLowerCase().includes(keyword)
+        || entry.nameEn.toLowerCase().includes(keyword)
+        || entry.id.toLowerCase().includes(keyword)
+        || String(entry.numericId).includes(keyword),
+      )
+      .slice(0, 8)
+  }, [pokemons, keyword])
+
+  useEffect(() => {
+    function handlePointerDown(event: PointerEvent) {
+      if (!wrapperRef.current?.contains(event.target as Node)) {
+        setQuery('')
+      }
+    }
+    document.addEventListener('pointerdown', handlePointerDown)
+    return () => document.removeEventListener('pointerdown', handlePointerDown)
+  }, [])
+
+  return (
+    <div className="dp-detail-search" ref={wrapperRef}>
+      <input
+        type="search"
+        value={query}
+        onChange={event => setQuery(event.target.value)}
+        placeholder="搜索精灵"
+        aria-label="搜索精灵详情"
+      />
+      {keyword && (
+        <div className="dp-detail-search-results" role="listbox" aria-label="精灵详情搜索结果">
+          {results.length > 0 ? results.map(entry => (
+            <Link
+              key={entry.id}
+              to={`/pokemon/${entry.id}`}
+              className="dp-detail-search-result"
+              role="option"
+              onClick={() => setQuery('')}
+            >
+              <span>
+                <strong>{entry.nameZh}</strong>
+                {entry.isForm && <small>{entry.formNameZh || '特殊形态'}</small>}
+              </span>
+              <em>#{entry.numericId}</em>
+            </Link>
+          )) : (
+            <span className="dp-detail-search-empty">没有找到匹配的精灵</span>
+          )}
+        </div>
+      )}
+    </div>
+  )
 }
 
 export default function PokemonDetailPage() {
@@ -322,6 +379,7 @@ export default function PokemonDetailPage() {
                 disabled={!hasEggMoves}
               >蛋招</button>
             </div>
+            <PokemonDetailSearch pokemons={pokemons} />
           </div>
           {activeTab === 'level' && hasLevelMoves ? (
             <div className="table-container">

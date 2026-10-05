@@ -3457,10 +3457,88 @@ tr.clickable {
 .dp-card-title-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 10px;
   margin-bottom: 8px;
   padding-bottom: 6px;
   border-bottom: 1px solid #f3f4f6;
+}
+.dp-card-title-row > .dp-card-title {
+  margin-right: auto;
+}
+.dp-detail-search {
+  position: relative;
+  flex: 0 1 180px;
+}
+.dp-detail-search input {
+  width: 100%;
+  min-width: 120px;
+  box-sizing: border-box;
+  padding: 5px 9px;
+  border: 1px solid #d8dee9;
+  border-radius: 6px;
+  color: #1f2937;
+  font-size: 12px;
+  outline: none;
+}
+.dp-detail-search input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102,126,234,0.12);
+}
+.dp-detail-search-results {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 5px);
+  right: 0;
+  width: 250px;
+  max-width: min(250px, 75vw);
+  padding: 4px;
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(31,41,55,0.14);
+}
+.dp-detail-search-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 8px;
+  border-radius: 5px;
+  color: #1f2937;
+  text-decoration: none;
+  font-size: 12px;
+}
+.dp-detail-search-result:hover {
+  background: #f3f5ff;
+}
+.dp-detail-search-result span {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+.dp-detail-search-result strong,
+.dp-detail-search-result small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dp-detail-search-result small {
+  margin-top: 2px;
+  color: #7b8495;
+  font-size: 10px;
+}
+.dp-detail-search-result em {
+  flex-shrink: 0;
+  color: #9ca3af;
+  font-size: 10px;
+  font-style: normal;
+}
+.dp-detail-search-empty {
+  display: block;
+  padding: 8px;
+  color: #8b95a5;
+  font-size: 12px;
 }
 .dp-badge {
   font-size: 11px;
@@ -3904,6 +3982,22 @@ tr.clickable {
   }
 }
 @media (max-width: 640px) {
+  .dp-card-title-row {
+    flex-wrap: wrap;
+  }
+  .dp-card-title-row > .dp-card-title {
+    width: 100%;
+    margin-right: 0;
+  }
+  .dp-card-title-row .dp-tab-bar,
+  .dp-card-title-row .dp-detail-search {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .dp-detail-search-results {
+    left: 0;
+    right: auto;
+  }
   .dp-layout {
     grid-template-columns: 1fr;
   }
