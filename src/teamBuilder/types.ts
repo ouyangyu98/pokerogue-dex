@@ -22,7 +22,8 @@ export interface TeamPokemonDetail {
 export interface CoverageResult {
   stabTypes: Set<string>           // 队伍本系属性集合
   moveTypes: Set<string>           // 队伍全技能池属性集合
-  uncoveredTypes: string[]         // 18 属性中没有任何技能能打的属性
+  coveredTypes: string[]           // 被技能池克制的防御属性
+  uncoveredTypes: string[]         // 18 属性中没有任何技能能克制的属性
   typeCounts: Record<string, number> // 每种属性被多少只精灵的本系覆盖
   moveTypeCounts: Record<string, number> // 每种属性被多少只精灵的技能池覆盖
 }
@@ -39,7 +40,8 @@ export interface DefenseStat {
 
 export interface DefenseResult {
   stats: DefenseStat[]
-  dangerousTypes: DefenseStat[]  // 超过 3 只弱点的属性
+  dangerousTypes: DefenseStat[]
+  dangerThreshold: number
 }
 
 // 职能分布

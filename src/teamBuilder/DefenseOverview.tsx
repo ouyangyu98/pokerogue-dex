@@ -1,4 +1,4 @@
-import { typeNames } from '../typeMatchups'
+import { typeColors } from '../typeMatchups'
 import type { DefenseResult } from './types'
 
 interface DefenseOverviewProps {
@@ -8,11 +8,17 @@ interface DefenseOverviewProps {
 export default function DefenseOverview({ defense }: DefenseOverviewProps) {
   return (
     <div className="analysis-card">
-      <h4>抗性总览</h4>
+      <div className="analysis-card-heading">
+        <div>
+          <span className="analysis-eyebrow">防守端</span>
+          <h4>抗性总览</h4>
+        </div>
+        <span className="analysis-card-note">共同弱点 ≥ {defense.dangerThreshold} 只</span>
+      </div>
 
       {defense.dangerousTypes.length > 0 && (
         <div className="analysis-section danger">
-          <div className="analysis-label warning">危险属性（≥3只弱点）</div>
+          <div className="analysis-label warning">需要优先补强的共同弱点</div>
           <div className="analysis-badges">
             {defense.dangerousTypes.map(s => (
               <span key={s.type} className="defense-badge danger">
@@ -40,7 +46,7 @@ export default function DefenseOverview({ defense }: DefenseOverviewProps) {
                 <td>
                   <span
                     className="type-badge-mini"
-                    style={{ backgroundColor: (typeNames as any)[s.type] ? '#888' : '#888' }}
+                    style={{ backgroundColor: typeColors[s.type as keyof typeof typeColors] || '#888' }}
                   >
                     {s.nameZh}
                   </span>

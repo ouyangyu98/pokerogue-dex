@@ -48,13 +48,17 @@ export function getTeamCoverage(team: TeamPokemonDetail[]): CoverageResult {
     }
   }
 
-  const uncoveredTypes = MATCHUP_TYPE_ORDER.filter(
-    t => !moveTypes.has(t),
-  ).map(t => typeNames[t])
+  const coveredTypes = MATCHUP_TYPE_ORDER.filter(defendType =>
+    Array.from(moveTypes).some(attackType => getSingleTypeMultiplier(attackType, defendType) > 1),
+  ).map(type => typeNames[type])
+  const uncoveredTypes = MATCHUP_TYPE_ORDER.filter(defendType =>
+    !Array.from(moveTypes).some(attackType => getSingleTypeMultiplier(attackType, defendType) > 1),
+  ).map(type => typeNames[type])
 
   return {
     stabTypes,
     moveTypes,
+    coveredTypes,
     uncoveredTypes,
     typeCounts,
     moveTypeCounts,
@@ -95,9 +99,10 @@ export function getTeamDefenseMatrix(team: TeamPokemonDetail[]): DefenseResult {
     })
   }
 
-  const dangerousTypes = stats.filter(s => s.weakCount >= 3)
+  const dangerThreshold = team.length <= 2 ? 2 : Math.ceil(team.length / 2)
+  const dangerousTypes = stats.filter(s => s.weakCount >= dangerThreshold)
 
-  return { stats, dangerousTypes }
+  return { stats, dangerousTypes, dangerThreshold }
 }
 
 // ========== 职能分布 ==========

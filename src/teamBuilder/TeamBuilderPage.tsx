@@ -11,6 +11,7 @@ import RoleDistribution from './RoleDistribution'
 import TeamDataTable from './TeamDataTable'
 import GapSuggestions from './GapSuggestions'
 import Modal from '../components/Modal'
+import type { SavedTeam } from './types'
 import '../styles/features/team-builder.css'
 
 const REMOTE_ASSET_BASE = 'https://raw.githubusercontent.com/pagefaultgames/pokerogue-assets/beta'
@@ -19,6 +20,8 @@ export default function TeamBuilderPage() {
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
   const [loading, setLoading] = useState(true)
   const [iconAtlases, setIconAtlases] = useState<Record<string, TextureAtlas>>({})
+  const [clearConfirmOpen, setClearConfirmOpen] = useState(false)
+  const [notice, setNotice] = useState('')
 
   const {
     slots,
@@ -38,6 +41,33 @@ export default function TeamBuilderPage() {
   } = useTeamBuilder()
 
   const analysis = useTeamAnalysis(slots, pokemons)
+
+  useEffect(() => {
+    if (!notice) return undefined
+    const timeoutId = window.setTimeout(() => setNotice(''), 3200)
+    return () => window.clearTimeout(timeoutId)
+  }, [notice])
+
+  const handleSaveTeam = (name: string) => {
+    saveTeam(name)
+    setNotice(`已保存队伍“${name.trim() || '未命名队伍'}”`)
+  }
+
+  const handleLoadTeam = (team: SavedTeam) => {
+    loadTeam(team)
+    setNotice(`已加载队伍“${team.name}”`)
+  }
+
+  const handleDeleteSavedTeam = (id: string) => {
+    deleteSavedTeam(id)
+    setNotice('已删除保存的队伍')
+  }
+
+  const handleClearTeam = () => {
+    clearTeam()
+    setClearConfirmOpen(false)
+    setNotice('已清空当前队伍，已保存的队伍不会受影响')
+  }
 
   // 加载精灵数据
   useEffect(() => {
@@ -86,11 +116,21 @@ export default function TeamBuilderPage() {
   return (
     <div className="team-builder-page">
       <div className="team-builder-header">
-        <h2>配队分析器</h2>
+        <div>
+          <h2>配队分析器</h2>
+          <p>组合最多 6 名精灵，实时查看可学招式池打击面、共同弱点与职能缺口。</p>
+        </div>
         <div className="team-builder-actions">
-          <span className="team-count">{filledCount}/6</span>
-          <button className="tb-btn" onClick={() => setLoadModalOpen(true)}>
-            加载队伍
+          <span className="team-count" aria-label={`当前已选 ${filledCount} 名精灵`}>
+            <strong>{filledCount}</strong><span>/6</span>
+          </span>
+          <button
+            className="tb-btn"
+            onClick={() => setLoadModalOpen(true)}
+            disabled={savedTeams.length === 0}
+            title={savedTeams.length === 0 ? '暂无保存的队伍' : `已保存 ${savedTeams.length} 支队伍`}
+          >
+            加载{savedTeams.length > 0 ? ` (${savedTeams.length})` : ''}
           </button>
           <button
             className="tb-btn"
@@ -99,11 +139,13 @@ export default function TeamBuilderPage() {
           >
             保存队伍
           </button>
-          <button className="tb-btn secondary" onClick={clearTeam} disabled={filledCount === 0}>
+          <button className="tb-btn secondary" onClick={() => setClearConfirmOpen(true)} disabled={filledCount === 0}>
             清空
           </button>
         </div>
       </div>
+
+      {notice && <div className="team-notice" role="status">{notice}</div>}
 
       <TeamSlots
         slots={slots}
@@ -116,24 +158,31 @@ export default function TeamBuilderPage() {
 
       {analysis ? (
         <div className="team-analysis">
+          <div className="team-analysis-progress">
+            <strong>已基于 {filledCount} 名精灵完成当前分析。</strong>
+            {filledCount < 6
+              ? <span>继续补充 {6 - filledCount} 名精灵，能更完整地判断共同弱点与职能缺口。</span>
+              : <span>队伍已满，可优先根据下方缺口建议调整成员或形态。</span>}
+          </div>
+          <GapSuggestions gaps={analysis.gaps} />
           <div className="analysis-grid">
             <CoverageAnalysis coverage={analysis.coverage} />
             <DefenseOverview defense={analysis.defense} />
             <RoleDistribution roles={analysis.roles} />
           </div>
           <TeamDataTable details={analysis.pokemonDetails} />
-          <GapSuggestions gaps={analysis.gaps} />
         </div>
       ) : (
         <div className="team-empty-hint">
-          点击上方空位添加精灵，即可查看队伍分析。
+          <strong>点击任一空位添加精灵。</strong>
+          <span>从第一名成员开始，打击面、弱点和职能分析会立即出现。</span>
         </div>
       )}
 
       {/* 保存队伍弹窗 */}
       <SaveTeamModal
         open={saveModalOpen}
-        onSave={saveTeam}
+        onSave={handleSaveTeam}
         onClose={() => setSaveModalOpen(false)}
       />
 
@@ -141,9 +190,15 @@ export default function TeamBuilderPage() {
       <LoadTeamModal
         open={loadModalOpen}
         teams={savedTeams}
-        onLoad={loadTeam}
-        onDelete={deleteSavedTeam}
+        onLoad={handleLoadTeam}
+        onDelete={handleDeleteSavedTeam}
         onClose={() => setLoadModalOpen(false)}
+      />
+
+      <ConfirmClearModal
+        open={clearConfirmOpen}
+        onConfirm={handleClearTeam}
+        onClose={() => setClearConfirmOpen(false)}
       />
     </div>
   )
@@ -206,11 +261,17 @@ function LoadTeamModal({
   onClose,
 }: {
   open: boolean
-  teams: Array<{ id: string; name: string; createdAt: number }>
-  onLoad: (team: any) => void
+  teams: SavedTeam[]
+  onLoad: (team: SavedTeam) => void
   onDelete: (id: string) => void
   onClose: () => void
 }) {
+  const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!open) setPendingDeleteId(null)
+  }, [open])
+
   return (
     <Modal open={open} onClose={onClose} title="加载队伍" size="small">
       <div className="modal-body">
@@ -228,17 +289,56 @@ function LoadTeamModal({
                 </div>
                 <div className="saved-team-actions">
                   <button className="tb-btn small" onClick={() => onLoad(team)}>加载</button>
-                  <button
-                    className="tb-btn small secondary"
-                    onClick={() => onDelete(team.id)}
-                  >
-                    删除
-                  </button>
+                  {pendingDeleteId === team.id ? (
+                    <>
+                      <button className="tb-btn small danger" onClick={() => {
+                        onDelete(team.id)
+                        setPendingDeleteId(null)
+                      }}>
+                        确认删除
+                      </button>
+                      <button className="tb-btn small secondary" onClick={() => setPendingDeleteId(null)}>
+                        取消
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      className="tb-btn small secondary"
+                      onClick={() => setPendingDeleteId(team.id)}
+                    >
+                      删除
+                    </button>
+                  )}
                 </div>
               </div>
             ))}
           </div>
         )}
+      </div>
+    </Modal>
+  )
+}
+
+function ConfirmClearModal({
+  open,
+  onConfirm,
+  onClose,
+}: {
+  open: boolean
+  onConfirm: () => void
+  onClose: () => void
+}) {
+  const footer = (
+    <>
+      <button className="tb-btn secondary" onClick={onClose}>取消</button>
+      <button className="tb-btn danger" onClick={onConfirm}>清空当前队伍</button>
+    </>
+  )
+
+  return (
+    <Modal open={open} onClose={onClose} title="清空当前队伍？" size="small" footer={footer}>
+      <div className="modal-body">
+        当前 6 个位置都会被清空，但已经保存的队伍不会受影响。
       </div>
     </Modal>
   )

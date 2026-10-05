@@ -11,7 +11,12 @@ export default function RoleDistribution({ roles }: RoleDistributionProps) {
 
   return (
     <div className="analysis-card">
-      <h4>职能分布</h4>
+      <div className="analysis-card-heading">
+        <div>
+          <span className="analysis-eyebrow">队伍结构</span>
+          <h4>职能分布</h4>
+        </div>
+      </div>
       {entries.length === 0 ? (
         <div className="analysis-empty">暂无数据</div>
       ) : (
