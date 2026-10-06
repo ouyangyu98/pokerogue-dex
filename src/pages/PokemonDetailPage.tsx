@@ -1,5 +1,5 @@
-import { useEffect, useState, useMemo, useRef } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useEffect, useState, useMemo, useRef, type KeyboardEvent } from 'react'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 import SEOMeta from '../seo/SEOMeta'
 import JsonLd from '../seo/JsonLd'
 import { getPokemonMeta } from '../seo/generateMeta'
@@ -24,6 +24,7 @@ function formLabel(value: string) {
 }
 
 function PokemonDetailSearch({ pokemons }: { pokemons: Pokemon[] }) {
+  const navigate = useNavigate()
   const [query, setQuery] = useState('')
   const wrapperRef = useRef<HTMLDivElement>(null)
   const keyword = query.trim().toLowerCase()
@@ -34,7 +35,9 @@ function PokemonDetailSearch({ pokemons }: { pokemons: Pokemon[] }) {
         entry.nameZh.toLowerCase().includes(keyword)
         || entry.nameEn.toLowerCase().includes(keyword)
         || entry.id.toLowerCase().includes(keyword)
-        || String(entry.numericId).includes(keyword),
+        || String(entry.numericId).includes(keyword)
+        || (entry.formNameZh || '').toLowerCase().includes(keyword)
+        || (entry.formKey || '').toLowerCase().includes(keyword),
       )
       .slice(0, 8)
   }, [pokemons, keyword])
@@ -49,13 +52,26 @@ function PokemonDetailSearch({ pokemons }: { pokemons: Pokemon[] }) {
     return () => document.removeEventListener('pointerdown', handlePointerDown)
   }, [])
 
+  function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Escape') {
+      setQuery('')
+      event.currentTarget.blur()
+    }
+    if (event.key === 'Enter' && results[0]) {
+      navigate(`/pokemon/${results[0].id}`)
+      setQuery('')
+    }
+  }
+
   return (
     <div className="dp-detail-search" ref={wrapperRef}>
+      <span className="dp-detail-search-label">切换精灵</span>
       <input
         type="search"
         value={query}
         onChange={event => setQuery(event.target.value)}
-        placeholder="搜索精灵"
+        onKeyDown={handleKeyDown}
+        placeholder="名称、英文名或编号"
         aria-label="搜索精灵详情"
       />
       {keyword && (
@@ -204,7 +220,10 @@ export default function PokemonDetailPage() {
       />
 
       <div className="detail-breadcrumb">
-        <Link to="/pokemon" className="back-link">← 返回精灵图鉴</Link>
+        <div className="detail-toolbar">
+          <Link to="/pokemon" className="back-link">← 返回精灵图鉴</Link>
+          <PokemonDetailSearch pokemons={pokemons} />
+        </div>
       </div>
 
       {/* === Hero === */}
@@ -379,7 +398,6 @@ export default function PokemonDetailPage() {
                 disabled={!hasEggMoves}
               >蛋招</button>
             </div>
-            <PokemonDetailSearch pokemons={pokemons} />
           </div>
           {activeTab === 'level' && hasLevelMoves ? (
             <div className="table-container">
