@@ -50,7 +50,7 @@ export default function PokemonList() {
   const [advancedOpen, setAdvancedOpen] = useState(false)
 
   function handleRowClick(pokemon: Pokemon) {
-    navigate(`/pokemon/${pokemon.id}`)
+    navigate(`/pokemon/${pokemon.id}`, { state: { from: 'pokemon-list' } })
   }
 
   useEffect(() => {

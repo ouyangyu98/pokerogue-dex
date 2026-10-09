@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import type { Pokemon } from '../types'
 import { rarityOrder, inRange } from '../utils/pokemon'
 
-const FILTER_STORAGE_KEY = 'pokerogue-dex-filters'
+const FILTER_STORAGE_KEY = 'pokerogue-dex-filters-v2'
 const DATA_CACHE_KEY = 'pokerogue-dex-data-cache-v2'
 const DATA_CACHE_TTL_MS = 1000 * 60 * 60 * 24 // 24小时
 
@@ -132,11 +132,12 @@ export function usePokemonList(): UsePokemonListResult {
   const [spdMax, setSpdMax] = useState('')
   const [sortBy, setSortBy] = useState('numericId')
   const [sortDesc, setSortDesc] = useState(false)
+  const [filtersRestored, setFiltersRestored] = useState(false)
 
-  // 筛选器状态持久化
+  // 筛选仅在当前浏览窗口内保存，避免其他窗口覆盖当前列表。
   useEffect(() => {
     try {
-      const saved = localStorage.getItem(FILTER_STORAGE_KEY)
+      const saved = sessionStorage.getItem(FILTER_STORAGE_KEY)
       if (saved) {
         const parsed = JSON.parse(saved)
         if (!searchParams.get('search') && parsed.search !== undefined) setSearch(parsed.search)
@@ -172,10 +173,13 @@ export function usePokemonList(): UsePokemonListResult {
       }
     } catch {
       // ignore parse error
+    } finally {
+      setFiltersRestored(true)
     }
   }, [])
 
   useEffect(() => {
+    if (!filtersRestored) return
     const state = {
       search, typeFilter, genFilter, biomeFilter, rarityFilter, abilityFilter, moveFilter,
       hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter,
@@ -185,8 +189,8 @@ export function usePokemonList(): UsePokemonListResult {
       spatkMin, spatkMax, spdefMin, spdefMax, spdMin, spdMax,
       sortBy, sortDesc,
     }
-    localStorage.setItem(FILTER_STORAGE_KEY, JSON.stringify(state))
-  }, [search, typeFilter, genFilter, biomeFilter, rarityFilter, abilityFilter, moveFilter, hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter, formFilter, costMin, costMax, totalMin, totalMax, hpMin, hpMax, atkMin, atkMax, defMin, defMax, spatkMin, spatkMax, spdefMin, spdefMax, spdMin, spdMax, sortBy, sortDesc])
+    sessionStorage.setItem(FILTER_STORAGE_KEY, JSON.stringify(state))
+  }, [filtersRestored, search, typeFilter, genFilter, biomeFilter, rarityFilter, abilityFilter, moveFilter, hasPassiveFilter, hasEggMoveFilter, hasHiddenAbilityFilter, finalEvolutionFilter, formFilter, costMin, costMax, totalMin, totalMax, hpMin, hpMax, atkMin, atkMax, defMin, defMax, spatkMin, spatkMax, spdefMin, spdefMax, spdMin, spdMax, sortBy, sortDesc])
 
   // 数据加载
   useEffect(() => {

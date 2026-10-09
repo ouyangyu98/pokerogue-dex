@@ -1,5 +1,5 @@
-import { useEffect, useState, useMemo, useRef, type KeyboardEvent } from 'react'
-import { useNavigate, useParams, Link } from 'react-router-dom'
+import { useEffect, useState, useMemo, useRef, type KeyboardEvent, type MouseEvent } from 'react'
+import { useLocation, useNavigate, useParams, Link } from 'react-router-dom'
 import SEOMeta from '../seo/SEOMeta'
 import JsonLd from '../seo/JsonLd'
 import { getPokemonMeta } from '../seo/generateMeta'
@@ -25,6 +25,7 @@ function formLabel(value: string) {
 
 function PokemonDetailSearch({ pokemons }: { pokemons: Pokemon[] }) {
   const navigate = useNavigate()
+  const location = useLocation()
   const [query, setQuery] = useState('')
   const wrapperRef = useRef<HTMLDivElement>(null)
   const keyword = query.trim().toLowerCase()
@@ -58,7 +59,7 @@ function PokemonDetailSearch({ pokemons }: { pokemons: Pokemon[] }) {
       event.currentTarget.blur()
     }
     if (event.key === 'Enter' && results[0]) {
-      navigate(`/pokemon/${results[0].id}`)
+      navigate(`/pokemon/${results[0].id}`, { state: location.state })
       setQuery('')
     }
   }
@@ -80,6 +81,7 @@ function PokemonDetailSearch({ pokemons }: { pokemons: Pokemon[] }) {
             <Link
               key={entry.id}
               to={`/pokemon/${entry.id}`}
+              state={location.state}
               className="dp-detail-search-result"
               role="option"
               onClick={() => setQuery('')}
@@ -100,6 +102,8 @@ function PokemonDetailSearch({ pokemons }: { pokemons: Pokemon[] }) {
 }
 
 export default function PokemonDetailPage() {
+  const navigate = useNavigate()
+  const location = useLocation()
   const { id } = useParams()
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
   const [nameMaps, setNameMaps] = useState<NameMaps | null>(null)
@@ -199,6 +203,13 @@ export default function PokemonDetailPage() {
       })),
   ]
   const megaFormCount = formEntries.filter(form => form.formKey.startsWith('MEGA')).length
+  const returnToList = location.state?.from === 'pokemon-list'
+
+  function handleBackToList(event: MouseEvent<HTMLAnchorElement>) {
+    if (!returnToList) return
+    event.preventDefault()
+    navigate(-1)
+  }
 
   return (
     <div className="pokemon-detail-page">
@@ -221,7 +232,7 @@ export default function PokemonDetailPage() {
 
       <div className="detail-breadcrumb">
         <div className="detail-toolbar">
-          <Link to="/pokemon" className="back-link">← 返回精灵图鉴</Link>
+          <Link to="/pokemon" className="back-link" onClick={handleBackToList}>← 返回精灵图鉴</Link>
           <PokemonDetailSearch pokemons={pokemons} />
         </div>
       </div>
