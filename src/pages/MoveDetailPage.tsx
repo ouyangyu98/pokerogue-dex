@@ -4,6 +4,7 @@ import SEOMeta from '../seo/SEOMeta'
 import JsonLd from '../seo/JsonLd'
 import { getMoveMeta } from '../seo/generateMeta'
 import { buildMoveSchema, buildBreadcrumbList } from '../seo/schemaBuilders'
+import { formatMoveCategory, renderTypeBadge } from '../utils/render'
 import type { Pokemon } from '../types'
 
 interface NameMaps {
@@ -74,9 +75,15 @@ export default function MoveDetailPage() {
 
       <Link to="/moves" className="back-link">← 返回招式查询</Link>
 
-      <h1>{moveInfo.nameZh} <span className="sub">{id}</span></h1>
-      <p className="lead">{moveInfo.nameZh}是{moveInfo.type ? moveInfo.type + '属性' : ''}招式，{moveInfo.category ? moveInfo.category + '招式' : ''}
-        {moveInfo.power ? `，威力 ${moveInfo.power}` : ''}{moveInfo.accuracy ? `，命中 ${moveInfo.accuracy}` : ''}。{moveInfo.effect || ''}
+      <h1>{moveInfo.nameZh}</h1>
+      <p className="lead move-detail-summary">
+        {moveInfo.nameZh}是
+        {moveInfo.type ? <>{renderTypeBadge(moveInfo.type)}属性</> : '未知属性'}
+        招式
+        {moveInfo.category ? `，${formatMoveCategory(moveInfo.category)}招式` : ''}
+        {moveInfo.power ? `，威力 ${moveInfo.power}` : ''}
+        {moveInfo.accuracy ? `，命中 ${moveInfo.accuracy}` : ''}。
+        {moveInfo.effect || '暂无效果说明。'}
       </p>
 
       <section className="detail-section">

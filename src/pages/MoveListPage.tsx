@@ -4,6 +4,7 @@ import SEOMeta from '../seo/SEOMeta'
 import JsonLd from '../seo/JsonLd'
 import { getMoveListMeta } from '../seo/generateMeta'
 import { buildCollectionPage, buildWebSite } from '../seo/schemaBuilders'
+import { renderTypeBadge, renderMoveCategoryBadge } from '../utils/render'
 import type { Pokemon } from '../types'
 
 interface NameMaps {
@@ -12,8 +13,18 @@ interface NameMaps {
   type?: Record<string, string>
 }
 
+interface MoveRow {
+  id: string
+  nameZh: string
+  type?: string
+  category?: string
+  power?: number | null
+  accuracy?: number | null
+  effect?: string
+}
+
 export default function MoveListPage() {
-  const [moves, setMoves] = useState<{ id: string; nameZh: string; type?: string; category?: string; power?: number | null; accuracy?: number | null }[]>([])
+  const [moves, setMoves] = useState<MoveRow[]>([])
   const [search, setSearch] = useState('')
   const [count, setCount] = useState(0)
   const meta = getMoveListMeta(count)
@@ -25,7 +36,7 @@ export default function MoveListPage() {
         const moveEffectMap = nameMaps.moveEffect || {}
 
         const seen = new Set<string>()
-        const moveList: { id: string; nameZh: string; type?: string; category?: string; power?: number | null; accuracy?: number | null; effect?: string }[] = []
+        const moveList: MoveRow[] = []
 
         pokemonData.forEach(p => {
           ;[...(p.levelMoves || []), ...(p.eggMoves || [])].forEach(m => {
@@ -83,7 +94,7 @@ export default function MoveListPage() {
           type="search"
           value={search}
           onChange={event => setSearch(event.target.value)}
-          placeholder="搜索招式中文名或内部 ID..."
+          placeholder="搜索招式中文名..."
           aria-label="搜索招式中文名或内部 ID"
         />
         {search && (
@@ -97,22 +108,24 @@ export default function MoveListPage() {
           <thead>
             <tr>
               <th>中文名</th>
-              <th>内部 ID</th>
               <th>属性</th>
               <th>分类</th>
               <th>威力</th>
               <th>命中</th>
+              <th>效果</th>
             </tr>
           </thead>
           <tbody>
             {filteredMoves.map(move => (
               <tr key={move.id} className="clickable">
                 <td><Link to={`/move/${move.id}`}>{move.nameZh}</Link></td>
-                <td>{move.id}</td>
-                <td>{move.type || '-'}</td>
-                <td>{move.category || '-'}</td>
+                <td>{renderTypeBadge(move.type || null) || '-'}</td>
+                <td>{renderMoveCategoryBadge(move.category || null)}</td>
                 <td>{move.power ?? '-'}</td>
                 <td>{move.accuracy ?? '-'}</td>
+                <td className="move-effect-cell" title={move.effect || ''}>
+                  {move.effect || '暂无效果说明'}
+                </td>
               </tr>
             ))}
             {filteredMoves.length === 0 && (
