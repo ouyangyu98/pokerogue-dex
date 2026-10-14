@@ -41,20 +41,15 @@
   gap: 6px;
 }
 
-.biome-map-select-group label {
+.biome-map-field-label {
   font-size: 13px;
   font-weight: 600;
   color: #555;
 }
 
-.biome-map-select-group select {
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 14px;
-  background: white;
-  min-width: 140px;
-  cursor: pointer;
+.biome-map-select-group .biome-filter-trigger {
+  width: 180px;
+  min-height: 44px;
 }
 
 .biome-map-arrow {
@@ -63,33 +58,13 @@
   padding-bottom: 8px;
 }
 
-.biome-map-calc-btn {
-  padding: 8px 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.biome-map-calc-btn:hover:not(:disabled) {
-  opacity: 0.9;
-}
-
-.biome-map-calc-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 .biome-map-secondary-actions {
   display: flex;
   gap: 6px;
 }
 
 .biome-map-action-btn {
+  min-height: 44px;
   padding: 8px 10px;
   border: 1px solid #d7deea;
   border-radius: 6px;
@@ -260,8 +235,7 @@
   }
 
   .biome-map-select-group,
-  .biome-map-select-group select,
-  .biome-map-calc-btn {
+  .biome-map-select-group .biome-filter-trigger {
     width: 100%;
   }
 

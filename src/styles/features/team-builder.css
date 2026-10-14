@@ -1255,6 +1255,12 @@
   color: #666;
 }
 
+.team-table-total {
+  font-weight: 700;
+  color: #315fa8;
+  white-space: nowrap;
+}
+
 .team-table-roles {
   display: flex;
   flex-wrap: wrap;

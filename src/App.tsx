@@ -9,7 +9,6 @@ interface DataReportInfo {
 
 const navItems = [
   { to: '/pokemon', label: '精灵图鉴', primary: true },
-  { to: '/biomes', label: '地区查询', primary: true },
   { to: '/map', label: '地区路线图', primary: true },
   { to: '/types', label: '属性克制', primary: true },
   { to: '/team', label: '配队分析', primary: true },
@@ -19,6 +18,7 @@ const navItems = [
   { to: '/abilities', label: '特性' },
   { to: '/events', label: '事件表' },
   { to: '/report', label: '数据状态' },
+  { to: '/biomes', label: '地区查询', primary: true },
 ]
 
 function formatDataVersion(sourceVersion: string, generationTime: string) {

@@ -124,6 +124,7 @@ export function BiomeFilter({ value, groups, allBiomes, onChange, label = '地�
   const { open, setOpen, rootRef } = useDropdownOpenState()
   const [query, setQuery] = useState('')
   const menuRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
   const currentLabel = value ? (allBiomes.find(([id]) => id === value)?.[1] || value) : emptyLabel
   const keyword = query.trim().toLowerCase()
   const filteredGroups = groups
@@ -153,6 +154,7 @@ export function BiomeFilter({ value, groups, allBiomes, onChange, label = '地�
       ))}px`
     }
     alignMenu()
+    inputRef.current?.focus({ preventScroll: true })
     window.addEventListener('resize', alignMenu)
     return () => window.removeEventListener('resize', alignMenu)
   }, [open, rootRef])
@@ -177,12 +179,22 @@ export function BiomeFilter({ value, groups, allBiomes, onChange, label = '地�
         <div className="biome-filter-menu" ref={menuRef}>
           <div className="biome-filter-menu-sticky">
             <input
+              ref={inputRef}
               type="search"
               className="biome-filter-search"
               value={query}
               onChange={event => setQuery(event.target.value)}
               placeholder="搜索地区"
               aria-label="搜索地区"
+              onKeyDown={event => {
+                if (event.key === 'Enter' && !event.nativeEvent.isComposing) {
+                  const first = filteredGroups[0]?.items[0]
+                  if (!first) return
+                  event.preventDefault()
+                  onChange(first[0])
+                  setOpen(false)
+                }
+              }}
             />
             <button
               type="button"

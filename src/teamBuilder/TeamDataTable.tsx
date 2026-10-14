@@ -25,6 +25,7 @@ export default function TeamDataTable({ details }: TeamDataTableProps) {
               <th>特攻</th>
               <th>特防</th>
               <th>速度</th>
+              <th>种族值总和</th>
               <th>职能</th>
             </tr>
           </thead>
@@ -49,6 +50,7 @@ export default function TeamDataTable({ details }: TeamDataTableProps) {
                   <td>{form.baseSpatk}</td>
                   <td>{form.baseSpdef}</td>
                   <td>{form.baseSpd}</td>
+                  <td className="team-table-total">{form.baseTotal}</td>
                   <td>
                     <div className="team-table-roles">
                       {roles.map(r => (
