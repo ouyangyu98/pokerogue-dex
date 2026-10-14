@@ -6,6 +6,7 @@ import { getMoveListMeta } from '../seo/generateMeta'
 import { buildCollectionPage, buildWebSite } from '../seo/schemaBuilders'
 import { renderTypeBadge, renderMoveCategoryBadge } from '../utils/render'
 import type { Pokemon } from '../types'
+import { useSessionState } from '../hooks/useSessionState'
 
 interface NameMaps {
   move?: Record<string, string>
@@ -25,7 +26,7 @@ interface MoveRow {
 
 export default function MoveListPage() {
   const [moves, setMoves] = useState<MoveRow[]>([])
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useSessionState('moves:search', '')
   const [count, setCount] = useState(0)
   const meta = getMoveListMeta(count)
 

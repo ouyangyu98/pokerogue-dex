@@ -2230,47 +2230,44 @@ main {
 }
 
 .biome-filter-menu {
-  width: 620px;
-  max-height: 520px;
+  width: 360px;
+  max-width: calc(100vw - 48px);
+  max-height: min(360px, 55vh);
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 8px;
+  background: #fff;
   overflow-y: auto;
-}
-
-.advanced-filters > .biome-filter-dropdown.is-open {
-  flex: 1 0 100%;
-  display: grid;
-  grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
-  align-items: start;
-}
-
-.advanced-filters > .biome-filter-dropdown.is-open .biome-filter-trigger {
-  width: 220px;
-}
-
-.advanced-filters > .biome-filter-dropdown.is-open .biome-filter-menu {
-  position: relative;
-  top: 8px;
-  left: auto;
-  grid-column: 1 / -1;
-  width: 100%;
-  max-width: 100%;
-  max-height: min(520px, 60vh);
+  overscroll-behavior: contain;
 }
 
 .biome-filter-menu-sticky {
   position: sticky;
-  top: 0;
+  top: -10px;
   z-index: 2;
-  padding-bottom: 10px;
-  margin-bottom: 12px;
-  background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.95) 100%);
+  padding: 4px 0 8px;
+  margin-bottom: 8px;
+  background: #fff;
   border-bottom: 1px solid #edf2f8;
+}
+
+.biome-filter-search {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  min-height: 34px;
+  padding: 6px 9px;
+  margin-bottom: 6px;
+  border: 1px solid #dbe4f0;
+  border-radius: 6px;
+  font-size: 13px;
 }
 
 .biome-filter-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 14px;
+  gap: 4px;
+  margin-bottom: 8px;
 }
 
 .biome-filter-group:last-child {
@@ -2282,21 +2279,21 @@ main {
   font-size: 12px;
   font-weight: 700;
   color: #7a8499;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 
 .biome-filter-group-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
 }
 
 .biome-filter-option {
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
+  border-radius: 6px;
   background: #fff;
-  min-height: 46px;
-  padding: 7px 11px;
+  min-height: 34px;
+  padding: 5px 8px;
   text-align: left;
   font-size: 13px;
   color: #334155;
@@ -2319,7 +2316,7 @@ main {
 
 .biome-filter-option-clear {
   width: 100%;
-  min-height: 48px;
+  min-height: 34px;
 }
 
 /* ===== 特性/被动筛选器 ===== */
@@ -2885,17 +2882,16 @@ tr.clickable {
   .biome-filter-dropdown,
   .filter-trigger,
   .biome-filter-trigger,
-  .filter-menu,
-  .biome-filter-menu {
+  .filter-menu {
     width: 100%;
   }
 
-  .advanced-filters > .biome-filter-dropdown.is-open {
-    display: block;
+  .biome-filter-menu {
+    width: min(360px, 100%);
+    max-height: min(360px, 55vh);
   }
 
-  .filter-menu,
-  .biome-filter-menu {
+  .filter-menu {
     max-height: 360px;
   }
 
@@ -3069,11 +3065,11 @@ tr.clickable {
   }
 
   .biome-filter-menu {
-    max-height: 320px;
+    max-height: min(320px, 55vh);
   }
 
   .biome-filter-group-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .evo-path-row {

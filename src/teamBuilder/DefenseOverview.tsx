@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useSessionState } from '../hooks/useSessionState'
 import { typeColors, typeNames } from '../typeMatchups'
 import type {
   DefenseResult,
@@ -71,7 +71,7 @@ export default function DefenseOverview({
   details,
   profiles,
 }: DefenseOverviewProps) {
-  const [selectedType, setSelectedType] = useState<string | null>(null)
+  const [selectedType, setSelectedType] = useSessionState<string | null>('team:defense-type', null)
   const noSafeSwitch = defense.stats.filter(
     stat => stat.weakCount > 0 && stat.resistCount + stat.immuneCount === 0,
   )

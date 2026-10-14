@@ -6,6 +6,7 @@ import { typeNames } from '../typeMatchups'
 import { buildTextureAtlas, type TextureAtlas } from '../utils/atlas'
 import { useLazyImage } from '../hooks/useLazyImage'
 import { usePokemonList } from '../hooks/usePokemonList'
+import { useSessionState } from '../hooks/useSessionState'
 import PokemonTable from './PokemonTable'
 import type { Pokemon } from '../types'
 import '../styles/pokemon.css'
@@ -47,7 +48,7 @@ export default function PokemonList() {
   } = usePokemonList()
 
   const [iconAtlases, setIconAtlases] = useState<Record<string, TextureAtlas>>({})
-  const [advancedOpen, setAdvancedOpen] = useState(false)
+  const [advancedOpen, setAdvancedOpen] = useSessionState('pokemon:advanced', false)
 
   function handleRowClick(pokemon: Pokemon) {
     navigate(`/pokemon/${pokemon.id}`, { state: { from: 'pokemon-list' } })

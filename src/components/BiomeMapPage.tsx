@@ -1,4 +1,5 @@
 import { useState, useMemo, useCallback } from 'react'
+import { useSessionState } from '../hooks/useSessionState'
 import '../styles/biome-map.css'
 
 // ===== 生态区数据 =====
@@ -177,10 +178,10 @@ function findShortestPath(start: string, end: string): string[] | null {
 }
 
 export default function BiomeMapPage() {
-  const [startId, setStartId] = useState<string>('')
-  const [endId, setEndId] = useState<string>('')
-  const [path, setPath] = useState<string[] | null>(null)
-  const [routeStatus, setRouteStatus] = useState<RouteStatus>('idle')
+  const [startId, setStartId] = useSessionState<string>('map:start', '')
+  const [endId, setEndId] = useSessionState<string>('map:end', '')
+  const [path, setPath] = useSessionState<string[] | null>('map:path', null)
+  const [routeStatus, setRouteStatus] = useSessionState<RouteStatus>('map:status', 'idle')
   const [hoveredNode, setHoveredNode] = useState<string | null>(null)
 
   const nodeMap = useMemo(() => {

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import type { CSSProperties } from 'react'
 import type { TypeMatchupItem } from '../types'
 import { SelectFilter } from './filterControls'
+import { useSessionState } from '../hooks/useSessionState'
 
 interface AtlasFrame {
   filename: string
@@ -93,7 +94,7 @@ export default function ItemList() {
   const [itemsError, setItemsError] = useState<string | null>(null)
   const [itemAtlas, setItemAtlas] = useState<TextureAtlas | null>(null)
   const [itemAtlasReady, setItemAtlasReady] = useState(false)
-  const [selectedTier, setSelectedTier] = useState('')
+  const [selectedTier, setSelectedTier] = useSessionState('items:tier', '')
 
   useEffect(() => {
     let cancelled = false

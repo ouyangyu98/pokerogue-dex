@@ -4,6 +4,7 @@ import JsonLd from '../seo/JsonLd'
 import { getEventListMeta } from '../seo/generateMeta'
 import { buildCollectionPage, buildWebSite } from '../seo/schemaBuilders'
 import type { MysteryEncounter } from '../types'
+import { useSessionState } from '../hooks/useSessionState'
 
 const tierOrder = ['COMMON', 'GREAT', 'ULTRA', 'ROGUE', 'MASTER']
 
@@ -15,8 +16,10 @@ function waveLabel(event: MysteryEncounter) {
 
 export default function EventListPage() {
   const [events, setEvents] = useState<MysteryEncounter[]>([])
-  const [search, setSearch] = useState('')
-  const [tier, setTier] = useState('')
+  const [search, setSearch] = useSessionState('events:search', '')
+  const [tier, setTier] = useSessionState('events:tier', '')
+  const [expanded, setExpanded] = useSessionState<Record<string, boolean>>('events:expanded', {})
+  const [backgrounds, setBackgrounds] = useSessionState<Record<string, boolean>>('events:backgrounds', {})
   const meta = getEventListMeta(events.length)
 
   useEffect(() => {
@@ -96,7 +99,15 @@ export default function EventListPage() {
       <div className="event-list-count">显示 {filteredEvents.length} / {events.length} 个事件</div>
       <div className="event-list">
         {filteredEvents.map(event => (
-          <details className="event-entry" key={event.id}>
+          <details
+            className="event-entry"
+            key={event.id}
+            open={expanded[event.id] || false}
+            onToggle={toggle => {
+              const open = toggle.currentTarget.open
+              setExpanded(current => current[event.id] === open ? current : { ...current, [event.id]: open })
+            }}
+          >
             <summary>
               <span className="event-entry-main">
                 <span className="event-entry-title">{event.nameZh}</span>
@@ -106,7 +117,15 @@ export default function EventListPage() {
               <span className="event-entry-meta">{waveLabel(event)} · {event.biomes.length} 个地区 · {event.options.length} 个选项</span>
             </summary>
             <div className="event-entry-content">
-              <details className="event-narrative">
+              <details
+                className="event-narrative"
+                open={backgrounds[event.id] || false}
+                onToggle={toggle => {
+                  toggle.stopPropagation()
+                  const open = toggle.currentTarget.open
+                  setBackgrounds(current => current[event.id] === open ? current : { ...current, [event.id]: open })
+                }}
+              >
                 <summary>
                   <span className="event-narrative-label">事件背景</span>
                   <span className="event-narrative-action">查看背景</span>

@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import { useSessionState } from '../hooks/useSessionState'
 import type { TeamSlot, SavedTeam } from './types'
 
 const STORAGE_KEY = 'pokerogue_teams_v1'
@@ -18,7 +19,7 @@ function saveSavedTeams(teams: SavedTeam[]) {
 }
 
 export function useTeamBuilder() {
-  const [slots, setSlots] = useState<(TeamSlot | null)[]>([null, null, null, null, null, null])
+  const [slots, setSlots] = useSessionState<(TeamSlot | null)[]>('team:slots', [null, null, null, null, null, null])
   const [savedTeams, setSavedTeams] = useState<SavedTeam[]>(loadSavedTeams)
   const [saveModalOpen, setSaveModalOpen] = useState(false)
   const [loadModalOpen, setLoadModalOpen] = useState(false)

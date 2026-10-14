@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 
 export interface SelectOption {
   value: string
@@ -122,14 +122,50 @@ export function SelectFilter({ value, options, onChange, label, emptyLabel, minW
 
 export function BiomeFilter({ value, groups, allBiomes, onChange, label = '地区筛选', emptyLabel = '全部地区' }: BiomeFilterProps) {
   const { open, setOpen, rootRef } = useDropdownOpenState()
+  const [query, setQuery] = useState('')
+  const menuRef = useRef<HTMLDivElement>(null)
   const currentLabel = value ? (allBiomes.find(([id]) => id === value)?.[1] || value) : emptyLabel
+  const keyword = query.trim().toLowerCase()
+  const filteredGroups = groups
+    .map(group => ({
+      ...group,
+      items: group.items.filter(([id, name]) => `${id} ${name}`.toLowerCase().includes(keyword)),
+    }))
+    .filter(group => group.items.length > 0)
+
+  useLayoutEffect(() => {
+    if (!open) return
+    function alignMenu() {
+      if (!rootRef.current || !menuRef.current) return
+      const { left, top, bottom } = rootRef.current.getBoundingClientRect()
+      const width = menuRef.current.offsetWidth
+      const offset = Math.max(0, left + width - window.innerWidth + 16)
+      menuRef.current.style.left = `${-Math.min(offset, Math.max(0, left - 16))}px`
+      const below = window.innerHeight - bottom - 24
+      const above = top - 24
+      const openAbove = below < 180 && above > below
+      menuRef.current.style.top = openAbove ? 'auto' : 'calc(100% + 8px)'
+      menuRef.current.style.bottom = openAbove ? 'calc(100% + 8px)' : 'auto'
+      menuRef.current.style.maxHeight = `${Math.max(0, Math.min(
+        window.innerWidth <= 520 ? 320 : 360,
+        window.innerHeight * 0.55,
+        openAbove ? above : below,
+      ))}px`
+    }
+    alignMenu()
+    window.addEventListener('resize', alignMenu)
+    return () => window.removeEventListener('resize', alignMenu)
+  }, [open, rootRef])
 
   return (
     <div className={`biome-filter-dropdown filter-dropdown ${open ? 'is-open' : ''}`} ref={rootRef}>
       <button
         type="button"
         className={`filter-trigger biome-filter-trigger ${open ? 'is-open' : ''}`}
-        onClick={() => setOpen(current => !current)}
+        onClick={() => {
+          setQuery('')
+          setOpen(current => !current)
+        }}
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label={label}
@@ -138,8 +174,16 @@ export function BiomeFilter({ value, groups, allBiomes, onChange, label = '地�
         <span className="filter-trigger-arrow biome-filter-trigger-arrow">▾</span>
       </button>
       {open && (
-        <div className="biome-filter-menu" role="listbox" aria-label={label}>
+        <div className="biome-filter-menu" ref={menuRef}>
           <div className="biome-filter-menu-sticky">
+            <input
+              type="search"
+              className="biome-filter-search"
+              value={query}
+              onChange={event => setQuery(event.target.value)}
+              placeholder="搜索地区"
+              aria-label="搜索地区"
+            />
             <button
               type="button"
               className={`biome-filter-option biome-filter-option-clear ${!value ? 'is-selected' : ''}`}
@@ -151,26 +195,31 @@ export function BiomeFilter({ value, groups, allBiomes, onChange, label = '地�
               {emptyLabel}
             </button>
           </div>
-          {groups.map(group => (
-            <div key={group.label} className="biome-filter-group">
-              <div className="biome-filter-group-title">{group.label}</div>
-              <div className="biome-filter-group-grid">
-                {group.items.map(([id, nameZh]) => (
-                  <button
-                    key={id}
-                    type="button"
-                    className={`biome-filter-option ${value === id ? 'is-selected' : ''}`}
-                    onClick={() => {
-                      onChange(id)
-                      setOpen(false)
-                    }}
-                  >
-                    {nameZh}
-                  </button>
-                ))}
+          <div role="listbox" aria-label={label}>
+            {filteredGroups.map(group => (
+              <div key={group.label} className="biome-filter-group">
+                <div className="biome-filter-group-title">{group.label}</div>
+                <div className="biome-filter-group-grid">
+                  {group.items.map(([id, nameZh]) => (
+                    <button
+                      key={id}
+                      type="button"
+                      role="option"
+                      aria-selected={value === id}
+                      className={`biome-filter-option ${value === id ? 'is-selected' : ''}`}
+                      onClick={() => {
+                        onChange(id)
+                        setOpen(false)
+                      }}
+                    >
+                      {nameZh}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+            {filteredGroups.length === 0 && <div className="searchable-filter-empty">没有匹配的地区</div>}
+          </div>
         </div>
       )}
     </div>

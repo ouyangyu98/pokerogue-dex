@@ -10,6 +10,7 @@ import { getCombinedDefenseBuckets } from '../typeMatchups'
 import { buildTextureAtlas, getAtlasSpriteStyle, getPokemonIconFrame, DEFAULT_ICON_SOURCE_SIZE, type TextureAtlas } from '../utils/atlas'
 import { formRouteId } from '../utils/pokemonRoutes'
 import type { Pokemon } from '../types'
+import { useSessionState } from '../hooks/useSessionState'
 
 interface NameMaps {
   move: Record<string, string>
@@ -109,7 +110,7 @@ export default function PokemonDetailPage() {
   const [nameMaps, setNameMaps] = useState<NameMaps | null>(null)
   const [spriteAtlas, setSpriteAtlas] = useState<TextureAtlas | null>(null)
   const [loading, setLoading] = useState(true)
-  const [moveTab, setMoveTab] = useState<'level' | 'egg'>('level')
+  const [moveTab, setMoveTab] = useSessionState<'level' | 'egg'>('pokemon:move-tab', 'level')
 
   useEffect(() => {
     Promise.all([

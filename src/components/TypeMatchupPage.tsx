@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
+import { useSessionState } from '../hooks/useSessionState'
 import {
   buildSingleTypeMatchupRows,
   getCombinedDefenseBuckets,
@@ -116,11 +117,11 @@ function renderBucketGroup(
 }
 
 export default function TypeMatchupPage() {
-  const [perspective, setPerspective] = useState<Perspective>('attack')
-  const [selectedType, setSelectedType] = useState<MatchupTypeKey | null>(null)
-  const [pokemonType1, setPokemonType1] = useState<MatchupTypeKey>('WATER')
-  const [pokemonType2, setPokemonType2] = useState<MatchupTypeKey | null>('GROUND')
-  const [coverageTypes, setCoverageTypes] = useState<MatchupTypeKey[]>(['FIRE', 'WATER', 'GRASS'])
+  const [perspective, setPerspective] = useSessionState<Perspective>('types:perspective', 'attack')
+  const [selectedType, setSelectedType] = useSessionState<MatchupTypeKey | null>('types:selected', null)
+  const [pokemonType1, setPokemonType1] = useSessionState<MatchupTypeKey>('types:primary', 'WATER')
+  const [pokemonType2, setPokemonType2] = useSessionState<MatchupTypeKey | null>('types:secondary', 'GROUND')
+  const [coverageTypes, setCoverageTypes] = useSessionState<MatchupTypeKey[]>('types:coverage', ['FIRE', 'WATER', 'GRASS'])
   const rows = useMemo(() => buildSingleTypeMatchupRows(), [])
 
   const selectedRow = useMemo(
